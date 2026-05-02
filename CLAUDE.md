@@ -36,6 +36,14 @@ cerkl/
 └── personal-assistant/          ← Travis's projects, meetings, calendar, task list
 ```
 
+## Git Sync
+
+This folder is tracked in `github.com/TravisDFoster/cerkl-claude`. Changes may come from any device.
+
+- **Start of session:** Run `git pull` to get latest changes from GitHub
+- **End of session:** Run `git add . && git commit -m "..." && git push` to save changes
+- **Check for changes without pulling:** Run `git fetch && git status`
+
 ## Rules
 - Load shared context before starting any task
 - Route to the correct subdirectory and load its CLAUDE.md before responding
