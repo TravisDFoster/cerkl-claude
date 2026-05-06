@@ -26,6 +26,15 @@ Most interactions run through one of these skills. Load the skill file when inte
 | "Add a task: X", "log this", quick capture into the right project | `skills/capture.md` |
 | "Start a project for X", "spin up a new project" — also called by `capture` and `process-meeting` when no project fits | `skills/new-project.md` |
 
+## Team rollups
+
+For "What's `<person>` working on?" / status questions about a teammate, read the rollup file directly. These are per-person summaries of in-flight work — different shape from project files (no Status block).
+
+| Person | File |
+|---|---|
+| Allison | `projects/allison-projects.md` |
+| Furqan | `projects/furqan-projects.md` |
+
 ## File structure
 
 ```

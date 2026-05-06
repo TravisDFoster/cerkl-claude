@@ -7,6 +7,10 @@ marketing/design/branding-assets/
 # HubSpot contact data — PII
 hubspot/data/audit-logs/
 
+# Personal project notes
+personal-assistant/projects/furqan-projects.md
+personal-assistant/projects/allison-projects.md
+
 # Mac noise
 .DS_Store
 **/.DS_Store

@@ -12,7 +12,7 @@
 > **Last refreshed:** 2026-05-04
 
 ## Top of Mind
-1. **Press Release — Insights 3.0** — embargo lifts 2026-05-09. Draft + Maria's review + final approval. **At risk.**
+1. **Press Release — Insights 3.0** — embargo lifts 2026-06-01 (delayed from 2026-05-09). Draft + Maria's review + final approval.
 2. **Webinars (Matt Frost post-event)** — recording, landing page, audience follow-up email, YouTube snippets.
 3. **The Cerkular** — HubSpot → Broadcast API integration is the gate to launch. Resolve Jira FUTURE-232 first.
 4. **Cerkl Website — Insights Video requirements** — Travis-owned; unblocks Furqan's upload work.
@@ -22,7 +22,7 @@
 
 | Project | Next step | Priority | Due | On track | Owner |
 |---|---|---|---|---|---|
-| [Press Release](projects/press-release.md) | Draft press release with Maria's review notes | High | 2026-05-09 | At risk | Travis |
+| [Press Release](projects/press-release.md) | Draft press release with Maria's review notes | High | 2026-06-01 | Yes | Travis |
 | [Webinars](projects/webinars.md) | Post-event distribution: recording, landing page, audience follow-up email, YouTube snippets | High | — | Yes | Travis |
 | [The Cerkular](projects/the-cerkular.md) | Resolve personalization-link feasibility in Blast (Jira FUTURE-232) | High | — | Blocked | Travis |
 | [Cerkl Website](projects/cerkl-website.md) | Define Insights Video website requirements | High | — | Yes | Travis |
@@ -35,4 +35,4 @@
 | [YouTube](projects/youtube.md) | Decide with TK — post product videos (Foundations, Audience Manager) to Cerkl YouTube? | Low | — | Pending | Travis / TK |
 
 ## Calendar Anchors
-- **2026-05-09** — Insights 3.0 launch / press release embargo lifts
+- **2026-06-01** — Insights 3.0 launch / press release embargo lifts (delayed from 2026-05-09)
