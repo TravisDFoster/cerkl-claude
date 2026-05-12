@@ -65,6 +65,15 @@ Header format: `## [YYYY-MM-DD] operation | Title`. Parseable with `grep "^## \[
 - Surfaced three cross-source angles: channel-gap = engagement-gap; AI denominator trap; engagement-wellbeing divergence
 - Filed answer back to [[ic-measurement-and-roi]] under new "Citable Stat Anchors" section (per Karpathy's "good answers compound back" rule)
 
+## [2026-05-11] schema | Added Blog Post Research Mode rule to CLAUDE.md
+- Rule: when a query is for blog-post / article / external-content research, exclude competitor stats and sources from the answer; surface filtered competitor names at the bottom for awareness
+- Competitor list hardcoded directly in CLAUDE.md (token-efficiency: avoids re-reading `shared/competitors.md` on every blog query). Manual sync required if competitors change.
+- Retroactively restructured [[ic-measurement-and-roi]] "Citable Stat Anchors" section to comply (filed yesterday as blog-research synthesis)
+  - Tier-1 (Gallup) and Tier-2 (Forrester) tables retained
+  - Tier-3 (vendor) table removed — all entries were from competitors ([[contactmonkey]], [[workshop]])
+  - Added "Competitor sources — do not cite in blog posts" subsection listing [[contactmonkey]], [[workshop]], [[workvivo]] / [[seer]] for internal context only
+  - Cross-source patterns rewritten to not depend on competitor data
+
 ## [2026-05-11] ingest | PR Daily — Six internal comms trends for 2026 (Workshop)
 - Source URL: https://www.prdaily.com/six-internal-comms-trends-every-communicator-should-know-in-2026/
 - Mode: batch

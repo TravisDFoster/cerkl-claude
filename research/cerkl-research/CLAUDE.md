@@ -133,6 +133,21 @@ When Travis asks a question:
 5. **Append to `wiki/log.md`**.
 6. **Overwrite `wiki/hot.md`**.
 
+#### Blog Post Research Mode
+
+When the query is for blog-post / article / external-content research (signals: "for a blog post," "for an article," "for our blog," "for SEO content," "for external publication," "to publish," or Travis explicitly invoking blog-research mode):
+
+- **Exclude statistics and source citations from Cerkl competitors.** Don't surface competitor-sourced stats in the answer, and don't pull competitor-attributed quotes into citable lists.
+- **Competitor list (hardcoded below — do not read external files for this).** Cerkl's competitors as of 2026-05-11:
+  - **Enterprise IC:** Staffbase, Simpplr, LumApps, Firstup, Poppulo, Workvivo, Haiilo, Axios HQ
+  - **Email-first / SMB:** Workshop, ContactMonkey
+  - Apply the filter to the company name *and* any of their named products (e.g., Workvivo's Seer).
+- **Surface the filtered competitor names at the end of the answer.** Format: `**Competitor sources excluded from this answer:** [list of names with vault [[entity-links]] where pages exist].` This lets Travis know what was held back so he doesn't accidentally cite them himself.
+- **The filter applies to source citations, not subject matter.** Competitors can still be *discussed* in a blog post (vendor-category comparisons, positioning analysis). What's excluded is using their data, surveys, or research as evidence.
+- **When in doubt, ask.** If the query is ambiguous between internal analysis and blog research, ask Travis to confirm before applying the filter.
+- **When filing the synthesis back to the wiki**, the filed page should also comply with this rule. If a "for blog use" stat list is filed, exclude competitor sources from the citable list and call them out in a "Competitor sources — do not cite in blog posts" subsection at the bottom.
+- **Keep this list in sync manually.** If Travis tells you a competitor was added/removed, update this list directly in CLAUDE.md. The canonical source is `cerkl/shared/competitors.md`, but read it only when explicitly asked or during a lint pass — not at every blog-research query.
+
 ### Lint
 
 When Travis asks for a health check (or periodically):

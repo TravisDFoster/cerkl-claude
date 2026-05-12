@@ -21,7 +21,7 @@ For blog citation discipline: anchor headline stats with primary-research where 
 
 ## Citable Stat Anchors (curated for blog use)
 
-The strongest single anchors across the vault, ordered by authority tier. Use these first; reach for secondary stats only when the angle requires them.
+Strongest single anchors across the vault, ordered by authority tier. **Competitor-sourced stats are excluded per the Blog Post Research Mode rule in [CLAUDE.md](../../CLAUDE.md);** competitor names are listed at the bottom for awareness.
 
 ### Tier-1: Primary research
 
@@ -36,30 +36,27 @@ The strongest single anchors across the vault, ordered by authority tier. Use th
 
 | Stat | Source | Useful for |
 |---|---|---|
-| 49% of intranet customers actively use vendor AI (17 of 35) | [[forrester-wave-intranet-platforms-q2-2026]] | Counter-narrative to vendor AI hype |
-| Forrester Wave 2026: 13 vendors, 4 Leaders / 6 Strong Performers / 3 Contenders | [[forrester-wave-intranet-platforms-q2-2026]] | Vendor-category structure |
+| 49% of intranet customers actively use vendor AI (17 of 35 reference customers) | [[forrester-wave-intranet-platforms-q2-2026]] | Counter-narrative to vendor AI hype |
+| Forrester Wave 2026: 13 vendors evaluated, 4 Leaders / 6 Strong Performers / 3 Contenders | [[forrester-wave-intranet-platforms-q2-2026]] | Vendor-category structure |
 | Frontline named explicit Forrester evaluation criterion (shift mgmt, mobile, do-not-disturb, task) | [[forrester-wave-intranet-platforms-q2-2026]] | Validates frontline-comms importance at buyer level |
-
-### Tier-3: Vendor (name the vendor when citing)
-
-| Stat | Source | Useful for |
-|---|---|---|
-| 76% avg open / 9% avg click across 255k internal email campaigns | [[contactmonkey-internal-email-benchmark-2026]] | Headline email-channel benchmark |
-| Open rate by org size: 89% (1–50 emp) → 73% (10,000+) | [[contactmonkey-internal-email-benchmark-2026]] | Segmentation/personalization argument |
-| Frontline industries at bottom: Trucking 63%, Aviation 65%, Logistics 67% (open) | [[contactmonkey-internal-email-benchmark-2026]] | Mirrors engagement gap — same structural disadvantage |
-| 81% rate email most effective channel (vs intranet 31%, events 35%) | [[six-internal-comms-trends-2026]] | "Email isn't dead" frame |
-| 73% of communicators use AI weekly+ (42% daily, 31% several/week) | [[six-internal-comms-trends-2026]] | AI-mainstreaming frame (note: any AI, not vendor AI) |
-| 56% prioritize manager comms, 4% believe managers effective at cascade | [[six-internal-comms-trends-2026]] | [[manager-cascade]] gap — 14:1 ratio is the strongest single anchor in vault |
-| 29% rate intranet hardest channel to manage | [[six-internal-comms-trends-2026]] | [[evergreen-content-strategy]] reframe |
-| 44% have resources needed for 2026 (=56% don't) | [[six-internal-comms-trends-2026]] | [[do-more-with-less]] pushback story |
-| 41% actively investing in employee-influencer programs | [[six-internal-comms-trends-2026]] | [[employee-influencers]] mainstreaming |
-| eNPS click-to-open 11%, emoji reactions 10% | [[contactmonkey-internal-email-benchmark-2026]] | [[interactive-email-features]] adoption signal |
 
 ### Cross-source patterns worth surfacing in a blog
 
-- **Channel performance gap = engagement gap.** Frontline-heavy industries land at the bottom of *both* Gallup engagement (17% non-remote-capable) and ContactMonkey email opens (Trucking 63%, Aviation 65%). Two views of one structural disadvantage.
-- **AI denominator trap.** Forrester 49% (vendor AI) vs Workshop 73% (any AI) — both real, both citable, easy to misrepresent. Useful sidebar in any measurement-themed post.
-- **Engagement and wellbeing are diverging in 2025.** Thriving up, engagement down. Most dashboards track only one — argument for measuring both as separate constructs.
+- **The frontline engagement gap is structural, not a channel artifact.** Non-remote-capable workers sit 13pp below remote workers per Gallup primary research; the gap exists before any specific channel is involved. The Forrester 2026 Wave reinforces this by naming frontline capability an explicit buyer-evaluation criterion.
+- **Engagement and wellbeing are diverging in 2025.** Gallup's thriving measure (wellbeing) rose 1pp to 34% — first uptick in 3 years — while engagement fell to 20%. Most measurement dashboards track only one. Argument for separating the two constructs in measurement design.
+- **The AI investment-vs-adoption gap is real at the vendor layer.** Forrester's 49% (17 of 35) is the analyst-tier anchor for "vendor AI features aren't pulling their weight yet" — a useful counter-frame to vendor-hype content.
+
+### Competitor sources — do not cite in blog posts
+
+The wiki contains useful data from Cerkl competitors. **Internal context only — not for external blog citation** per the Blog Post Research Mode rule. Names listed so you know what's being filtered (and what not to cite yourself when writing):
+
+- [[contactmonkey]] — *Internal Email Benchmark Report 2026* (255k campaigns; open/click rates by industry and org size; interactive-feature performance)
+- [[workshop]] — *Internal Comms Trends Report 2026* (manager-cascade gap; AI-usage stats; channel-effectiveness ratings; resource constraints; employee-influencer adoption)
+- [[workvivo]] / [[seer]] — vendor positioning content and TrendCandy launch survey (62%/49%/42% comfort/change/accountability)
+
+Other Cerkl competitors (per the hardcoded list in [CLAUDE.md](../../CLAUDE.md)) with no wiki content yet: Staffbase, Simpplr, LumApps, Firstup, Poppulo, Haiilo, Axios HQ. Any future stats from these belong in the competitor section, not the citable lists.
+
+**Cross-vendor caveat for internal reasoning:** the Forrester 49% (vendor AI adoption) and Workshop's 73% (any AI use) measure different denominators — useful frame internally; do not cite the contrast in blog content since Workshop is a competitor.
 
 ## Key Entities
 
