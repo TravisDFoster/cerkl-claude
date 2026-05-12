@@ -50,6 +50,12 @@ This folder is tracked in `github.com/TravisDFoster/cerkl-claude`. Changes may c
 - **End of session:** Run `git add . && git commit -m "..." && git push` to save changes
 - **Check for changes without pulling:** Run `git fetch && git status`
 
+Workflow rules (keep routine pushes fast):
+- Working branch is always `main`. Push directly to `origin/main` — no PR flow, no branch checks.
+- Commit style: short imperative first line, lowercase, optional bullet body for multi-area changes. **Do not** add Co-Authored-By trailers.
+- Trust the `.env` / `.env.example` / `.gitignore` pattern — don't re-inspect on routine pushes. Only spot-check genuinely unusual new files (binaries, large data dumps, anything that *looks* like a key).
+- Skip pre-flight `git remote -v`, `git branch -a`, `git log` on routine end-of-session pushes. `git status` is enough.
+
 ## Conventions
 
 - **Dates**: ISO format `YYYY-MM-DD` (e.g., `2026-05-06`) everywhere — file content, update blocks, status notes. Convert relative dates ("Thursday", "next week") to absolute `YYYY-MM-DD` before writing them down.
