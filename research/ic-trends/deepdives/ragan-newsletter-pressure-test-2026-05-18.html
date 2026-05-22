@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ragan — The Newsletter Formatting Pressure Test — IC Deep Dive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f5f5fa;
+    --panel: #ffffff;
+    --panel-soft: #f5f5fa;
+    --ink: #18181d;
+    --muted: #373740;
+    --line: #d5d5db;
+    --accent: #3547c4;
+    --accent-soft: #f0f2fc;
+    --good: #1a9979;
+    --good-bg: #e8fffa;
+    --good-border: #aaf7e6;
+    --warn: #80550f;
+    --warn-bg: #fff9f2;
+    --warn-border: #ffeccd;
+    --bad: #b00045;
+    --bad-bg: #fcf0f0;
+    --bad-border: #fbc2c4;
+    --info: #3547c4;
+    --info-bg: #f0f2fc;
+    --info-border: #ccd5f7;
+    --quote: #802ee6;
+    --code-bg: #ebebf0;
+    --shadow: 0 1px 0 rgba(24,24,29,0.04), 0 4px 16px rgba(24,24,29,0.06);
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 18px;
+    letter-spacing: -0.0025em;
+    -webkit-font-smoothing: antialiased;
+  }
+  section p, .tldr { max-width: 70ch; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  header.hero {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .breadcrumb {
+    font-size: 13px; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
+  }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.005em; font-weight: 700; }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    font-size: 14px; color: var(--muted); margin-bottom: 18px;
+  }
+  .meta-row b { color: var(--ink); font-weight: 600; }
+  .verdict {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 4px 12px; border-radius: 999px;
+    font-weight: 600; font-size: 13px;
+    border: 1px solid;
+    background: var(--good-bg); color: var(--good); border-color: var(--good-border);
+  }
+  .verdict.warn { background: var(--warn-bg); color: var(--warn); border-color: var(--warn-border); }
+  .verdict.bad  { background: var(--bad-bg);  color: var(--bad);  border-color: var(--bad-border); }
+  .verdict::before { content: "●"; font-size: 10px; }
+  .tldr {
+    font-size: 18px; line-height: 1.55; color: var(--ink);
+    border-left: 3px solid var(--accent); padding-left: 16px; margin: 0;
+  }
+
+  section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 22px; margin: 0 0 14px; letter-spacing: -0.0025em; font-weight: 600;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2 .num {
+    font-size: 12px; color: var(--muted); font-weight: 600;
+    background: var(--code-bg); padding: 2px 8px; border-radius: 6px;
+  }
+  h3 { font-size: 18px; margin: 18px 0 8px; letter-spacing: -0.0025em; font-weight: 600; }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--info-border); }
+  a:hover { border-bottom-color: var(--accent); }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+  li { margin-bottom: 6px; }
+
+  .cols-2 {
+    display: grid; gap: 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 720px) { .cols-2 { grid-template-columns: 1fr; } }
+
+  .pillars {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin-top: 12px;
+  }
+  .pillar {
+    background: var(--panel-soft); border: 1px solid var(--line);
+    padding: 14px 16px; border-radius: 10px;
+  }
+  .pillar .n { font-size: 11px; color: var(--accent); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .pillar h4 { margin: 4px 0 6px; font-size: 14px; font-weight: 600; }
+  .pillar p { margin: 0; font-size: 13.5px; color: var(--muted); }
+
+  .callout {
+    border-radius: 10px; padding: 14px 16px;
+    border: 1px solid; margin: 12px 0;
+  }
+  .callout.try { background: var(--accent-soft); border-color: var(--info-border); color: var(--accent); }
+  .callout.warn { background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn); }
+  .callout.info { background: var(--info-bg); border-color: var(--info-border); color: var(--info); }
+  .callout p { max-width: none; }
+  .callout a { color: inherit; border-bottom-color: currentColor; opacity: 0.85; }
+  .callout a:hover { opacity: 1; }
+  .callout-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.9; margin-bottom: 4px;
+  }
+
+  code, pre { font-family: var(--mono); }
+  .code-row {
+    display: flex; align-items: stretch; gap: 0;
+    background: var(--code-bg); border: 1px solid var(--line);
+    border-radius: 8px; overflow: hidden; margin: 10px 0;
+  }
+  .code-row code {
+    flex: 1; padding: 10px 14px; font-family: var(--mono);
+    font-size: 13.5px; line-height: 1.5; white-space: pre-wrap;
+    color: var(--ink); background: transparent;
+  }
+  .copy-btn {
+    border: none; background: var(--accent); color: #ffffff;
+    padding: 0 16px; font-size: 12px; font-weight: 600;
+    cursor: pointer; letter-spacing: 0.04em; font-family: inherit;
+  }
+  .copy-btn:hover { background: #4c60d9; }
+  .copy-btn.copied { background: var(--good); }
+  p code, li code, td code { font-family: var(--mono); font-size: 0.9em;
+    background: var(--code-bg); padding: 1px 6px; border-radius: 4px; }
+
+  .personas { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .persona {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; background: var(--panel-soft);
+  }
+  .persona h4 { margin: 0 0 6px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .persona p { margin: 0; font-size: 14px; }
+
+  .stack-cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 8px; }
+  .stack-card {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stack-card h4 { margin: 0 0 6px; font-size: 14px; color: var(--accent); font-weight: 600; }
+  .stack-card p { margin: 0; font-size: 14px; }
+
+  table.cmp { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+  table.cmp th, table.cmp td {
+    text-align: left; padding: 10px 12px; vertical-align: top;
+    border-bottom: 1px solid var(--line);
+  }
+  table.cmp th {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); font-weight: 600; background: var(--panel-soft);
+  }
+  table.cmp tr:last-child td { border-bottom: none; }
+  table.cmp tr:hover td { background: var(--panel-soft); }
+  table.cmp .alt-name { font-weight: 600; }
+  .axis-note {
+    background: var(--info-bg); border-left: 3px solid var(--info);
+    padding: 10px 14px; border-radius: 0 8px 8px 0;
+    font-size: 14px; margin-top: 12px;
+  }
+
+  .quotes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 12px; }
+  .quote {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; position: relative; border-left: 3px solid var(--quote);
+  }
+  .quote .q-mark { position: absolute; top: 4px; right: 12px; font-size: 28px; color: var(--quote); opacity: 0.35; line-height: 1; }
+  .quote p { margin: 0 0 8px; font-style: italic; font-size: 14px; line-height: 1.55; max-width: none; }
+  .quote .who { font-size: 12px; color: var(--muted); }
+  .quote.skeptic { border-left-color: var(--warn); }
+  .quote.skeptic .q-mark { color: var(--warn); }
+
+  .stats { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-bottom: 14px; }
+  .stat {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .stat .num { font-size: 22px; font-weight: 700; color: var(--accent); letter-spacing: -0.005em; }
+  .stat .lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+
+  .reco {
+    background: var(--panel);
+    border: 1px solid var(--good-border);
+    border-left: 3px solid var(--good);
+    border-radius: 14px; padding: 22px 26px;
+  }
+  .reco h2 { margin-top: 0; }
+  .reco-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 12px; }
+  .reco-cell {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .reco-cell h4 { margin: 0 0 6px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .reco-cell p { margin: 0; font-size: 14px; }
+
+  details.q {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 0; margin-bottom: 8px; overflow: hidden;
+  }
+  details.q summary {
+    padding: 12px 16px; cursor: pointer; font-weight: 500; font-size: 14px;
+    list-style: none; position: relative;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::before {
+    content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    font-size: 18px; color: var(--accent); transition: transform 0.15s;
+  }
+  details.q[open] summary::before { content: "−"; }
+  details.q .q-body { padding: 0 16px 14px; font-size: 14px; color: var(--muted); }
+
+  footer {
+    text-align: center; font-size: 12px; color: var(--muted);
+    margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line);
+  }
+
+  @media print {
+    body { background: #ffffff; color: #18181d; -webkit-font-smoothing: auto; }
+    .wrap { padding: 0; max-width: none; }
+    section, header.hero, .reco { box-shadow: none; border: 1px solid #d5d5db; page-break-inside: avoid; }
+    .copy-btn, .code-row .copy-btn { display: none; }
+    a { color: #18181d; }
+    details.q { page-break-inside: avoid; }
+    details.q[open] summary::before, details.q summary::before { display: none; }
+    details.q .q-body { padding: 0 16px 14px; }
+    details.q[open] .q-body { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="breadcrumb">ic-trends · Publication Deep Dive</div>
+    <h1>The Newsletter Formatting Pressure Test — 4 questions to ask</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 2026-05-18</span>
+      <span><b>Publication:</b> Ragan</span>
+      <span><b>Author:</b> Sean Devlin</span>
+      <span class="verdict">Worth profiling — Yes</span>
+    </div>
+    <p class="tldr">
+      Ragan's <a href="https://www.ragan.com/internal-comms-employee-newsletters-pressure-test/">2026-05-18 piece by Sean Devlin</a>
+      gives IC owners four diagnostic questions to stress-test newsletter format, with practitioner case studies
+      from Yale (Niamh Emerson, <em>YourYale</em> — consistent slot-based structure) and Roku (Katie Satterlee —
+      word-count limits + regional personalization). It's tactical, free-to-read, and lands exactly on the
+      unit-of-work that every Cerkl Foundations buyer is already doing — making it the cleanest
+      lead-magnet-scaffolding signal of the week.
+    </p>
+
+    <div class="callout try">
+      <div class="callout-label">First thing to do</div>
+      Capture the four questions verbatim into the Cerkular content backlog as: <b>"The 4-Question Newsletter
+      Pressure Test (and a 5th Cerkl-only one)."</b> Add the 5th — the one Cerkl owns:
+      <div class="code-row">
+        <code id="cerkl-q5">Can you actually measure who read it — and which section they read?</code>
+        <button class="copy-btn" data-copy="cerkl-q5" type="button">Copy</button>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="num">01</span>What it is &amp; what it does</h2>
+    <div class="cols-2">
+      <div>
+        <h3>Origin</h3>
+        <p>
+          A short, tactical Ragan column by <b>Sean Devlin</b> (published 2026-05-18) framed as four questions
+          IC owners should ask when auditing their newsletter format. Two named practitioner case studies
+          (Yale's <em>YourYale</em> and Roku's internal newsletter) anchor each tactic. No external data
+          citations, no vendor references, no paywall.
+        </p>
+        <ul>
+          <li>Primary article: <a href="https://www.ragan.com/internal-comms-employee-newsletters-pressure-test/">ragan.com/internal-comms-employee-newsletters-pressure-test</a></li>
+          <li>Companion / prior-week data: <a href="https://www.ragan.com/by-the-numbers-employee-messaging-overload-korbyt/">By the Numbers — Korbyt messaging overload (Ragan, 2026-05-14)</a></li>
+          <li>Industry anchor: <a href="https://www.contactmonkey.com/ebook/internal-email-benchmark-2025">ContactMonkey Internal Email Benchmark Report 2025</a> — 68% open, 8% click, 15% CTOR across 195k+ campaigns</li>
+        </ul>
+      </div>
+      <div>
+        <h3>The 4 pressure-test questions (verbatim)</h3>
+        <div class="pillars">
+          <div class="pillar"><div class="n">Q1</div><h4>Navigate</h4><p>"Can employees navigate this newsletter without thinking too much about it?"</p></div>
+          <div class="pillar"><div class="n">Q2</div><h4>Find one thing</h4><p>"Does your format help the audience find one useful thing quickly?"</p></div>
+          <div class="pillar"><div class="n">Q3</div><h4>See themselves</h4><p>"Can employees see themselves in the newsletter?"</p></div>
+          <div class="pillar"><div class="n">Q4</div><h4>Behavior over assumption</h4><p>"Are you designing your newsletter around assumptions or actual employee behavior?"</p></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 22px;">Case 1 — Yale (<em>YourYale</em>, Niamh Emerson, editor)</h3>
+    <p>
+      Emerson audited reader behavior and found employees engage <em>selectively</em>, not top-to-bottom.
+      Her response: enforce a predictable slot-based structure.
+    </p>
+    <div class="quotes">
+      <div class="quote">
+        <span class="q-mark">"</span>
+        <p>"We know exactly what's going in the lead slot, here's the two secondaries and here's the engagement piece."</p>
+        <div class="who">— Niamh Emerson, editor of <em>YourYale</em>, Yale University · <a href="https://www.ragan.com/internal-comms-employee-newsletters-pressure-test/">Ragan</a></div>
+      </div>
+      <div class="quote">
+        <span class="q-mark">"</span>
+        <p>"It works because it is the same thing every week."</p>
+        <div class="who">— Niamh Emerson, on the operating principle · <a href="https://www.ragan.com/internal-comms-employee-newsletters-pressure-test/">Ragan</a></div>
+      </div>
+    </div>
+    <p style="margin-top: 14px; font-size: 14px; color: var(--muted);">
+      <b>Implication:</b> consistency-of-format is itself the navigation aid. Readers learn the grid;
+      the format becomes ambient.
+    </p>
+
+    <h3>Case 2 — Roku (Katie Satterlee, internal &amp; editorial communications specialist)</h3>
+    <p>
+      Hard word-count limits per section; avoid text blocks; lean on imagery to anchor stories. The team
+      personalizes regionally — including subject-line variants and tonal/grammar variations based on
+      reader feedback.
+    </p>
+    <div class="quotes">
+      <div class="quote">
+        <span class="q-mark">"</span>
+        <p>"If India has some specific line items, that goes in the subject line for them."</p>
+        <div class="who">— Katie Satterlee, Roku, on regional subject-line personalization · <a href="https://www.ragan.com/internal-comms-employee-newsletters-pressure-test/">Ragan</a></div>
+      </div>
+    </div>
+    <p style="margin-top: 14px; font-size: 14px; color: var(--muted);">
+      <b>Implication:</b> the format isn't one newsletter; it's a <em>template with audience-aware variants</em>.
+    </p>
+
+    <h3>Practitioner advice the piece distills</h3>
+    <ul>
+      <li>Track open rates, click rates, and CTRs <b>by section</b> (not just at the email level)</li>
+      <li>Run reader surveys and focus groups — the "actual behavior, not assumptions" half of Q4</li>
+      <li>Use high-quality imagery to anchor each section</li>
+      <li>Include employee quotes and photos — the "can employees see themselves" half of Q3</li>
+      <li>Keep sections short and visually distinct (color, whitespace)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>Who it's for</h2>
+    <div class="personas">
+      <div class="persona">
+        <h4>Primary user</h4>
+        <p>Cerkl Foundations buyers — anyone who owns the company newsletter and is one or two iterations into refining it. Includes formal IC directors, office managers, chiefs of staff.</p>
+      </div>
+      <div class="persona">
+        <h4>Strong fit when</h4>
+        <p>Reader is running a recurring newsletter (weekly/biweekly), has 6+ months of send history, and is starting to wonder why engagement plateaued.</p>
+      </div>
+      <div class="persona">
+        <h4>Weak fit when</h4>
+        <p>Reader is pre-launch or hasn't started measuring by-section CTR yet — they don't have the data to answer Q4. (Which is itself a Cerkl opportunity.)</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>How it slots into Cerkl's positioning</h2>
+    <p>
+      This piece is unusually well-aligned with Cerkl's wedge. The 4 questions map almost 1:1 onto Foundations
+      product surface.
+    </p>
+
+    <h3>The 4 questions vs. Foundations product surface</h3>
+    <table class="cmp">
+      <thead>
+        <tr><th>Devlin's question</th><th>Cerkl Foundations capability</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="alt-name">Q1 · Navigate without thinking</td>
+          <td>Drag-and-drop builder with reusable section templates → enforces the "same thing every week" Yale tactic without re-doing the layout.</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Q2 · Find one useful thing quickly</td>
+          <td>Per-section CTR analytics → tells you which slot is actually doing the work, so you stop wasting the lead slot on the wrong story.</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Q3 · See themselves in the newsletter</td>
+          <td>Audience manager / dynamic segments → the Roku "subject line variant for India" tactic is a Foundations feature, not a workaround.</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Q4 · Behavior over assumptions</td>
+          <td>Email analytics + per-section engagement → this is <em>only</em> answerable with a measurement layer. Outlook can't tell you this. PDF newsletters can't tell you this.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="axis-note">
+      <b>Decision-relevant axis: who can answer Q4?</b> Q4 is unanswerable for the Outlook/Gmail/PDF stack
+      Cerkl most often replaces. Devlin's question 4 is the diagnostic that surfaces <em>why</em> you'd
+      switch off the manual stack.
+    </div>
+
+    <h3>The three reads on Cerkl positioning</h3>
+    <div class="stack-cards">
+      <div class="stack-card">
+        <h4>1 · Foundations product surface fit</h4>
+        <p>Each of the four questions has a native Foundations answer. Free Foundations is built for exactly this audit-and-iterate motion — drag-and-drop builder, audience manager, email analytics — all in the free tier.</p>
+      </div>
+      <div class="stack-card">
+        <h4>2 · Newsletter-format experimentation is the 2026 buyer mindset</h4>
+        <p>Stitched with last week's Korbyt data (44% overwhelmed, 46% disengage from repetition, 40% tune out generic content) and ContactMonkey benchmarks (68% open, 8% click), the operating context is: <em>opens are fine, attention is not, repetition is the killer</em>. Meet buyers in the audit moment.</p>
+      </div>
+      <div class="stack-card">
+        <h4>3 · Cerkular content idea — "Newsletter Audit Checklist"</h4>
+        <p>Devlin's four questions are scaffolding-grade. Convert into (a) a free gated PDF lead magnet, (b) a Foundations starter template shipping Yale's slot structure (lead + 2 secondaries + engagement), (c) a Cerkular blog post citing this piece + the Korbyt data.</p>
+      </div>
+    </div>
+
+    <div class="callout info" style="margin-top: 16px;">
+      <div class="callout-label">Travis call</div>
+      Three commission options on the table. My vote: gated PDF + Foundations template (a two-fer; the template is the conversion event from the PDF).
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>Comparison to alternatives</h2>
+    <table class="cmp">
+      <thead>
+        <tr><th>Alternative</th><th>How they differ</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="alt-name">AxiosHQ (Smart Brevity)</td>
+          <td>Treats format-as-style — prescribes <em>how</em> you write each item; less about audit-and-iterate, more about adopting a house style. ~$15k/yr floor. AxiosHQ is "an AI editor priced like a platform."</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Workshop</td>
+          <td>Newsletter-first SMB toolkit; ships best-practice content monthly but is one-format-fits-all and email-only. $3k/yr floor, no free tier.</td>
+        </tr>
+        <tr>
+          <td class="alt-name">ContactMonkey</td>
+          <td>Analytics-first — strong per-section + heatmap data, owns the <a href="https://www.contactmonkey.com/ebook/internal-email-benchmark-2025">internal email benchmark report</a> (68% open, 8% click, 15% CTOR). Microsoft EWS deprecation (Oct 2026) is their wedge moment. Sales-led, no free tier.</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Staffbase</td>
+          <td>Intranet-first — newsletter is a feature in a larger home-base product. Best-practice content is "publish to the intranet first, push via email," which is the inverse of the article's premise.</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Simpplr (Comms AI, Feb 2026)</td>
+          <td>AI workspace for orchestration — closer to "let the AI optimize your newsletter for you" than the Devlin self-audit framing.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="axis-note">
+      <b>Cerkl's lane vs. all of the above:</b> the article is a <em>measurement-and-iteration</em> play,
+      not a style-guide play. That's Foundations' lane: free entry, drag-and-drop builder, dynamic
+      audience targeting, per-section analytics — the four-question audit runs natively on the Cerkl
+      install. AxiosHQ teaches you to write tighter; Cerkl tells you which section nobody read.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span>Gotchas</h2>
+    <div class="callout warn">
+      <div class="callout-label">No data anchors in the piece itself</div>
+      The article cites neither Korbyt nor ContactMonkey nor any benchmark — it leans entirely on two practitioner anecdotes. Strong tactically, weak as a citation source for downstream Cerkl content. <em>Pair it with the Korbyt and ContactMonkey numbers when reusing.</em>
+    </div>
+    <div class="callout warn">
+      <div class="callout-label">Yale and Roku are large, high-resource teams</div>
+      <em>YourYale</em> has a dedicated editor; Roku has a specialist whose job title is "internal and editorial communications specialist." The tactics translate to Foundations SMBs but the <em>staffing</em> doesn't. In any Cerkular reuse: "Here's how to do this in 30 minutes a week, not with a 3-person team."
+    </div>
+    <div class="callout warn">
+      <div class="callout-label">Devlin/Ragan multi-week thread caveat</div>
+      Part of a thread (Korbyt 2026-05-14, Week-in-Comms 2026-05-15, this 2026-05-18). Worth tracking — if Devlin pivots, the thread's value to Cerkl shifts.
+    </div>
+    <div class="callout info">
+      <div class="callout-label">Q3 is the hardest to operationalize</div>
+      "Can employees see themselves" — Roku does it with regional subject lines and grammar variants, both segmentation moves. Foundations buyers without segmentation data can't really answer Q3, which is its own argument for the Cerkl audience manager.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span>Community signal</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="lbl">Devlin pieces in 5 days</div></div>
+      <div class="stat"><div class="num">68%</div><div class="lbl">avg internal email open rate (ContactMonkey)</div></div>
+      <div class="stat"><div class="num">44%</div><div class="lbl">employees overwhelmed (Korbyt)</div></div>
+      <div class="stat"><div class="num">46%</div><div class="lbl">disengage from repetitive msgs (Korbyt)</div></div>
+    </div>
+    <p style="margin-top: 4px;">
+      Thin practitioner signal so far — published this morning (2026-05-18). Reactions just landing.
+    </p>
+    <ul>
+      <li>
+        <b>Ragan's own throughline:</b> Three Devlin pieces in five business days on relevance / overload / format
+        (<a href="https://www.ragan.com/by-the-numbers-employee-messaging-overload-korbyt/">2026-05-14 Korbyt</a>,
+        <a href="https://www.ragan.com/the-week-in-comms-linkedin-gm-gitlab/">2026-05-15 Week in Comms</a>,
+        <a href="https://www.ragan.com/internal-comms-employee-newsletters-pressure-test/">2026-05-18 this piece</a>)
+        — Ragan is editorially anchoring "<em>format and delivery matter more than content</em>" as the 2026 IC narrative. That's Cerkl's narrative too.
+      </li>
+      <li>
+        <b>Adjacent Ragan resource:</b> <a href="https://www.ragan.com/internal-communications-audit-questions/">The 4 big questions you need to answer during an internal comms audit</a> — newsletter is one component of the broader audit; Devlin's piece is the zoomed-in version. Worth bookmarking for any Cerkl audit-checklist content.
+      </li>
+      <li>
+        <b>No LinkedIn / Reddit reactions visible yet</b> at time of writing.
+      </li>
+    </ul>
+  </section>
+
+  <section class="reco">
+    <h2><span class="num">07</span>Recommendation</h2>
+    <p style="font-size: 16px;"><b>Worth profiling? Yes</b> — pull two tactics into a Cerkular issue and commission a lead magnet. Most actionable Foundations-aligned Ragan piece this month.</p>
+    <div class="reco-grid">
+      <div class="reco-cell">
+        <h4>First thing to do</h4>
+        <p>Capture the four questions verbatim into the Cerkular content backlog as a draft post: "The 4-Question Newsletter Pressure Test (and a 5th Cerkl-only one)." The post writes itself; the practitioner cases (Yale, Roku) are pre-licensed Ragan-cited material.</p>
+      </div>
+      <div class="reco-cell">
+        <h4>Then</h4>
+        <p>Commission the lead magnet: <b>"The Newsletter Audit Checklist"</b> — gated PDF, 4 pages, scaffolds Devlin's 4 questions + Cerkl's measurement question + the Korbyt overload data as the why-now. Target: live by 2026-06-01.</p>
+      </div>
+      <div class="reco-cell">
+        <h4>Foundations template</h4>
+        <p>Ship Yale's <em>YourYale</em> slot structure (lead + 2 secondaries + engagement) as a one-click template in the Foundations builder. Pair with the lead magnet — readers exit the PDF directly into a pre-formatted Cerkl draft.</p>
+      </div>
+      <div class="reco-cell">
+        <h4>Time-box</h4>
+        <p>6 hours total — 2 hours for the Cerkular blog draft, 3 hours for the PDF outline + designer brief, 1 hour for the template spec handed to product.</p>
+      </div>
+      <div class="reco-cell">
+        <h4>What would change my mind</h4>
+        <p>If a competitor (Workshop, ContactMonkey, AxiosHQ) ships a near-identical lead magnet in the next two weeks, drop the gated PDF and just publish the blog post fast — the SEO/topical-authority play wins over the conversion play.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span>Open questions</h2>
+
+    <details class="q">
+      <summary>Does Cerkl already have a customer who's done a <em>YourYale</em>-style format audit on Foundations?</summary>
+      <div class="q-body">
+        If yes, that's the practitioner quote that grounds our Cerkular issue and makes Travis's piece stronger than Ragan's. Worth a Slack ping to CS this week.
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Should we ask Sean Devlin (Ragan) for a quote or co-byline?</summary>
+      <div class="q-body">
+        He's on the same throughline. A short "Cerkl + Ragan on the 2026 newsletter audit" piece could ride Ragan's editorial momentum.
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Is the Foundations builder missing any of the four capabilities?</summary>
+      <div class="q-body">
+        Per-section CTR, audience-segment subject-line variants, locale-based template variants — if a product gap exists on Q3 specifically (regional subject-line variants in the free tier), that's an inbound product request to surface. Roku's tactic is becoming table-stakes.
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Worth combining this with the Korbyt data into a single Cerkular issue?</summary>
+      <div class="q-body">
+        Probably yes — three pieces of Ragan editorial in one week is a free synthesis opportunity. Data + tactics + audit checklist in one piece.
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    Generated 2026-05-18 · Source markdown: <a href="ragan-newsletter-pressure-test-2026-05-18.md">ragan-newsletter-pressure-test-2026-05-18.md</a>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.copy);
+      if (!target) return;
+      navigator.clipboard.writeText(target.textContent.trim()).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1500);
+      });
+    });
+  });
+</script>
+</body>
+</html>

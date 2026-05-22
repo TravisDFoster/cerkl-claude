@@ -21,6 +21,8 @@ Daily negative-emotion experience remains elevated: stress 40%, sadness 23%, ang
 
 **Companion CHRO frame:** [[gartner]]'s 2026-05-13 *People-Centric AI* release ([[gartner-people-centric-ai-2026-05-15]]) puts the CHRO at the center of AI-era org design alongside the CIO. Read with Forrester: Gartner says *deploy AI deliberately to people*; Forrester says *listen for what AI deployment is doing to people*. Both put the EX leader at the center.
 
+**2026 EX research is internally contested.** [[qualtrics-change-engagement-2026-05-21]] (n=33,831) makes the strongest 2026 positive claim — employees experiencing more change are *more* engaged — and operationalizes the moderator as [[listening-cadence]] (87/44 engagement gap). [[gallagher]]'s State of the Sector 2026 + [[perceptyx]]'s 20M-response data hold the [[change-fatigue]] frame. The reconcilable view: Qualtrics' effect holds for investment-coded change inside the [[goldilocks-zone-of-change]] / below [[change-saturation]]; the fatigue frame is real once those conditions break. EX measurement going forward will need to track *cumulative concurrent change-events*, not just sentiment scores.
+
 ## Key Entities
 
 - [[gallup]] — primary-research source
@@ -30,6 +32,9 @@ Daily negative-emotion experience remains elevated: stress 40%, sadness 23%, ang
 - [[gartner]] — analyst frame: people-centric AI
 - [[workvivo]] — EX-suite vendor; most direct execution of Forrester's frame
 - [[seer]] — Workvivo's people-intelligence product
+- [[qualtrics]] — heavyweight EX-research comparator; 2026 change-engagement finding
+- [[benjamin-granger]] — Qualtrics Chief Workplace Psychologist; coined Goldilocks-zone framing
+- [[perceptyx]] / [[prosci]] / [[gallagher]] — change-fatigue counter-research
 
 ## Key Concepts
 
@@ -39,6 +44,10 @@ Daily negative-emotion experience remains elevated: stress 40%, sadness 23%, ang
 - [[deep-listening]] — Forrester's 2026 evolution of employee-listening; AI-native
 - [[people-intelligence]] — Workvivo's competing category name for the same surface
 - [[execution-gap]] — listen well, then act; the failure mode deep-listening claims to fix
+- [[listening-cadence]] — Qualtrics-named moderator of change-engagement
+- [[goldilocks-zone-of-change]] — Granger / Qualtrics conditional engagement frame
+- [[change-fatigue]] — competing frame; Gallagher / Perceptyx anchored
+- [[change-saturation]] — Prosci threshold model
 
 ## Practitioner Voices
 
@@ -53,6 +62,7 @@ Daily negative-emotion experience remains elevated: stress 40%, sadness 23%, ang
 | [[workvivo-seer-2026-05-11]] | 2026-05-11 | Vendor EX-suite framing; people-intelligence as adjacent EX surface |
 | [[forrester-ai-rewrite-ex-deep-listening-2026-05-15]] | 2026-02-06 | Category-naming for deep listening; 24-month build window for EX/Comms vendor field |
 | [[gartner-people-centric-ai-2026-05-15]] | 2026-05-13 | CHRO at the center of AI-era org design; complementary axis to Forrester |
+| [[qualtrics-change-engagement-2026-05-21]] | 2026-05-21 | Triangulates Qualtrics' change-engagement finding against Gallup / Gallagher / Perceptyx / Prosci counter-data; listening-cadence as named moderator |
 
 ## Open Questions
 

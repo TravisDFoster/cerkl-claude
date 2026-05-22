@@ -7,10 +7,11 @@ tags: [change-management-communications, ai-in-internal-comms]
 
 ## Definition
 
-Two overlapping uses in 2026 IC discourse:
+Three overlapping uses in 2026 IC discourse:
 
 1. **Layoff AI-washing** — attributing workforce cuts to AI when the underlying business driver is something else (cost-cut, restructure, performance management). Most acutely named by Sam Altman (February 2026): *"AI washing where people are blaming AI for layoffs they would otherwise do."*
 2. **Disclaimer AI-washing** — explicitly disclaiming an AI driver in a layoff memo (*"this is not an AI optimization"*) in a way that coverage and employees parse as defensive deflection rather than candor — see the [[gitlab]] case in [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]].
+3. **Side-channel AI-washing** (2026-05 addition) — official memo deliberately *omits* the AI rationale while a non-CEO executive confirms it through a side channel that press picks up within 48 hours. The [[linkedin]] case in [[layoff-memo-subgenre-2026-05-21]]: Shapero's memo avoids AI; CPO Hari Srinivasan separately tells staff the goal is *"smaller, faster and more agile teams that can heavily leverage AI tools."* The split is the failure.
 
 ## Why It Matters
 
@@ -38,8 +39,10 @@ The IC playbook to *avoid* AI-washing:
 
 - [[gartner-ai-layoffs-no-returns-2026-05-15]] — the analyst frame that surfaces AI-washing as a contaminant on ROI data
 - [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]] — the case-study evidence for disclaimer AI-washing (GitLab) and implicit AI-washing (GM)
+- [[layoff-memo-subgenre-2026-05-21]] — extension; LinkedIn side-channel case formalized as a third sub-pattern
 - [[gitlab]] — the disclaimer case
 - [[gm]] — the implicit case (no AI claim, employee fill-in)
+- [[linkedin]] — the side-channel case (CPO outed the AI rationale Shapero's memo omitted)
 
 ## Related Concepts
 

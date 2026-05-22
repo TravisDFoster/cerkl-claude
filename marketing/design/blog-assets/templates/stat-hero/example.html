@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stat Hero — Example ($28,250)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #18181d;
+    --white: #ffffff;
+    --cobalt-100: #0c1159;
+    --cobalt-80:  #1a259a;
+    --cobalt-60:  #3547c4;
+    --cobalt-40:  #4c60d9;
+    --text-muted: rgba(255, 255, 255, 0.72);
+    --text-dim:   rgba(255, 255, 255, 0.55);
+    --butter:     #ffaa22;
+    --butter-deep:#80550f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 1200px;
+    height: 627px;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(ellipse 60% 90% at 25% 50%, rgba(255, 170, 34, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 90% 20%, var(--cobalt-40) 0%, transparent 55%),
+      linear-gradient(135deg, var(--cobalt-100) 0%, #131a78 100%);
+  }
+
+  .canvas {
+    width: 1200px;
+    height: 627px;
+    padding: 30px 38px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 22px;
+    position: relative;
+  }
+
+  /* ---------- top: overline ---------- */
+  .overline {
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--butter);
+  }
+
+  /* ---------- middle: 50/50 stat + framing ---------- */
+  .middle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .stat-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stat {
+    font-size: 156px;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -5px;
+    color: var(--butter);
+    margin-bottom: 16px;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .stat-tag {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--white);
+    border-left: 3px solid var(--butter);
+    padding: 4px 0 4px 14px;
+    max-width: 360px;
+  }
+
+  .frame-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .takeaway {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.6px;
+    margin-bottom: 18px;
+  }
+
+  .takeaway .accent {
+    color: var(--butter);
+  }
+
+  .punchline {
+    font-size: 18.5px;
+    line-height: 1.45;
+    color: var(--text-muted);
+    max-width: 480px;
+  }
+
+  /* ---------- bottom: logo + source ---------- */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 6px;
+  }
+
+  .logo-mark {
+    height: 28px;
+    width: auto;
+    opacity: 0.95;
+  }
+
+  .source {
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="overline">Internal Comms · The Hidden Cost</div>
+
+  <div class="middle">
+    <div class="stat-side">
+      <div class="stat">$28,250</div>
+      <div class="stat-tag">Spent per US employee, per year, on benefits.</div>
+    </div>
+
+    <div class="frame-side">
+      <div class="takeaway">Most never <span class="accent">use</span> what they have.</div>
+      <div class="punchline">A benefit nobody knows about is, financially, a benefit that does not exist. The hidden cost is recoverable.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="logo-mark" src="file:///Users/travisfoster/claude-code/cerkl/marketing/design/branding-assets/Broadcast/Cerkl%20Broadcast%20Horizontal%20Lockup/Medium%20(160px)/cerkl_broadcast_horizontal_lockup_white_medium.png" alt="Cerkl Broadcast">
+    <div class="source">Source: U.S. Bureau of Labor Statistics</div>
+  </div>
+
+</div>
+</body>
+</html>

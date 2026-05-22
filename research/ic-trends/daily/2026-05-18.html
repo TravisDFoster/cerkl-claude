@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ic-trends Daily — 2026-05-18</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f5f5fa;
+    --panel: #ffffff;
+    --panel-soft: #f5f5fa;
+    --ink: #18181d;
+    --muted: #373740;
+    --line: #d5d5db;
+    --accent: #3547c4;
+    --accent-soft: #f0f2fc;
+    --good: #1a9979;
+    --good-bg: #e8fffa;
+    --good-border: #aaf7e6;
+    --warn: #80550f;
+    --warn-bg: #fff9f2;
+    --warn-border: #ffeccd;
+    --bad: #b00045;
+    --bad-bg: #fcf0f0;
+    --bad-border: #fbc2c4;
+    --info: #3547c4;
+    --info-bg: #f0f2fc;
+    --info-border: #ccd5f7;
+    --quote: #802ee6;
+    --code-bg: #ebebf0;
+    --shadow: 0 1px 0 rgba(24,24,29,0.04), 0 4px 16px rgba(24,24,29,0.06);
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+    --cat-competitor:  #3547c4;
+    --cat-competitor-bg:  #f0f2fc;
+    --cat-competitor-border: #ccd5f7;
+    --cat-publication: #1a9979;
+    --cat-publication-bg: #e8fffa;
+    --cat-publication-border: #aaf7e6;
+    --cat-analyst:     #802ee6;
+    --cat-analyst-bg:  #f7f2ff;
+    --cat-analyst-border: #d5b2ff;
+    --cat-community:   #80550f;
+    --cat-community-bg: #fff9f2;
+    --cat-community-border: #ffeccd;
+    --cat-policy:      #b00045;
+    --cat-policy-bg:   #fcf0f0;
+    --cat-policy-border: #fbc2c4;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 18px;
+    letter-spacing: -0.0025em;
+    -webkit-font-smoothing: antialiased;
+  }
+  section p, .tldr { max-width: 70ch; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  header.hero {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .breadcrumb {
+    font-size: 13px; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
+  }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.005em; font-weight: 700; }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    font-size: 14px; color: var(--muted); margin-bottom: 18px;
+  }
+  .meta-row b { color: var(--ink); font-weight: 600; }
+  .tldr {
+    font-size: 18px; line-height: 1.55; color: var(--ink);
+    border-left: 3px solid var(--accent); padding-left: 16px;
+    margin: 0;
+  }
+
+  section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 22px; margin: 0 0 16px; letter-spacing: -0.0025em; font-weight: 600;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2 .num {
+    font-size: 12px; color: var(--muted); font-weight: 600;
+    background: var(--code-bg); padding: 2px 8px; border-radius: 6px;
+  }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--info-border); }
+  a:hover { border-bottom-color: var(--accent); }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+
+  /* Top items */
+  .top-items { display: grid; gap: 14px; }
+  .top-item {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+    display: grid; grid-template-columns: auto 1fr; gap: 14px;
+    align-items: start;
+  }
+  .item-num {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--code-bg); color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: -0.005em;
+  }
+  .item-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin-bottom: 6px; }
+  .item-head h3 { margin: 0; font-size: 18px; line-height: 1.3; flex: 1; min-width: 200px; font-weight: 600; letter-spacing: -0.0025em; }
+  .cat-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px; border-radius: 999px;
+    border: 1px solid;
+    flex-shrink: 0;
+  }
+  .cat-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .cat-badge.cat-competitor  { color: var(--cat-competitor);  border-color: var(--cat-competitor-border);  background: var(--cat-competitor-bg); }
+  .cat-badge.cat-publication { color: var(--cat-publication); border-color: var(--cat-publication-border); background: var(--cat-publication-bg); }
+  .cat-badge.cat-analyst     { color: var(--cat-analyst);     border-color: var(--cat-analyst-border);     background: var(--cat-analyst-bg); }
+  .cat-badge.cat-community   { color: var(--cat-community);   border-color: var(--cat-community-border);   background: var(--cat-community-bg); }
+  .cat-badge.cat-policy      { color: var(--cat-policy);      border-color: var(--cat-policy-border);      background: var(--cat-policy-bg); }
+  .item-meta {
+    font-size: 12px; color: var(--muted);
+    margin-bottom: 8px;
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .item-meta .sep { opacity: 0.45; }
+  .item-body p { margin: 0 0 8px; font-size: 15px; line-height: 1.55; }
+  .item-body p:last-child { margin-bottom: 0; }
+  .why-callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 8px 12px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .why-callout .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    margin-right: 8px;
+  }
+
+  /* Watchlist */
+  .watch-group { margin-top: 18px; }
+  .watch-group:first-of-type { margin-top: 6px; }
+  .watch-group h3 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); font-weight: 600;
+    margin: 0 0 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .watchlist {
+    display: grid; gap: 8px 24px;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+  .watch-row {
+    font-size: 13.5px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline;
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .watch-row:last-child { border-bottom: none; }
+  .watch-row .w-title { font-weight: 600; color: var(--ink); }
+  .watch-row .w-src { color: var(--muted); font-size: 12px; }
+  .watch-row .w-date { color: var(--muted); font-size: 12px; margin-left: auto; }
+  .watch-row .w-link { font-size: 12px; }
+
+  /* Notes — collapsibles */
+  details.q {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 0; margin-bottom: 8px; overflow: hidden;
+  }
+  details.q summary {
+    padding: 12px 16px; cursor: pointer; font-weight: 500; font-size: 14px;
+    list-style: none; position: relative;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::before {
+    content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    font-size: 18px; color: var(--accent);
+  }
+  details.q[open] summary::before { content: "−"; }
+  details.q .q-body { padding: 0 16px 14px; font-size: 14px; color: var(--muted); }
+  details.q .q-body p { max-width: none; }
+
+  /* Code */
+  code, pre { font-family: var(--mono); }
+  p code, li code { font-family: var(--mono); font-size: 0.9em;
+    background: var(--code-bg); padding: 1px 6px; border-radius: 4px; }
+
+  /* Footer */
+  footer {
+    text-align: center; font-size: 12px; color: var(--muted);
+    margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line);
+  }
+
+  @media print {
+    body { background: #ffffff; color: #18181d; -webkit-font-smoothing: auto; }
+    .wrap { padding: 0; max-width: none; }
+    section, header.hero { box-shadow: none; border: 1px solid #d5d5db; page-break-inside: avoid; }
+    a { color: #18181d; }
+    details.q { page-break-inside: avoid; }
+    details.q[open] summary::before, details.q summary::before { display: none; }
+    details.q[open] .q-body { display: block !important; }
+  }
+
+  @media (max-width: 640px) {
+    .top-item { grid-template-columns: 1fr; }
+    .item-num { width: 28px; height: 28px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="breadcrumb">ic-trends · Daily Recap</div>
+    <h1>2026-05-18</h1>
+    <div class="meta-row">
+      <span><b>Top items:</b> 8</span>
+      <span><b>Watchlist:</b> 6</span>
+      <span><b>Window:</b> Fri 5/15 — Mon 5/18 (3-day)</span>
+    </div>
+    <p class="tldr">
+      Two themes broke through since Friday — competitors are moving from post-send measurement to
+      <b>pre-send AI prediction</b> (ContactMonkey's "Audience Preview"), and practitioners are shifting
+      the conversation from message <em>volume</em> to message <em>format</em> (Cisco/Ragan pushing
+      short-form video, Yale/Roku newsletter teardowns). On the news side, the week's flashpoint is
+      <b>Microsoft shutting down internal employee-voice channels</b> — circulating as the cautionary
+      tale every IC lead is being asked about.
+    </p>
+  </header>
+
+  <section>
+    <h2><span class="num">TOP</span>Items</h2>
+    <div class="top-items">
+
+      <article class="top-item">
+        <div class="item-num">1</div>
+        <div>
+          <div class="item-head">
+            <h3>Microsoft shuts down internal comms channels — the week's cautionary tale</h3>
+            <span class="cat-badge cat-publication">Publication</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.ragan.com/the-week-in-comms-paramount-microsoft-recognition/">ragan.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-18</span>
+          </div>
+          <div class="item-body">
+            <p>Microsoft closed several internal employee-voice channels this week — circulating among IC leaders as a trust/governance flashpoint and pairing with new Enhancv data showing 72% of employees view RTO mandates as backdoor attrition. The Week-in-Comms roundup frames this as the dominant story IC leaders will be asked to react to.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>When the <em>channel itself</em> becomes the story, the "intranet replaces comms strategy" pitch (Staffbase, Simpplr) gets weaker — Cerkl's "delivery + measurement across channels you already have" frame lands cleaner.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">2</div>
+        <div>
+          <div class="item-head">
+            <h3>ContactMonkey moves from post-send metrics to pre-send AI prediction</h3>
+            <span class="cat-badge cat-competitor">Competitor</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.contactmonkey.com/blog/audience-preview">contactmonkey.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-15</span>
+          </div>
+          <div class="item-body">
+            <p>Post-launch positioning of "Audience Preview": predict who <em>will</em> open/click before you send, not just measure what happened after. Frames pre-send analytics as the next category move past benchmark dashboards.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>ContactMonkey is the most direct head-to-head with Foundations and they're now claiming Cerkl's natural lane — <em>delivery intelligence</em>. Watch whether they tie this to the Microsoft EWS deprecation narrative (Oct 2026). Worth pressure-testing whether Cerkl's "right message, right person, right channel, right time" copy needs sharpening.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">3</div>
+        <div>
+          <div class="item-head">
+            <h3>Ragan: "Internal communicators need to think like TikTokers"</h3>
+            <span class="cat-badge cat-publication">Publication</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.ragan.com/ragan-eccc-2026-cisco-video-murry/">ragan.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-18</span>
+          </div>
+          <div class="item-body">
+            <p>Cisco's Allison Murry on adopting short-form video formats — frame, hook, cuts — for internal audiences. Pairs with last week's Korbyt "relevance not volume" data: the IC playbook is rotating from email-discipline to format-experimentation.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Format diversification (video, mobile-native, micro-content) is the natural Omni AI conversation. If Foundations buyers are starting to think about video, that's an upgrade signal worth surfacing in nurture.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">4</div>
+        <div>
+          <div class="item-head">
+            <h3>Ragan: The newsletter formatting pressure test — 4 questions to ask</h3>
+            <span class="cat-badge cat-publication">Publication</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.ragan.com/internal-comms-employee-newsletters-pressure-test/">ragan.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-18</span>
+          </div>
+          <div class="item-body">
+            <p>Yale and Roku case studies on what makes employee newsletters consistently <em>clickable</em> vs. <em>save-for-later</em>. Tactical, format-focused.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Newsletter optimization is the unit of work for almost every Foundations buyer. Worth lifting two tactics into a Cerkular item or a "newsletter audit" lead-magnet.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">5</div>
+        <div>
+          <div class="item-head">
+            <h3>HR Reporter: 52% of ICs use AI weekly — but the risks are now the conversation</h3>
+            <span class="cat-badge cat-community">Community</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.hrreporter.com/focus-areas/automation-ai/using-ai-for-internal-communications-know-the-risks/393831">hrreporter.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-13</span>
+          </div>
+          <div class="item-body">
+            <p>Practitioner-anxiety piece: weekly AI usage is now mainstream among ICs, but the conversation is openly shifting to job displacement, sentiment-analysis ethics, and over-automation. Useful counterweight to vendor-side AI cheerleading.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Buyers are AI-anxious, not AI-eager. Positioning <em>around</em> AI ("AI quality layer," "agentic IC") may resonate less than positioning <em>despite</em> AI ("we make sure your message gets read by the right person — AI or no AI").</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">6</div>
+        <div>
+          <div class="item-head">
+            <h3>Ragan: Sony Pictures' "reset" framing + ProPublica's AI strike</h3>
+            <span class="cat-badge cat-publication">Publication</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.ragan.com/the-week-in-comms-sony-propublica-rto/">ragan.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-18</span>
+          </div>
+          <div class="item-body">
+            <p>Two live case studies: Sony Pictures framing layoffs as a "reset" and ProPublica's union striking 24 hours over AI usage. IC leads are dissecting both for language patterns.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>The layoff-comms reference set keeps growing (LinkedIn, GM, GitLab last week; Sony, ProPublica this week; Oracle below). There's a case for a Cerkular item or blog post curating "what's working / what's not" across these — practitioners are clearly seeking templates.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">7</div>
+        <div>
+          <div class="item-head">
+            <h3>Oracle's 6 a.m. mass-email layoff — the new "don't be Oracle" reference</h3>
+            <span class="cat-badge cat-community">Community</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://amazingworkplaces.co/oracle-layoffs-2026-hr-communication-lessons/">amazingworkplaces.co</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-14</span>
+          </div>
+          <div class="item-body">
+            <p>Oracle's mass-email layoff dissected as a textbook IC failure mode. Circulating in practitioner threads as the cautionary reference.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Reinforces the "delivery matters" thesis — when the channel choice itself becomes the story, <em>how</em> a message lands is the comms strategy. Bookmark for sales enablement on layoff-comms objection-handling.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">8</div>
+        <div>
+          <div class="item-head">
+            <h3>Simpplr: POV piece on making peer recognition more meaningful</h3>
+            <span class="cat-badge cat-competitor">Competitor</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.simpplr.com/blog/how-to-make-recognition-more-meaningful/">simpplr.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-14</span>
+          </div>
+          <div class="item-body">
+            <p>Simpplr POV: embed recognition into daily workflows and manager habits rather than standalone programs. Continues their 2026 shift from "intranet" posture to "comms workspace" posture (post-Feb Comms AI launch).</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Simpplr keeps publishing POV-adjacent-to-IC, not just product. Their content strategy has moved upstream of the buyer — worth watching whether Cerkl's blog cadence keeps pace.</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">WATCH</span>Watchlist</h2>
+
+    <div class="watch-group">
+      <h3>Competitors</h3>
+      <div class="watchlist">
+        <div class="watch-row">
+          <span class="w-title">Poppulo — Helen Russell (HubSpot CPO) interview</span>
+          <span class="w-src">· competitor exec-interview content series</span>
+          <span class="w-link">· <a href="https://www.poppulo.com/employee-experience-platform/blog/helen-russell-hubspot-cpo">poppulo.com</a></span>
+          <span class="w-date">2026-05-11</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">ContactMonkey — "95,000 emails in under 5 minutes" sending-speed post</span>
+          <span class="w-src">· reinforces EWS-deprecation positioning; already in rolling-7day 5/14</span>
+          <span class="w-link">· <a href="https://www.contactmonkey.com/blog/sending-speeds-for-internal-comms">contactmonkey.com</a></span>
+          <span class="w-date">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="watch-group">
+      <h3>Analysts</h3>
+      <div class="watchlist">
+        <div class="watch-row">
+          <span class="w-title">McKinsey — "Redesigning Technology Workforce for the Agentic AI Era"</span>
+          <span class="w-src">· heavy overlap with Human-AI Workforce piece (rolling-7day 5/14); secondary read</span>
+          <span class="w-link">· <a href="https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/designing-an-end-to-end-technology-workforce-for-the-ai-first-era">mckinsey.com</a></span>
+          <span class="w-date">—</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">Gallup — "Purposeful Work Boosts Engagement, but Few Experience It"</span>
+          <span class="w-src">· overlaps State of the Global Workplace; talking-point depth, not fresh signal</span>
+          <span class="w-link">· <a href="https://news.gallup.com/poll/697403/purposeful-work-boosts-engagement-few-experience.aspx">news.gallup.com</a></span>
+          <span class="w-date">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="watch-group">
+      <h3>Community &amp; events</h3>
+      <div class="watchlist">
+        <div class="watch-row">
+          <span class="w-title">Staffbase conference — individual keynote videos now indexed</span>
+          <span class="w-src">· "Beyond the Rollout," "AI and EX in 2026," CHRO Conversation — cluster in rolling-7day 5/14–5/15</span>
+          <span class="w-link">· <a href="https://www.youtube.com/watch?v=99NljvkMsQ8">youtube.com</a></span>
+          <span class="w-date">—</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">Comms Search &amp; Selection — Sophie Timms (Kier Group)</span>
+          <span class="w-src">· practitioner interview on earning the comms seat at the executive table</span>
+          <span class="w-link">· <a href="https://www.youtube.com/watch?v=_gGUBu1slV8">youtube.com</a></span>
+          <span class="w-date">2026-05-13</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">NOTES</span>Gaps &amp; infrastructure</h2>
+
+    <details class="q">
+      <summary>3-day gap since last daily (Fri 2026-05-15)</summary>
+      <div class="q-body">
+        <p>Weekend + Monday window. Several Ragan pieces dated today (5/18) are genuinely new; most analyst content overlaps last week's top cut and was pushed to Watchlist per the rolling-7day dedupe rule.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Reddit /r/internalcomms — zero indexed results for May 2026</summary>
+      <div class="q-body">
+        <p>WebSearch returned no indexed results for May 2026. Known gap — Reddit blocks WebFetch, thin search indexing.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>LinkedIn — post-level discussion remains inaccessible</summary>
+      <div class="q-body">
+        <p>WebFetch can't reach LinkedIn post-level threads. Known gap.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Joel Schwartzberg "All Hands" Substack — no May 2026 entries surfaced</summary>
+      <div class="q-body">
+        <p>May be unpublished this window or not indexed.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>No new Gartner or SHRM analyst publications narrowly on IC (30-day window)</summary>
+      <div class="q-body">
+        <p>Vendor coverage continues to amplify older Gartner predictions (chatbots as primary IC access; IC analytics spend doubling by 2029) but no underlying new report.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>AxiosHQ blog returned 404 during 2a fetch</summary>
+      <div class="q-body">
+        <p>Worth flagging if it persists tomorrow — could be a real outage or a site restructure.</p>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    Generated 2026-05-18 · Source markdown: <a href="2026-05-18.md">daily/2026-05-18.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

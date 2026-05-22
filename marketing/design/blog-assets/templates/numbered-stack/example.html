@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Concept Ladder — Example</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #18181d;
+    --white: #ffffff;
+    --cobalt-100: #0c1159;
+    --cobalt-80:  #1a259a;
+    --cobalt-60:  #3547c4;
+    --cobalt-40:  #4c60d9;
+    --cobalt-soft: rgba(255, 255, 255, 0.08);
+    --cobalt-line: rgba(255, 255, 255, 0.14);
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --butter:     #ffaa22;
+    --butter-deep:#80550f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 1200px;
+    height: 627px;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 20%, var(--cobalt-40) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 15% 90%, var(--cobalt-80) 0%, transparent 60%),
+      linear-gradient(135deg, var(--cobalt-100) 0%, #131a78 100%);
+  }
+
+  .canvas {
+    width: 1200px;
+    height: 627px;
+    padding: 30px 38px;
+    display: grid;
+    grid-template-columns: 470px 1fr;
+    gap: 30px;
+    position: relative;
+  }
+
+  /* ---------- LEFT: title column ---------- */
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 4px;
+  }
+
+  .overline {
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--butter);
+    margin-bottom: 18px;
+  }
+
+  .title {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.8px;
+    margin-bottom: 22px;
+  }
+
+  .title .accent {
+    color: var(--butter);
+  }
+
+  .lede {
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--text-muted);
+    max-width: 440px;
+  }
+
+  /* ---------- RIGHT: ladder column ---------- */
+  .ladder {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 9px;
+  }
+
+  .rung {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 24px;
+    border-radius: 14px;
+    border: 1px solid var(--cobalt-line);
+    background: var(--cobalt-soft);
+  }
+
+  .rung-num {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--cobalt-60);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+
+  .rung-name {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    margin-bottom: 3px;
+    color: var(--white);
+  }
+
+  .rung-desc {
+    font-size: 15.5px;
+    line-height: 1.4;
+    color: var(--text-muted);
+  }
+
+  /* Bottom rung — Compliance — outlined / muted */
+  .rung-1 {
+    background: transparent;
+    border: 1px dashed var(--cobalt-line);
+  }
+  .rung-1 .rung-num {
+    background: transparent;
+    border: 1.5px solid var(--cobalt-line);
+    color: var(--text-muted);
+  }
+  .rung-1 .rung-name { color: var(--text-muted); }
+
+  /* Top rung — Connection — butter, the destination */
+  .rung-4 {
+    background: var(--butter);
+    border-color: var(--butter);
+  }
+  .rung-4 .rung-num {
+    background: var(--butter-deep);
+    color: var(--butter);
+  }
+  .rung-4 .rung-name { color: var(--ink); }
+  .rung-4 .rung-desc { color: rgba(24, 24, 29, 0.78); }
+
+  /* "Stuck" marker — inline divider with pill, placed between rungs 2 and 3 */
+  .stuck-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 2px 0;
+  }
+
+  .stuck-divider::before,
+  .stuck-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--butter);
+    opacity: 0.55;
+  }
+
+  .stuck-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--butter);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .stuck-pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--butter-deep);
+    border-radius: 50%;
+  }
+
+  /* ---------- Logo mark ---------- */
+  .logo-mark {
+    position: absolute;
+    bottom: 24px;
+    left: 38px;
+    height: 30px;
+    width: auto;
+    opacity: 0.95;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="left">
+    <div class="overline">Internal Comms · Maturity Model</div>
+    <div class="title">The four-rung ladder for <span class="accent">benefits comms</span></div>
+    <div class="lede">Most companies are stuck in the middle. The block is time and ownership — not capability.</div>
+    <img class="logo-mark" src="file:///Users/travisfoster/claude-code/cerkl/marketing/design/branding-assets/Broadcast/Cerkl%20Broadcast%20Horizontal%20Lockup/Medium%20(160px)/cerkl_broadcast_horizontal_lockup_white_medium.png" alt="Cerkl Broadcast">
+  </div>
+
+  <div class="ladder">
+    <div class="rung rung-1">
+      <div class="rung-num">01</div>
+      <div>
+        <div class="rung-name">Compliance</div>
+        <div class="rung-desc">Communication exists because regulation requires it.</div>
+      </div>
+    </div>
+
+    <div class="rung rung-2">
+      <div class="rung-num">02</div>
+      <div>
+        <div class="rung-name">Clarity</div>
+        <div class="rung-desc">What, when, and why — in language people understand.</div>
+      </div>
+    </div>
+
+    <div class="stuck-divider">
+      <span class="stuck-pill">Most teams sit here</span>
+    </div>
+
+    <div class="rung rung-3">
+      <div class="rung-num">03</div>
+      <div>
+        <div class="rung-name">Relevance</div>
+        <div class="rung-desc">Personalized for life stage, role, and audience need.</div>
+      </div>
+    </div>
+
+    <div class="rung rung-4">
+      <div class="rung-num">04</div>
+      <div>
+        <div class="rung-name">Connection</div>
+        <div class="rung-desc">Trust + care. Transparency is the means; language is the proof.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

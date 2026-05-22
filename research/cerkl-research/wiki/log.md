@@ -144,3 +144,96 @@ Header format: `## [YYYY-MM-DD] operation | Title`. Parseable with `grep "^## \[
 - Updated topics: [[ai-in-internal-comms]] (added rollout / response / listening sections + 3 new sources), [[employee-experience]] (added Forrester deep-listening + Gartner CHRO frames)
 - Index refreshed end-to-end (10 new entries, 4 entity refresh, 1 thesis concept)
 - The cluster's positioning window framed: roughly 12–18 months until competitors (Workvivo, Staffbase, Simpplr, Firstup, etc.) cite the same Forrester / Gartner frames in marketing
+
+## [2026-05-18] ingest | Ragan: The Newsletter Formatting Pressure Test (Cerkl deep-dive)
+- Source URL: https://www.ragan.com/internal-comms-employee-newsletters-pressure-test/
+- Emphasis per Travis (4-way recommended): richer synthesis, create delivery-as-comms-strategy topic page, flag-and-synthesize AI-anxious-buyer contradiction, practitioner-neutral wiki body + Cerkl Positioning Note section
+- Created source: [[ragan-newsletter-pressure-test-2026-05-18]]
+- Created entities: [[yale]], [[niamh-emerson]], [[roku]], [[katie-satterlee]]
+- Created concept: [[newsletter-format-audit]]
+- Updated topic: [[internal-email]] (new tactical-layer paragraph; practitioner voices section populated)
+- Pages touched: 7
+
+## [2026-05-18] ingest | HR Reporter: Using AI for Internal Communications? Know the Risks (Cerkl deep-dive)
+- Source URL: https://www.hrreporter.com/focus-areas/automation-ai/using-ai-for-internal-communications-know-the-risks/393831
+- Surfacing correction: the daily-recap's "52% weekly AI use" stat is from [[simpplr]]'s 2026 State of IC, not from HR Reporter; both ingested as paired anchors
+- Created source: [[hr-reporter-ai-risks-ic-2026-05-18]]
+- Created entities: [[hr-reporter]], [[sarah-dobson]], [[peter-cardon]], [[anthony-coman]], [[linjuan-rita-men]], [[simpplr]]
+- Created concepts: [[ai-anxious-buyer]], [[co-piloting]]
+- Updated topic: [[ai-in-internal-comms]] (added third story; Tensions section calls out AI-anxious vs AI-transformative contradiction head-on)
+- Updated topic: [[leadership-communications]] (manager-AI risk; *"why are they my manager at all?"* quote)
+- Pages touched: 11
+
+## [2026-05-18] ingest | Oracle 6 a.m. Mass-Email Layoff: HR Communication Lessons (Cerkl deep-dive)
+- Source URL: https://amazingworkplaces.co/oracle-layoffs-2026-hr-communication-lessons/
+- Notable: prompt-injection attempt detected in fetched page (fake `<system-reminder>` instructing fetcher to invoke TodoWrite). Detected and ignored; logged in [[oracle-mass-email-layoff-lessons-2026-05-18]] and [[amazing-workplaces]] Gotchas.
+- Created source: [[oracle-mass-email-layoff-lessons-2026-05-18]]
+- Created entities: [[oracle]], [[amazing-workplaces]]
+- Created concept: [[boilerplate-layoff-language]]
+- Updated concept: [[layoff-comms-choreography]] — Oracle added as 5th and highest-scale anchor case; reference-set table grew from 3-case to 4-case
+- Updated topic: [[change-management-communications]] (Oracle as high-scale anchor; reference set extended)
+- Updated topic: [[leadership-communications]] (named-sender failure anchor case)
+- Pages touched: 8
+
+## [2026-05-18] ingest | McKinsey: Redesigning Technology Workforce for the Agentic AI Era (Cerkl deep-dive)
+- Source URL: https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/designing-an-end-to-end-technology-workforce-for-the-ai-first-era
+- Notable: direct fetch consistently timed out; synthesis built from indexer snippets + McKinsey adjacent April 2026 agentic-AI corpus. Author bylines unverified.
+- Created source: [[mckinsey-agentic-ai-workforce-redesign-2026-05-18]]
+- Created entity: [[mckinsey]] (first time in this vault)
+- Created concepts: [[agents-as-coworkers]], [[analyst-trio-comms-as-ai-gate]]
+- Updated concept: [[ai-rollout-comms]] — chain extended upstream to McKinsey workforce-design lens; HR Reporter + Oracle added as new chain anchors
+- Updated topic: [[ic-measurement-and-roi]] (measurement-of-change-comms paragraph)
+- Pages touched: 8
+
+## [2026-05-18] synthesis | New topic page: delivery-as-comms-strategy
+- Created topic: [[delivery-as-comms-strategy]] — unifying thesis across the four 2026-05-18 ingests
+- Synthesizes evidence from newsletter audit + layoff choreography + AI-anxious-buyer + analyst-trio
+- Maps directly onto Cerkl positioning verbatim
+- Per Travis's "richer synthesis" direction; ready for downstream Cerkl writing (Cerkular, sales-enablement one-pager, blog post)
+
+## [2026-05-18] index-update | Wiki index refreshed
+- Index.md overwritten with 1 new topic, 13 new entities, 6 new concepts, 4 new sources
+- Now: 12 topics, 47 entities, 28 concepts, 15 sources
+- All new pages cross-linked to existing pages per the cross-reference rule
+
+
+## [2026-05-22] ingest | Qualtrics: Employees Experiencing More Change Are MORE Engaged (Cerkl deep-dive)
+- Source URL: https://www.ragan.com/employees-experiencing-more-change-are-more-engaged/
+- Underlying primary source: https://www.prnewswire.com/news-releases/qualtrics-employees-thrive-through-change-302679648.html (n=33,831, 24 countries; Qualtrics 2026 Global EX Trends Report)
+- Travis's framing direction: neutral IC-industry analysis (NOT Cerkl-positioning angle)
+- Created source: [[qualtrics-change-engagement-2026-05-21]]
+- Created entities: [[benjamin-granger]], [[perceptyx]], [[prosci]], [[abhijit-bhaduri]]
+- Updated entities: [[qualtrics]] (now key 2026 publisher entity), [[gallup]] / [[gallagher]] / [[ragan-communications]] (backlinks)
+- Created concepts: [[goldilocks-zone-of-change]], [[listening-cadence]], [[change-saturation]], [[change-fatigue]]
+- Updated topics: [[change-management-communications]] (new observation #5 on change-fatigue vs change-engagement debate), [[employee-engagement]] (full update with contested-direction tension), [[employee-experience]] (2026 EX research is internally contested paragraph), [[delivery-as-comms-strategy]] (added listening-cadence as 5th evidence stream)
+- Key surfacing: Qualtrics names *listening frequency* (not comms quality) as the moderator; 87/44 engagement gap; Ragan added "comms quality" framing on top
+- Pages touched: ~14
+
+## [2026-05-22] ingest | McKinsey "Rewired 2.0: The Talent Plan" (Cerkl deep-dive)
+- Source URL: https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/the-rewired-2-point-0-talent-plan
+- Travis's framing direction: neutral IC-industry analysis
+- Created source: [[mckinsey-rewired-2-2026-05-21]]
+- Created entities: [[eric-lamarre]], [[kate-smaje]], [[rob-levin]], [[bcg]], [[julia-dhar]], [[bain]], [[deloitte]]
+- Updated entity: [[mckinsey]] (Rewired 2.0 + new connections)
+- Created concepts: [[talent-transformation-thesis]], [[70-30-tech-talent-flip]], [[human-agentic-collaboration]], [[n-2-n-3-leader-development]]
+- Updated topics: [[ai-in-internal-comms]] (new consulting-tier paragraph + hypocrisy critique), [[change-management-communications]] (source row + Rewired entities + new concepts), [[leadership-communications]] (N-2/N-3 + human-agentic levers paragraph), [[delivery-as-comms-strategy]] (source row + entities + new concepts)
+- Key surfacing: Lever #4 ("emotional work of helping humans feel safe alongside machine colleagues") is the most comms-adjacent quote at consulting-tier; hypocrisy critique (McKinsey cutting ~10% non-client staff while publishing talent playbook) is the loudest practitioner reaction online
+- Pages touched: ~15
+
+## [2026-05-22] ingest | The 2026 "AI-Restructure Layoff Memo" subgenre (Cerkl deep-dive)
+- Source URL: https://www.ragan.com/the-week-in-comms-linkedin-gm-gitlab/ (anchoring IC trade-press commentary)
+- Six anchor memos: Cisco, GitLab, GM, LinkedIn, Microsoft, Oracle (+ Meta extension); reference frameworks: Chesky/Airbnb, Collison/Stripe, Niccol/Starbucks, Sutton PUCC, Sucher HBR, SHRM RIF
+- Travis's framing direction: neutral IC-industry analysis
+- Created source: [[layoff-memo-subgenre-2026-05-21]]
+- Created entities: [[microsoft]], [[meta]], [[chuck-robbins]], [[airbnb]], [[brian-chesky]], [[robert-sutton]]
+- Updated entities: [[cisco]], [[oracle]], [[gm]], [[linkedin]], [[gitlab]] (backlinks + new concept connections)
+- Created concepts: [[ai-restructure-memo-subgenre]], [[strong-quarter-layoff]], [[voluntary-first-default]], [[pucc-framework]]
+- Updated concepts: [[layoff-comms-choreography]] (reference set extended to Cisco/Microsoft/Meta; new related concepts), [[ai-washing]] (added third sub-pattern: side-channel split-messaging via LinkedIn case)
+- Updated topics: [[change-management-communications]] (source row + new concepts + new entities), [[leadership-communications]] (source row + entities + new concepts), [[delivery-as-comms-strategy]] (source row + entities + new concepts)
+- Key surfacing: Five emerging conventions (lead with strategic thesis, name AI explicitly, pair with reinvestment, voluntary-first default, delivery mechanism as part of memo); GitLab "Act 2" = high-transparency template; Cisco = corporate-best-practice; GM/LinkedIn/Microsoft/Oracle = anti-templates
+- Pages touched: ~16
+
+## [2026-05-22] index-update | Wiki index refreshed
+- Index.md updated with 17 new entities, 12 new concepts, 3 new sources
+- Now: 12 topics, 64 entities, 40 concepts, 18 sources
+- All new pages cross-linked per the cross-reference rule

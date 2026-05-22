@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Competitor Marketing Digest — 2026-W21</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f5f5fa;
+    --panel: #ffffff;
+    --panel-soft: #f5f5fa;
+    --ink: #18181d;
+    --muted: #373740;
+    --line: #d5d5db;
+    --accent: #3547c4;
+    --accent-soft: #f0f2fc;
+    --good: #1a9979;
+    --good-bg: #e8fffa;
+    --good-border: #aaf7e6;
+    --warn: #80550f;
+    --warn-bg: #fff9f2;
+    --warn-border: #ffeccd;
+    --bad: #b00045;
+    --bad-bg: #fcf0f0;
+    --bad-border: #fbc2c4;
+    --info: #3547c4;
+    --info-bg: #f0f2fc;
+    --info-border: #ccd5f7;
+    --quote: #802ee6;
+    --quote-bg: #f7f2ff;
+    --quote-border: #d5b2ff;
+    --code-bg: #ebebf0;
+    --shadow: 0 1px 0 rgba(24,24,29,0.04), 0 4px 16px rgba(24,24,29,0.06);
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+    /* Vendor badge colors — re-using IC category palette for visual scannability */
+    --v-cobalt:  #3547c4;  --v-cobalt-bg:  #f0f2fc;  --v-cobalt-border:  #ccd5f7;
+    --v-forest:  #1a9979;  --v-forest-bg:  #e8fffa;  --v-forest-border:  #aaf7e6;
+    --v-violet:  #802ee6;  --v-violet-bg:  #f7f2ff;  --v-violet-border:  #d5b2ff;
+    --v-butter:  #80550f;  --v-butter-bg:  #fff9f2;  --v-butter-border:  #ffeccd;
+    --v-ruby:    #b00045;  --v-ruby-bg:    #fcf0f0;  --v-ruby-border:    #fbc2c4;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 18px;
+    letter-spacing: -0.0025em;
+    -webkit-font-smoothing: antialiased;
+  }
+  section p, .tldr { max-width: 78ch; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  header.hero {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .breadcrumb {
+    font-size: 13px; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
+  }
+  h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.005em; font-weight: 700; }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    font-size: 14px; color: var(--muted); margin-bottom: 18px;
+  }
+  .meta-row b { color: var(--ink); font-weight: 600; }
+  .tldr {
+    font-size: 17px; line-height: 1.6; color: var(--ink);
+    border-left: 3px solid var(--accent); padding-left: 16px;
+    margin: 0 0 18px;
+  }
+  .tldr:last-child { margin-bottom: 0; }
+  .hero-cta {
+    background: var(--accent-soft);
+    border: 1px solid var(--info-border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    font-size: 14px;
+    display: flex; gap: 10px; align-items: baseline;
+  }
+  .hero-cta .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 22px; margin: 0 0 16px; letter-spacing: -0.0025em; font-weight: 600;
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  }
+  h2 .num {
+    font-size: 11px; color: var(--muted); font-weight: 600;
+    background: var(--code-bg); padding: 3px 9px; border-radius: 6px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  h3 { font-size: 17px; margin: 18px 0 10px; font-weight: 600; letter-spacing: -0.0025em; }
+  h3:first-child { margin-top: 0; }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--info-border); }
+  a:hover { border-bottom-color: var(--accent); }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+  ul li { margin-bottom: 6px; }
+  strong, b { font-weight: 600; }
+  em { color: var(--muted); }
+
+  /* Pain-point cross-cut: comparative blocks */
+  .pain-block {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .pain-block h3 { margin-top: 0; font-size: 17px; }
+  .pain-claimants {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin: 8px 0 12px;
+  }
+  .pain-block dl { margin: 6px 0 0; }
+  .pain-block dt {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+    margin-top: 12px;
+  }
+  .pain-block dd { margin: 4px 0 0; font-size: 15px; }
+  .pain-block dd ul { margin: 6px 0 0; }
+  .implication {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 15px;
+  }
+  .implication .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    margin-right: 8px;
+  }
+
+  /* Vendor badges — pill, color per vendor */
+  .vendor-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 9px; border-radius: 999px;
+    border: 1px solid;
+  }
+  .vendor-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .v-staffbase    { color: var(--v-cobalt); background: var(--v-cobalt-bg); border-color: var(--v-cobalt-border); }
+  .v-simpplr      { color: var(--v-forest); background: var(--v-forest-bg); border-color: var(--v-forest-border); }
+  .v-lumapps      { color: var(--v-violet); background: var(--v-violet-bg); border-color: var(--v-violet-border); }
+  .v-firstup      { color: var(--v-butter); background: var(--v-butter-bg); border-color: var(--v-butter-border); }
+  .v-poppulo      { color: var(--v-ruby);   background: var(--v-ruby-bg);   border-color: var(--v-ruby-border); }
+  .v-workvivo     { color: var(--v-cobalt); background: var(--v-cobalt-bg); border-color: var(--v-cobalt-border); }
+  .v-haiilo       { color: var(--v-violet); background: var(--v-violet-bg); border-color: var(--v-violet-border); }
+  .v-axioshq      { color: var(--v-forest); background: var(--v-forest-bg); border-color: var(--v-forest-border); }
+  .v-workshop     { color: var(--v-butter); background: var(--v-butter-bg); border-color: var(--v-butter-border); }
+  .v-contactmonkey{ color: var(--v-ruby);   background: var(--v-ruby-bg);   border-color: var(--v-ruby-border); }
+
+  /* "Take in one paragraph" hero variant */
+  .paragraph-card {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Takeaway cards */
+  .takeaways { display: grid; gap: 14px; }
+  .takeaway {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: grid; grid-template-columns: auto 1fr; gap: 14px;
+    align-items: start;
+  }
+  .takeaway .item-num {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--code-bg); color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+  }
+  .takeaway h3 { margin: 0 0 6px; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .takeaway p { font-size: 15px; margin: 0 0 6px; }
+  .takeaway p:last-child { margin-bottom: 0; }
+
+  /* Ideas to steal */
+  .idea {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .idea h3 { margin: 0 0 8px; font-size: 16px; }
+  .idea .cerkl-angle {
+    background: var(--good-bg);
+    border-left: 3px solid var(--good);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 14.5px;
+  }
+  .idea .cerkl-angle .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--good);
+    margin-right: 8px;
+  }
+
+  /* Quote card */
+  .quote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--quote);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .quote .speaker {
+    font-size: 12px; color: var(--muted); margin-top: 6px;
+    display: block;
+  }
+
+  /* "Shift" rows */
+  .changes-list { display: grid; gap: 10px; }
+  .change-row {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .change-row .vendor-badge { margin-right: 8px; vertical-align: middle; }
+  .change-row.flat {
+    border-left-color: var(--line);
+  }
+
+  /* Tables */
+  .table-scroll { overflow-x: auto; margin: 0 -8px; padding: 0 8px; }
+  table.cmp {
+    width: 100%; border-collapse: collapse; font-size: 13.5px;
+    margin: 6px 0 4px;
+  }
+  table.cmp th, table.cmp td {
+    text-align: left; padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  table.cmp th {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted);
+    background: var(--panel-soft);
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0;
+  }
+  table.cmp tr:hover td { background: var(--accent-soft); }
+  table.cmp td.vendor-cell { white-space: nowrap; font-weight: 600; }
+  .shift-pill {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .shift-pill.none   { color: var(--muted); background: var(--code-bg); }
+  .shift-pill.warn   { color: var(--warn);  background: var(--warn-bg); border: 1px solid var(--warn-border); }
+  .shift-pill.bad    { color: var(--bad);   background: var(--bad-bg);  border: 1px solid var(--bad-border); }
+  .shift-pill.good   { color: var(--good);  background: var(--good-bg); border: 1px solid var(--good-border); }
+  .shift-pill.material { color: var(--accent); background: var(--accent-soft); border: 1px solid var(--info-border); }
+  td.dim { color: var(--muted); font-style: italic; }
+
+  /* Axis note below tables */
+  .axis-note {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .axis-note .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    margin-right: 8px;
+  }
+
+  /* Callouts */
+  .callout {
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+    border: 1px solid;
+  }
+  .callout.warn { background: var(--warn-bg); border-color: var(--warn-border); color: var(--ink); }
+  .callout.info { background: var(--info-bg); border-color: var(--info-border); color: var(--ink); }
+  .callout.bad  { background: var(--bad-bg);  border-color: var(--bad-border);  color: var(--ink); }
+  .callout .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-right: 8px;
+  }
+  .callout.warn .label { color: var(--warn); }
+  .callout.info .label { color: var(--accent); }
+  .callout.bad  .label { color: var(--bad); }
+
+  /* Stats strip */
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px; margin: 12px 0 4px;
+  }
+  .stat {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .stat .v {
+    font-size: 22px; font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .stat .l {
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+  }
+  .stat.up   .v { color: var(--good); }
+  .stat.down .v { color: var(--bad); }
+  .stat.flat .v { color: var(--muted); }
+  .stat.dim  .v { color: var(--muted); }
+
+  /* Headline stat strip in hero */
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px; margin: 16px 0 0;
+  }
+  .h-stat {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .h-num {
+    font-size: 22px; font-weight: 700; line-height: 1.1;
+    color: var(--accent); letter-spacing: -0.01em;
+  }
+  .h-lbl {
+    font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    font-weight: 600; margin-top: 4px;
+  }
+
+  /* Code */
+  code, pre { font-family: var(--mono); }
+  p code, li code, td code, dd code {
+    font-family: var(--mono); font-size: 0.88em;
+    background: var(--code-bg); padding: 1px 6px; border-radius: 4px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center; font-size: 12px; color: var(--muted);
+    margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line);
+  }
+
+  @media print {
+    body { background: #ffffff; color: #18181d; -webkit-font-smoothing: auto; }
+    .wrap { padding: 0; max-width: none; }
+    section, header.hero { box-shadow: none; border: 1px solid #d5d5db; page-break-inside: avoid; }
+    a { color: #18181d; }
+    table.cmp th { position: static; }
+  }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 24px 16px 60px; }
+    h1 { font-size: 26px; }
+    h2 { font-size: 19px; }
+    .takeaway { grid-template-columns: 1fr; }
+    .takeaway .item-num { width: 28px; height: 28px; font-size: 13px; }
+    table.cmp { font-size: 12.5px; }
+    table.cmp th, table.cmp td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="breadcrumb">competitor-marketing · Weekly Digest</div>
+    <h1>Week of 2026-05-20 — 2026-W21</h1>
+    <div class="meta-row">
+      <span><b>Captured:</b> 2026-05-20 (Wed)</span>
+      <span><b>Baseline:</b> 2026-W20 (re-run 2026-05-13)</span>
+      <span><b>Vendors tracked:</b> 10</span>
+      <span><b>Buckets:</b> 6</span>
+    </div>
+    <p class="tldr">
+      The defining W21 pattern is <strong>language convergence on "execution problem"</strong> — Cates' 2026-05-13 line at ContactMonkey and Justin Black's near-identical phrase at Workvivo's <strong>Seer</strong> launch this week put two competitors on the same frame inside eight days. Meanwhile <strong>Workshop quietly shipped Agentic AI on 2026-05-12</strong> ("type 'open enrollment reminder' → fully designed email in seconds"), <strong>Firstup elevated "Firstup AI" to top nav</strong>, and <strong>Poppulo broadened its category claim</strong> away from comms-specific framing toward EX/CX. ContactMonkey's "Free trial" removal has now held nine days — confirmed deliberate. <strong>0/10 vendors still offer a free-forever tier</strong>; Cerkl Foundations' structural moat holds.
+    </p>
+    <div class="hero-cta">
+      <span class="label">Cerkl wedge this week</span>
+      <span>Claim the <em>"execution layer"</em> language before it ossifies, and counter ContactMonkey's new conquest listicles with "Best Workshop / AxiosHQ Alternatives" framed around Foundations free-forever.</span>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-num">2</div><div class="h-lbl">Vendors using "execution problem"</div></div>
+      <div class="h-stat"><div class="h-num">3</div><div class="h-lbl">Material homepage shifts vs. W20</div></div>
+      <div class="h-stat"><div class="h-num">9 days</div><div class="h-lbl">CM "Free trial" removal holds</div></div>
+      <div class="h-stat"><div class="h-num">0/10</div><div class="h-lbl">Free-forever tier in the category</div></div>
+      <div class="h-stat"><div class="h-num">5/10</div><div class="h-lbl">Confirmed paid-active vendors</div></div>
+    </div>
+  </header>
+
+  <!-- 1. This week in one paragraph -->
+  <section>
+    <h2><span class="num">1 · Brief</span>This week in one paragraph</h2>
+    <div class="paragraph-card">
+      The defining W21 pattern is <strong>language convergence on "execution problem."</strong> Jeff Cates put it on ContactMonkey 2026-05-13 (<em>"…what they really have is an execution problem"</em>); this week Workvivo's Justin Black launched <strong>Seer</strong> with the near-identical <em>"The industry doesn't have a listening problem, it has an execution problem"</em> (<a href="https://www.workvivo.com/newsroom/workvivo-launches-seer/">Workvivo newsroom</a>). Two vendors converging on the same frame in eight days is a positioning shift, not coincidence. Meanwhile <strong>Workshop quietly shipped Agentic AI on 2026-05-12</strong> (<em>"type 'open enrollment reminder' → fully designed email in seconds"</em> — <a href="https://www.prnewswire.com/news-releases/workshop-launches-agentic-ai-that-builds-complete-internal-comms-from-a-single-prompt-302769308.html">PR</a>), making it the third vendor this quarter (Firstup, LumApps, now Workshop) to lead with agentic AI in marketing. Two further homepage motions to flag: <strong>Firstup elevated "Firstup AI" to top nav</strong>, and <strong>Poppulo broadened its category claim</strong> from "AI-powered multichannel communications" to <em>"Enterprise Customer and Employee Experiences"</em> — a deliberate widening <em>away</em> from pure comms positioning. <strong>ContactMonkey's "Free trial" removal has now held nine days</strong>, confirming a deliberate pricing change rather than an A/B test. <strong>0/10 vendors still offer a free-forever tier</strong> — Cerkl Foundations' structural moat holds.
+    </div>
+  </section>
+
+  <!-- 2. Pain-point cross-cut -->
+  <section>
+    <h2><span class="num">2 · Pain</span>Pain-point cross-cut</h2>
+    <p style="font-size:14px; color:var(--muted); margin-top:-4px;">The buyer problems competitors are leading with this week, derived across positioning + ads + content. Most actionable section for Cerkl's marketing.</p>
+
+    <div class="pain-block">
+      <h3>Pain 1: "We launched AI but can't see outcomes" — the execution gap (now with shared language)</h3>
+      <div class="pain-claimants">
+        <span class="vendor-badge v-contactmonkey">ContactMonkey</span>
+        <span class="vendor-badge v-workvivo">Workvivo</span>
+        <span class="vendor-badge v-workshop">Workshop</span>
+        <span class="vendor-badge v-staffbase">Staffbase</span>
+        <span class="vendor-badge v-poppulo">Poppulo</span>
+      </div>
+      <dl>
+        <dt>How they're framing it (verbatim)</dt>
+        <dd>
+          <div class="quote">
+            "The industry doesn't have a listening problem, it has an execution problem."
+            <span class="speaker">— Justin Black, Workvivo · Seer launch · 2026-W21 · <a href="https://www.workvivo.com/newsroom/workvivo-launches-seer/">Workvivo newsroom</a></span>
+          </div>
+          <div class="quote">
+            "Most organizations think they have a communication problem, but what they really have is an execution problem… build the system that closes that gap—and becomes core to how companies actually operate."
+            <span class="speaker">— Jeff Cates, CEO, ContactMonkey · 2026-05-13 · <a href="https://www.contactmonkey.com/news/jeff-cates-as-ceo">news</a></span>
+          </div>
+          <ul>
+            <li><strong>Workshop:</strong> "68% of communicators say automating repetitive tasks is the top priority" + "type 'open enrollment reminder' → fully designed email in seconds" (<a href="https://www.prnewswire.com/news-releases/workshop-launches-agentic-ai-that-builds-complete-internal-comms-from-a-single-prompt-302769308.html">PR</a>).</li>
+          </ul>
+        </dd>
+        <dt>Cerkl's current angle</dt>
+        <dd>Cerkl's positioning (<em>delivery + measurement layer across the channels you already have</em>) is literally the execution layer — but Cerkl isn't explicitly <em>labelling</em> itself that way. Omni AI is sold on features, not on "we close the AI execution gap." The W20 implication (lean in with a sharper frame) is now urgent: two competitors are using the exact words.</dd>
+      </dl>
+      <div class="implication">
+        <span class="label">Implication</span>
+        <strong>Lean in, but own the language before it ossifies.</strong> Suggested frame: <em>"AI writes the message. Cerkl makes sure the right employee actually reads it — and proves they did."</em> The "and proves they did" is Cerkl's structural advantage (cross-channel measurement) that neither Workvivo (single-feed analytics) nor ContactMonkey (Outlook-bound reporting) can match.
+      </div>
+    </div>
+
+    <div class="pain-block">
+      <h3>Pain 2: "Buyers can't tell which IC tool is right" — direct-conquest SEO escalates</h3>
+      <div class="pain-claimants">
+        <span class="vendor-badge v-staffbase">Staffbase</span>
+        <span class="vendor-badge v-lumapps">LumApps</span>
+        <span class="vendor-badge v-contactmonkey">ContactMonkey</span>
+      </div>
+      <dl>
+        <dt>How they're framing it</dt>
+        <dd>
+          <ul>
+            <li><strong>Staffbase:</strong> 4 live conquest pages — vs Firstup, vs Simpplr, Workvivo alts, Firstup alts (all still live from W20).</li>
+            <li><strong>LumApps:</strong> Workvivo alts + Simpplr alts — W20 finds still live.</li>
+            <li><strong>NEW 2026-05-15 — ContactMonkey:</strong> <em>"Best PoliteMail Alternatives"</em> + <em>"Best Workshop Alternatives"</em> — first explicit conquest content from CM under Cates (<a href="https://www.contactmonkey.com/blog">blog</a>).</li>
+          </ul>
+          All targeted at high-intent comparison searches with "Best [Competitor] Alternatives" listicles or "Switch from [Competitor]" migration LPs.
+        </dd>
+        <dt>Cerkl's current angle</dt>
+        <dd>5 live "vs." pages (Simpplr, LumApps, Firstup, Workvivo, Poppulo). 3 gaps (Haiilo, Axios HQ, Workshop). No "Switch from X" migration LPs and no "Best X Alternatives" listicles.</dd>
+      </dl>
+      <div class="implication">
+        <span class="label">Implication</span>
+        <strong>Counter-attack at the Foundations tier where Cerkl has the unique wedge.</strong> Build "Switch from Workshop / AxiosHQ / ContactMonkey" pages + "Best Workshop Alternatives" listicles, all framed around <em>"Foundations is free forever. Migrate in an afternoon."</em> The Foundations free tier is the one differentiator no competitor can match in a conquest fight. ContactMonkey's new 5/15 listicles confirm this format is live and rising in the category.
+      </div>
+    </div>
+
+    <div class="pain-block">
+      <h3>Pain 3: "Inbox / attention overload" — quantified pain creative</h3>
+      <div class="pain-claimants">
+        <span class="vendor-badge v-axioshq">AxiosHQ</span>
+        <span class="vendor-badge v-workshop">Workshop</span>
+        <span class="vendor-badge v-contactmonkey">ContactMonkey</span>
+      </div>
+      <dl>
+        <dt>How they're framing it (verbatim, AxiosHQ)</dt>
+        <dd>
+          <ul>
+            <li><em>"Overwhelmed — checking messages 70-400x a day"</em></li>
+            <li><em>"Tight on time — reading for 26 seconds"</em></li>
+            <li><em>"40% shorter read times"</em></li>
+          </ul>
+          Source: <a href="https://www.axioshq.com/smart-brevity">AxiosHQ Smart Brevity LP</a>.
+        </dd>
+        <dt>Cerkl's current angle</dt>
+        <dd>Cerkl's personalization story (right message, right person, right channel, right time) is the <em>structural</em> answer to attention overload — but Cerkl isn't publishing the kind of quantified pain-stat creative that makes the problem visceral.</dd>
+      </dl>
+      <div class="implication">
+        <span class="label">Implication</span>
+        <strong>Build the data.</strong> Cerkl has the only-source data here — cross-channel read-rate by employee — and AxiosHQ's stats (70-400x/day, 26 seconds) are competitor-published, not original. A "Cross-Channel Read Gap" report with Cerkl proprietary numbers would beat AxiosHQ's secondary stats and double as gated lead-gen.
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Top 5 takeaways -->
+  <section>
+    <h2><span class="num">3 · Top 5</span>Takeaways</h2>
+    <div class="takeaways">
+
+      <article class="takeaway">
+        <div class="item-num">1</div>
+        <div>
+          <h3><span class="vendor-badge v-workvivo">Workvivo</span><span class="vendor-badge v-contactmonkey">ContactMonkey</span> "Execution problem" is now a shared category frame</h3>
+          <p>Cates (5/13) and Black/Workvivo (Seer launch this week) converged on near-identical language inside eight days. Cerkl should claim or sharpen this language before it ossifies. <a href="https://www.workvivo.com/newsroom/workvivo-launches-seer/">Workvivo newsroom</a>, <a href="https://www.contactmonkey.com/news/jeff-cates-as-ceo">Cates news</a></p>
+        </div>
+      </article>
+
+      <article class="takeaway">
+        <div class="item-num">2</div>
+        <div>
+          <h3><span class="vendor-badge v-workshop">Workshop</span> Launched Agentic AI 2026-05-12</h3>
+          <p>"Type 'open enrollment reminder' → fully designed email in seconds." Workshop was previously positioned as "email-first SMB"; this is a material move toward agentic positioning and shifts Cerkl's most direct Foundations-tier head-to-head. <a href="https://www.prnewswire.com/news-releases/workshop-launches-agentic-ai-that-builds-complete-internal-comms-from-a-single-prompt-302769308.html">PR</a></p>
+        </div>
+      </article>
+
+      <article class="takeaway">
+        <div class="item-num">3</div>
+        <div>
+          <h3><span class="vendor-badge v-firstup">Firstup</span> Elevated "Firstup AI" to top nav</h3>
+          <p>Their nav now leads with the AI surface instead of "Platform." Combined with the March 2026 five-pillar agentic suite, Firstup is doubling down on AI-as-product, not AI-as-feature. <a href="https://firstup.io/">firstup.io</a></p>
+        </div>
+      </article>
+
+      <article class="takeaway">
+        <div class="item-num">4</div>
+        <div>
+          <h3><span class="vendor-badge v-poppulo">Poppulo</span> Category claim broadened</h3>
+          <p>From "AI-powered multichannel communications" → <em>"Enterprise Customer and Employee Experiences"</em> — deliberately widening away from a comms-specific frame. Signals Poppulo wants to be considered for adjacent EX/CX buying motions, not just IC. <a href="https://www.poppulo.com/">poppulo.com</a></p>
+        </div>
+      </article>
+
+      <article class="takeaway">
+        <div class="item-num">5</div>
+        <div>
+          <h3><span class="vendor-badge v-contactmonkey">ContactMonkey</span> Publishing direct conquest listicles for the first time</h3>
+          <p>Two same-day "Best [Competitor] Alternatives" posts on 2026-05-15 targeting Workshop and PoliteMail. First conquest content from CM under Cates' tenure. <a href="https://www.contactmonkey.com/blog">blog</a></p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 4. Ideas to steal -->
+  <section>
+    <h2><span class="num">4 · Steal</span>Ideas to steal</h2>
+
+    <div class="idea">
+      <h3>"Execution problem" framing — own it before it commoditizes</h3>
+      <p>Both Cates and Workvivo are wording the same buyer pain; Cerkl's product story is closer to true than either of theirs (Workvivo is a feed; ContactMonkey is Outlook-bound).</p>
+      <div class="cerkl-angle">
+        <span class="label">How Cerkl might use this</span>
+        A/B-test hero copy on a "Cerkl is the execution layer for internal comms" frame. Pair with a POV post from a Cerkl exec ("Why most IC teams have an execution problem, not a content problem") — same template as Cates' <a href="https://www.contactmonkey.com/news/jeff-cates-as-ceo">news/jeff-cates-as-ceo</a>.
+      </div>
+    </div>
+
+    <div class="idea">
+      <h3>"Best [Competitor] Alternatives" listicles with free-tier on-ramp</h3>
+      <p>ContactMonkey's 2026-05-15 posts (<a href="https://www.contactmonkey.com/blog">Best Workshop Alternatives</a>, <a href="https://www.contactmonkey.com/blog">Best PoliteMail Alternatives</a>) confirm the format is hot in the category.</p>
+      <div class="cerkl-angle">
+        <span class="label">How Cerkl might use this</span>
+        Publish "Best Workshop Alternatives 2026" and "Best AxiosHQ Alternatives 2026" with Cerkl Foundations as the #1 entry — <em>the only free-forever option in the category</em>. ContactMonkey can't out-rank Cerkl on Foundations comparisons because they don't have a free tier.
+      </div>
+    </div>
+
+    <div class="idea">
+      <h3>Quantified-pain creative with proprietary numbers</h3>
+      <p>AxiosHQ's "70-400x a day / 26 seconds / 40% shorter read times" works because the stats are visceral — but AxiosHQ's numbers are secondary research. Cerkl has the only-source data.</p>
+      <div class="cerkl-angle">
+        <span class="label">How Cerkl might use this</span>
+        Publish a 2026 "Cross-Channel Read Gap" report — what % of intended audience actually reads a given comms across email / intranet / Teams / Slack — gated, tied to a webinar. Workvivo can't produce this (single-channel feed); AxiosHQ can't (no cross-channel data); ContactMonkey can't (Outlook-only).
+      </div>
+    </div>
+
+    <div class="idea">
+      <h3>"Type a prompt → see a designed email" demo format</h3>
+      <p>Workshop's <a href="https://www.prnewswire.com/news-releases/workshop-launches-agentic-ai-that-builds-complete-internal-comms-from-a-single-prompt-302769308.html">Agentic AI launch</a> is a tight live-demo format — single prompt, fully designed output — that converts demo intent fast.</p>
+      <div class="cerkl-angle">
+        <span class="label">How Cerkl might use this</span>
+        Add a 60-second "type a prompt, see a blast" demo to the Foundations onboarding LP and to the homepage hero. Cerkl's AI subject line generator + drag-and-drop builder can produce a Workshop-equivalent demo today.
+      </div>
+    </div>
+
+    <div class="idea">
+      <h3>Transportation/logistics vertical wedge</h3>
+      <p>Staffbase (Alaska Air, Transdev), Simpplr (Uber Freight 95% adoption), AxiosHQ (CSX), Workshop (Hudl) — competitors are publishing transit/logistics wins; Cerkl is under-represented per 2e.</p>
+      <div class="cerkl-angle">
+        <span class="label">How Cerkl might use this</span>
+        Identify a transit or logistics Cerkl customer, commission a 2026 case study, frame around frontline reach + dynamic targeting (the two things Outlook-bound competitors can't credibly claim).
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Positioning shifts vs. W20 -->
+  <section>
+    <h2><span class="num">5 · Shifts</span>Positioning shifts vs. 2026-W20</h2>
+    <div class="changes-list">
+
+      <div class="change-row">
+        <span class="vendor-badge v-firstup">Firstup</span>
+        <strong>Top nav now leads with "Firstup AI"</strong> (was "Platform" leading). H1 + category claim unchanged. <a href="https://firstup.io/">firstup.io</a>
+      </div>
+
+      <div class="change-row">
+        <span class="vendor-badge v-poppulo">Poppulo</span>
+        <strong>Category claim shifted</strong> from <em>"AI-powered multichannel communications"</em> to <strong>"Enterprise Customer and Employee Experiences"</strong> — broadening away from comms-specific framing. <a href="https://www.poppulo.com/">poppulo.com</a>
+      </div>
+
+      <div class="change-row">
+        <span class="vendor-badge v-workvivo">Workvivo</span>
+        <strong>"People-first" modifier added</strong> to category claim (<em>"People-first AI-native…employee experience platform"</em>); Seer launch now fully live with verified webinar/event funnel. <a href="https://www.workvivo.com/">workvivo.com</a>, <a href="https://www.workvivo.com/seer/">Seer LP</a>
+      </div>
+
+      <div class="change-row">
+        <span class="vendor-badge v-contactmonkey">ContactMonkey</span>
+        <strong>Sub-head now foregrounds "AI-powered editorial assistance"</strong> (W20 sub-head was less AI-forward); "Free trial" removal from pricing page has now held 9 days (matches 2026-05-13 state, persisted). Two NEW conquest listicles published 2026-05-15. <a href="https://www.contactmonkey.com/">contactmonkey.com</a>, <a href="https://www.contactmonkey.com/blog">blog</a>
+      </div>
+
+      <div class="change-row">
+        <span class="vendor-badge v-workshop">Workshop</span>
+        <strong>Agentic AI product launch 2026-05-12</strong> (homepage still 403 to our fetch but PR coverage confirms positioning shift). <a href="https://www.prnewswire.com/news-releases/workshop-launches-agentic-ai-that-builds-complete-internal-comms-from-a-single-prompt-302769308.html">PR</a>
+      </div>
+
+      <div class="change-row flat">
+        <span class="vendor-badge v-lumapps">LumApps</span>
+        W20 H1 swap ("The leading AI Employee Hub") holding. No further homepage motion.
+      </div>
+
+      <div class="change-row flat">
+        <span class="vendor-badge v-staffbase">Staffbase</span>
+        <span class="vendor-badge v-simpplr">Simpplr</span>
+        <span class="vendor-badge v-axioshq">AxiosHQ</span>
+        <span class="vendor-badge v-haiilo">Haiilo</span>
+        No homepage-level shift vs. W20. Haiilo still 403.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. Gaps & limitations -->
+  <section>
+    <h2><span class="num">6 · Gaps</span>Gaps &amp; limitations this week</h2>
+
+    <div class="callout warn">
+      <span class="label">Infrastructure</span>
+      <strong>LinkedIn Ad Library and Meta Ad Library still blocked.</strong> LinkedIn returned 404 for all 10 vendor searches; Meta closed connections on all attempts. Ad copy confirmation is from vendor LPs only. <strong>Same v2 fix outstanding from W20:</strong> build <code>lib/ad_library_fetch.py</code> or move ad capture to manual.
+    </div>
+
+    <div class="callout warn">
+      <span class="label">Coverage</span>
+      <strong>Haiilo, Workshop, LumApps blogs/pricing pages still 403/404</strong> to our fetch — three of ten dark to direct WebFetch for 3rd straight week. Workshop confirmation came via PR Newswire coverage of the Agentic AI launch.
+    </div>
+
+    <div class="callout bad">
+      <span class="label">Security</span>
+      <strong>Prompt-injection attempts detected and ignored</strong> on ContactMonkey homepage, ContactMonkey blog, AxiosHQ Smart Brevity LP, Workshop search results, Staffbase fetch tail, Axios HQ search tail — all returned fetched content containing fake <code>&lt;system-reminder&gt;</code> blocks instructing sub-agents to use TodoWrite. Six sub-agents flagged the attempts and continued the original task. <strong>Pattern is now structural</strong> — these tags are showing up in vendor content reliably; treat them as adversarial noise across the board.
+    </div>
+
+    <ul>
+      <li><strong>G2 review pages partially accessible</strong> — direct fetches got more through than W20, but recurring complaint themes are still SERP-snippet level, not full review-page reads.</li>
+      <li><strong>Reddit /r/internalcomms</strong> returned zero indexable vendor-naming threads via WebSearch for the 2nd straight week. Structural blind spot, not absence of practitioner activity.</li>
+    </ul>
+  </section>
+
+  <!-- 7. Appendix -->
+  <section>
+    <h2><span class="num">7 · Appendix</span>Per-bucket detail</h2>
+
+    <h3>(a) Positioning &amp; messaging</h3>
+    <div class="table-scroll">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>H1 (verbatim)</th>
+            <th>Sub-headline</th>
+            <th>Primary CTA</th>
+            <th>Top nav</th>
+            <th>Category claim</th>
+            <th>Δ vs. W20</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-staffbase">Staffbase</span></td>
+            <td>"Information employees trust. Everywhere they work."</td>
+            <td>"A single platform built for the hardest to reach, connecting communications, knowledge, and action across every channel."</td>
+            <td>See Staffbase in Action</td>
+            <td>Platform / Solutions / Pricing / Resources / Company</td>
+            <td>AI-Native Intranet and Employee Experience Platform</td>
+            <td><span class="shift-pill none">None</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-simpplr">Simpplr</span></td>
+            <td>"AI-powered intranet for modern enterprises"</td>
+            <td>"Multichannel communications, enterprise search, and AI assistance in one unified experience…"</td>
+            <td>Book a demo</td>
+            <td>Platform / Solutions / Customers / Resources / Company</td>
+            <td>#1 AI Intranet &amp; Employee Experience Platform</td>
+            <td><span class="shift-pill none">None</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-lumapps">LumApps</span></td>
+            <td>"The leading AI Employee Hub"</td>
+            <td>"LumApps is where work comes together — connecting people, tools, AI agents, and knowledge…"</td>
+            <td>Request a demo</td>
+            <td>Platform / Why LumApps / Solutions / Resources / Company / Partners</td>
+            <td>The AI Employee Hub</td>
+            <td><span class="shift-pill none">W20 reframe holding</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-firstup">Firstup</span></td>
+            <td>"Don't just communicate. Get outcomes."</td>
+            <td>"Activate your workforce in the flow of their day…"</td>
+            <td>Book a demo</td>
+            <td><strong>Firstup AI</strong> / Platform / Solutions / Customers / Resources / Why Firstup / Pricing</td>
+            <td>The Intelligent Communication Platform</td>
+            <td><span class="shift-pill material">NAV: "Firstup AI" elevated to first position</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-poppulo">Poppulo</span></td>
+            <td>"Turn Every Touchpoint Into an Elevated Experience"</td>
+            <td>"The only AI-powered platform to align, assure, and activate your workforce across every channel, screen, and location—automatically."</td>
+            <td>REQUEST A DEMO</td>
+            <td>Digital Signage / Employee Experience / Why Poppulo / Login / Talk to an Expert</td>
+            <td><strong>"Enterprise Customer and Employee Experiences"</strong></td>
+            <td><span class="shift-pill material">CATEGORY CLAIM broadened beyond comms</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-workvivo">Workvivo</span></td>
+            <td>"When everything connects, everyone moves faster"</td>
+            <td>"Empower your people, unlock knowledge, and deepen understanding. The AI-native employee experience platform bringing it all together."</td>
+            <td>Book a demo</td>
+            <td>Product / Industries / Company / Resources / Pricing / Book a demo</td>
+            <td>"People-first AI-native…world's number one employee experience platform"</td>
+            <td><span class="shift-pill warn">Minor: "People-first" added; Seer live</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-haiilo">Haiilo</span></td>
+            <td class="dim">inaccessible (HTTP 403)</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+            <td><span class="shift-pill bad">Still blocked (3rd week)</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-axioshq">AxiosHQ</span></td>
+            <td>"Break through and create clarity with Smart Brevity"</td>
+            <td>"Training… Software… Community of experts…"</td>
+            <td>Unlock Smart Brevity for your team →</td>
+            <td>Products / Solutions / Industries / Pricing / Learn / About</td>
+            <td>Smart Brevity® is your solution to modernize workplace comms</td>
+            <td><span class="shift-pill none">None</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-workshop">Workshop</span></td>
+            <td class="dim">inaccessible (HTTP 403)</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+            <td><span class="shift-pill material">Agentic AI launch 5/12 confirmed via PR</span></td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-contactmonkey">ContactMonkey</span></td>
+            <td>"Intelligent internal communications platform that reaches every employee"</td>
+            <td>"Create internal emails and newsletters faster, extend their reach, and prevent costly errors—<strong>with AI-powered editorial assistance guiding every send.</strong>"</td>
+            <td>Book a demo</td>
+            <td>Product / Solutions / Resources / Pricing</td>
+            <td>Internal Communication Software</td>
+            <td><span class="shift-pill warn">Sub-head foregrounds AI; "Free trial" still absent (9 days)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="axis-note">
+      <span class="label">Decision-relevant axis</span>
+      Three vendors made <em>material</em> moves this week — Firstup (nav promotion of AI), Poppulo (category-claim widening to EX/CX), Workshop (agentic AI launch). LumApps' W20 reframe is holding without further iteration. Haiilo is dark for the 3rd straight week.
+    </div>
+
+    <h3>(b) Content distribution (last 7 days, 2026-05-13 → 2026-05-20)</h3>
+    <div class="table-scroll">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>Posts (7d)</th>
+            <th>Type</th>
+            <th>Top topic</th>
+            <th>New gated assets</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-staffbase">Staffbase</span></td>
+            <td>0 in RSS window</td>
+            <td class="dim">—</td>
+            <td>(VOICES Americas keynote 5/12 — prior week)</td>
+            <td class="dim">None new</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-simpplr">Simpplr</span></td>
+            <td>1</td>
+            <td>POV</td>
+            <td>IC pressures / 2026 State of IC angle</td>
+            <td>"2026 State of IC" report still anchoring CTA</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-lumapps">LumApps</span></td>
+            <td class="dim">n/a</td>
+            <td class="dim">Blog 404</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-firstup">Firstup</span></td>
+            <td>1</td>
+            <td>Product update</td>
+            <td>Q2 2026 release ("Reach Further, Act Faster, Prove More," 5/18)</td>
+            <td>"State of Employee Engagement" report featured (likely repromoted)</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-poppulo">Poppulo</span></td>
+            <td><strong>2</strong></td>
+            <td>POV (5/13) + how-to (5/14) + 5/27 webinar promo</td>
+            <td>AI in HR/Comms; signage migration</td>
+            <td class="dim">None new</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-workvivo">Workvivo</span></td>
+            <td>0 dated posts</td>
+            <td>Events / launch</td>
+            <td>Seer launch + events (5/20 webinar TODAY, 5/21 NYC, 6/24 "Future of AI in IC" announced)</td>
+            <td>None new (Seer report carries from W20)</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-haiilo">Haiilo</span></td>
+            <td class="dim">n/a</td>
+            <td class="dim">403</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-axioshq">AxiosHQ</span></td>
+            <td>0 in-window</td>
+            <td class="dim">—</td>
+            <td>5/6 "How strategic comms leaders are using AI" still featured</td>
+            <td class="dim">None new</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-workshop">Workshop</span></td>
+            <td class="dim">n/a</td>
+            <td>403 / PR</td>
+            <td><strong>Agentic AI launch 5/12 via PR</strong></td>
+            <td>Trends report DL active</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-contactmonkey">ContactMonkey</span></td>
+            <td><strong>4</strong></td>
+            <td>2 how-to + <strong>2 conquest listicles (5/15)</strong> + product-speed post (5/13)</td>
+            <td>Competitive displacement + IC planning</td>
+            <td>"Internal Email Benchmark Report 2026" (5/8) still featured</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="axis-note">
+      <span class="label">Pattern</span>
+      ContactMonkey leads the field on post volume (4 in 7 days, including two conquest listicles). Workvivo and Workshop are running event/launch funnels rather than blog cadence. Poppulo holds a steady POV pace.
+    </div>
+
+    <h3>(c) Advertising (LinkedIn + Meta libraries blocked — verified via vendor LPs)</h3>
+    <div class="table-scroll">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>Active?</th>
+            <th>Creative theme</th>
+            <th>Pain claim (verbatim)</th>
+            <th>CTA</th>
+            <th>Format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-staffbase">Staffbase</span></td>
+            <td><span class="shift-pill warn">Likely yes</span></td>
+            <td>IC platform / enterprise reach</td>
+            <td>"unite everyone … behind shared stories"</td>
+            <td>Demo</td>
+            <td>LI Sponsored</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-simpplr">Simpplr</span></td>
+            <td><span class="shift-pill warn">Likely yes</span></td>
+            <td>AI-for-EX</td>
+            <td>"AI to do the work <em>around</em> the work, not do the writing for us"</td>
+            <td>Demo / Awards reg</td>
+            <td>Sponsored</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-lumapps">LumApps</span></td>
+            <td><span class="shift-pill none">No detectable paid</span></td>
+            <td>Event-led only (Bright Conference 2026)</td>
+            <td class="dim">n/a</td>
+            <td>Event reg</td>
+            <td>Sponsorship</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-firstup">Firstup</span></td>
+            <td><span class="shift-pill none">No detectable paid</span></td>
+            <td>Q1 release PR</td>
+            <td class="dim">n/a</td>
+            <td class="dim">n/a</td>
+            <td class="dim">n/a</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-poppulo">Poppulo</span></td>
+            <td><span class="shift-pill none">No detectable paid</span></td>
+            <td>Pop Summit 2026 owned promo</td>
+            <td class="dim">n/a</td>
+            <td>Event reg</td>
+            <td>Owned/email</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-workvivo">Workvivo</span></td>
+            <td><span class="shift-pill good">YES — VERIFIED today</span></td>
+            <td>Seer listening-gap launch + 5/20 webinar</td>
+            <td><em>"Your employees are talking. Are you actually listening?"</em>; <em>"Seer closes the gap between hearing your people and helping them"</em></td>
+            <td>"Register for the live session"</td>
+            <td>LP + likely LI ads</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-haiilo">Haiilo</span></td>
+            <td><span class="shift-pill none">No detectable paid</span></td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+            <td class="dim">—</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-axioshq">AxiosHQ</span></td>
+            <td><span class="shift-pill good">YES — VERIFIED LP</span></td>
+            <td>Smart Brevity formula + open-house</td>
+            <td><em>"Overwhelmed — 70-400x a day"</em>; <em>"Reading for 26 seconds"</em>; <em>"40% shorter read times"</em></td>
+            <td>"Smart Brevify your content (free tool)" / "Reserve your seat"</td>
+            <td>LP + lead-magnet + event</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-workshop">Workshop</span></td>
+            <td><span class="shift-pill warn">Likely yes (5/12 launch)</span></td>
+            <td>Agentic AI builds full comms from one prompt</td>
+            <td><em>"68% … automating repetitive tasks"</em>; <em>"type 'open enrollment reminder' → fully designed email in seconds"</em></td>
+            <td>Demo / Trends DL</td>
+            <td>LP + PR + sponsored</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-contactmonkey">ContactMonkey</span></td>
+            <td><span class="shift-pill good">YES — VERIFIED /request-trial</span></td>
+            <td>Free-trial direct-response</td>
+            <td><em>"Request your free trial"</em>; <em>"14 day free trial"</em>; <em>"9/10 recommend us"</em>; <em>"Top-voted internal comms software on G2"</em></td>
+            <td>"Request your free trial" / "Book a demo"</td>
+            <td>LP + form-fill</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="axis-note">
+      <span class="label">Pattern</span>
+      5/10 confirmed actively spending (Staffbase, Simpplr, Workvivo, AxiosHQ, ContactMonkey). Unchanged from W20. Workvivo Seer ads still active for today's webinar; expect rotation by W22.
+    </div>
+
+    <h3>(d) Social &amp; community</h3>
+    <ul>
+      <li><span class="vendor-badge v-workvivo">Workvivo</span> <strong>Justin Black (Seer launch this week):</strong> <em>"The industry doesn't have a listening problem, it has an execution problem."</em> (<a href="https://www.workvivo.com/newsroom/workvivo-launches-seer/">newsroom</a>, <a href="https://www.uctoday.com/employee-engagement-recognition/workvivo-debuts-seer-platform-to-turn-employee-feedback-into-leadership-action/">UC Today coverage</a>)</li>
+      <li><span class="vendor-badge v-staffbase">Staffbase</span> <strong>Frank Wolf:</strong> No fresh personal post; Staffbase corporate LinkedIn ran VOICES 2026 Day-1 recap. AI narrative continuation via company channel, not exec feed.</li>
+      <li><span class="vendor-badge v-contactmonkey">ContactMonkey</span> <strong>Jeff Cates:</strong> No new public quote beyond the W20 "execution problem" line; watch continues.</li>
+      <li><span class="vendor-badge v-firstup">Firstup</span> <strong>Bill Schuh:</strong> No W21 post surfaced. 2026 Firstup Leaders Summit date still not announced — flag for W22.</li>
+      <li><strong>Simpplr (Sharma), LumApps (Ricard), Poppulo (Fornell), Haiilo (Avanessian), AxiosHQ (Schwartz), Workshop (Homann):</strong> No W21 exec signal surfaced.</li>
+      <li><strong>/r/internalcomms:</strong> Zero indexable vendor-naming threads (2nd straight week). Blind spot.</li>
+    </ul>
+
+    <div class="callout info">
+      <span class="label">Practitioner sentiment shift</span>
+      <strong>"Execution problem" is becoming category meme</strong> — Cates (W20) and Black/Workvivo (W21) using identical language eight days apart. Cerkl should decide whether to co-opt or counter-position before it ossifies.
+    </div>
+
+    <h3>(e) Reviews &amp; customer stories</h3>
+    <p style="font-size:14px; color:var(--muted); margin-top:-4px;"><strong>New case studies in last 14 days:</strong> None dated explicitly. Most-recent identifiable are CSX (AxiosHQ, ~Feb 2026) and Chamberlain Group (ContactMonkey, W20). Treat 14-day count as zero new.</p>
+    <div class="table-scroll">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>Featured logos (segments)</th>
+            <th>G2 themes (praise / complaint)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-staffbase">Staffbase</span></td>
+            <td>Lansing Building, MAX Burgers, YAGEO, Cosentino, <strong>Alaska Air, Transdev</strong>, Toyota Finance AU</td>
+            <td>4.6 — Praise: ease of use, mobile frontline / Complaints: expensive, admin "complex" at scale</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-simpplr">Simpplr</span></td>
+            <td>Included Health, Quartz, Day &amp; Zimmermann, <strong>Uber Freight (95% adoption)</strong>, Sammons</td>
+            <td>4.7 — Praise: UX / Complaints: permissions confusion</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-lumapps">LumApps</span></td>
+            <td>Ascension, FM Logistic, Instructure</td>
+            <td>4.3 — Complaints: slow/clunky, integration hard</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-firstup">Firstup</span></td>
+            <td class="dim">(dynamic, not in static HTML)</td>
+            <td>Praise: scale / Complaints: no employee recognition, weak UGC publishing</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-poppulo">Poppulo</span></td>
+            <td>Roeslein, WPP, ZS, CF Industries, Tower Hamlets, National Grid</td>
+            <td>4.4 — Praise: analytics, targeting / Complaints: template variety, API complexity</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-workvivo">Workvivo</span></td>
+            <td class="dim">(403)</td>
+            <td>4.8 — Praise: social-feed UX / Complaints: mobile slow/battery drain</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-haiilo">Haiilo</span></td>
+            <td>Coca-Cola HBC (94% engagement)</td>
+            <td>4.5 — Praise: admin clarity / Complaints: media integration, SMB pricing</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-axioshq">AxiosHQ</span></td>
+            <td><strong>CSX (transportation)</strong>, Takeda (52K)</td>
+            <td>4.7 — Praise: Smart Brevity, support 9.7 / Complaints: mobile editing clunky, list mgmt manual</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-workshop">Workshop</span></td>
+            <td>Hudl (3K, 18 countries)</td>
+            <td>4.7 — Praise: email-first UX / Complaints: customization limits</td>
+          </tr>
+          <tr>
+            <td class="vendor-cell"><span class="vendor-badge v-contactmonkey">ContactMonkey</span></td>
+            <td>Chamberlain Group (W20)</td>
+            <td>4.4 — Praise: Outlook integration / Complaints: customization, advanced reporting</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout info">
+      <span class="label">Segment wins synthesis</span>
+      <strong>Transportation/logistics dominates Q2</strong> — Alaska Air + Transdev (Staffbase), Uber Freight (Simpplr), CSX (AxiosHQ). Cerkl under-represented; commission a transit/logistics case study. <strong>Manufacturing is contested</strong> — YAGEO + Cosentino (Staffbase), Day &amp; Zimmermann (Simpplr), CF Industries (Poppulo), Chamberlain (ContactMonkey). Every competitor is now pitching frontline mfg. <strong>Healthcare belongs to Simpplr + LumApps</strong> (Included Health, Quartz, Ascension); Cerkl's healthcare story is under-represented.
+    </div>
+
+    <h3>(f) SEO &amp; pricing</h3>
+    <p style="font-size:14px; color:var(--muted); margin-top:-4px;"><strong>SEO — Page-1 presence</strong> (free SERP proxy — no Ahrefs/SEMrush data):</p>
+    <div class="table-scroll">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Vendors on P1 (W21)</th>
+            <th>Δ vs. W20</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>internal communications platform</td><td>Staffbase, Workshop, ContactMonkey, AxiosHQ</td><td><span class="shift-pill none">=</span></td></tr>
+          <tr><td>best internal communications software</td><td>Workshop, LumApps</td><td><span class="shift-pill warn">−Workvivo, −Simpplr, −Staffbase, −ContactMonkey; +LumApps</span></td></tr>
+          <tr><td>employee app</td><td>Staffbase</td><td><span class="shift-pill none">=</span></td></tr>
+          <tr><td>intranet for internal communications</td><td>Staffbase</td><td><span class="shift-pill none">=</span></td></tr>
+          <tr><td>best intranet platforms</td><td>Simpplr, Workvivo, Staffbase, Haiilo</td><td><span class="shift-pill good">−LumApps; +Haiilo</span></td></tr>
+          <tr><td>internal newsletter platform</td><td>AxiosHQ, ContactMonkey, Staffbase</td><td><span class="shift-pill warn">−Workshop</span></td></tr>
+          <tr><td>employee newsletter software</td><td>Simpplr, Staffbase, ContactMonkey</td><td><span class="shift-pill warn">−Workshop</span></td></tr>
+          <tr><td>internal communications measurement</td><td>Poppulo, Haiilo, ContactMonkey, LumApps, Firstup</td><td><span class="shift-pill good">−AxiosHQ, −Staffbase; +Haiilo</span></td></tr>
+          <tr><td>personalized employee communications</td><td>ContactMonkey</td><td><span class="shift-pill warn">−Firstup, −AxiosHQ; +ContactMonkey</span></td></tr>
+          <tr><td>ai for internal communications</td><td>Simpplr, Poppulo, Workshop, Staffbase</td><td><span class="shift-pill warn">−AxiosHQ, −ContactMonkey; +Workshop</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:14px; color:var(--muted); margin: 16px 0 8px;"><strong>SERP-presence tally W21:</strong></p>
+    <div class="stats">
+      <div class="stat up"><div class="v">8/10</div><div class="l">Staffbase — category lead holds</div></div>
+      <div class="stat up"><div class="v">5/10</div><div class="l">ContactMonkey — strong runner-up</div></div>
+      <div class="stat flat"><div class="v">4/10</div><div class="l">Workshop — reclaimed AI keyword</div></div>
+      <div class="stat flat"><div class="v">3/10</div><div class="l">Simpplr</div></div>
+      <div class="stat flat"><div class="v">2/10</div><div class="l">AxiosHQ, LumApps, Haiilo, Poppulo</div></div>
+      <div class="stat dim"><div class="v">1/10</div><div class="l">Firstup, Workvivo — both lost ground</div></div>
+    </div>
+
+    <p style="font-size:14px; color:var(--muted); margin: 18px 0 8px;"><strong>Shifts vs. W20:</strong></p>
+    <ul>
+      <li><strong>Haiilo: 0 → 2/10</strong> (first-ever page-1 appearances on "best intranet platforms" + "measurement"). First time Haiilo has shown SERP signal in this digest.</li>
+      <li><strong>Workvivo: 2 → 1/10</strong>, <strong>Firstup: 2 → 1/10</strong>, <strong>AxiosHQ: 5 → 2/10</strong> — losing ground on AI/measurement queries.</li>
+      <li><strong>Workshop reclaimed "ai for internal communications."</strong></li>
+    </ul>
+
+    <p style="font-size:14px; color:var(--muted); margin: 18px 0 8px;"><strong>Conquest pages confirmed live:</strong></p>
+    <ul>
+      <li><span class="vendor-badge v-staffbase">Staffbase</span> vs Firstup, Simpplr alts, Workvivo alts, Firstup alts — all 4 still live.</li>
+      <li><span class="vendor-badge v-lumapps">LumApps</span> Workvivo alternatives, Simpplr alternatives — both still live (W20 finds).</li>
+      <li><span class="vendor-badge v-contactmonkey">ContactMonkey</span> <strong>NEW 2026-05-15:</strong> Best PoliteMail Alternatives + Best Workshop Alternatives. First conquest content from CM under Cates.</li>
+    </ul>
+
+    <p style="font-size:14px; color:var(--muted); margin: 18px 0 8px;"><strong>Pricing snapshot:</strong></p>
+    <div class="table-scroll">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>Public?</th>
+            <th>Plans</th>
+            <th>Free tier?</th>
+            <th>Δ vs. W20</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-staffbase">Staffbase</span></td><td>No</td><td>Module-based</td><td>No</td><td><span class="shift-pill none">None</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-simpplr">Simpplr</span></td><td>No</td><td>Simpplr One</td><td>14-day trial</td><td><span class="shift-pill none">None</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-lumapps">LumApps</span></td><td>404</td><td class="dim">—</td><td class="dim">—</td><td><span class="shift-pill bad">Unable to verify (3rd week)</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-firstup">Firstup</span></td><td>No</td><td>Essential / Professional / Premier</td><td>No</td><td><span class="shift-pill none">None</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-poppulo">Poppulo</span></td><td>No</td><td>Pro+ / Enterprise+</td><td>21-day trial, no CC</td><td><span class="shift-pill none">None</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-workvivo">Workvivo</span></td><td>No</td><td>Business / Enterprise</td><td>Unclear</td><td><span class="shift-pill none">None</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-haiilo">Haiilo</span></td><td>403</td><td class="dim">—</td><td class="dim">—</td><td><span class="shift-pill bad">Unable to verify (3rd week)</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-axioshq">AxiosHQ</span></td><td>No</td><td>Essential / Advanced / Premier</td><td>No</td><td><span class="shift-pill none">None</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-workshop">Workshop</span></td><td>403</td><td class="dim">—</td><td class="dim">—</td><td><span class="shift-pill bad">Unable to verify (3rd week)</span></td></tr>
+          <tr><td class="vendor-cell"><span class="vendor-badge v-contactmonkey">ContactMonkey</span></td><td>No</td><td>Launch / Grow / Enterprise</td><td><strong>Not visible (now 9 days)</strong></td><td><span class="shift-pill material">"Free trial" removal persists — confirmed deliberate, not A/B</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout info">
+      <span class="label">Critical observation holds</span>
+      <strong>0/10 offer a free-forever tier.</strong> Cerkl Foundations remains the only structural free-tier wedge in the IC category.
+    </div>
+  </section>
+
+  <!-- 8. Sources -->
+  <section>
+    <h2><span class="num">8 · Sources</span>Sources</h2>
+    <p>All URLs cited inline above. Compiled from <a href="../sources.md"><code>cerkl/research/competitor-marketing/sources.md</code></a>. Captured 2026-05-20.</p>
+  </section>
+
+  <footer>
+    Generated 2026-05-20 · Source markdown: <a href="./2026-W21.md">weekly/2026-W21.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -17,6 +17,7 @@ Don't forget. Work is supposed to be fun! We take the task at hand seriously, bu
 | HubSpot CRM — cleanup, enrichment, segments, workflows, audit, emails | `hubspot/` |
 | Travis's schedule, projects, meetings, task list, PA | `personal-assistant/` |
 | IC trends, market intel, horizon-scan research | `research/` |
+| Refresh / update / review the claude dashboard, sync / rebuild the dashboard | [`claude-dashboard/claude-dashboard-process.md`](claude-dashboard/claude-dashboard-process.md) |
 | Build a new process / spin up a new workflow | [`skills/build-process/SKILL.md`](skills/build-process/SKILL.md) |
 | Upload `.md` files to Google Drive as native Google Docs (default destination: Claude-Uploads) | [`skills/md-to-drive/SKILL.md`](skills/md-to-drive/SKILL.md) |
 | Render a `.md` artifact (deep-dive, daily recap) as styled HTML sibling | [`skills/md-to-html/SKILL.md`](skills/md-to-html/SKILL.md) |
@@ -43,7 +44,8 @@ cerkl/
 ├── sales/                       ← outbound, discovery, objection-handling, enablement
 ├── hubspot/                     ← CRM ops; 31 reusable skills + Python scripts
 ├── personal-assistant/          ← Travis's schedule, projects, meetings, task list
-└── research/                    ← horizon-scan research (IC trends, market intel)
+├── research/                    ← horizon-scan research (IC trends, market intel)
+└── claude-dashboard/            ← local browser index of all reports/audits/recaps across cerkl/
 ```
 
 ## Git Sync

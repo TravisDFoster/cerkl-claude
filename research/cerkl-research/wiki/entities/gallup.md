@@ -23,6 +23,7 @@ Gallup is a global analytics and advisory firm best known for the Gallup World P
 ## Appearances in Sources
 
 - [[state-of-the-global-workplace-2026]] — 2026 report (2025 data)
+- [[qualtrics-change-engagement-2026-05-21]] — cited as counter-data: manager engagement collapse (27%→22%) gates the change-engagement chain
 
 ## Connections
 

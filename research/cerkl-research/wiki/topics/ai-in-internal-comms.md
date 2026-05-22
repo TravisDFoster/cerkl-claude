@@ -27,6 +27,15 @@ The second story (May 2026 addition, the org-level frame):
 
 The unifying thesis lives at [[ai-rollout-comms]] — the 2026 chain where bad rollout → shadow AI → no ROI → AI-attributed layoffs → choreography failure → deep listening as new measurement lane. IC is the binding constraint at multiple links.
 
+The third story (May 2026 addition, the practitioner-sentiment frame — see [[ai-anxious-buyer]]):
+
+- **Trade-pub + academic tier:** AI in IC degrades **trust, authenticity, and perceived sincerity** for relational content. Cardon & Coman 2025 (n=1,100, peer-reviewed) and Men et al. (Public Relations Review, n=20 senior comms) are the academic anchors; [[hr-reporter-ai-risks-ic-2026-05-18]] is the trade-press synthesis. Prescribed workflow: [[co-piloting]] — humans draft relational content, AI polishes.
+- **Vendor-survey tier:** [[simpplr]]'s 2026 State of IC (n=448 IC pros, 500+ employee orgs, fielded Dec 2025) — **52% weekly+ AI use; 29% job-security anxious; >33% of orgs cite AI as headcount-reduction driver.** Same vendor sells Comms AI; their own data contradicts their AI-maximalist positioning.
+- **Consulting tier (CIO-fronted, workforce-design):** [[mckinsey-agentic-ai-workforce-redesign-2026-05-18]] frames agents as **coworkers, not features** ([[agents-as-coworkers]]) and names change-comms as the gate to AI ROI. Pairs with [[gartner-people-centric-ai-2026-05-15]] and [[forrester-ai-rewrite-ex-deep-listening-2026-05-15]] as the **[[analyst-trio-comms-as-ai-gate]]**.
+- **Consulting tier (book + launch wave):** [[mckinsey-rewired-2-2026-05-21]] launches *Rewired 2.0* with the [[talent-transformation-thesis]] — *"At the heart of every digital transformation is a talent transformation."* Four levers leaders systematically underweight: [[n-2-n-3-leader-development]], [[70-30-tech-talent-flip]], tech-talent workplace, and [[human-agentic-collaboration]] (Lever #4 — the comms-adjacent quote: *"the emotional work of helping humans feel safe alongside machine colleagues"*). Adjacent counter-frames from [[bcg]] / [[julia-dhar]] (behavioral-design), [[bain]] (operating-model redesign), and [[deloitte]] (adaptability). The hypocrisy critique — McKinsey is cutting ~10% of non-client staff while publishing a talent playbook — is the loudest practitioner reaction online.
+
+The third story's practical consequence: **practitioners are AI-anxious, not AI-eager**, and AI maximalism reads as a survival threat to the person in the meeting. That's a procurement frame, not just sentiment. The buyer's gut response to platform-as-agentic-suite pitches (Workshop Cici, Staffbase AI quality layer, Simpplr Comms AI, Firstup five-pillar agentic suite, Poppulo Create/Target/Analyze Agents) is now anxiety, not excitement. Counter-positioning opportunity captured at [[ai-anxious-buyer]].
+
 The AI-feature categories that [[forrester]] explicitly evaluates remain the 2026 buyer checklist for intranet platforms:
 
 - AI-enabled search
@@ -50,6 +59,14 @@ The AI-feature categories that [[forrester]] explicitly evaluates remain the 202
 - [[workshop]] — vendor-tier source for practitioner-side AI usage data
 - [[cisco]] / [[austin-roth-eagle]] — practitioner-tier source
 - [[pr-daily]] — distribution venue for practitioner-tier coverage
+- [[mckinsey]] — consulting-tier source (workforce-design lens)
+- [[hr-reporter]] / [[sarah-dobson]] — trade-pub anchoring the academic [[ai-anxious-buyer]] frame
+- [[peter-cardon]] / [[anthony-coman]] / [[linjuan-rita-men]] — academic anchors
+- [[simpplr]] — vendor + survey source (2026 State of IC, n=448; ironic data-vs-positioning gap)
+- [[eric-lamarre]] / [[kate-smaje]] / [[rob-levin]] — McKinsey Senior Partners; *Rewired 2.0* authors
+- [[bcg]] / [[julia-dhar]] — adjacent transformation-consulting frame (behavioral-design)
+- [[bain]] — adjacent operating-model redesign frame; AI-rationale-drops-understanding finding
+- [[deloitte]] — counter-narrative; 2026 Human Capital Trends ("Human Advantage" / adaptability)
 
 ## Key Concepts
 
@@ -62,6 +79,14 @@ The AI-feature categories that [[forrester]] explicitly evaluates remain the 202
 - [[people-intelligence]] — Workvivo's competing category name for the same surface
 - [[ai-washing]] — adjacent change-comms anti-pattern
 - [[ai-rollout-comms]] — unifying chain across rollout → response → listening
+- [[ai-anxious-buyer]] — 2026 procurement frame (practitioner-sentiment cross-cut)
+- [[co-piloting]] — academic-grade prescription (human-in-the-loop)
+- [[agents-as-coworkers]] — McKinsey workforce-design frame
+- [[analyst-trio-comms-as-ai-gate]] — McKinsey + Gartner + Forrester synthesis
+- [[talent-transformation-thesis]] — McKinsey *Rewired 2.0* core thesis
+- [[70-30-tech-talent-flip]] — McKinsey workforce-redesign operational rule
+- [[human-agentic-collaboration]] — *Rewired 2.0* Lever #4; most comms-adjacent
+- [[n-2-n-3-leader-development]] — *Rewired 2.0* Lever #1
 
 ## Practitioner Voices
 
@@ -82,6 +107,9 @@ The AI-feature categories that [[forrester]] explicitly evaluates remain the 202
 | [[gartner-people-centric-ai-2026-05-15]] | 2026-05-13 | Org-level rollout failure ([[enablement-illusion]]); 88% shadow-AI use; CHRO/CIO co-buyer frame |
 | [[gartner-ai-layoffs-no-returns-2026-05-15]] | 2026-05-05 | 80% cut / zero correlation; [[people-amplification]] frame |
 | [[forrester-ai-rewrite-ex-deep-listening-2026-05-15]] | 2026-02-06 | [[deep-listening]] category-naming move; 1–2 year build window for vendors |
+| [[hr-reporter-ai-risks-ic-2026-05-18]] | 2025-12-08 (ingested 2026-05-18) | Academic-grade [[ai-anxious-buyer]] frame; Cardon & Coman 2025 (n=1,100) + Men et al.; [[co-piloting]] prescription |
+| [[mckinsey-agentic-ai-workforce-redesign-2026-05-18]] | 2026-04-06 | [[agents-as-coworkers]] workforce-design frame; CIO/CHRO co-buyer; change-comms named as AI ROI gate |
+| [[mckinsey-rewired-2-2026-05-21]] | 2026-05-04 | *Rewired 2.0* + talent-transformation thesis; 4 levers (N-2/N-3 + 70-30 flips + workplace + human-agentic); Lever #4 "emotional work" quote; hypocrisy critique |
 
 ## Open Questions
 
@@ -93,6 +121,8 @@ The AI-feature categories that [[forrester]] explicitly evaluates remain the 202
 
 ## Contradictions & Tensions
 
+- **The AI-anxious-buyer thesis directly contradicts the AI-as-transformative thesis** also in this topic. The vault now holds both — *transformative* (Forrester deep listening, Workvivo Seer, Cisco AI-content workflow practice, Gartner people-centric AI) and *displacement-anxious* ([[hr-reporter-ai-risks-ic-2026-05-18]] + [[simpplr]] survey + Cardon & Coman 2025). They are not necessarily contradictory at the *fact* level (AI can be transformative *and* displacement-anxiety-producing) but they imply opposite vendor-messaging strategies (lead with AI features vs. lead with no-AI-tax). When citing externally, name both and let the reader hold both. When making positioning calls internally, the segmentation is: AI-skeptic frame for Foundations marketing; AI-as-enablement frame for Omni AI.
 - 49% vendor-AI adoption (Forrester) vs 73% weekly+ AI use (Workshop). Not contradictory — different denominators. Worth surfacing when citing either.
 - Forrester's deep-listening frame (listen passively on Teams) puts the EX/Comms category's measurement value upstream of Cerkl's delivery-side analytics. Cerkl's response is **complement-not-compete**, not redefine.
 - Gartner's reframe of shadow AI as a *comms* problem contradicts the dominant IT/security framing as a *tooling/governance* problem. Be explicit when citing.
+- **McKinsey's *agents as coworkers* frame and HR Reporter's *AI erodes authenticity* frame are tense, not contradictory.** Agents-as-coworkers anthropomorphizes; Cardon & Coman find that the anthropomorphizing-via-AI-assistance erodes trust. The two perspectives can be reconciled by holding agents-as-coworkers *for workforce design* and co-piloting *for individual relational comms* — but the reconciliation isn't automatic and Cerkl content should not present them as fully aligned.

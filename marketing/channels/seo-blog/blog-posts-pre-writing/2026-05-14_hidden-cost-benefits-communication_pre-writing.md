@@ -23,7 +23,7 @@
 
 **Primary Category:** Internal Communication Strategy
 
-**Secondary Category:** Internal Communications Measurement
+**All Categories:** Internal Communications Measurement
 
 **Meta Description:** Companies spend $28,250 per employee on benefits, and most employees never use what they have. The hidden cost is the comms gap — and there is a fix.
 

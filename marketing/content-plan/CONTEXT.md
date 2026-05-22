@@ -49,28 +49,21 @@ Generated from the monthly plan using the rules in `jira-csv-guidelines.md`. One
 
 ---
 
-## Generating a monthly content plan
-
-When asked to generate a monthly plan, use the annual plan for the target month as the primary input. Also accept any additional context provided (product launch timing, team capacity changes, one-off events).
-
-Output format: a markdown table per week, matching the structure in `monthly-content-plans/may-2026.md`. Include a week header with date range and a narrative label.
-
-Save the output to `monthly-content-plans/[month-year].md`.
-
-## Generating a Jira CSV
-
-When asked to generate the CSV for a given month:
-1. Read the monthly plan for that month
-2. Apply the field mappings and subtask templates from `jira-csv-guidelines.md`
-3. Output one row per Task and subtask
-4. Use Jira IDs from the ownership table above for assignee fields
-5. Dates in `YYYY-MM-DD` format
-
----
-
 ## Resources
 
-- [process.md](process.md) — End-to-end content lifecycle (brief queue → schedule → write → Jira → publish); read this first to understand how the layers connect
+Processes (executors):
+- [content-lifecycle-process.md](content-lifecycle-process.md) — End-to-end narrative spine (brief queue → schedule → write → Jira → publish); read first to see how the layers connect
+- [plan-reconcile-process.md](plan-reconcile-process.md) — Weekly Monday reconcile: triage briefs, process inputs, lock next week, generate Jira scaffold
+- [monthly-plan-generation-process.md](monthly-plan-generation-process.md) — Generate a month's week-by-week plan from the annual plan
+- [jira/jira-scaffold-process.md](jira/jira-scaffold-process.md) — Generate the weekly Jira CSV scaffold (invoked by plan reconcile)
+
+Knowledge and inputs:
 - [2026-content-plan.md](2026-content-plan.md) — Annual themes, Epics, ICP context, and important dates by month
-- [jira-csv-guidelines.md](jira-csv-guidelines.md) — Field mappings, subtask templates, ownership, and CSV output rules
+- [jira-csv-guidelines.md](jira-csv-guidelines.md) — Field mappings, subtask templates, ownership, capacity limits, CSV output rules
+- [jira/CONTEXT.md](jira/CONTEXT.md) — Weekly Jira import context: cadence, naming, scaffold contents, slug threading, lifecycle
+- [jira/_template.csv](jira/_template.csv) — Canonical CSV template with placeholder Work Item IDs (T###/S###)
+
+Operational ledgers:
+- [rolling-4week.md](rolling-4week.md) — Source of truth for what gets made and when; Travis writes here at Monday reconcile
+- [inputs.md](inputs.md) — Mailbox for raw ideas; triaged into the plan each Monday
 - [monthly-content-plans/](monthly-content-plans/) — Generated monthly plans, one file per month

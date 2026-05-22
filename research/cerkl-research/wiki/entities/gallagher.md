@@ -22,6 +22,7 @@ Gallagher (Arthur J. Gallagher & Co.) is a global insurance and consulting firm 
 ## Appearances in Sources
 
 - [[ragan-email-benchmarks-report-2026-05-12]] — referenced in the Comparison to Alternatives table as the standard IC-wide companion to email-specific benchmarks
+- [[qualtrics-change-engagement-2026-05-21]] — Gallagher State of the Sector 2026 cited as the loudest IC-trade counter to the Qualtrics finding: change fatigue = #2 IC barrier; 61% of orgs have no formal change-comms strategy; over-communicating drives 30% distrust / 24% burnout
 
 ## Connections
 

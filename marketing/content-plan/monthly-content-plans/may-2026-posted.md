@@ -38,21 +38,9 @@
 | Building a case for comms investment using data | Blog — cerkl.com | May 19 | Furqan |
 | Communicating inclusively across diverse workforces — AAPI Heritage Month | Blog — internalcommspro.com | May 19 | Furqan |
 | 5 metrics every internal communicator should track | LinkedIn carousel | May 20 | Furqan |
-| ~~Prove Your Impact: Using Analytics to Strengthen Internal Comms~~ (pulled 2026-05-13 — no speaker) | Webinar | ~~May 21~~ | Travis |
 | Make the case for comms investment with data | LinkedIn static/theme | May 19 | Furqan |
 | Link post: case-building for leadership blog | LinkedIn static/blog | May 20 | Furqan |
-| Has your leadership ever asked you to justify comms spend? | LinkedIn poll | May 21 | Furqan |
 
----
+*The May 21 LinkedIn poll wrapping the case-investment blog is still in flight as of 2026-05-21 reconcile — it lives in [`../rolling-4week.md`](../rolling-4week.md) as carryover and will land here at the next reconcile.*
 
-## Week 4 — May 26–29: Reinforce and Extend
-
-*Memorial Day May 25 — no sends. Publishing resumes Tuesday.*
-
-| Deliverable | Channel | Publish Date | Owner |
-|---|---|---|---|
-| From metrics to a leadership story: reporting on internal comms in a way that lands | Blog — cerkl.com | May 26 | Furqan |
-| Employee wellness comms: how segmentation helps you reach the right people | Blog — internalcommspro.com | May 26 | Furqan |
-| Month recap: prove your impact with better analytics | LinkedIn static/theme | May 26 | Furqan |
-| Link post: metrics to leadership story blog | LinkedIn static/blog | May 27 | Furqan |
-| When reporting internal comms metrics to leadership, what's the hardest part? | LinkedIn poll | May 28 | Furqan |
+*Week 4 (May 26–29) is in flight in [`../rolling-4week.md`](../rolling-4week.md) as the currently-locked week; rows will land here as they ship.*

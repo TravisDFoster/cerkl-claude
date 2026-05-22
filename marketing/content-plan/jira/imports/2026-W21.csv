@@ -1,0 +1,17 @@
+Work Item ID,Issue Type,Parent ID,Epic Link,Summary,Description,Owner,Channel,Start Date,Due Date
+T001,Task,,,Content - Blog (Cerkl.com) - Building a Case for Comms Investment Using Data,"Topic: Building a Case for Comms Investment Using Data
+Slug: building-case-comms-investment-using-data
+Draft (Google Doc): https://docs.google.com/document/d/1AfdP24oW7r4LcZS5KfsKroAXX3nhCRkS6rSxEwFSVG8/edit?usp=drive_link
+Note: legacy post (pre-brief-system) — Webflow CMS properties were set at publish time",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Blog Posts,2026-05-12,2026-05-19
+S001,Subtask,T001,,Blog – Copy,Write the blog post copy from the brief / outline.,,Blog Posts,2026-05-12,2026-05-15
+S002,Subtask,T001,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,2026-05-13,2026-05-15
+S003,Subtask,T001,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,2026-05-14,2026-05-15
+S004,Subtask,T001,,Blog – Implementation / Publishing,Stage in Webflow with CMS properties; schedule publish.,,Blog Posts,2026-05-15,2026-05-19
+T002,Task,,,Content - Blog (ICP) - Communicating Inclusively Across Diverse Workforces,"Topic: Communicating Inclusively Across Diverse Workforces
+Slug: communicating-inclusively-across-diverse-workforces
+Draft (Google Doc): https://docs.google.com/document/d/1aOT0DUNT1cjc18GamTc_pDQQaxXw1AXXbm9zEPOo2ek/edit?usp=drive_link
+Note: legacy post (pre-brief-system) — Wix CMS properties were set at publish time",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Blog Posts,2026-05-12,2026-05-19
+S005,Subtask,T002,,Blog – Copy,Write the blog post copy from the outline.,,Blog Posts,2026-05-12,2026-05-15
+S006,Subtask,T002,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,2026-05-13,2026-05-15
+S007,Subtask,T002,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,2026-05-14,2026-05-15
+S008,Subtask,T002,,Blog – Implementation / Publishing,Stage in Wix with CMS properties; schedule publish.,,Blog Posts,2026-05-15,2026-05-19

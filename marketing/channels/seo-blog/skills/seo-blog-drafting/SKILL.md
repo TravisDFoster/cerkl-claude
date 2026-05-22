@@ -1,8 +1,8 @@
 ---
 name: seo-blog-drafting
-description: Use when drafting a Cerkl SEO blog post from a completed pre-writing file — produces the full markdown draft (with Webflow CTA placeholders) ready for the editing pass. Triggers on phrases like "draft the blog post for [slug]", "write the [topic] post", "turn this pre-writing into a draft", "draft this blog". Prerequisite: a pre-writing file at `blog-posts-pre-writing/`. Output: `blog-posts-draft/YYYY-MM-DD_[slug]_draft.md`.
+description: Use when drafting a Cerkl SEO blog post from a completed pre-writing file — produces the full markdown draft (body + FAQ + FAQ schema) ready for the editing pass. The editing pass owns CTA-marker placement; drafting only owns the prose. Triggers on phrases like "draft the blog post for [slug]", "write the [topic] post", "turn this pre-writing into a draft", "draft this blog". Prerequisite: a pre-writing file at `blog-posts-pre-writing/`. Output: `blog-posts-draft/YYYY-MM-DD_[slug]_draft.md`.
 metadata:
-  version: 0.1.0
+  version: 0.3.0
 ---
 
 # SEO Blog Drafting
@@ -69,19 +69,17 @@ Answer the core question directly and early — within the first two paragraphs 
 
 ## Structure
 
-Deliver in clean markdown for copy-paste into Webflow. CTAs are reference-only — do not generate them.
+Deliver in clean markdown for copy-paste into Webflow. The draft has three blocks in this order: **Body**, **FAQ**, **FAQ Schema**.
 
-1. Top CTA — do not generate
-2. Content 1
-3. Middle CTA — do not generate
-4. Content 2
-5. Bottom CTA — do not generate
-6. FAQ or How-to Section
-7. FAQ or How-to Schema
+1. **Body** — the H1 followed by the H2 sections. Write the body so it pivots cleanly from a problem / pain / diagnosis arc in the first half to an operational / "how to fix it" arc in the second half, closing with a forward-moving takeaway. The pivot does not need to be marked — `seo-blog-editing` finds it post-scoring and inserts the three CTA-marker comments (`<!-- Top CTA -->`, `<!-- Middle CTA -->`, `<!-- Bottom CTA -->`). Drafting's only job here is to make sure the pivot exists and is locatable; do not emit the markers yourself.
+
+2. **FAQ or How-to section** — see "FAQ vs. How-to" below.
+
+3. **FAQ or How-to schema** — emit a `## FAQ Schema` (or `## How-to Schema`) H2 followed by a fenced HTML code block containing a `<script type="application/ld+json">` JSON-LD block. The `mainEntity` array must include one `Question` / `Answer` pair per FAQ in block 2, with the `text` field copying the FAQ answer body verbatim (escape internal quotes as `'` or `\"`). Include a one-line instruction above the code block telling Furqan to paste it into Webflow's custom-code area. This block is **required** — a post without schema misses a free rich-result opportunity.
 
 ### FAQ vs. How-to
 
-Instructional posts (e.g., "How to send a survey in Outlook") use a **How-to section** with How-to schema. All others use an **FAQ** with FAQ schema.
+Instructional posts (e.g., "How to send a survey in Outlook") use a **How-to section** with `HowTo` schema. All others use an **FAQ** with `FAQPage` schema. See [`/Users/travisfoster/claude-code/cerkl/marketing/skills/schema-markup/SKILL.md`](/Users/travisfoster/claude-code/cerkl/marketing/skills/schema-markup/SKILL.md) for the canonical JSON-LD shapes.
 
 ## What to avoid
 

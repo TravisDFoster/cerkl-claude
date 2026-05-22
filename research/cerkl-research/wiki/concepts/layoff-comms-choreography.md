@@ -7,7 +7,7 @@ tags: [change-management-communications, leadership-communications]
 
 ## Definition
 
-The IC-controlled mechanics around layoff and restructure announcements — **tone, channel, timing, two-way response, and stakeholder acknowledgement** — and how those choreography decisions determine whether the message lands, regardless of the writing. Named here (May 2026) as a concept on the back of [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]]'s side-by-side comparison of three layoff memos from one week.
+The IC-controlled mechanics around layoff and restructure announcements — **tone, channel, timing, two-way response, and stakeholder acknowledgement** — and how those choreography decisions determine whether the message lands, regardless of the writing. Named here (May 2026) as a concept on the back of [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]]'s side-by-side comparison of three layoff memos from one week — and extended on 2026-05-18 by the [[oracle-mass-email-layoff-lessons-2026-05-18]] dissection, which adds the highest-scale anchor case (Oracle, ~30,000 cuts, 6 a.m. mass email) and names a sibling failure mode at the *language* axis ([[boilerplate-layoff-language]]).
 
 ## Why It Matters
 
@@ -28,39 +28,59 @@ The four axes IC actually controls (Ragan's implicit framework):
 | **Timing** | Notice period, sequencing of internal-then-public, manager 1:1 cadence, meeting scheduling | The 15-minute notice (GM); same-day public blog before internal cascade (GitLab) |
 | **Two-way channel + stakeholder ack** | Q&A space, AMA, naming departing employees, calling out staying staff, acknowledging service quality loss | Adversarial framing (Meta's Bosworth); silence (GM); speaking past employees to investors (GitLab) |
 
-The three-case pattern from May 2026 ([[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]]):
+The 2026 layoff-comms reference set (continuously updated):
 
-| Case | Tone | Channel | Stakeholder ack | Outcome |
-|---|---|---|---|---|
-| [[linkedin]] (Shapero, ~875 cuts) | Strategic, formulaic | All-employee memo + cascade | Yes — named departers | Inauthenticity risk only |
-| [[gm]] (~500–600 IT roles) | Boilerplate, cold | Email + 15-min scripted meeting | None visible | Employee revolt + AI-replacement narrative |
-| [[gitlab]] (Staples, ~7% + 30% country footprint) | Candid, investor-pitched | Public blog | None (audience = investors) | Investor skepticism + employee chill |
+| Case | Date | Scale | Tone | Channel | Stakeholder ack | Outcome |
+|---|---|---|---|---|---|---|
+| [[oracle]] | 2026-03-31 | ~20–30K (~18%) | Boilerplate; "broader organizational change" | Single email, 6 a.m., access revoked simultaneously | Anonymous ("Oracle Leadership"); no survivor support | LinkedIn firestorm in minutes; severance petition; TechCrunch follow-up; industry shorthand for "what not to do" |
+| [[linkedin]] (Shapero) | 2026-05-13 | ~875 (~5%) | Strategic, formulaic | All-employee memo + cascade | Yes — named departers | Inauthenticity risk only |
+| [[gm]] | 2026-05-12 | ~500–600 IT | Boilerplate, cold | Email + 15-min scripted meeting | None visible | Employee revolt + AI-replacement narrative |
+| [[gitlab]] (Staples) | 2026-05-12 | ~7% + 30% country footprint | Candid, investor-pitched | Public blog | None (audience = investors) | Investor skepticism + employee chill |
+| [[cisco]] (Robbins) | 2026-05-13 | ~4,000 (~5%) | Defensive ("strong-quarter layoff") | All-employee memo | Yes — tangible offer (Cisco U free year) | Mid praise; opener undermined warmth |
+| [[microsoft]] (Rule of 70) | 2026-04-23 / notif. 2026-05-07 | ~8,750 US eligible (~7%) | No memo; voluntary euphemism | Buyout program notification | None at CEO level | Labor-press critique; absence-of-memo is the choice |
+| [[meta]] (Zuckerberg) | 2026-05-20 | reported 8,000-cut restructure | Self-justifying ("success isn't a given") | All-employee memo + CPO operational memo | Implicit | Blind culture rating −39%, overall −25% |
 
-The diagnostic: **all three got the framing roughly right on their own terms; two of three broke at the delivery layer.** The thing communicators can fix is not the words — it's the choreography around them.
+The diagnostic: **all four got the framing roughly right on their own terms; three of four broke at the delivery layer.** The thing communicators can fix is not the words — it's the choreography around them. Oracle is the high-scale anchor; the patterns scale to 30,000 just as they scale to 600.
 
 The 2026 anti-pattern playbook to avoid:
 
-- *"Reinvent how we work"* / *"agile teams"* boilerplate — flagged by Ragan as a tell
+- *"Reinvent how we work"* / *"agile teams"* boilerplate — flagged by Ragan as a tell (see [[boilerplate-layoff-language]])
+- *"Broader organizational change"* euphemism — Oracle, GM, Sony, ProPublica all used it within weeks (see [[boilerplate-layoff-language]])
 - *"This is not AI cost-cutting"* disclaimers — coverage will call it AI-washing anyway (the GitLab case)
 - Channel inversion — public blog for internal-first audiences
 - 15-minute-notice meetings — no two-way channel = the void fills itself
+- **6 a.m. mass email with simultaneous access revocation** ([[oracle]]) — no transition window = same-day LinkedIn firestorm
 
 ## Seen In
 
-- [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]] — primary source; concept built on the triangulation
-- [[linkedin]] — Case 1 (acceptable but formulaic)
-- [[gm]] — Case 2 (delivery failure; the literal anti-Cerkl case study)
-- [[gitlab]] — Case 3 (candid but stakeholder-blind)
+- [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]] — concept founding source; three-case triangulation
+- [[oracle-mass-email-layoff-lessons-2026-05-18]] — concept extension; high-scale anchor case (Oracle)
+- [[layoff-memo-subgenre-2026-05-21]] — full subgenre articulation; six-anchor comparison + five emerging conventions + reference frameworks
+- [[linkedin]] — 2026-05-13 case (acceptable but formulaic; split-messaging anti-template)
+- [[gm]] — 2026-05-12 case (delivery failure; the literal anti-Cerkl case study)
+- [[gitlab]] — 2026-05-12 case (candid but stakeholder-blind; high-transparency template anchor)
+- [[oracle]] — 2026-03-31 case (highest-scale anchor; 6 a.m. mass email)
+- [[cisco]] — 2026-05-13 case (corporate-best-practice template; strong-quarter-layoff anchor)
+- [[microsoft]] — 2026-04-23 case (no-memo Rule-of-70 voluntary-first anchor)
+- [[meta]] — 2026-05-20 extension case (self-justifying memo; Blind culture rating −39%)
 - [[daniel-shapero]] — LinkedIn CEO
 - [[bill-staples]] — GitLab CEO
-- [[ragan-communications]] — publisher
+- [[chuck-robbins]] — Cisco CEO
+- [[ragan-communications]] — publisher (founding source)
+- [[amazing-workplaces]] — publisher (extension source; vendor-adjacent dissection)
 
 ## Related Concepts
 
+- [[boilerplate-layoff-language]] — sibling concept at the *language* axis; the tells that signal a choreography failure before the choreography lands
 - [[ai-washing]] — what coverage calls layoffs framed-but-not-truly AI-driven; sibling failure mode
 - [[ai-rollout-comms]] — choreography is the layoff-message half of the chain (rollout-comms is the AI-launch-message half)
 - [[people-amplification]] — Gartner's analyst-grade reframe that supports the IC pushback against poorly choreographed AI-cuts
 - [[manager-cascade]] — single-axis precursor; choreography is the multi-axis frame
+- [[delivery-as-comms-strategy]] — topic page citing this concept as load-bearing evidence
+- [[ai-restructure-memo-subgenre]] — 2026 application of this framework as a named comms subgenre with five conventions
+- [[strong-quarter-layoff]] — Cisco-anchored sub-pattern at the tone axis
+- [[voluntary-first-default]] — GitLab + Microsoft-anchored emerging convention
+- [[pucc-framework]] — Sutton's psychological framework; parallel logic that explains why "good" templates land
 
 ## Tensions / Criticisms
 

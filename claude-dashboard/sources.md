@@ -1,0 +1,298 @@
+# Claude Dashboard — Source Registry
+
+Authoritative list of what the dashboard surfaces. The refresh process reads this file, scans declared folders, extracts any pinned-content snippets, and regenerates `data.json`.
+
+**Convention**: parse filename and folder only — never read source-file contents *except* for declared `extract_from` files (see Pinned section). Date comes from filename prefix (`YYYY-MM-DD-...`), suffix (`...-YYYY-MM-DD.html`), or ISO-week (`YYYY-Www`). Title is the humanized filename.
+
+---
+
+## Pinned
+
+These items are the **always-visible top-of-dashboard panels** — the few documents Travis opens most often, plus the few actions Travis launches most often. Two kinds:
+
+- `kind: artifact` (default) — points at a tangible document. Buttons: `[↗ Open]` (link) + `[⟳ Refresh]` (copy-prompt to update in place).
+- `kind: action` — points at no specific artifact. Buttons: `[↗ Plan]` (opens the planning doc context) + `[▶ Run]` (copy-prompt to kick off the work).
+
+Layout: the first pinned item (`growth-project-tracker`) renders **wide** and spans both rows on the left (it carries inline extracted content). The remaining 4 render as a **compact 2×2 grid** on the right.
+
+### growth-project-tracker
+- **kind**: artifact
+- **layout**: wide
+- **label**: Growth Project Tracker
+- **url**: `/cerkl/personal-assistant/growth-project-tracker.html`
+- **subtitle**: PA — used in Thursday leadership meeting
+- **extract_from**: `/Users/travisfoster/claude-code/cerkl/personal-assistant/INDEX.md`
+- **extract_section**: `## Top of Mind` (numbered list — extract each `**[Title](link)** — status` row)
+- **refresh_prompt**:
+  ```
+  Regenerate the Growth Project Tracker (leadership review).
+
+  Process: /Users/travisfoster/claude-code/cerkl/personal-assistant/skills/growth-project-tracker.md
+  ```
+- **cadence**: weekly
+- **notes**: Evergreen — one file (`growth-project-tracker.{md,html}`) updated in place each week. The doc's content carries the date in its meta header; the filename never changes.
+
+### current-week
+- **kind**: artifact
+- **label**: Current Week Calendar
+- **url**: `/cerkl/personal-assistant/calendar/current-week.html`
+- **subtitle**: PA — Mon–Fri work plan
+- **refresh_prompt**:
+  ```
+  Re-plan / materialize my current week.
+
+  Process: /Users/travisfoster/claude-code/cerkl/personal-assistant/skills/plan-week.md
+  ```
+- **cadence**: weekly
+
+### content-reconcile
+- **kind**: action
+- **label**: Content Reconcile
+- **plan_url**: `/cerkl/marketing/content-plan/rolling-4week.md`
+- **subtitle**: Sync rolling 4-week plan
+- **run_prompt**:
+  ```
+  Run the weekly content plan reconcile — sync the rolling 4-week plan with brief queue, channel posts, and Jira.
+
+  Process: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/plan-reconcile-process.md
+  ```
+- **cadence**: weekly
+
+### seo-leadership-status
+- **kind**: artifact
+- **label**: Cerkl Blog SEO — Leadership Status
+- **url**: `/cerkl/marketing/seo/reports/2026-05-15-blog-seo-leadership-status.html` *(latest — auto-pick newest in `reports/` once Travis decides whether this stays dated or goes evergreen)*
+- **subtitle**: Blog SEO program health
+- **refresh_prompt**:
+  ```
+  Generate a fresh SEO leadership status report.
+
+  Process: /Users/travisfoster/claude-code/cerkl/marketing/seo/seo-leadership-report-process.md
+  ```
+- **cadence**: monthly
+
+### blog-writing
+- **kind**: action
+- **label**: This Week's Blog Posts
+- **plan_url**: `/cerkl/marketing/content-plan/rolling-4week.md`
+- **subtitle**: Draft scheduled posts (cerkl.com + ICPro)
+- **run_prompt**:
+  ```
+  Start this week's blog post writing.
+
+  Check the rolling 4-week plan to identify scheduled posts: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md
+
+  Process — cerkl.com (Webflow): /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md
+  Process — internalcommspro.com (Wix): /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/icpro-blog-process.md
+  ```
+- **cadence**: weekly
+
+---
+
+## Categories
+
+Each category has: `slug`, `label`, `path`, `match`, `home_recent`, `kind` (html/md), optional `new_run` (the prompt for spawning a fresh artifact), and optional `cadence` (daily / weekly / monthly / adhoc — drives the stale indicator).
+
+**Stale thresholds**: daily → >2 days = stale; weekly → >8 days = stale; monthly → >32 days = stale; adhoc → no indicator.
+
+### personal-assistant
+- **label**: Personal Assistant
+- **path**: `/Users/travisfoster/claude-code/cerkl/personal-assistant/`
+- **match**: `*.html`
+- **home_recent**: 2
+- **cadence**: weekly
+- **notes**: Items in this category already drive the Pinned section above; the category-level card stays for archive access.
+
+### marketing-seo
+- **label**: Marketing — SEO Reports
+- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/seo/reports/`
+- **match**: `*.html`
+- **home_recent**: 2
+- **cadence**: monthly
+- **new_run**:
+  ```
+  Generate a fresh SEO leadership status report.
+
+  Process: /Users/travisfoster/claude-code/cerkl/marketing/seo/seo-leadership-report-process.md
+  ```
+
+### marketing-design-one-pagers
+- **label**: Marketing — One-Pagers
+- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/design/one-pagers/pdfs/`
+- **match**: `*.html`
+- **home_recent**: 2
+- **exclude**: `reference-one-pager.html`
+- **cadence**: adhoc
+- **new_run**:
+  ```
+  Build a new one-pager. I'll provide the topic/source when you ask.
+
+  Process: /Users/travisfoster/claude-code/cerkl/marketing/design/one-pagers/one-pager-process.md
+  ```
+
+### marketing-paid-youtube
+- **label**: Marketing — Paid YouTube Hooks
+- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/channels/paid-youtube/`
+- **match**: `**/ideas.html`
+- **home_recent**: 2
+- **cadence**: adhoc
+- **new_run**:
+  ```
+  Generate a new batch of paid YouTube hook ideas.
+
+  Skill: /Users/travisfoster/claude-code/cerkl/marketing/channels/paid-youtube/skills/paid-youtube-hook-batch/SKILL.md
+  ```
+
+### ic-trends-daily
+- **label**: IC Trends — Daily
+- **path**: `/Users/travisfoster/claude-code/cerkl/research/ic-trends/daily/`
+- **match**: `*.html`
+- **home_recent**: 2
+- **cadence**: daily
+- **new_run**:
+  ```
+  Run today's IC Trends daily recap.
+
+  Process: /Users/travisfoster/claude-code/cerkl/research/ic-trends/ic-trends-daily-process.md
+  ```
+
+### ic-trends-team-updates
+- **label**: IC Trends — Team Updates
+- **path**: `/Users/travisfoster/claude-code/cerkl/research/ic-trends/team-update/`
+- **match**: `*.html`
+- **home_recent**: 2
+- **cadence**: weekly
+- **new_run**:
+  ```
+  Run this week's IC Trends team update.
+
+  Process: /Users/travisfoster/claude-code/cerkl/research/ic-trends/team-update-process.md
+  ```
+
+### ic-trends-deepdives
+- **label**: IC Trends — Deep Dives
+- **path**: `/Users/travisfoster/claude-code/cerkl/research/ic-trends/deepdives/`
+- **match**: `*.html`
+- **home_recent**: 2
+- **cadence**: adhoc
+- **new_run**:
+  ```
+  Start a new IC Trends deep dive. I'll provide the source / topic when you ask.
+
+  Process: /Users/travisfoster/claude-code/cerkl/research/ic-trends/ic-trends-deepdive-process.md
+  ```
+
+### competitor-marketing-weekly
+- **label**: Competitor Marketing — Weekly
+- **path**: `/Users/travisfoster/claude-code/cerkl/research/competitor-marketing/weekly/`
+- **match**: `*.html`
+- **home_recent**: 2
+- **cadence**: weekly
+- **new_run**:
+  ```
+  Run this week's competitor marketing weekly recap.
+
+  Process: /Users/travisfoster/claude-code/cerkl/research/competitor-marketing/competitor-marketing-weekly-process.md
+  ```
+
+### competitor-marketing-profiles
+- **label**: Competitor Marketing — Profiles
+- **path**: `/Users/travisfoster/claude-code/cerkl/research/competitor-marketing/Competitors/`
+- **match**: `*.html`
+- **home_recent**: 2
+- **cadence**: adhoc
+- **notes**: One-time batch — no `new_run` button.
+
+---
+
+## Content Production
+
+Blog channels — high-volume publishing pipelines. Rendered in their own zone, NOT dimmed (these are published artifacts, not unrendered drafts). Items link to local `.md` working copies; live URLs live in Webflow / Wix.
+
+### marketing-blog-seo
+- **label**: Cerkl Blog (cerkl.com)
+- **kind**: blog
+- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/blog-posts-live/`
+- **match**: `*_live.md`
+- **home_recent**: 5
+- **cadence**: weekly
+- **subtitle**: Webflow · primary growth channel
+- **new_run**:
+  ```
+  Draft this week's planned Cerkl blog post(s) for cerkl.com.
+
+  Check the rolling 4-week plan: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md
+  Process: /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md
+  ```
+
+### marketing-blog-icpro
+- **label**: Internal Comms Pro (internalcommspro.com)
+- **kind**: blog
+- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/blog-posts-live/`
+- **match**: `*_live.md`
+- **home_recent**: 5
+- **cadence**: weekly
+- **subtitle**: Wix · ICP-aligned secondary
+- **new_run**:
+  ```
+  Draft this week's planned Internal Comms Pro blog post(s) for internalcommspro.com.
+
+  Check the rolling 4-week plan: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md
+  Process: /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/icpro-blog-process.md
+  ```
+
+**Title parsing for blog files**: filename pattern is `YYYY-MM-DD_slug-with-dashes_state.md`. Strip the leading `YYYY-MM-DD_` and trailing `_state`, replace `-` with space, title-case. State is one of `live` / `draft` / `pre-writing` — for Content Production we only include `*_live.md`.
+
+---
+
+## MD-only categories (dimmed until rendered to HTML)
+
+These categories have `.md` outputs but no HTML siblings. They appear on the dashboard at reduced opacity so the gap stays visible without dominating the view. Link to the `.md` file directly.
+
+### hubspot-audits
+- **label**: Ops — HubSpot Audits
+- **path**: `/Users/travisfoster/claude-code/cerkl/hubspot/reports/`
+- **match**: `*.md`
+- **home_recent**: 2
+- **cadence**: adhoc
+
+### marketing-seo-audits
+- **label**: Marketing — SEO Audits
+- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/seo/audits/`
+- **match**: `*.md`
+- **home_recent**: 2
+- **cadence**: adhoc
+
+### marketing-seo-briefs
+- **label**: Marketing — SEO Briefs
+- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/seo/briefs/`
+- **match**: `*.md`
+- **home_recent**: 2
+- **cadence**: adhoc
+- **new_run**:
+  ```
+  Produce SEO briefs from current gaps / refresh candidates.
+
+  Process: /Users/travisfoster/claude-code/cerkl/marketing/seo/seo-brief-production-process.md
+  ```
+
+---
+
+## Global excludes
+
+Never include — apply to every category scan:
+
+- `*template*`, `*scaffold*`
+- `*-process.md`, `*-process.html`
+- `CLAUDE.md`, `CONTEXT.md`, `SKILL.md`, `PRINCIPLES.md`, `README*`
+- Anything under `**/skills/**`, `**/wiki/**`, `**/raw/**`
+
+---
+
+## Future work
+
+- HubSpot / SEO audits/briefs → run through [`md-to-html`](../skills/md-to-html/SKILL.md), then move from MD-only to main category list.
+- When `growth-project-tracker.html` becomes evergreen (one file), update `pinned.growth-project-tracker.url` and remove the date from `personal-assistant` category items.
+- Consider extracting from `current-week.md` too (deadlines or today's priorities) if the inline content proves useful for Growth Project Tracker.
+- Per-pinned-item *stale* indicator could use `extract_from` file mtime as ground truth rather than referenced HTML mtime.
+- `cadence` could be extended to per-day (e.g., "Mon/Wed/Fri") if a 3x-week IC trends rhythm gets adopted.

@@ -23,6 +23,7 @@ Most interactions run through one of these skills. Load the skill file when inte
 | "Friday retro", "wrap up the week", "archive this week" | `skills/retro.md` |
 | "Process this meeting note", "extract action items from `<meetings/...>`", reviewing meeting files | `skills/process-meeting.md` |
 | "Catch me up", start of session, returning after time away, checking what's changed | `skills/refresh.md` |
+| "Regenerate the leadership review", "growth project tracker", Thursday leadership-meeting prep | `skills/growth-project-tracker.md` |
 | "Add a task: X", "log this", quick capture into the right project | `skills/capture.md` |
 | "Start a project for X", "spin up a new project" — also called by `capture` and `process-meeting` when no project fits | `skills/new-project.md` |
 
@@ -48,6 +49,7 @@ personal-assistant/
 │   ├── retro.md           ← Friday wrap + archive
 │   ├── process-meeting.md
 │   ├── refresh.md
+│   ├── growth-project-tracker.md  ← weekly evergreen leadership review (Thursday meeting)
 │   ├── capture.md
 │   └── new-project.md     ← spin up a new project; called by capture and process-meeting
 ├── projects/          ← per-project state + history

@@ -21,6 +21,8 @@ Benchmark sources for IC measurement stratify by authority tier:
 
 **The structural absence of a [[cross-channel-benchmark]] is the most important fact about IC measurement as of 2026.** Every published benchmark is single-channel. Cerkl is positioned to publish the first.
 
+**Measurement-of-change-comms is the 2026 lane the analyst voice is naming explicitly.** [[mckinsey-agentic-ai-workforce-redesign-2026-05-18]] argues that *"without top-down change management to communicate how agents can be coworkers, reskilling efforts tend to remain ineffective"* — a measurement claim wearing strategy-claim clothing. Pair with [[gartner-people-centric-ai-2026-05-15]] (depth-and-diversity-of-AI-engagement as the True ROI Index) and [[forrester-ai-rewrite-ex-deep-listening-2026-05-15]] (deep listening as the new measurement surface) for [[analyst-trio-comms-as-ai-gate]]. The 2026 layoff-comms reference set — [[oracle-mass-email-layoff-lessons-2026-05-18]] in particular — makes the *measurement of delivery* operationally visible: read insights, segmentation analytics, retargeting metrics, pulse surveys are the receipts when leadership asks "did this land?" See [[delivery-as-comms-strategy]] for the unifying topic frame.
+
 For blog citation discipline: anchor headline stats with primary-research where possible. Use practitioner-survey or vendor-tier benchmarks for channel-specific numbers (email open rates, channel-effectiveness ratings) with the source and methodology explicitly named. Cross-vendor numbers measuring different denominators are not contradictory and shouldn't be presented as such (see [[ai-in-internal-comms]] for an example: 49% vendor-AI adoption (Forrester) vs 73% weekly+ AI use (Workshop)).
 
 ## Citable Stat Anchors (curated for blog use)
@@ -72,9 +74,12 @@ Other Cerkl competitors (per the hardcoded list in [CLAUDE.md](../../CLAUDE.md))
 - [[forrester]] — analyst-tier source
 - [[gallagher]] — practitioner-survey-tier source (industry-wide *State of the Sector*)
 - [[iabc]] / [[usc-annenberg]] / [[meltwater]] — independent / academic tier (sparse)
+- [[mckinsey]] — consulting-tier source (workforce-design + change-comms-as-AI-gate)
+- [[gartner]] — analyst-tier source (people-centric AI, True ROI Index frame)
 - [[contactmonkey]] — vendor-tier source for email benchmarks (76/9)
 - [[politemail]] — vendor-tier source for email benchmarks (66/7); distributed via [[ragan-communications]]
 - [[workshop]] — vendor-tier source for practitioner-priority data
+- [[oracle]] — anti-case anchor for measurement-of-change-comms (the receipts that didn't exist)
 
 ## Key Concepts
 
@@ -85,6 +90,10 @@ Other Cerkl competitors (per the hardcoded list in [CLAUDE.md](../../CLAUDE.md))
 - [[cross-channel-benchmark]] — structurally absent category; defensible content slot for cross-channel-capable vendors
 - [[ai-adoption-gap]] — analyst-tier critique of vendor AI investment
 - [[do-more-with-less]] — practitioner-resource framing
+- [[newsletter-format-audit]] — practitioner-tactical concept anchoring per-section measurement
+- [[layoff-comms-choreography]] — change-comms measurement framework
+- [[analyst-trio-comms-as-ai-gate]] — McKinsey + Gartner + Forrester synthesis of change-comms as the AI ROI gate
+- [[delivery-as-comms-strategy]] — unifying topic-level frame
 
 ## Practitioner Voices
 
@@ -99,6 +108,8 @@ Other Cerkl competitors (per the hardcoded list in [CLAUDE.md](../../CLAUDE.md))
 | [[ragan-email-benchmarks-report-2026-05-12]] | 2026-05-12 | Reveals PoliteMail/Ragan co-branded benchmark; surfaces [[open-rate-inflation]] as cross-cutting methodology critique; flags [[cross-channel-benchmark]] vacuum |
 | [[contactmonkey-internal-email-benchmark-2026]] | 2026-05-08 | Vendor-tier email benchmarks: 76% open / 9% click |
 | [[six-internal-comms-trends-2026]] | 2026-04-14 | Vendor-tier practitioner-priority signal: manager cascade, AI usage, channel effectiveness, resource constraints |
+| [[mckinsey-agentic-ai-workforce-redesign-2026-05-18]] | 2026-04-06 | Change-comms named as AI ROI gate; CIO/CHRO co-buyer; framework for measuring agentic-AI workforce reshape |
+| [[oracle-mass-email-layoff-lessons-2026-05-18]] | 2026-05-18 | Anti-case for measurement-of-change-comms (no receipts, no segmentation, no follow-up) |
 
 ## Open Questions
 

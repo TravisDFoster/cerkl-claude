@@ -1,23 +1,24 @@
-# Bulk ICPro Blog Production
+# Weekly ICPro Blog Production
 
-> Take a target month from the content plan and produce every Internal Comms Pro (internalcommspro.com) blog post on the calendar — pre-writing, draft, edit — into the icpro-blog channel folder. Output: one `_live.md` per post in `blog-posts-live/`, each also published to Drive with `ICP` in the filename.
+> Take every Internal Comms Pro (internalcommspro.com) blog row scheduled for the locked week of [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md) and produce every post: pre-writing → draft → edit → publish. Output: one `_live.md` per post in `blog-posts-live/`, each uploaded to Drive with `ICP` in the filename, each Drive URL inserted into that week's Jira CSV at [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/).
 
 ## Trigger
 
-- "Write the [Month YYYY] ICPro blog posts"
-- "Run bulk ICP production for [Month YYYY]"
-- "Produce the [Month] internalcommspro.com content"
-- "Draft and edit every ICPro post for [Month YYYY]"
+**Default (weekly):**
+- "Write next week's ICPro blog posts"
+- "Run weekly ICPro production"
+- "Write Week 1 of rolling-4week for ICPro"
+
+**Overrides:**
+- *Single post:* `"Write the [slug] ICPro post"`, `"Run production on the [date] ICPro row"` — operates on one row, regardless of which week
+- *Multi-week:* `"Write ICPro for weeks 1-2"`, `"Run ICPro production for weeks 1, 2, and 3"` — pulls from multiple weeks of rolling-4week
 
 ## Inputs
 
 I'll ask before scaffolding:
 
-1. **Target month** (e.g., May 2026) — used to find `monthly-content-plans/[month-year].md` and `[month-year]-jira.csv` in the content-plan folder.
-2. **Subset?** — all ICPro posts on the plan, or a specific list of slugs.
-3. **Skip Drive upload?** — default is to publish each `_live.md` to Drive; user can opt out.
-
-**For n=1 (single-post runs):** skip the sub-agent dispatch in Steps 2a/2b/2c and run each step inline in the orchestrator's own context. The "dispatch one sub-agent per post" framing exists to parallelize across many posts; with one post, the dispatch overhead is wasted. Same skills, same prompts, same output paths — just inline.
+1. **Target window** — defaults to Week 1 (locked) of [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md). Can be overridden with a single deliverable title/slug or one or more rolling-4week week numbers.
+2. **Subset?** — within the target window, all ICPro rows or a specific list of slugs.
 
 ## Context to load
 
@@ -28,6 +29,7 @@ I'll ask before scaffolding:
 - /Users/travisfoster/claude-code/cerkl/marketing/CONTEXT.md
 - /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/CONTEXT.md
 - /Users/travisfoster/claude-code/cerkl/marketing/content-plan/CONTEXT.md
+- /Users/travisfoster/claude-code/cerkl/marketing/content-plan/content-lifecycle-process.md (end-to-end cadence — read for the Drive-URL-before-CSV ordering constraint and the Monday-CSV-scaffold expectation)
 
 (Per [PRINCIPLES.md #4](/Users/travisfoster/claude-code/cerkl/PRINCIPLES.md), this list is authoritative for this scope — parent loads do not apply unless re-listed here.)
 
@@ -39,83 +41,118 @@ I'll ask before scaffolding:
 
 ## Steps
 
-### Step 1 — Load the monthly plan and filter for ICPro
+### Step 1 — Load ICPro rows from the target window
 
 - **Owner:** Claude
-- **Parallelizable with:** —
-- **Needs:** —
-- **Inputs:** `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/monthly-content-plans/[month-year].md` and `[month-year]-jira.csv`
-- **Produces:** an in-memory list of ICPro blog posts for the month, each with `{publish_date, slug, working_title, summary}` parsed from the Jira CSV.
-- **What to do:** Read both files. Filter the CSV to rows where:
-  - `Channel` column = `Blog Posts`, **AND**
-  - `Summary` column begins with `Content - Blog (ICP) -`
-  
-  This is the rule that splits ICPro posts from Cerkl posts in a shared content plan — both have channel = "Blog Posts", but only ICPro rows carry the `(ICP)` marker. (Cerkl posts use `(Cerkl.com)`.)
-  
-  For each, extract publish date (`YYYY-MM-DD`), slug, working title, and the post summary. If `Subset?` was specified, narrow the list. Confirm the list with the user before proceeding.
+- **Inputs:** [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md) and the resolved target window from input #1
+- **Produces:** an in-memory list of ICPro posts to process, each with `{publish_date, deliverable_title, slug, iso_week}`
+
+**What to do:**
+
+Resolve the target window into a set of publish dates (same logic as seo-blog-process.md): default Week 1; or specific week numbers; or single-row by deliverable title.
+
+Read rolling-4week.md and filter rows where:
+- `Channel` column = `Blog — internalcommspro.com`, **AND**
+- `Publish` falls within the target window's date range
+
+For each matched row:
+- **Derive the slug** from the deliverable title using the [slug synthesis rule](../../content-plan/jira/CONTEXT.md#slug-threading-the-canonical-identity): lowercase → strip common English articles (a, an, the, for, of, to, in, and) → replace runs of non-alphanumeric with `-` → strip leading/trailing hyphens → truncate to 60 chars (back to previous hyphen if mid-word) → suffix `-2`/`-3`/etc. on collision
+- Capture `publish_date`, `deliverable_title`, computed `slug`, and `iso_week` (from publish_date)
+
+ICPro has no brief queue — the deliverable title in rolling-4week is the source of truth for "what to write." If `Subset?` was specified, narrow the list. Confirm the list with the user before proceeding.
+
+Cerkl.com posts are out of scope — they have their own production path under [`../seo-blog/`](../seo-blog/).
+
+### Step 1.5 — Verify Jira CSV scaffold has matching rows
+
+- **Owner:** Claude
+- **Inputs:** `iso_week` and `slug` for each post; [`../../content-plan/jira/imports/`](../../content-plan/jira/imports/)
+- **Produces:** a verified set of `{slug → CSV path}` mappings
+
+For each distinct ISO week in the batch, confirm a CSV scaffold exists at `../../content-plan/jira/imports/YYYY-Www.csv` and that it contains a row for each post in the batch (look for `Slug: <slug>` in the Description column of a Task row where `Channel = Blog — internalcommspro.com`).
+
+If any CSV is missing or any expected row is absent: **stop and surface the gap.** Monday reconcile creates the scaffold; this skill does not. If a row exists for the ICPro channel/week but the slug doesn't match, the scaffold creator and this orchestrator have synthesized different slugs — surface both for diagnosis.
 
 ### Step 2a — Pre-writing (per post)
 
-- **Owner:** Claude (sub-agent per post — parallelizable)
-- **Parallelizable with:** every other 2a instance (one per post)
+- **Owner:** Claude (sub-agent per post for `n ≥ 3`; inline for `n ≤ 2`)
+- **Sequencing:** parallelizable across posts
 - **Needs:** [`skills/icpro-blog-pre-writing/SKILL.md`](skills/icpro-blog-pre-writing/SKILL.md)
-- **Inputs:** post summary + working title from Step 1
+- **Inputs:** deliverable title + publish date + slug from Step 1
 - **Produces:** `blog-posts-pre-writing/YYYY-MM-DD_[slug]_pre-writing.md`
-- **What to do:** Dispatch one sub-agent per post. Each sub-agent loads the pre-writing skill, completes every property (title, slug, keywords, category, meta, featured image brief, outline), and writes the file.
 
-**Sub-agent brief must say:**
-- Inputs verbatim: post summary, working title, publish date, channel = icpro-blog (internalcommspro.com).
-- Output path: `/Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/blog-posts-pre-writing/YYYY-MM-DD_[slug]_pre-writing.md`.
-- Length cap: pre-writing is structured properties + outline, not prose; aim ≤300 lines.
-- Conventions: dates in `YYYY-MM-DD`; slug lowercase-hyphenated, ≤60 chars.
-- Use the 13-category list and Wix property structure in the pre-writing skill verbatim — do not invent categories or add Cerkl-style CTA tables.
-- Author defaults to `ICP Staff`.
+**Batch size rule:** for `n ≤ 2` posts (typical weekly batch — usually exactly 1 ICPro post per week), run inline in the orchestrator. For `n ≥ 3` (multi-week or catch-up), dispatch one sub-agent per post.
+
+**Sub-agent brief (or inline run) must:**
+- Take deliverable title, publish date, channel (icpro-blog), and pre-computed slug as inputs
+- Write to `/Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/blog-posts-pre-writing/YYYY-MM-DD_[slug]_pre-writing.md`
+- Complete every property (title, slug, keywords, category, meta, featured image brief, outline) using the 13-category list and Wix property structure in the pre-writing skill — do not invent categories or add Cerkl-style CTA tables
+- Length cap: pre-writing is structured properties + outline, not prose; aim ≤300 lines
+- Author defaults to `ICP Staff`
 
 ### Step 2b — Drafting (per post)
 
-- **Owner:** Claude (sub-agent per post — parallelizable)
-- **Parallelizable with:** every other 2b instance, but **must run after that post's 2a finishes** (sequential per-post, parallel across posts).
+- **Owner:** Claude (sub-agent per post for `n ≥ 3`; inline for `n ≤ 2`)
+- **Sequencing:** must run after that post's 2a completes; parallelizable across posts otherwise
 - **Needs:** [`skills/icpro-blog-drafting/SKILL.md`](skills/icpro-blog-drafting/SKILL.md)
-- **Inputs:** the post's pre-writing file from 2a
+- **Inputs:** the pre-writing file from 2a
 - **Produces:** `blog-posts-draft/YYYY-MM-DD_[slug]_draft.md`
-- **What to do:** Dispatch one sub-agent per post. Each sub-agent loads the drafting skill, reads its pre-writing file, researches the topic if needed, and writes the full markdown draft.
 
-**Sub-agent brief must say:**
-- Inputs verbatim: full path to the pre-writing file.
-- Output path: `/Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/blog-posts-draft/YYYY-MM-DD_[slug]_draft.md`.
-- Voice: ICPro voice (peer expert / authoritative on IC trends) per the drafting skill — never Cerkl product copy.
-- **Brand-mention rules — strict:** Cerkl mentions are rare and only as *"tools like Cerkl Broadcast"* in a list context. **Never** name competitors (Simpplr, LumApps, Firstup, Workvivo, Poppulo, Staffbase, Haiilo).
-- Length: 700–900 words for supporting posts; up to 1,200–2,000 for pillar pieces — match length to topic.
-- SEO bar: focus keyword in title, H1, ≥1 H2/H3, body. Strict H1 → H2 → H3 nesting. Direct answer in first 2 paragraphs or right after first H2.
-- Structure: start with the H1 (the post title from the pre-writing file), then opening paragraphs, then H2 sections. No FAQ schema block. No CTA copy (single site-wide newsletter CTA renders in Wix footer).
-- Conventions: dates `YYYY-MM-DD`; markdown only; no em-dashes.
+**Sub-agent brief (or inline run) must:**
+- Take the full path to the pre-writing file as input
+- Write to `blog-posts-draft/YYYY-MM-DD_[slug]_draft.md`
+- Hold ICPro voice (peer expert / authoritative on IC trends) — never Cerkl product copy
+- **Brand-mention rules — strict:** Cerkl mentions are rare and only as *"tools like Cerkl Broadcast"* in a list context. **Never** name competitors (Simpplr, LumApps, Firstup, Workvivo, Poppulo, Staffbase, Haiilo)
+- Length: 700–900 words for supporting posts; up to 1,200–2,000 for pillar pieces
+- SEO bar: focus keyword in title, H1, ≥1 H2/H3, body; strict H1 → H2 → H3 nesting; direct answer in first 2 paragraphs or right after first H2
+- Structure: start with H1 (post title from pre-writing), then opening paragraphs, then H2 sections. No FAQ schema block. No CTA copy (single site-wide newsletter CTA renders in Wix footer).
+- Markdown only; no em-dashes; dates in `YYYY-MM-DD`
 
 ### Step 2c — Editing (per post)
 
-- **Owner:** Claude (sub-agent per post — parallelizable)
-- **Parallelizable with:** every other 2c instance, but **must run after that post's 2b finishes**.
+- **Owner:** Claude (sub-agent per post for `n ≥ 3`; inline for `n ≤ 2`)
+- **Sequencing:** must run after that post's 2b completes; parallelizable across posts otherwise
 - **Needs:** [`skills/icpro-blog-editing/SKILL.md`](skills/icpro-blog-editing/SKILL.md)
-- **Inputs:** the post's draft file from 2b
-- **Produces:** `blog-posts-live/YYYY-MM-DD_[slug]_live.md` plus a Drive Doc URL
-- **What to do:** Dispatch one sub-agent per post. Each runs the full editing process (structural pass → rewrite → line edit → score), exits at ≥ 35/50, writes the live file with edit log, and uploads to Drive (unless `Skip Drive upload` was set).
+- **Inputs:** the draft file from 2b
+- **Produces:** `blog-posts-live/YYYY-MM-DD_[slug]_live.md` with edit log appended
 
-**Sub-agent brief must say:**
-- Inputs verbatim: full path to the draft file.
-- Output path: `/Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/blog-posts-live/YYYY-MM-DD_[slug]_live.md`. Preserve the original date and slug.
-- Do not modify or delete the draft.
-- Exit condition: 35/50 across Directness, Rhythm, Trust, Authenticity, Density.
-- Append the edit log block specified in the editing skill — including the brand-mention check line.
-- Drive upload: invoke `/Users/travisfoster/claude-code/cerkl/skills/md-to-drive/SKILL.md` with the live file, default destination, edit-log strip recipe applied, and **`YYYY-MM-DD — ICP — <H1 title>` naming convention** (the `ICP` segment is required to distinguish ICPro posts from Cerkl posts in the shared Claude-Uploads folder). Skip only if user opted out at Step 1.
-- Return: live file path + Doc URL + final score line.
+**Sub-agent brief (or inline run) must:**
+- Take the full path to the draft file as input
+- Write to `blog-posts-live/YYYY-MM-DD_[slug]_live.md` (preserve the original date and slug)
+- Not modify or delete the draft
+- Exit at score ≥ 35/50 across Directness, Rhythm, Trust, Authenticity, Density
+- Run the brand-mention check; append the edit log block (including brand-mention line)
+- Return: live file path + final score line + brand-mention check result
+
+Editing **does not** upload to Drive anymore — that moves to Step 2d.
+
+### Step 2d — Publishing (per post)
+
+- **Owner:** Claude (sub-agent per post for `n ≥ 3`; inline for `n ≤ 2`)
+- **Sequencing:** must run after that post's 2c completes; parallelizable across posts otherwise
+- **Needs:** [`skills/icpro-blog-publishing/SKILL.md`](skills/icpro-blog-publishing/SKILL.md)
+- **Inputs:** the live file from 2c + synthesized slug + target week's CSV path (from Step 1.5)
+- **Produces:** a Drive Doc URL + an updated row in the target week's Jira CSV
+
+**Sub-agent brief (or inline run) must:**
+- Take the live file path, slug, and target CSV path as inputs
+- Upload the live file to Drive with `YYYY-MM-DD — ICP — <H1 title>` naming (the `ICP` segment distinguishes ICPro from Cerkl posts in the shared folder)
+- Find the Task row in the target CSV (Channel = `Blog — internalcommspro.com`) whose Description contains `Slug: <slug>` and replace `[DRIVE_URL_PLACEHOLDER]` with the actual Drive URL
+- Preserve all other rows and fields; CSV must still parse cleanly
+- Return: Drive Doc URL + CSV row updated confirmation + score line + brand-mention check result
+
+Per the publishing skill: it does **not** synthesize the slug (the orchestrator passes it) and does **not** create the CSV (Monday reconcile owns that).
 
 ### Step 3 — Roll up and report
 
 - **Owner:** Claude
-- **Parallelizable with:** —
-- **Needs:** —
-- **Inputs:** sub-agent return values from each 2c
+- **Inputs:** return values from each 2d
 - **Produces:** chat-printed summary
-- **What to do:** Print one line per post: `slug — score X/50 — <Doc URL>`. Flag any post that didn't exit 35/50 and any post where the brand-mention check required rewrites (so we can spot voice drift over time).
+
+Print one line per post: `slug — score X/50 — brand-check <pass/fixed> — <Doc URL> — CSV row updated in YYYY-Www.csv`. Flag any post that:
+- Didn't exit editing at ≥ 35/50 (human review needed)
+- Required brand-mention rewrites (to spot voice drift over time)
+- Failed publishing (Drive upload failed, CSV row mismatch — likely slug divergence with scaffold creator)
 
 ---
 
@@ -124,16 +161,19 @@ I'll ask before scaffolding:
 - `blog-posts-pre-writing/YYYY-MM-DD_[slug]_pre-writing.md` — one per post
 - `blog-posts-draft/YYYY-MM-DD_[slug]_draft.md` — one per post (kept after editing)
 - `blog-posts-live/YYYY-MM-DD_[slug]_live.md` — one per post, with edit log appended
-- A Drive Doc per live file (Claude-Uploads folder, `YYYY-MM-DD — ICP — <H1 title>` naming)
+- A Drive Doc per live file (`YYYY-MM-DD — ICP — <H1 title>` naming, Claude-Uploads folder)
+- An updated Jira CSV at `../../content-plan/jira/imports/YYYY-Www.csv` — one row per ICPro post has its `[DRIVE_URL_PLACEHOLDER]` replaced with the actual URL
 - A chat-printed roll-up summary
+
+ICPro has no brief queue, so there's no `status` field to flip anywhere. The Jira task itself tracks lifecycle; rolling-4week's `Status` column is the operational marker.
 
 ## Push-update protocol
 
-Per [PRINCIPLES.md #8](/Users/travisfoster/claude-code/cerkl/PRINCIPLES.md), append an update block to `personal-assistant/projects/icpro-seo.md` when bulk production completes:
+Per [PRINCIPLES.md #8](/Users/travisfoster/claude-code/cerkl/PRINCIPLES.md), append an update block to `personal-assistant/projects/icpro-seo.md` when weekly production completes:
 
 ```
 ## Update — YYYY-MM-DD (from marketing/channels/icpro-blog/)
-- Completed: [Month YYYY] bulk ICPro production — N posts shipped
+- Completed: Week N (YYYY-MM-DD – YYYY-MM-DD) ICPro production — N posts published to Drive, N CSV rows updated in YYYY-Www.csv
 - Status change: <if any, otherwise "none">
 - New blocker: <if any, otherwise "none">
 - Proposed next step: <one line>
@@ -144,6 +184,7 @@ Per [PRINCIPLES.md #8](/Users/travisfoster/claude-code/cerkl/PRINCIPLES.md), app
 - When internalcommspro.com starts featuring named author bylines, swap the `ICP Staff` default in the pre-writing skill for an author-selection step.
 - If individual ICPro posts start using FAQ blocks (Wix supports it via custom embeds), add an FAQ section back into the drafting skill behind a per-post flag.
 - If posts begin including in-body CTAs (lead magnets, downloads), add a CTA placement step to pre-writing.
+- If ICPro grows enough that a brief queue becomes useful (e.g., for keyword targeting and refresh tracking), spin up `icpro-blog/briefs/` parallel to `seo/briefs/` and update this orchestrator to read from briefs the way `seo-blog-process.md` does.
 
 ## Learnings
 

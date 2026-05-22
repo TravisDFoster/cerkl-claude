@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Letter Strip — Example (VALUE framework)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #18181d;
+    --white: #ffffff;
+    --cobalt-100: #0c1159;
+    --cobalt-80:  #1a259a;
+    --cobalt-60:  #3547c4;
+    --cobalt-40:  #4c60d9;
+    --card-bg:    rgba(255, 255, 255, 0.06);
+    --card-line:  rgba(255, 255, 255, 0.13);
+    --text-muted: rgba(255, 255, 255, 0.72);
+    --butter:     #ffaa22;
+    --butter-deep:#80550f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 1200px;
+    height: 627px;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 15%, var(--cobalt-40) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 15% 90%, var(--cobalt-80) 0%, transparent 60%),
+      linear-gradient(135deg, var(--cobalt-100) 0%, #131a78 100%);
+  }
+
+  .canvas {
+    width: 1200px;
+    height: 627px;
+    padding: 26px 38px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+  }
+
+  /* ---------- header ---------- */
+  .header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .overline {
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--butter);
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.6px;
+    margin-bottom: 8px;
+    max-width: 900px;
+  }
+
+  .title .accent {
+    color: var(--butter);
+    letter-spacing: 0.02em;
+  }
+
+  .lede {
+    font-size: 17px;
+    line-height: 1.35;
+    color: var(--text-muted);
+    max-width: 760px;
+  }
+
+  /* ---------- strip ---------- */
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    flex: 1;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-line);
+    border-radius: 14px;
+    padding: 24px 16px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 3px;
+    background: var(--butter);
+    opacity: 0.4;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .letter {
+    font-size: 110px;
+    font-weight: 700;
+    line-height: 0.82;
+    letter-spacing: -3px;
+    color: var(--butter);
+    margin-bottom: 56px;
+  }
+
+  .name {
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .question {
+    font-size: 18px;
+    line-height: 1.35;
+    color: var(--text-muted);
+    min-height: 2.7em; /* lock to 2 lines so letters/names align across cards */
+  }
+
+  /* ---------- footer / logo ---------- */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+  }
+
+  .logo-mark {
+    height: 28px;
+    width: auto;
+    opacity: 0.95;
+  }
+
+  .footer-source {
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="header">
+    <div class="overline">Internal Comms · Measurement Framework</div>
+    <div class="title">Measuring benefits comms: <span class="accent">VALUE</span></div>
+    <div class="lede">Five questions that turn open rates into a defensible budget case.</div>
+  </div>
+
+  <div class="strip">
+    <div class="card">
+      <div class="letter">V</div>
+      <div class="name">Visibility</div>
+      <div class="question">Did employees see it?</div>
+    </div>
+    <div class="card">
+      <div class="letter">A</div>
+      <div class="name">Accessibility</div>
+      <div class="question">Could they reach the content easily?</div>
+    </div>
+    <div class="card">
+      <div class="letter">L</div>
+      <div class="name">Literacy</div>
+      <div class="question">Did they understand what's offered?</div>
+    </div>
+    <div class="card">
+      <div class="letter">U</div>
+      <div class="name">Usage</div>
+      <div class="question">Did they act on it?</div>
+    </div>
+    <div class="card">
+      <div class="letter">E</div>
+      <div class="name">Experience</div>
+      <div class="question">How did the interaction feel?</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="logo-mark" src="file:///Users/travisfoster/claude-code/cerkl/marketing/design/branding-assets/Broadcast/Cerkl%20Broadcast%20Horizontal%20Lockup/Medium%20(160px)/cerkl_broadcast_horizontal_lockup_white_medium.png" alt="Cerkl Broadcast">
+    <div class="footer-source">cerkl.com</div>
+  </div>
+
+</div>
+</body>
+</html>

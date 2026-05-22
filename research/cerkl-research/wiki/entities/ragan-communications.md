@@ -26,6 +26,7 @@ Ragan Communications is the trade-publishing and training company that owns [[pr
 - [[cisco-comms-leader-ai-content]] — published via PR Daily, the Ragan IC/PR property
 - [[six-internal-comms-trends-2026]] — published via PR Daily
 - [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]] — Sean Devlin's three-case layoff-comms triangulation (May 2026)
+- [[qualtrics-change-engagement-2026-05-21]] — 2026-05-21 article surfacing the Qualtrics change-engagement finding for IC trade audience (added the "comms quality" framing on top of Qualtrics' "listening cadence" moderator)
 
 ## Connections
 

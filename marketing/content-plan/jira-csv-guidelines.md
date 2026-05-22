@@ -104,6 +104,11 @@ Description must include: topic, post type (static image, poll, video), prompt t
 - [Platform] – Approval
 - [Platform] – Implementation / Publishing
 
+**LinkedIn specifics (applied by `jira/jira-scaffold-process.md`):**
+
+- The `LinkedIn – Copy` subtask Description must contain a `[COPY_PLACEHOLDER]` token — the LinkedIn drafting process replaces it with the drafted caption + asset spec + hashtags.
+- For `poll` post-type rows, the `LinkedIn – Asset Creation` subtask Description reads: `(N/A for polls — native poll widget; skip or mark done.)`. The subtask still exists for shape consistency; it just carries the explicit skip note.
+
 ### Marketing Email
 
 - Email – Copy
@@ -120,15 +125,32 @@ Description must include: topic, post type (static image, poll, video), prompt t
 
 ## Jira Field Mapping
 
+### Column order (canonical)
+
+Every CSV uses this column order, left to right:
+
+```
+Work Item ID, Issue Type, Parent ID, Epic Link, Summary, Description, Owner, Channel, Start Date, Due Date
+```
+
+`Work Item ID` and `Parent ID` are **CSV-local placeholder IDs** Jira uses at import time to stitch Tasks to their Subtasks. They never appear in Jira after import — Jira assigns real issue keys. Convention:
+
+- `T001`, `T002`, `T003`, … — Task rows. Renumber per CSV (each weekly CSV starts at `T001`).
+- `S001`, `S002`, `S003`, … — Subtask rows. Renumber per CSV (each weekly CSV starts at `S001`).
+- A Subtask's `Parent ID` cell holds the parent Task's `Work Item ID` (e.g., `T001`).
+- Tasks leave `Parent ID` blank.
+
 ### Task Fields
 
 | Field | Value |
 |---|---|
+| Work Item ID | `T001`, `T002`, … |
 | Issue Type | Task |
-| Epic Link | Assigned Epic |
+| Parent ID | (blank) |
+| Epic Link | Blank at scaffold time; filled at import (Epic key for the month's campaign) |
 | Summary | `Lever - Channel - Deliverable Name` |
-| Description | Generated sample based on theme and context |
-| Owner | Channel owner (see Ownership table) |
+| Description | Generated block including `Slug: <slug>`, `Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]`, and any brief/keyword/CMS metadata |
+| Owner | Channel owner Jira ID (see Ownership table) |
 | Channel | Custom Channel field |
 | Start Date | Date work begins |
 | Due Date | Publish date |
@@ -137,19 +159,26 @@ Description must include: topic, post type (static image, poll, video), prompt t
 
 | Field | Value |
 |---|---|
+| Work Item ID | `S001`, `S002`, … |
 | Issue Type | Subtask |
-| Parent | Parent Task summary |
+| Parent ID | The parent Task's `Work Item ID` (e.g., `T001`) |
+| Epic Link | (blank — inherited from parent at import) |
 | Summary | `Channel - Step` |
 | Description | Generated description based on theme and task topic |
+| Owner | Blank at scaffold time; filled at import (subtask owner Jira ID) |
+| Channel | Same as parent's Channel |
+| Start Date | When this subtask begins (typically before the parent Task's Due Date) |
+| Due Date | When this subtask completes (≤ parent Task Due Date) |
 
 ## CSV Output Requirements
 
 - One row per Task and subtask
-- Parent-child relationships explicitly defined in each row
+- `Work Item ID` and `Parent ID` placeholders link rows; Jira resolves them at import
 - Dates in Jira-compatible format (YYYY-MM-DD)
+- Multi-line `Description` fields use standard CSV quoting (double-quoted, embedded newlines preserved)
 - Importable without manual cleanup, except for:
-  - Adding the ID of the associated Epic
-  - Adding IDs for subtask owners
+  - Filling each Task's `Epic Link` with the campaign's Jira Epic key
+  - Filling each Subtask's `Owner` with the appropriate Jira ID (see Ownership table)
 
 ## Reusability
 

@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ic-trends Daily — 2026-05-19</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f5f5fa;
+    --panel: #ffffff;
+    --panel-soft: #f5f5fa;
+    --ink: #18181d;
+    --muted: #373740;
+    --line: #d5d5db;
+    --accent: #3547c4;
+    --accent-soft: #f0f2fc;
+    --good: #1a9979;
+    --good-bg: #e8fffa;
+    --good-border: #aaf7e6;
+    --warn: #80550f;
+    --warn-bg: #fff9f2;
+    --warn-border: #ffeccd;
+    --bad: #b00045;
+    --bad-bg: #fcf0f0;
+    --bad-border: #fbc2c4;
+    --info: #3547c4;
+    --info-bg: #f0f2fc;
+    --info-border: #ccd5f7;
+    --quote: #802ee6;
+    --code-bg: #ebebf0;
+    --shadow: 0 1px 0 rgba(24,24,29,0.04), 0 4px 16px rgba(24,24,29,0.06);
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+    --cat-competitor:  #3547c4;
+    --cat-competitor-bg:  #f0f2fc;
+    --cat-competitor-border: #ccd5f7;
+    --cat-publication: #1a9979;
+    --cat-publication-bg: #e8fffa;
+    --cat-publication-border: #aaf7e6;
+    --cat-analyst:     #802ee6;
+    --cat-analyst-bg:  #f7f2ff;
+    --cat-analyst-border: #d5b2ff;
+    --cat-community:   #80550f;
+    --cat-community-bg: #fff9f2;
+    --cat-community-border: #ffeccd;
+    --cat-policy:      #b00045;
+    --cat-policy-bg:   #fcf0f0;
+    --cat-policy-border: #fbc2c4;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 18px;
+    letter-spacing: -0.0025em;
+    -webkit-font-smoothing: antialiased;
+  }
+  section p, .tldr { max-width: 70ch; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  header.hero {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .breadcrumb {
+    font-size: 13px; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
+  }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.005em; font-weight: 700; }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    font-size: 14px; color: var(--muted); margin-bottom: 18px;
+  }
+  .meta-row b { color: var(--ink); font-weight: 600; }
+  .tldr {
+    font-size: 18px; line-height: 1.55; color: var(--ink);
+    border-left: 3px solid var(--accent); padding-left: 16px;
+    margin: 0;
+  }
+  .tldr ol { margin: 8px 0 0; padding-left: 20px; }
+  .tldr ol li { margin-bottom: 6px; }
+
+  section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 22px; margin: 0 0 16px; letter-spacing: -0.0025em; font-weight: 600;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2 .num {
+    font-size: 12px; color: var(--muted); font-weight: 600;
+    background: var(--code-bg); padding: 2px 8px; border-radius: 6px;
+  }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--info-border); }
+  a:hover { border-bottom-color: var(--accent); }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+
+  .top-items { display: grid; gap: 14px; }
+  .top-item {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+    display: grid; grid-template-columns: auto 1fr; gap: 14px;
+    align-items: start;
+  }
+  .item-num {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--code-bg); color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: -0.005em;
+  }
+  .item-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin-bottom: 6px; }
+  .item-head h3 { margin: 0; font-size: 18px; line-height: 1.3; flex: 1; min-width: 200px; font-weight: 600; letter-spacing: -0.0025em; }
+  .cat-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px; border-radius: 999px;
+    border: 1px solid;
+    flex-shrink: 0;
+  }
+  .cat-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .cat-badge.cat-competitor  { color: var(--cat-competitor);  border-color: var(--cat-competitor-border);  background: var(--cat-competitor-bg); }
+  .cat-badge.cat-publication { color: var(--cat-publication); border-color: var(--cat-publication-border); background: var(--cat-publication-bg); }
+  .cat-badge.cat-analyst     { color: var(--cat-analyst);     border-color: var(--cat-analyst-border);     background: var(--cat-analyst-bg); }
+  .cat-badge.cat-community   { color: var(--cat-community);   border-color: var(--cat-community-border);   background: var(--cat-community-bg); }
+  .cat-badge.cat-policy      { color: var(--cat-policy);      border-color: var(--cat-policy-border);      background: var(--cat-policy-bg); }
+  .item-meta {
+    font-size: 12px; color: var(--muted);
+    margin-bottom: 8px;
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .item-meta .sep { opacity: 0.45; }
+  .item-meta .src-multi a { margin-right: 6px; }
+  .item-body p { margin: 0 0 8px; font-size: 15px; line-height: 1.55; }
+  .item-body p:last-child { margin-bottom: 0; }
+  .why-callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 8px 12px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .why-callout .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    margin-right: 8px;
+  }
+
+  .watch-group { margin-top: 18px; }
+  .watch-group:first-of-type { margin-top: 6px; }
+  .watch-group h3 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); font-weight: 600;
+    margin: 0 0 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .watchlist {
+    display: grid; gap: 8px 24px;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+  .watch-row {
+    font-size: 13.5px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .watch-row:last-child { border-bottom: none; }
+  .watch-row .w-title { font-weight: 600; color: var(--ink); }
+  .watch-row .w-src { color: var(--muted); font-size: 12px; }
+  .watch-row .w-date { color: var(--muted); font-size: 12px; margin-left: auto; }
+  .watch-row .w-link { font-size: 12px; }
+
+  details.q {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 0; margin-bottom: 8px; overflow: hidden;
+  }
+  details.q summary {
+    padding: 12px 16px; cursor: pointer; font-weight: 500; font-size: 14px;
+    list-style: none; position: relative;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::before {
+    content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    font-size: 18px; color: var(--accent);
+  }
+  details.q[open] summary::before { content: "−"; }
+  details.q .q-body { padding: 0 16px 14px; font-size: 14px; color: var(--muted); }
+  details.q .q-body p { max-width: none; }
+
+  code, pre { font-family: var(--mono); }
+  p code, li code { font-family: var(--mono); font-size: 0.9em;
+    background: var(--code-bg); padding: 1px 6px; border-radius: 4px; }
+
+  footer {
+    text-align: center; font-size: 12px; color: var(--muted);
+    margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line);
+  }
+
+  @media print {
+    body { background: #ffffff; color: #18181d; -webkit-font-smoothing: auto; }
+    .wrap { padding: 0; max-width: none; }
+    section, header.hero { box-shadow: none; border: 1px solid #d5d5db; page-break-inside: avoid; }
+    a { color: #18181d; }
+    details.q { page-break-inside: avoid; }
+    details.q[open] summary::before, details.q summary::before { display: none; }
+    details.q[open] .q-body { display: block !important; }
+  }
+
+  @media (max-width: 640px) {
+    .top-item { grid-template-columns: 1fr; }
+    .item-num { width: 28px; height: 28px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="breadcrumb">ic-trends · Daily Recap</div>
+    <h1>2026-05-19</h1>
+    <div class="meta-row">
+      <span><b>Top items:</b> 8</span>
+      <span><b>Watchlist:</b> 12</span>
+      <span><b>Cadence:</b> Tuesday</span>
+    </div>
+    <p class="tldr">
+      Signal is comparatively thin after yesterday's heavy harvest, but three coherent themes hardened today:
+    </p>
+    <div class="tldr" style="border-left: none; padding-left: 0; margin-top: 4px;">
+      <ol>
+        <li><b>Manager-as-communicator is the 2026 IC engagement lever</b> — reinforced from Ragan's frontline study, a new Gallup Q1 2026 cut, and the StrictlyInternal practitioner-pain thread.</li>
+        <li><b>The AI-perception backlash is metastasizing beyond IC trade press</b> into mainstream signals — students literally booing AI at a commencement (PR Daily), LinkedIn job-posting data showing "storyteller" mentions doubled YoY (PR News).</li>
+        <li><b>ContactMonkey under Jeff Cates is making aggressive head-to-head competitive plays</b> — three comparison/positioning pages shipped on the same day (vs. PoliteMail, vs. Workshop, IC plan how-to).</li>
+      </ol>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="num">TOP</span>Items</h2>
+    <div class="top-items">
+
+      <article class="top-item">
+        <div class="item-num">1</div>
+        <div>
+          <div class="item-head">
+            <h3>Ragan — Manager-as-communicator is the highest-leverage frontline engagement lever</h3>
+            <span class="cat-badge cat-publication">Publication</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.ragan.com/the-real-key-to-keeping-frontline-workers-engaged/">ragan.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-19</span>
+          </div>
+          <div class="item-body">
+            <p>A 52,000+ frontline worker survey lands on the same conclusion the manager-cascade data keeps showing: the line manager <em>is</em> the communicator employees actually trust, and engagement collapses when the relay layer is weak. Pairs with the existing manager-cascade gap (56% prioritize, 4% rate effective).</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Reinforces the vault's <code>manager-cascade</code> concept as load-bearing for 2026 IC narrative. Foundations buyers running newsletters miss this entirely; Omni AI's segmentation by manager/team makes the cascade addressable. Sales-enablement: "your manager cascade is <em>the</em> engagement lever, and you have no way to measure whether your message actually reached the manager <em>before</em> the all-hands."</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">2</div>
+        <div>
+          <div class="item-head">
+            <h3>Staffbase — "Beyond Almost: Designing AI for Trust and Adoption" (new 5/19 upload)</h3>
+            <span class="cat-badge cat-competitor">Competitor</span>
+          </div>
+          <div class="item-meta">
+            <span>Staffbase (YouTube) · <a href="https://www.youtube.com/watch?v=UvJjwh3JCmM">youtube.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-19</span>
+          </div>
+          <div class="item-body">
+            <p>Reframes the AI success metric from <em>Reach</em> to <em>Trust</em>: "almost accurate" is a liability for ops/safety/EX leaders. Continues the Staffbase 2026 narrative ("AI quality layer," Navigator) — but this is the most explicit pivot yet to <em>trust-as-the-AI-metric</em>, which is a notable competitive positioning move.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Staffbase is staking the AI-trust territory in a way that's adjacent to (but not identical to) Cerkl's "delivery + measurement" lane. <em>Trust</em> is the buyer-mood layer; <em>delivery</em> is the operational layer. Both can exist — but if Staffbase owns "trust as the AI metric" they'll have a strong reframe against the agentic-IC vendors (Workshop, Firstup, Simpplr) — and a partial overlap with Cerkl's measurement story. Worth tracking carefully.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">3</div>
+        <div>
+          <div class="item-head">
+            <h3>PR Daily — Students booing AI at commencement, an early signal of broader perception shift</h3>
+            <span class="cat-badge cat-community">Community</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.prdaily.com/the-scoop-students-booing-ai-at-commencement-signals-a-larger-shift-in-perception/">prdaily.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-18</span>
+          </div>
+          <div class="item-body">
+            <p>Frames a campus moment as a leading indicator: the AI-positive narrative is now drawing audible backlash from younger audiences. Extends the academic AI-anxious-buyer frame (HR Reporter / Cardon &amp; Coman / Simpplr 2026 State of IC) into mainstream cultural signal territory.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Directly reinforces the AI-anxious-buyer counter-positioning lane that yesterday's HR Reporter deep-dive opened up. The buyer's anxiety is <em>not</em> just an internal IC-team thing — it's a workforce-wide cultural shift. Foundations' "no AI tax, no headcount pitch" framing reads even better against this backdrop.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">4</div>
+        <div>
+          <div class="item-head">
+            <h3>PR News Online — LinkedIn data: 5 skills redefining communications in the AI age</h3>
+            <span class="cat-badge cat-community">Community</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.prnewsonline.com/linkedin-data-reveals-the-5-skills-redefining-communications-in-the-ai-age/">prnewsonline.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-18</span>
+          </div>
+          <div class="item-body">
+            <p>LinkedIn job-posting data: "storyteller" mentions <b>doubled year-over-year</b>; Anthropic, Chime, Vanta, PayPal hiring a hybrid comms profile. Hiring-signal evidence that the IC role is restructuring around human-creative skills, not AI-tooling skills.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>The hiring data is the demand-side mirror of HR Reporter's supply-side anxiety story. Employers are not just <em>saying</em> humans matter; they're <em>posting</em> for humans-who-can-tell-stories. Cerkl's positioning can cite this — <em>"the buyers we sell to are hiring storytellers, not AI operators"</em> — for AI-skeptic Foundations marketing.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">5</div>
+        <div>
+          <div class="item-head">
+            <h3>ContactMonkey — Three competitive/SEO pieces dropped on the same day</h3>
+            <span class="cat-badge cat-competitor">Competitor</span>
+          </div>
+          <div class="item-meta">
+            <span class="src-multi">
+              <a href="https://www.contactmonkey.com/blog/politemail-alternatives">vs. PoliteMail</a>
+              <a href="https://www.contactmonkey.com/blog/workshop-alternatives">vs. Workshop</a>
+              <a href="https://www.contactmonkey.com/blog/internal-communications-plan">IC plan how-to</a>
+            </span>
+            <span class="sep">·</span>
+            <span>2026-05-15</span>
+          </div>
+          <div class="item-body">
+            <p>Three pages on the same day: <em>"Best PoliteMail Alternatives in 2026"</em>, <em>"Best Workshop Alternatives in 2026"</em>, <em>"How Can You Build an Effective Internal Communications Plan?"</em> The first two are direct competitive takedowns; the third is top-of-funnel SEO. Under Jeff Cates' new "execution problem, not communication problem" framing, this is a coordinated competitive-content push.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>ContactMonkey is the most direct Foundations head-to-head and they're now investing in named competitive pages. Cerkl has <em>no</em> live "vs. ContactMonkey" page (per <code>shared/competitors.md</code>). The Cates-era ContactMonkey is becoming a sharper procurement adversary — refresh the comparison artifact while ContactMonkey is still pointing its competitive content at PoliteMail and Workshop.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">6</div>
+        <div>
+          <div class="item-head">
+            <h3>PR Daily — Hinge's storytelling guide: 5 questions for comms alignment</h3>
+            <span class="cat-badge cat-publication">Publication</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.prdaily.com/hinges-storytelling-guide-for-comms-alignment/">prdaily.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-19</span>
+          </div>
+          <div class="item-body">
+            <p>Five questions to ask before greenlighting a story — practitioner-tactical, complements yesterday's Devlin newsletter pressure test. Together they form a 9-question diagnostic kit (4 newsletter audit + 5 story alignment) that's directly Cerkular-content-shaped.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Pair with yesterday's Devlin piece for a Cerkular issue: <em>"Two practitioner toolkits for the 2026 IC team — newsletter audit + story alignment."</em> High-utility, low-effort synthesis.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">7</div>
+        <div>
+          <div class="item-head">
+            <h3>HBR — Use metaphors to lead through complexity and change (Tanvi Gautam)</h3>
+            <span class="cat-badge cat-analyst">Analyst</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://hbr.org/topic/subject/internal-communication">hbr.org</a></span>
+            <span class="sep">·</span>
+            <span>2026-04-21</span>
+          </div>
+          <div class="item-body">
+            <p>HBR adds a leadership-comms tactic to the discipline: metaphor as an underused coordinating device during change. Sits adjacent to the <code>layoff-comms-choreography</code> / <code>boilerplate-layoff-language</code> threads — <em>metaphor</em> is the antidote to the "broader organizational change" euphemism.</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Useful citable anchor for any leadership-comms content Cerkl produces. Metaphor done well is a counter-pattern to boilerplate; done badly is just more euphemism. A Cerkular item could pair the HBR Gautam piece with Oracle / GM as positive-vs-negative examples.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">8</div>
+        <div>
+          <div class="item-head">
+            <h3>PR Daily — "Shut down the excuse factories": care before expertise in crisis comms</h3>
+            <span class="cat-badge cat-publication">Publication</span>
+          </div>
+          <div class="item-meta">
+            <span><a href="https://www.prdaily.com/shut-down-the-excuse-factories/">prdaily.com</a></span>
+            <span class="sep">·</span>
+            <span>2026-05-18</span>
+          </div>
+          <div class="item-body">
+            <p>Crisis-comms POV: the "expertise trap" — leading with technical justification before emotional acknowledgment — is hurting brand response. Companion to yesterday's Oracle dissection (Oracle's 6 a.m. email led with corporate language; would have done less damage with <em>care first</em>).</p>
+            <div class="why-callout"><span class="label">Why it matters for Cerkl</span>Practitioner-tactical reference for the layoff-comms reference set. Worth bookmarking if/when the Oracle-style sales-enablement asset gets drafted.</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">WATCH</span>Watchlist</h2>
+
+    <div class="watch-group">
+      <h3>Stat anchors &amp; data drops</h3>
+      <div class="watchlist">
+        <div class="watch-row">
+          <span class="w-title">Edelman 2026 Trust Barometer</span>
+          <span class="w-src">· "My Employer most trusted institution at 78%" (vs 54% mainstream media); high-leverage stat anchor for IC-budget defense content</span>
+          <span class="w-link"><a href="https://www.edelman.com/trust/2026/trust-barometer">edelman.com</a></span>
+          <span class="w-date">Jan 2026</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">Gallup Q1 2026 follow-on cut</span>
+          <span class="w-src">· Manager AI-championing is the #1 predictor of employee AI adoption (8.7x impact); maps to manager-cascade + AI-rollout-comms</span>
+          <span class="w-link"><a href="https://www.gallup.com/workplace/708071/global-employee-engagement-continues-decline.aspx">gallup.com</a></span>
+          <span class="w-date">Q1 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="watch-group">
+      <h3>Competitive landscape</h3>
+      <div class="watchlist">
+        <div class="watch-row">
+          <span class="w-title">Workshop product clips</span>
+          <span class="w-src">· branded landing pages, 91% email stat — competitive product-positioning signal</span>
+          <span class="w-date">2026-05-15</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">LumApps — Knowledge-based systems / AI decision-making POV</span>
+          <span class="w-src">· already adjacent via <code>forrester-wave-intranet-platforms-q2-2026</code> / <code>ai-in-internal-comms</code></span>
+          <span class="w-link"><a href="https://www.lumapps.com/insights/blog/exploring-knowledge-based-systems-enhancing-decision-making-ai">lumapps.com</a></span>
+          <span class="w-date">2026-05-12</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">Poppulo — Switching digital signage providers without downtime</span>
+          <span class="w-src">· POV/how-to (not product launch); signage-buyer-segment content</span>
+          <span class="w-link"><a href="https://www.poppulo.com/digital-signage/blog/switch-signage-no-downtime">poppulo.com</a></span>
+          <span class="w-date">2026-05-14</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">Gallagher State of the Sector 2026</span>
+          <span class="w-src">· landing page exists, June London Summit upcoming; not yet a fully ingestable source</span>
+          <span class="w-date">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="watch-group">
+      <h3>Practitioner / community signal</h3>
+      <div class="watchlist">
+        <div class="watch-row">
+          <span class="w-title">Habitat for Humanity — Amy Dunham, CCO on scaling global advocacy with AI</span>
+          <span class="w-src">· practitioner playbook video for global IC teams operating across 60+ countries</span>
+          <span class="w-link"><a href="https://www.youtube.com/watch?v=F76-5Pl3Alg">youtube.com</a></span>
+          <span class="w-date">2026-05-14</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">StrictlyInternal newsletter cluster</span>
+          <span class="w-src">· practitioner pain: 56% manager cascade top focus / 4% effective; hiring contraction (27% vs 38% in 2025); the "do more with less" thread</span>
+          <span class="w-link"><a href="https://www.strictlyinternal.com/">strictlyinternal.com</a></span>
+          <span class="w-date">—</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">Amazon May layoff buzz — Reddit r/amazonemployees</span>
+          <span class="w-src">· leaked exit-email language ("hard business decision", 90-day non-working notice) circulating before official comms; Amazon denied. Same pattern as Oracle.</span>
+          <span class="w-link"><a href="https://www.republicworld.com/tech/amazon-may-layoffs-buzz-grows-after-reddit-posts-claim-employees-received-exit-emails-2026-05-13-124013">republicworld.com</a></span>
+          <span class="w-date">2026-05-13</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">Dell RTO 2026 thread — TheLayoff.com</span>
+          <span class="w-src">· employee-side venting framing RTO as stealth-attrition; 72% disbelieve "collaboration" framing</span>
+          <span class="w-link"><a href="https://www.thelayoff.com/t/1keamgejx">thelayoff.com</a></span>
+          <span class="w-date">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="watch-group">
+      <h3>Publications &amp; events</h3>
+      <div class="watchlist">
+        <div class="watch-row">
+          <span class="w-title">Ragan — Biggest trends from the upcoming PR Daily Conference</span>
+          <span class="w-src">· agenda-setting preview; track for post-conference recap pickup</span>
+          <span class="w-link"><a href="https://www.ragan.com/these-are-the-biggest-trends-from-the-upcoming-pr-daily-conference/">ragan.com</a></span>
+          <span class="w-date">2026-05-19</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">PR Daily — What PR gets wrong about pitching independent media</span>
+          <span class="w-src">· adjacent to IC executive thought-leadership; not immediate, worth tracking</span>
+          <span class="w-date">2026-05-18</span>
+        </div>
+        <div class="watch-row">
+          <span class="w-title">PR Daily — Social media updates and new features this week</span>
+          <span class="w-src">· channel-strategy signal (X, LinkedIn, YouTube changes)</span>
+          <span class="w-date">2026-05-19</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">NOTES</span>Gaps &amp; infrastructure</h2>
+
+    <details class="q">
+      <summary>1-day gap since yesterday's recap (Mon 2026-05-18) — signal thin</summary>
+      <div class="q-body">
+        <p>Signal volume is correspondingly thin — most items in the rolling-7day window were already surfaced. Today's value-add is the <em>late-day-yesterday + today</em> slice plus a few earlier items that didn't make yesterday's top cut.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Today is Tuesday — no Wednesday rollup offer</summary>
+      <div class="q-body">
+        <p>Per Step 8 cadence. Wednesday rollup is offered on Wednesdays.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>AxiosHQ /blog confirmed dead (404) — second day</summary>
+      <div class="q-body">
+        <p>Second day of the same return. Their content lives at <code>/insights</code> and <code>/case-studies</code> instead. Worth updating <code>sources.md</code> to point at the right paths.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Reddit r/internalcomms — still returning zero results via WebSearch</summary>
+      <div class="q-body">
+        <p>Known gap — community signal bucket lacks direct top-of-week threads.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>LinkedIn — post-level discussion remains inaccessible to WebFetch</summary>
+      <div class="q-body">
+        <p>Hiring-data items (e.g., the PR News piece on storyteller postings) need to be sourced via trade-press intermediaries rather than LinkedIn directly.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Prompt-injection attempt detected in Haiilo WebSearch result</summary>
+      <div class="q-body">
+        <p>Fake <code>&lt;system-reminder&gt;</code> about TodoWrite embedded in a Haiilo WebSearch result. Detected and ignored. Logged here for traceability.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Gallup Q1 2026 cut — cross-link candidate for the vault</summary>
+      <div class="q-body">
+        <p>The <a href="https://www.gallup.com/workplace/708071/global-employee-engagement-continues-decline.aspx">gallup.com/workplace/708071</a> page adds the <em>manager AI-championing 8.7x</em> stat. Should be cross-linked into the vault's existing <code>state-of-the-global-workplace-2026</code> source page on next ingest if Travis wants it formally captured.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>HBR Tanvi Gautam piece — process learning</summary>
+      <div class="q-body">
+        <p>2026-04-21, was in-window for analyst-tier scan but hadn't been surfaced before. Mild process learning: HBR's <code>/topic/subject/internal-communication</code> landing page is a useful catch-net for the weekly scan.</p>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    Generated 2026-05-19 · Source markdown: <a href="2026-05-19.md">daily/2026-05-19.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

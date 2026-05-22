@@ -1,8 +1,8 @@
 ---
 name: icpro-blog-editing
-description: Use when finalizing an Internal Comms Pro (internalcommspro.com) blog draft for publication — runs a two-pass editing process (structural edit, sentence-level rewrite, line edit, score) to remove AI writing patterns and tighten prose. Triggers on phrases like "edit the [slug] ICP draft", "run editing on this ICPro post", "finalize this ICP draft", "score this ICP draft". Prerequisite: a draft at `blog-posts-draft/`. Output: `blog-posts-live/YYYY-MM-DD_[slug]_live.md` plus a Drive Doc URL with `ICP` in the filename.
+description: Use when finalizing an Internal Comms Pro (internalcommspro.com) blog draft — runs a two-pass editing process (structural edit, sentence-level rewrite, line edit, score) to remove AI writing patterns and tighten prose. Produces a publication-ready `_live.md`; Drive upload and Jira CSV handoff happen in the separate `icpro-blog-publishing` skill. Triggers on phrases like "edit the [slug] ICP draft", "run editing on this ICPro post", "finalize this ICP draft", "score this ICP draft". Prerequisite: a draft at `blog-posts-draft/`. Output: `blog-posts-live/YYYY-MM-DD_[slug]_live.md`.
 metadata:
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # ICPro Blog Editing
@@ -133,12 +133,4 @@ Once the post scores 35/50 or higher:
 - Brand-mention check: <pass / list of changes made>
 ```
 
-4. **Publish to Drive as a Google Doc.** Load and follow [`/Users/travisfoster/claude-code/cerkl/skills/md-to-drive/SKILL.md`](/Users/travisfoster/claude-code/cerkl/skills/md-to-drive/SKILL.md) with:
-   - **Source file:** the `_live.md` file just written
-   - **Cleanup:** apply the Edit-log strip recipe in that skill — the trailing `---\n**Edit log**...` block is QA metadata, not customer-facing content
-   - **Destination:** default (Claude-Uploads folder)
-   - **Naming:** `YYYY-MM-DD — ICP — <H1 title>` (note the `ICP` segment between date and title, with em-dashes — distinguishes ICPro posts from Cerkl posts in the shared Drive folder)
-
-   Report the resulting Doc URL in the handoff to the user, immediately after the final score line. For bulk-edit sessions where multiple subagents finish in parallel, each subagent invokes `md-to-drive` independently for its own file — single-file inline uploads, no central batching needed.
-
-   **Skip the Drive upload** only when the user explicitly says "don't upload" / "skip Drive" / "local only," or when the post is being held back from publication for review. If uncertain, ask.
+4. **Return:** the `_live.md` path + the final score line + brand-mention check result. The downstream `icpro-blog-publishing` skill handles Drive upload (with `ICP` segment naming) and Jira CSV row update — editing's job ends at a publication-ready file on disk.

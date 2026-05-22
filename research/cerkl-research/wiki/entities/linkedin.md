@@ -23,15 +23,19 @@ Context: Shapero became CEO after Ryan Roslansky moved to a Microsoft AI role in
 ## Appearances in Sources
 
 - [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]] — Case 1 in the three-case triangulation
+- [[layoff-memo-subgenre-2026-05-21]] — split-messaging anti-template (official memo omits AI; CPO Hari Srinivasan tells staff in a side channel)
 - Primary memo text: [IBTimes UK reprint](https://www.ibtimes.co.uk/linkedin-announces-major-layoffs-global-restructuring-1796682)
 - Coverage: [Fast Company — "The scariest part of LinkedIn's layoffs isn't the number of jobs cut"](https://www.fastcompany.com/91541892/the-scariest-part-of-linkedins-layoffs-isnt-the-number-of-jobs-cut)
 
 ## Connections
 
 - [[daniel-shapero]] — CEO
+- [[microsoft]] — parent company
 - [[layoff-comms-choreography]] — case-study contributor
 - [[ai-rollout-comms]] — middle-of-chain case study
 - [[ragan-communications]] — publisher of the triangulation
+- [[ai-restructure-memo-subgenre]] — split-messaging case
+- [[ai-washing]] — case study for euphemism-leaks-anyway
 
 ## Open Questions
 

@@ -26,6 +26,7 @@ Ragan's diagnosis: *"When layoffs are tightly scripted and don't answer employee
 ## Appearances in Sources
 
 - [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]] — Case 2 in the three-case triangulation
+- [[layoff-memo-subgenre-2026-05-21]] — anti-template anchor for the *"delivery mechanism is now part of the memo"* convention
 - Primary source: [CNBC — Laid-off GM employees tell of ominous email, severance and role of AI (2026-05-12)](https://www.cnbc.com/2026/05/12/gm-layoffs-ai-severance.html)
 
 ## Connections
@@ -34,6 +35,7 @@ Ragan's diagnosis: *"When layoffs are tightly scripted and don't answer employee
 - [[ai-rollout-comms]] — middle-of-chain case study (the void-fill phase)
 - [[ai-washing]] — implicit AI-washing pattern (no AI claim, but employees and coverage attributed AI anyway)
 - [[ragan-communications]] — publisher of the diagnosis
+- [[ai-restructure-memo-subgenre]] — anti-template anchor
 
 ## Open Questions
 

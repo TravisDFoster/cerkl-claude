@@ -9,17 +9,21 @@ tags: [ai-in-internal-comms, change-management-communications, ic-measurement-an
 
 The unifying thesis across the May 2026 analyst + trade-press cluster — that AI is reshaping the workforce and the **comms job is the binding constraint** on whether AI investments deliver value. The chain spans from rollout-message to listening-response and breaks at every link when IC is treated as either an afterthought or as message-authoring only (rather than channeled, measured delivery).
 
-The chain, with the four-source cluster anchoring each link:
+The chain, with the eight-source cluster (May 2026, post-extension) anchoring each link:
 
 ```
-1. AI tools rollout fails to land →                       [[gartner-people-centric-ai-2026-05-15]]
-2. Shadow AI fills the gap (88%); enablement-illusion →   [[gartner-people-centric-ai-2026-05-15]]
-3. No measurable ROI from the rollout →                   [[gartner-ai-layoffs-no-returns-2026-05-15]]
-4. Layoffs framed as "AI optimization"; ~80% cut →        [[gartner-ai-layoffs-no-returns-2026-05-15]]
-5. Choreography breaks at the delivery layer →            [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]]
-6. AI-replacement narrative fills the void →              [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]]
-7. Attrition + boomerang rehires →                        forecast (Forrester 50% reversal)
-8. Deep listening emerges as the new measurement lane →   [[forrester-ai-rewrite-ex-deep-listening-2026-05-15]]
+0. Workforce redesign at the CIO/CHRO level (agents as coworkers) →
+                                                           [[mckinsey-agentic-ai-workforce-redesign-2026-05-18]]
+1. AI tools rollout fails to land →                        [[gartner-people-centric-ai-2026-05-15]]
+2. Shadow AI fills the gap (88%); enablement-illusion →    [[gartner-people-centric-ai-2026-05-15]]
+3. No measurable ROI from the rollout →                    [[gartner-ai-layoffs-no-returns-2026-05-15]]
+3a. Practitioners are AI-anxious (52% / 29% / >33%) →      [[hr-reporter-ai-risks-ic-2026-05-18]]
+4. Layoffs framed as "AI optimization"; ~80% cut →         [[gartner-ai-layoffs-no-returns-2026-05-15]]
+5. Choreography breaks at the delivery layer →             [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]],
+                                                           [[oracle-mass-email-layoff-lessons-2026-05-18]]
+6. AI-replacement narrative fills the void →               [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]]
+7. Attrition + boomerang rehires →                         forecast (Forrester 50% reversal)
+8. Deep listening emerges as the new measurement lane →    [[forrester-ai-rewrite-ex-deep-listening-2026-05-15]]
 ```
 
 ## Why It Matters
@@ -53,21 +57,30 @@ The Cerkl-positioning summary that lives at the bottom of this chain:
 
 ## Seen In
 
+- [[mckinsey-agentic-ai-workforce-redesign-2026-05-18]] — upstream of the chain (workforce-design, agents-as-coworkers, CIO/CHRO co-buyer)
 - [[gartner-people-centric-ai-2026-05-15]] — rollout end of the chain (enablement-illusion, shadow-AI)
 - [[gartner-ai-layoffs-no-returns-2026-05-15]] — middle of the chain (cuts ≠ ROI, people-amplification)
+- [[hr-reporter-ai-risks-ic-2026-05-18]] — practitioner-sentiment cross-cut ([[ai-anxious-buyer]]; n=448 + n=1,100)
 - [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]] — middle-to-late of the chain (choreography failure, void-fill)
+- [[oracle-mass-email-layoff-lessons-2026-05-18]] — high-scale anchor at the choreography link (Oracle 30K cuts)
 - [[forrester-ai-rewrite-ex-deep-listening-2026-05-15]] — far end of the chain (listening-response loop)
 
 ## Related Concepts
 
+- [[agents-as-coworkers]] — McKinsey upstream frame; sets the workforce-design context for the rollout
 - [[enablement-illusion]] — rollout-end failure mode
 - [[shadow-ai-comms-problem]] — symptom of the rollout failure
+- [[ai-anxious-buyer]] — practitioner-sentiment cross-cut; the procurement frame the chain produces
+- [[co-piloting]] — the prescribed workflow that addresses [[ai-anxious-buyer]] at the practitioner level
 - [[people-amplification]] — the positive frame across the middle of the chain
 - [[layoff-comms-choreography]] — middle-of-chain failure pattern
+- [[boilerplate-layoff-language]] — language-level failure mode inside layoff comms
+- [[analyst-trio-comms-as-ai-gate]] — McKinsey + Gartner + Forrester synthesis of the same thesis
 - [[ai-washing]] — the narrative-pollution failure mode
 - [[deep-listening]] — far-end-of-chain category
 - [[execution-gap]] — sibling failure pattern in employee-listening (same shape, different surface)
 - [[ai-slop]] — workflow-level failure; this concept is org-level failure
+- [[delivery-as-comms-strategy]] — the topic page this chain is the operational backbone of
 
 ## Tensions / Criticisms
 

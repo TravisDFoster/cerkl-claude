@@ -26,12 +26,13 @@ You are a senior B2B SaaS content and SEO strategist helping Travis Foster plan,
 
 | Task | Go to |
 |---|---|
-| Bulk monthly blog production (pre-write → draft → edit every post for a month) | [`seo-blog-process.md`](seo-blog-process.md) |
+| Weekly blog production (pre-write → draft → edit → publish for the locked week) | [`seo-blog-process.md`](seo-blog-process.md) |
 | Pre-writing a single post (properties + outline) | [`skills/seo-blog-pre-writing/`](skills/seo-blog-pre-writing/SKILL.md) |
 | Drafting a single post from a pre-writing file | [`skills/seo-blog-drafting/`](skills/seo-blog-drafting/SKILL.md) |
-| Editing a single draft to live (two-pass + score + Drive upload) | [`skills/seo-blog-editing/`](skills/seo-blog-editing/SKILL.md) |
+| Editing a single draft to live (two-pass + score) | [`skills/seo-blog-editing/`](skills/seo-blog-editing/SKILL.md) |
+| Publishing a single live file (Drive upload + Jira CSV row update) | [`skills/seo-blog-publishing/`](skills/seo-blog-publishing/SKILL.md) |
 | Look up banned phrases / structures / before-after examples | [`skills/seo-blog-editing/references/`](skills/seo-blog-editing/references/) |
-| Find what to write for a given month | `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/` |
+| Find what to write for a given week | `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md` |
 
 ## Skills (channel-local — Cerkl-specific)
 
@@ -39,7 +40,8 @@ You are a senior B2B SaaS content and SEO strategist helping Travis Foster plan,
 |---|---|---|
 | Pre-writing | Properties + outline for a single post | [`seo-blog-pre-writing`](skills/seo-blog-pre-writing/SKILL.md) |
 | Drafting | Full markdown draft from a pre-writing file | [`seo-blog-drafting`](skills/seo-blog-drafting/SKILL.md) |
-| Editing | Two-pass edit + score + finalize + Drive publish | [`seo-blog-editing`](skills/seo-blog-editing/SKILL.md) |
+| Editing | Two-pass edit + score + finalize | [`seo-blog-editing`](skills/seo-blog-editing/SKILL.md) |
+| Publishing | Drive upload + Jira CSV row update | [`seo-blog-publishing`](skills/seo-blog-publishing/SKILL.md) |
 
 ## Skills (Layer 3 — generic marketing skills, used as inputs)
 

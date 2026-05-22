@@ -9,6 +9,8 @@ You are a senior B2B SaaS designer helping Travis Foster, Head of Marketing and 
 
 | Task | Go to | Read |
 |------|-------|------|
+| **Find any visual asset** (logos, photos, icons, templates) — routing layer | `branding-assets/` | [`INDEX.md`](branding-assets/INDEX.md) |
+| **Pick a specific Cerkl photo** (hero, blog cover, OG image) | `branding-assets/Cerkl Photography/` | [`INDEX.md`](branding-assets/Cerkl%20Photography/INDEX.md) |
 | Which logo to use, logo variants, lockup hierarchy | `branding-assets/Brand Guidelines/` | `logo-guide.md` |
 | Brand color hex values, color scales, gradients, CMYK | `branding-assets/Brand Guidelines/` | `colors.md` |
 | Font names, sizes, weights, web type scale | `branding-assets/Brand Guidelines/` | `typography.md` |
@@ -16,6 +18,7 @@ You are a senior B2B SaaS designer helping Travis Foster, Head of Marketing and 
 | Brand icons, icon design system, Broadcast shape, product illustration | `branding-assets/Brand Guidelines/` | `design-components.md` |
 | Canva templates, business cards, Google Docs/Slides, InDesign | `branding-assets/Brand Guidelines/` | `design-templates.md` |
 | One-pagers (print-format letter PDF) | `one-pagers/` | [`one-pager-process.md`](one-pagers/one-pager-process.md) |
+| Blog post images, in-body diagrams, OG/social cards (HTML → PNG, brand-aligned templates) | `blog-assets/` | [`PRINCIPLES.md`](blog-assets/PRINCIPLES.md) |
 | Browser tools, design inspiration | `branding-assets/Brand Guidelines/` | `design-resources.md` |
 | All brand guidelines (routing index) | `branding-assets/Brand Guidelines/` | `brand-guidelines.md` |
 | Social media graphics (raw assets) | `branding-assets/Social Assets/` | CONTEXT.md |
@@ -31,6 +34,13 @@ You are a senior B2B SaaS designer helping Travis Foster, Head of Marketing and 
 design/
 ├── CLAUDE.md
 ├── CONTEXT.md
+├── blog-assets/                       ← HTML-rendered blog images (templates + render pipeline)
+│   ├── PRINCIPLES.md
+│   ├── render.sh
+│   └── templates/
+│       ├── numbered-stack/            ← vertical: ordered list of 3-5 named concepts (ladders, frameworks)
+│       ├── letter-strip/              ← horizontal: 3-6 acronym letters or named pillars
+│       └── stat-hero/                 ← one dominant stat + framing (OG / social cards)
 └── branding-assets/
     ├── Brand Guidelines/
     │   ├── brand-guidelines.md     ← routing index

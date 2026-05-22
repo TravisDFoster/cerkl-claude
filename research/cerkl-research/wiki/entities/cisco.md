@@ -21,14 +21,20 @@ Cisco is a Fortune-100 enterprise networking and technology vendor. For IC resea
 ## Appearances in Sources
 
 - [[cisco-comms-leader-ai-content]] — Roth-Eagle interview
+- [[layoff-memo-subgenre-2026-05-21]] — 2026-05-13 ~4,000-cut memo (Chuck Robbins "Our Path Forward"); corporate-best-practice template + [[strong-quarter-layoff]] anchor
 
 ## Connections
 
 - [[austin-roth-eagle]] — Head of AI Acceleration Office
+- [[chuck-robbins]] — Chair and CEO
 - [[ai-in-internal-comms]] — practitioner perspective
 - [[ai-slop]] — concept Roth-Eagle helped articulate
+- [[layoff-comms-choreography]] — corporate-best-practice anchor case
+- [[strong-quarter-layoff]] — Cisco-anchored pattern
+- [[ai-restructure-memo-subgenre]] — primary case
 
 ## Open Questions
 
 - Other Cisco comms leaders worth tracking?
 - Cisco internal IC metrics — public case studies?
+- Will Cisco publish post-restructure data on Cisco U uptake among affected employees?

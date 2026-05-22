@@ -1,0 +1,29 @@
+Work Item ID,Issue Type,Parent ID,Epic Link,Summary,Description,Owner,Channel,Start Date,Due Date
+T001,Task,,,Content - Blog (Cerkl.com) - <Deliverable Name>,"Topic: <topic>
+Slug: <slug>
+Brief link: ../seo/briefs/<slug>.md
+Primary keyword: <kw>
+Secondary keywords: <kw1>, <kw2>, <kw3>
+Webflow CMS properties:
+  - Primary Category: <pillar>
+  - Primary Solution: <solution>
+  - All Categories: <list>
+Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+S001,Subtask,T001,,Blog – Copy,Write the blog post copy from the brief / outline.,,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+S002,Subtask,T001,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+S003,Subtask,T001,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+S004,Subtask,T001,,Blog – Implementation / Publishing,Stage in Webflow with CMS properties; schedule publish.,,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+T002,Task,,,Content - Blog (ICP) - <Deliverable Name>,"Topic: <topic>
+Slug: <slug>
+Note: ICPro has no brief queue — slug is synthesized from the deliverable title at scaffold time
+Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+S005,Subtask,T002,,Blog – Copy,Write the blog post copy from the outline.,,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+S006,Subtask,T002,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+S007,Subtask,T002,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+S008,Subtask,T002,,Blog – Implementation / Publishing,Stage in Wix with CMS properties; schedule publish.,,Blog Posts,<YYYY-MM-DD>,<YYYY-MM-DD>
+T003,Task,,,Social Media - LinkedIn - <Deliverable Name>,"Topic: <topic>
+Wraps: <which blog this LinkedIn post pairs with>",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,<YYYY-MM-DD>,<YYYY-MM-DD>
+S009,Subtask,T003,,LinkedIn – Copy,Draft the post copy.,,Social Media,<YYYY-MM-DD>,<YYYY-MM-DD>
+S010,Subtask,T003,,LinkedIn – Asset Creation,Create or source the static / carousel / video asset.,,Social Media,<YYYY-MM-DD>,<YYYY-MM-DD>
+S011,Subtask,T003,,LinkedIn – Approval,Review post + asset; sign off.,,Social Media,<YYYY-MM-DD>,<YYYY-MM-DD>
+S012,Subtask,T003,,LinkedIn – Implementation / Publishing,Schedule in LinkedIn / Buffer / native; confirm publish.,,Social Media,<YYYY-MM-DD>,<YYYY-MM-DD>

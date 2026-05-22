@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Dashboard · Cerkl</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #18181d;
+    --panel: #1f1f26;
+    --panel-soft: #27272e;
+    --panel-hover: #2a2a32;
+    --ink: #f5f5fa;
+    --muted: #bfbfc7;
+    --faint: #8a8a93;
+    --line: #373740;
+    --line-soft: #2b2b34;
+    --accent: #4c60d9;
+    --accent-strong: #3547c4;
+    --accent-deep: #0c1159;
+    --accent-pale: #a7b3ed;
+    --accent-soft: rgba(76, 96, 217, 0.14);
+    --accent-border: rgba(167, 179, 237, 0.28);
+    --warm: #ffaa22;
+    --warm-pale: #ffbf57;
+    --warm-soft: rgba(255, 170, 34, 0.10);
+    --warm-border: rgba(255, 170, 34, 0.30);
+    --good: #6de4c9;
+    --good-soft: rgba(59, 197, 164, 0.10);
+    --good-border: rgba(109, 228, 201, 0.30);
+    --violet: #a869fd;
+    --violet-soft: rgba(168, 105, 253, 0.14);
+    --violet-border: rgba(168, 105, 253, 0.30);
+    --ruby: #f79499;
+    --ruby-soft: rgba(247, 148, 153, 0.10);
+    --ruby-border: rgba(247, 148, 153, 0.30);
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+    /* Family accents — one color per top-level category area (functional grouping). */
+    --fam-pa: #a7b3ed;
+    --fam-pa-soft: rgba(167, 179, 237, 0.14);
+    --fam-pa-border: rgba(167, 179, 237, 0.28);
+    --fam-mkt: #a869fd;
+    --fam-mkt-soft: rgba(168, 105, 253, 0.12);
+    --fam-mkt-border: rgba(168, 105, 253, 0.28);
+    --fam-research: #6de4c9;
+    --fam-research-soft: rgba(109, 228, 201, 0.10);
+    --fam-research-border: rgba(109, 228, 201, 0.28);
+    --fam-comp: #ffbf57;
+    --fam-comp-soft: rgba(255, 191, 87, 0.10);
+    --fam-comp-border: rgba(255, 191, 87, 0.28);
+    --fam-ops: #f79499;
+    --fam-ops-soft: rgba(247, 148, 153, 0.10);
+    --fam-ops-border: rgba(247, 148, 153, 0.30);
+
+    /* Brand-approved pinned gradient — Cobalt 100 base + Cobalt 40 freeform glow. */
+    --pin-gradient:
+      radial-gradient(ellipse 90% 70% at 15% 20%, rgba(167,179,237,0.18) 0%, rgba(167,179,237,0) 60%),
+      radial-gradient(ellipse 60% 60% at 90% 85%, rgba(76,96,217,0.16) 0%, rgba(76,96,217,0) 65%),
+      linear-gradient(135deg, #1a1d3a 0%, #1c1c28 60%, #18181d 100%);
+
+    /* Cobalt sweep — for the topbar hairline and primary button. */
+    --cobalt-sweep: linear-gradient(90deg, #0c1159 0%, #3547c4 35%, #4c60d9 65%, #a7b3ed 100%);
+    --btn-primary-bg: linear-gradient(180deg, #4c60d9 0%, #3547c4 100%);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 15px;
+    letter-spacing: -0.0025em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Slim header bar ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--line-soft);
+    background: linear-gradient(180deg, #1c1c23 0%, #18181d 100%);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+  .topbar::before {
+    content: "";
+    display: block;
+    height: 2px;
+    background: var(--cobalt-sweep);
+    opacity: 0.85;
+  }
+  .topbar-inner {
+    max-width: 1320px; margin: 0 auto;
+    padding: 14px 32px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .topbar .brand {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .topbar .brand .title {
+    font-size: 16px; font-weight: 600; color: var(--ink); letter-spacing: -0.005em;
+  }
+  .topbar .brand .crumb {
+    font-size: 11px; color: var(--accent-pale); letter-spacing: 0.08em;
+    text-transform: uppercase; font-weight: 600;
+  }
+  .topbar .switch {
+    font-size: 10px; color: var(--faint);
+    text-decoration: none;
+    letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+    padding: 4px 8px; border-radius: 6px;
+    border: 1px solid var(--line-soft);
+    transition: color 0.12s ease, border-color 0.12s ease;
+  }
+  .topbar .switch:hover { color: var(--accent-pale); border-color: var(--accent-border); }
+  .topbar .grow { flex: 1; }
+  .topbar .meta-pill {
+    font-size: 12px; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .topbar .meta-pill b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Wrap ---------- */
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 24px 32px 80px; }
+  .zone { margin-bottom: 36px; }
+  .zone-head {
+    display: flex; align-items: baseline; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .zone-head h2 {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); margin: 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .zone-head h2::before {
+    content: ""; display: inline-block;
+    width: 8px; height: 8px; border-radius: 999px;
+    background: var(--accent-pale);
+    box-shadow: 0 0 0 2px var(--accent-soft);
+  }
+  #zone-pinned .zone-head h2::before { background: var(--fam-pa); box-shadow: 0 0 0 2px var(--fam-pa-soft); }
+  #zone-launch .zone-head h2::before { background: var(--fam-mkt); box-shadow: 0 0 0 2px var(--fam-mkt-soft); }
+  #zone-recent .zone-head h2::before { background: var(--fam-research); box-shadow: 0 0 0 2px var(--fam-research-soft); }
+  #zone-md .zone-head h2::before { background: var(--fam-comp); box-shadow: 0 0 0 2px var(--fam-comp-soft); }
+  .zone-head .lead {
+    font-size: 12px; color: var(--faint); font-weight: 500;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: inherit; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 12px; border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer; user-select: none;
+    transition: transform 0.08s ease, background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+    text-decoration: none;
+    background: transparent;
+    color: var(--ink);
+  }
+  .btn:hover { transform: translateY(-0.5px); }
+  .btn:active { transform: translateY(0); }
+  .btn.btn-primary {
+    background: var(--btn-primary-bg);
+    color: #ffffff;
+    border-color: var(--accent-strong);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 1px 2px rgba(0,0,0,0.4);
+  }
+  .btn.btn-primary:hover {
+    background: linear-gradient(180deg, #5e72e8 0%, #4253ce 100%);
+    border-color: var(--accent);
+  }
+  .btn.btn-secondary {
+    background: var(--panel);
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn.btn-secondary:hover {
+    background: var(--panel-hover);
+    border-color: var(--accent-border);
+    color: var(--accent-pale);
+  }
+  .btn.btn-ghost {
+    color: var(--accent-pale);
+    border-color: transparent;
+    padding: 6px 8px;
+  }
+  .btn.btn-ghost:hover {
+    color: #ffffff;
+    background: var(--accent-soft);
+  }
+  .btn .icon {
+    display: inline-block; width: 14px; height: 14px;
+    line-height: 1; font-size: 14px;
+  }
+
+  /* ---------- Pinned ---------- */
+  .pinned-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 14px;
+  }
+  .pin-card[data-layout="wide"] {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  @media (max-width: 980px) {
+    .pinned-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .pin-card[data-layout="wide"] { grid-column: 1 / -1; grid-row: auto; }
+  }
+  @media (max-width: 560px) {
+    .pinned-grid { grid-template-columns: 1fr; }
+  }
+  .pin-card {
+    background: var(--pin-gradient);
+    border: 1px solid var(--accent-border);
+    border-radius: 14px;
+    padding: 20px 22px 18px;
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .pin-card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--fam-pa);
+  }
+  .pin-card[data-pin="current-week"]::before { background: var(--fam-research); }
+  .pin-card[data-pin="seo-leadership-status"]::before { background: var(--fam-mkt); }
+  .pin-card[data-pin="content-reconcile"]::before { background: var(--fam-mkt); }
+  .pin-card[data-pin="blog-writing"]::before { background: var(--fam-mkt); }
+
+  /* Compact variant for non-wide pinned cards */
+  .pin-card[data-layout="compact"] {
+    padding: 14px 16px 12px;
+  }
+  .pin-card[data-layout="compact"] .pin-title {
+    font-size: 15px;
+    line-height: 1.25;
+  }
+  .pin-card[data-layout="compact"] .pin-subtitle {
+    font-size: 11px; margin-top: 2px;
+  }
+  .pin-card[data-layout="compact"] .pin-eyebrow {
+    margin-bottom: 6px;
+  }
+  .pin-card[data-layout="compact"] .pin-actions {
+    padding-top: 10px;
+    gap: 6px;
+  }
+  .pin-card[data-layout="compact"] .btn {
+    padding: 5px 9px; font-size: 11px;
+  }
+  .pin-card[data-layout="compact"] .btn .icon {
+    width: 12px; height: 12px; font-size: 12px;
+  }
+  /* Action-kind eyebrow gets a distinct tag */
+  .pin-card[data-kind="action"] .pin-eyebrow .kind-tag {
+    background: var(--fam-mkt-soft);
+    color: var(--fam-mkt);
+    border: 1px solid var(--fam-mkt-border);
+    padding: 1px 6px; border-radius: 4px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+  }
+  .pin-card[data-kind="artifact"] .pin-eyebrow .kind-tag {
+    background: var(--accent-soft);
+    color: var(--accent-pale);
+    border: 1px solid var(--accent-border);
+    padding: 1px 6px; border-radius: 4px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+  }
+  .pin-card .pin-eyebrow {
+    font-size: 10px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+    margin-bottom: 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pin-card .pin-title {
+    font-size: 18px; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.005em; line-height: 1.25; margin: 0;
+  }
+  .pin-card .pin-subtitle {
+    font-size: 12px; color: var(--muted); margin-top: 2px;
+  }
+  .pin-card .pin-content {
+    margin: 16px 0 14px;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 12px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .pin-card .pin-content-head {
+    font-size: 10px; font-weight: 600;
+    color: var(--accent-pale); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 2px;
+  }
+  .pin-card .pin-item {
+    display: grid; grid-template-columns: 18px 1fr; gap: 8px;
+    font-size: 13px; line-height: 1.45;
+  }
+  .pin-card .pin-item .n {
+    color: var(--accent-pale); font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+  .pin-card .pin-item .text { color: var(--ink); }
+  .pin-card .pin-item .text b { color: #ffffff; font-weight: 600; }
+  .pin-card .pin-item .text .desc { color: var(--muted); }
+  .pin-card .pin-actions {
+    display: flex; gap: 8px; margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .freshness {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10px; font-weight: 600; padding: 2px 7px;
+    border-radius: 999px; border: 1px solid;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    background: var(--good-soft); color: var(--good); border-color: var(--good-border);
+  }
+  .freshness::before { content: "●"; font-size: 6px; }
+  .freshness.stale { background: var(--warm-soft); color: var(--warm); border-color: var(--warm-border); }
+  .freshness.adhoc { background: transparent; color: var(--faint); border-color: var(--line); }
+
+  /* ---------- Content Production grid ---------- */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 880px) { .content-grid { grid-template-columns: 1fr; } }
+  .content-card {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.12s ease, box-shadow 0.18s ease, transform 0.12s ease;
+  }
+  .content-card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--fam-mkt);
+  }
+  .content-card[data-channel="icpro"]::before { background: var(--fam-research); }
+  .content-card:hover {
+    transform: translateY(-1px);
+    border-color: var(--fam-mkt-border);
+    box-shadow: 0 8px 22px rgba(168,105,253,0.10);
+  }
+  .content-card[data-channel="icpro"]:hover {
+    border-color: var(--fam-research-border);
+    box-shadow: 0 8px 22px rgba(109,228,201,0.10);
+  }
+  .content-card .cc-head {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+    margin-bottom: 4px;
+  }
+  .content-card .cc-title {
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    line-height: 1.3;
+  }
+  .content-card .cc-title::before {
+    content: ""; display: inline-block; vertical-align: middle;
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--fam-mkt);
+    margin-right: 7px; margin-bottom: 2px;
+  }
+  .content-card[data-channel="icpro"] .cc-title::before { background: var(--fam-research); }
+  .content-card .cc-subtitle {
+    font-size: 11px; color: var(--muted); margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+  .content-card .cc-meta {
+    font-size: 11px; color: var(--muted); margin-bottom: 10px;
+  }
+  .content-card .cc-meta b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .content-card .cc-items {
+    list-style: none; padding: 0; margin: 0 0 14px;
+    display: flex; flex-direction: column; gap: 6px;
+    font-size: 13px;
+  }
+  .content-card .cc-items li {
+    display: grid; grid-template-columns: 78px 1fr; gap: 10px; align-items: baseline;
+  }
+  .content-card .cc-items .date {
+    color: var(--faint); font-variant-numeric: tabular-nums; font-size: 11px;
+  }
+  .content-card .cc-items .date.tbd { color: var(--warm-pale); letter-spacing: 0.04em; }
+  .content-card .cc-items a.title {
+    color: var(--ink); text-decoration: none; border-bottom: none;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .content-card .cc-items a.title:hover { color: var(--accent-pale); }
+  .content-card .cc-footer {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  /* Content Production zone heading gets butter dot (creative production) */
+  #zone-content-production .zone-head h2::before { background: var(--fam-comp); box-shadow: 0 0 0 2px var(--fam-comp-soft); }
+
+  /* ---------- Launch grid ---------- */
+  .launch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 1180px) { .launch-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 880px)  { .launch-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px)  { .launch-grid { grid-template-columns: 1fr; } }
+  .launch-card {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px 14px;
+    display: flex; flex-direction: column;
+    min-height: 200px;
+    transition: border-color 0.12s ease, box-shadow 0.18s ease, transform 0.12s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .launch-card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent-pale);
+  }
+  .launch-card:hover { transform: translateY(-1px); }
+  .launch-card.kind-md { opacity: 0.6; }
+  .launch-card.kind-md:hover { opacity: 0.85; }
+
+  /* Family theming — drives left rail color, hover glow, freshness pill family tint. */
+  .launch-card[data-family="pa"]::before       { background: var(--fam-pa); }
+  .launch-card[data-family="mkt"]::before      { background: var(--fam-mkt); }
+  .launch-card[data-family="research"]::before { background: var(--fam-research); }
+  .launch-card[data-family="comp"]::before     { background: var(--fam-comp); }
+  .launch-card[data-family="ops"]::before      { background: var(--fam-ops); }
+
+  .launch-card[data-family="pa"]:hover       { border-color: var(--fam-pa-border);       box-shadow: 0 8px 22px rgba(167,179,237,0.10); }
+  .launch-card[data-family="mkt"]:hover      { border-color: var(--fam-mkt-border);      box-shadow: 0 8px 22px rgba(168,105,253,0.10); }
+  .launch-card[data-family="research"]:hover { border-color: var(--fam-research-border); box-shadow: 0 8px 22px rgba(109,228,201,0.10); }
+  .launch-card[data-family="comp"]:hover     { border-color: var(--fam-comp-border);     box-shadow: 0 8px 22px rgba(255,191,87,0.10); }
+  .launch-card[data-family="ops"]:hover      { border-color: var(--fam-ops-border);      box-shadow: 0 8px 22px rgba(247,148,153,0.10); }
+
+  /* Subtle ambient title glow per family — color leaks via small swatch next to title */
+  .launch-card .lc-title::before {
+    content: ""; display: inline-block; vertical-align: middle;
+    width: 6px; height: 6px; border-radius: 999px;
+    margin-right: 7px; margin-bottom: 2px;
+    background: var(--accent-pale);
+  }
+  .launch-card[data-family="pa"] .lc-title::before       { background: var(--fam-pa); }
+  .launch-card[data-family="mkt"] .lc-title::before      { background: var(--fam-mkt); }
+  .launch-card[data-family="research"] .lc-title::before { background: var(--fam-research); }
+  .launch-card[data-family="comp"] .lc-title::before     { background: var(--fam-comp); }
+  .launch-card[data-family="ops"] .lc-title::before      { background: var(--fam-ops); }
+  .launch-card .lc-head {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+    margin-bottom: 6px;
+  }
+  .launch-card .lc-title {
+    font-size: 14px; font-weight: 600; color: var(--ink);
+    line-height: 1.3;
+  }
+  .launch-card .lc-meta {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .launch-card .lc-meta b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .launch-card .lc-items {
+    list-style: none; padding: 0; margin: 0 0 12px;
+    display: flex; flex-direction: column; gap: 5px;
+    font-size: 12px;
+  }
+  .launch-card .lc-items li {
+    display: grid; grid-template-columns: 72px 1fr; gap: 8px;
+    align-items: baseline;
+  }
+  .launch-card .lc-items .date {
+    color: var(--faint); font-variant-numeric: tabular-nums; font-size: 11px;
+  }
+  .launch-card .lc-items a.title {
+    color: var(--ink); text-decoration: none; border-bottom: none;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .launch-card .lc-items a.title:hover { color: var(--accent-pale); }
+  .launch-card .lc-items .empty { color: var(--faint); font-style: italic; grid-column: 1 / -1; }
+  .launch-card .lc-footer {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  /* ---------- Recent strip ---------- */
+  .recent-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 1100px) { .recent-strip { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .recent-strip { grid-template-columns: 1fr; } }
+  .recent-chip {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent-pale);
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-decoration: none;
+    display: flex; flex-direction: column; gap: 3px;
+    transition: transform 0.1s ease, border-color 0.12s ease, box-shadow 0.18s ease;
+  }
+  .recent-chip[data-family="pa"]       { border-left-color: var(--fam-pa); }
+  .recent-chip[data-family="mkt"]      { border-left-color: var(--fam-mkt); }
+  .recent-chip[data-family="research"] { border-left-color: var(--fam-research); }
+  .recent-chip[data-family="comp"]     { border-left-color: var(--fam-comp); }
+  .recent-chip[data-family="ops"]      { border-left-color: var(--fam-ops); }
+  .recent-chip:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent-border);
+  }
+  .recent-chip[data-family="pa"]:hover       { box-shadow: 0 6px 18px rgba(167,179,237,0.10); }
+  .recent-chip[data-family="mkt"]:hover      { box-shadow: 0 6px 18px rgba(168,105,253,0.10); }
+  .recent-chip[data-family="research"]:hover { box-shadow: 0 6px 18px rgba(109,228,201,0.10); }
+  .recent-chip[data-family="comp"]:hover     { box-shadow: 0 6px 18px rgba(255,191,87,0.10); }
+  .recent-chip[data-family="ops"]:hover      { box-shadow: 0 6px 18px rgba(247,148,153,0.10); }
+  .recent-chip .r-date {
+    font-size: 10px; color: var(--muted); font-weight: 600;
+    letter-spacing: 0.04em; font-variant-numeric: tabular-nums;
+  }
+  .recent-chip .r-title {
+    font-size: 12px; color: var(--ink); font-weight: 500; line-height: 1.3;
+  }
+  .recent-chip .r-cat {
+    font-size: 10px; color: var(--faint); font-weight: 500;
+    margin-top: 2px;
+  }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--accent-strong);
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px; font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    z-index: 100;
+    max-width: 360px;
+  }
+  .toast.show {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* ---------- Error ---------- */
+  .error {
+    background: var(--warm-soft);
+    border: 1px solid var(--warm-border);
+    color: var(--warm-pale);
+    padding: 16px 20px; border-radius: 10px;
+    font-size: 14px;
+  }
+  .error b { color: #ffffff; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center; font-size: 11px; color: var(--faint);
+    margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line-soft);
+  }
+  footer a { color: var(--faint); text-decoration: none; border-bottom: 1px dotted var(--line); }
+  footer a:hover { color: var(--muted); }
+  footer code { font-family: var(--mono); font-size: 10px; }
+
+  /* ---------- Print ---------- */
+  @media print {
+    body { background: #ffffff; color: #18181d; -webkit-font-smoothing: auto; }
+    .topbar { background: #ffffff; color: #18181d; border-bottom-color: #d5d5db; }
+    .topbar .brand .title { color: #18181d; }
+    .topbar .brand .crumb { color: #373740; }
+    .topbar .meta-pill, .topbar .meta-pill b { color: #18181d; }
+    .pin-card, .launch-card { background: #f5f5fa; border-color: #d5d5db; }
+    .pin-card .pin-title, .launch-card .lc-title { color: #18181d; }
+    .pin-card .pin-content-head { color: #3547c4; }
+    .pin-card .pin-item .text { color: #18181d; }
+    .pin-card .pin-item .text .desc { color: #373740; }
+    .pin-card .pin-item .n { color: #3547c4; }
+    .freshness { background: #e8fffa; color: #1a9979; border-color: #1a9979; }
+    .freshness.stale { background: #fff9f2; color: #80550f; border-color: #80550f; }
+    .launch-card .lc-items a.title { color: #18181d; }
+    .launch-card .lc-items .date { color: #373740; }
+    .recent-chip { background: #ffffff; border-color: #d5d5db; }
+    .recent-chip .r-title { color: #18181d; }
+    .recent-chip .r-date, .recent-chip .r-cat { color: #373740; }
+    .btn { display: none; }
+    footer { color: #373740; border-top-color: #d5d5db; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="crumb">cerkl · claude-dashboard</span>
+      <span class="title">Claude Dashboard</span>
+    </div>
+    <a class="switch" href="http://127.0.0.1:3000/personal/claude-dashboard/" title="Switch to personal dashboard">↗ personal</a>
+    <span class="meta-pill"><b>Last refreshed:</b> <span id="last-refreshed">—</span></span>
+    <span class="grow"></span>
+    <button class="btn btn-secondary" data-copy-prompt="refresh-dashboard" title="Copy a prompt to refresh this dashboard">
+      <span class="icon">⟳</span> Refresh dashboard
+    </button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="zone" id="zone-pinned">
+    <div class="zone-head">
+      <h2>Pinned</h2>
+      <span class="lead">always-current docs · quick access + refresh-in-place</span>
+    </div>
+    <div class="pinned-grid" id="pinned"></div>
+  </div>
+
+  <div class="zone" id="zone-launch">
+    <div class="zone-head">
+      <h2>Launch / Run</h2>
+      <span class="lead">spawn a new artifact in each category · click [+ Run] to copy the prompt</span>
+    </div>
+    <div class="launch-grid" id="launch"></div>
+  </div>
+
+  <div class="zone" id="zone-content-production" style="display:none;">
+    <div class="zone-head">
+      <h2>Content production</h2>
+      <span class="lead">recent live blog posts · click [+ Draft new] to copy the channel prompt</span>
+    </div>
+    <div class="content-grid" id="content-production"></div>
+  </div>
+
+  <div class="zone" id="zone-recent">
+    <div class="zone-head">
+      <h2>Recent activity</h2>
+      <span class="lead">last 5 across all categories</span>
+    </div>
+    <div class="recent-strip" id="recent"></div>
+  </div>
+
+  <div class="zone" id="zone-md" style="display:none;">
+    <div class="zone-head">
+      <h2>Needs HTML rendering</h2>
+      <span class="lead">MD-only outputs — run <code>md-to-html</code> to promote</span>
+    </div>
+    <div class="launch-grid" id="md-cards"></div>
+  </div>
+
+  <footer>
+    Source registry: <code>sources.md</code> · Data: <code>data.json</code> · Refresh process: <code>claude-dashboard-process.md</code> · <a href="archive.html?category=ic-trends-daily">Open archive</a>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">Copied! Paste into Claude.</div>
+
+<script>
+// ----- Prompts (single place to read; data overrides for per-item prompts) -----
+const REFRESH_DASHBOARD_PROMPT =
+  "Refresh my claude dashboard.\n\nProcess: /Users/travisfoster/claude-code/cerkl/claude-dashboard/claude-dashboard-process.md";
+
+// ----- Clipboard / toast -----
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    // Fallback for non-secure contexts
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch {}
+    document.body.removeChild(ta);
+    return ok;
+  }
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// ----- Stale logic -----
+function daysSince(dateStr) {
+  if (!dateStr) return null;
+  const d = new Date(dateStr + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  return Math.floor((today - d) / 86400000);
+}
+function freshnessBadge(cadence, dateStr, isStale) {
+  const days = daysSince(dateStr);
+  if (cadence === 'adhoc' || !cadence) {
+    if (days === null) return '';
+    return `<span class="freshness adhoc">ad-hoc · ${days === 0 ? 'today' : days + 'd ago'}</span>`;
+  }
+  if (days === null) return `<span class="freshness adhoc">${cadence}</span>`;
+  const cls = isStale ? 'stale' : '';
+  const label = days === 0 ? 'today' : (days === 1 ? '1d ago' : days + 'd ago');
+  return `<span class="freshness ${cls}">${cadence} · ${label}${isStale ? ' · stale' : ''}</span>`;
+}
+
+// ----- Renderers -----
+function renderPinned(pinned) {
+  return pinned.map(p => {
+    const kind = p.kind || 'artifact';
+    const layout = p.layout === 'wide' ? 'wide' : 'compact';
+    const contentHtml = (kind === 'artifact' && p.content && p.content.items && p.content.items.length)
+      ? `<div class="pin-content">
+          <div class="pin-content-head">${escapeHtml(p.content.section)}</div>
+          ${p.content.items.map((it, i) => `
+            <div class="pin-item">
+              <span class="n">${i + 1}.</span>
+              <span class="text"><b>${escapeHtml(it.title)}</b> <span class="desc">— ${escapeHtml(it.summary)}</span></span>
+            </div>
+          `).join('')}
+        </div>`
+      : '';
+
+    let openHref = '#', openLabel = '', actionLabel = '', actionKey = '';
+    let kindTag = '';
+    let freshnessSource = null;
+    if (kind === 'action') {
+      openHref = p.plan_url || '#';
+      openLabel = 'Plan';
+      actionLabel = 'Run';
+      actionKey = 'pinned:' + p.slug;
+      kindTag = 'Action';
+      freshnessSource = p.cadence ? `<span class="freshness adhoc">${escapeHtml(p.cadence)} cadence</span>` : '';
+    } else {
+      openHref = p.url || '#';
+      openLabel = 'Open';
+      actionLabel = 'Refresh';
+      actionKey = 'pinned:' + p.slug;
+      kindTag = 'Pinned';
+      freshnessSource = freshnessBadge(p.cadence, p.last_updated, p.stale);
+    }
+
+    return `
+      <div class="pin-card" data-pin="${p.slug}" data-kind="${kind}" data-layout="${layout}">
+        <div class="pin-eyebrow">
+          <span class="kind-tag">${kindTag}</span>
+          ${freshnessSource}
+        </div>
+        <div class="pin-title">${escapeHtml(p.label)}</div>
+        <div class="pin-subtitle">${escapeHtml(p.subtitle || '')}</div>
+        ${contentHtml}
+        <div class="pin-actions">
+          <a class="btn btn-primary" href="${openHref}"><span class="icon">↗</span> ${openLabel}</a>
+          <button class="btn btn-secondary" data-copy-prompt="${actionKey}"><span class="icon">${kind === 'action' ? '▶' : '⟳'}</span> ${actionLabel}</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderContentCard(cat) {
+  const channel = cat.slug.includes('icpro') ? 'icpro' : 'seo';
+  const recent = cat.items.slice(0, cat.home_recent || 5);
+  const itemsHtml = recent.length === 0
+    ? '<li><span class="empty">no items yet</span></li>'
+    : recent.map(item => {
+        const isTbd = item.date === 'TBD' || !item.date;
+        return `
+          <li>
+            <span class="date ${isTbd ? 'tbd' : ''}">${item.date || 'TBD'}</span>
+            <a class="title" href="${item.url}" title="${escapeAttr(item.title)}">${escapeHtml(item.title)}</a>
+          </li>
+        `;
+      }).join('');
+  const runBtn = cat.new_run_prompt
+    ? `<button class="btn btn-primary" data-copy-prompt="category:${cat.slug}"><span class="icon">＋</span> Draft new</button>`
+    : `<span></span>`;
+  return `
+    <div class="content-card" data-channel="${channel}" data-family="mkt">
+      <div class="cc-head">
+        <div class="cc-title">${escapeHtml(cat.label)}</div>
+        ${freshnessBadge(cat.cadence, cat.last_run, cat.stale)}
+      </div>
+      <div class="cc-subtitle">${escapeHtml(cat.subtitle || '')}</div>
+      <div class="cc-meta">
+        <b>${cat.items.length}</b> live ${cat.items.length === 1 ? 'post' : 'posts'}
+        ${cat.last_run ? '· latest <b>' + cat.last_run + '</b>' : ''}
+      </div>
+      <ul class="cc-items">${itemsHtml}</ul>
+      <div class="cc-footer">
+        ${runBtn}
+        <a class="btn btn-ghost" href="archive.html?category=${cat.slug}">See all →</a>
+      </div>
+    </div>
+  `;
+}
+
+function renderLaunchCard(cat) {
+  const recent = cat.items.slice(0, cat.home_recent || 2);
+  const itemsHtml = recent.length === 0
+    ? '<li class="empty">no items yet</li>'
+    : recent.map(item => `
+        <li>
+          <span class="date">${item.date}</span>
+          <a class="title" href="${item.url}" title="${escapeAttr(item.title)}">${escapeHtml(item.title)}</a>
+        </li>
+      `).join('');
+  const runBtn = cat.new_run_prompt
+    ? `<button class="btn btn-primary" data-copy-prompt="category:${cat.slug}"><span class="icon">＋</span> Run new</button>`
+    : `<span></span>`;
+  return `
+    <div class="launch-card ${cat.kind === 'md' ? 'kind-md' : ''}" data-family="${familyFromSlug(cat.slug)}">
+      <div class="lc-head">
+        <div class="lc-title">${escapeHtml(cat.label)}</div>
+        ${freshnessBadge(cat.cadence, cat.last_run, cat.stale)}
+      </div>
+      <div class="lc-meta">
+        <b>${cat.items.length}</b> ${cat.items.length === 1 ? 'item' : 'items'}
+        ${cat.last_run ? '· latest <b>' + cat.last_run + '</b>' : ''}
+      </div>
+      <ul class="lc-items">${itemsHtml}</ul>
+      <div class="lc-footer">
+        ${runBtn}
+        <a class="btn btn-ghost" href="archive.html?category=${cat.slug}">See all →</a>
+      </div>
+    </div>
+  `;
+}
+
+function renderRecent(recent) {
+  return recent.map(item => `
+    <a class="recent-chip" href="${item.url}" data-family="${familyFromSlug(item.cat_slug)}">
+      <span class="r-date">${item.date}</span>
+      <span class="r-title">${escapeHtml(item.title)}</span>
+      <span class="r-cat">${escapeHtml(item.cat_label)}</span>
+    </a>
+  `).join('');
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function escapeAttr(s) { return escapeHtml(s); }
+
+function familyFromSlug(slug) {
+  if (!slug) return 'pa';
+  if (slug.startsWith('personal-assistant')) return 'pa';
+  if (slug.startsWith('hubspot')) return 'ops';
+  if (slug.startsWith('competitor')) return 'comp';
+  if (slug.startsWith('ic-trends')) return 'research';
+  if (slug.startsWith('marketing')) return 'mkt';
+  return 'pa';
+}
+
+// ----- Load -----
+async function load() {
+  let data;
+  try {
+    const res = await fetch('data.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    data = await res.json();
+  } catch (e) {
+    document.querySelector('.wrap').innerHTML =
+      '<div class="error"><b>Could not load data.json.</b> Make sure the page is served via HTTP (not file://) and that data.json exists in the same folder. Error: ' + e.message + '</div>';
+    return;
+  }
+
+  // Cache prompts by data-copy-prompt key
+  const promptMap = { 'refresh-dashboard': REFRESH_DASHBOARD_PROMPT };
+  for (const p of data.pinned || []) {
+    // artifact uses refresh_prompt; action uses run_prompt
+    promptMap['pinned:' + p.slug] = p.refresh_prompt || p.run_prompt;
+  }
+  for (const cat of data.categories || []) {
+    if (cat.new_run_prompt) promptMap['category:' + cat.slug] = cat.new_run_prompt;
+  }
+  window.__promptMap = promptMap;
+
+  document.getElementById('last-refreshed').textContent = data.generated_at;
+
+  // Pinned
+  document.getElementById('pinned').innerHTML = renderPinned(data.pinned || []);
+
+  // Launch: only HTML categories
+  const htmlCats = (data.categories || []).filter(c => c.kind === 'html');
+  document.getElementById('launch').innerHTML = htmlCats.map(renderLaunchCard).join('');
+
+  // Content Production: kind: blog
+  const blogCats = (data.categories || []).filter(c => c.kind === 'blog');
+  if (blogCats.length) {
+    document.getElementById('zone-content-production').style.display = '';
+    document.getElementById('content-production').innerHTML = blogCats.map(renderContentCard).join('');
+  }
+
+  // Recent
+  document.getElementById('recent').innerHTML = renderRecent(data.recent || []);
+
+  // MD-only zone
+  const mdCats = (data.categories || []).filter(c => c.kind === 'md');
+  if (mdCats.length) {
+    document.getElementById('zone-md').style.display = '';
+    document.getElementById('md-cards').innerHTML = mdCats.map(renderLaunchCard).join('');
+  }
+
+  // Wire copy buttons (event delegation)
+  document.body.addEventListener('click', async (ev) => {
+    const btn = ev.target.closest('[data-copy-prompt]');
+    if (!btn) return;
+    ev.preventDefault();
+    const key = btn.getAttribute('data-copy-prompt');
+    const prompt = window.__promptMap[key];
+    if (!prompt) { showToast('No prompt configured for ' + key); return; }
+    const ok = await copyToClipboard(prompt);
+    showToast(ok ? 'Copied! Paste into Claude.' : 'Copy failed — selection fallback also blocked.');
+  });
+}
+load();
+</script>
+</body>
+</html>

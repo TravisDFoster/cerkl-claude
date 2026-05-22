@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archive · Claude Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #18181d;
+    --panel: #1f1f26;
+    --panel-soft: #27272e;
+    --ink: #f5f5fa;
+    --muted: #bfbfc7;
+    --faint: #8a8a93;
+    --line: #373740;
+    --accent: #4c60d9;
+    --accent-strong: #3547c4;
+    --accent-deep: #0c1159;
+    --accent-pale: #a7b3ed;
+    --accent-soft: rgba(76, 96, 217, 0.14);
+    --accent-border: rgba(167, 179, 237, 0.28);
+    --warm: #ffaa22;
+    --warm-pale: #ffbf57;
+    --warm-soft: rgba(255, 170, 34, 0.10);
+    --warm-border: rgba(255, 170, 34, 0.30);
+    --shadow: 0 1px 0 rgba(0,0,0,0.30), 0 8px 24px rgba(0,0,0,0.40);
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+    --hero-gradient:
+      radial-gradient(ellipse 90% 70% at 20% 25%, rgba(167,179,237,0.22) 0%, rgba(167,179,237,0) 60%),
+      radial-gradient(ellipse 60% 50% at 85% 80%, rgba(76,96,217,0.18) 0%, rgba(76,96,217,0) 60%),
+      linear-gradient(135deg, #0c1159 0%, #0c1159 100%);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 18px;
+    letter-spacing: -0.0025em;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  header.hero {
+    background: var(--hero-gradient);
+    border: 1px solid rgba(167, 179, 237, 0.20);
+    border-radius: 14px;
+    padding: 28px 32px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  .breadcrumb {
+    font-size: 13px; color: var(--accent-pale); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
+  }
+  .breadcrumb a { color: var(--accent-pale); border-bottom: 1px solid var(--accent-border); }
+  .breadcrumb a:hover { color: #ffffff; border-bottom-color: var(--accent-pale); }
+  h1 {
+    font-size: 30px; line-height: 1.15; margin: 0 0 8px;
+    letter-spacing: -0.005em; font-weight: 700; color: #ffffff;
+  }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    font-size: 13px; color: rgba(255,255,255,0.78);
+  }
+  .meta-row b { color: #ffffff; font-weight: 600; }
+
+  section {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 8px 0;
+    box-shadow: var(--shadow);
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  h2 {
+    font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); margin: 12px 26px 8px;
+  }
+
+  .archive-list { display: flex; flex-direction: column; }
+  .archive-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 26px;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    transition: background 0.12s ease;
+  }
+  .archive-item:hover { background: var(--panel); }
+  .archive-item .date {
+    color: var(--faint); font-size: 13px;
+    font-variant-numeric: tabular-nums; font-weight: 500;
+  }
+  .archive-item .title { color: var(--ink); font-size: 15px; }
+  .archive-item:hover .title { color: var(--accent-pale); }
+
+  .md-badge {
+    display: inline-block;
+    background: var(--warm-soft);
+    color: var(--warm);
+    border: 1px solid var(--warm-border);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-left: 8px;
+    font-weight: 600;
+  }
+
+  .error {
+    color: var(--warm-pale);
+    background: var(--warm-soft);
+    border: 1px solid var(--warm-border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 0 26px 16px;
+    font-size: 14px;
+  }
+  .error b { color: #ffffff; }
+  .error code {
+    font-family: var(--mono); font-size: 13px;
+    background: rgba(255, 170, 34, 0.15); padding: 1px 6px; border-radius: 4px;
+  }
+
+  .other-cats { padding: 16px 26px; }
+  .other-cats ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .other-cats li a {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: border-color 0.12s ease, color 0.12s ease;
+  }
+  .other-cats li a:hover {
+    color: var(--accent-pale);
+    border-color: var(--accent-border);
+  }
+  .other-cats li a .count {
+    color: var(--faint); margin-left: 4px; font-variant-numeric: tabular-nums;
+  }
+
+  footer {
+    text-align: center; font-size: 12px; color: var(--muted);
+    margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line);
+  }
+
+  @media print {
+    body { background: #ffffff; color: #18181d; -webkit-font-smoothing: auto; }
+    .wrap { padding: 0; max-width: none; }
+    header.hero {
+      background: #ffffff; color: #18181d; border: 1px solid #d5d5db; box-shadow: none;
+    }
+    header.hero h1, header.hero .meta-row b { color: #18181d; }
+    header.hero .breadcrumb, header.hero .meta-row { color: #373740; }
+    .breadcrumb a { color: #3547c4; }
+    section { box-shadow: none; border: 1px solid #d5d5db; background: #ffffff; }
+    h2 { color: #373740; }
+    .archive-item { border-top-color: #d5d5db; }
+    .archive-item .date { color: #373740; }
+    .archive-item .title { color: #18181d; }
+    .other-cats li a { background: #f5f5fa; border-color: #d5d5db; color: #373740; }
+    footer { color: #373740; border-top-color: #d5d5db; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="breadcrumb"><a href="index.html">claude-dashboard</a> · archive · <span id="bc-cat">…</span></div>
+    <h1 id="title">Archive</h1>
+    <div class="meta-row" id="meta"></div>
+  </header>
+
+  <section id="content-section">
+    <div id="content"></div>
+  </section>
+
+  <section id="other-cats-section" style="display:none;">
+    <h2>Other categories</h2>
+    <div class="other-cats"><ul id="other-list"></ul></div>
+  </section>
+
+  <footer>
+    <a href="index.html">← Back to dashboard</a>
+  </footer>
+
+</div>
+
+<script>
+function getCategory() {
+  return new URLSearchParams(window.location.search).get('category');
+}
+
+async function load() {
+  const slug = getCategory();
+  const content = document.getElementById('content');
+  let data;
+  try {
+    const res = await fetch('data.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    data = await res.json();
+  } catch (e) {
+    content.innerHTML = '<div class="error"><b>Could not load data.json.</b> Make sure the page is served via HTTP. Error: ' + e.message + '</div>';
+    return;
+  }
+
+  if (!slug) {
+    document.getElementById('bc-cat').textContent = '(no category)';
+    content.innerHTML = '<div class="error">No category specified. Use <code>?category=&lt;slug&gt;</code>.</div>';
+    renderOtherCats(data, null);
+    return;
+  }
+
+  const cat = data.categories.find(c => c.slug === slug);
+  if (!cat) {
+    document.getElementById('bc-cat').textContent = slug;
+    content.innerHTML = '<div class="error">Unknown category: <code>' + slug + '</code></div>';
+    renderOtherCats(data, slug);
+    return;
+  }
+
+  document.title = cat.label + ' · Archive · Claude Dashboard';
+  document.getElementById('bc-cat').textContent = cat.label;
+  document.getElementById('title').textContent = cat.label;
+  document.getElementById('meta').innerHTML =
+    '<span><b>' + cat.items.length + '</b> ' + (cat.items.length === 1 ? 'item' : 'items') + '</span>' +
+    '<span><b>Kind:</b> ' + (cat.kind === 'md' ? 'Markdown (needs HTML rendering)' : 'HTML') + '</span>' +
+    '<span><b>Refreshed:</b> ' + data.generated_at + '</span>';
+
+  if (cat.items.length === 0) {
+    content.innerHTML = '<div class="error">No items in this category yet.</div>';
+  } else {
+    content.innerHTML = '<div class="archive-list">' + cat.items.map(item => `
+      <a class="archive-item" href="${item.url}">
+        <span class="date">${item.date}</span>
+        <span class="title">${item.title}${item.is_md ? '<span class="md-badge">md</span>' : ''}</span>
+      </a>
+    `).join('') + '</div>';
+  }
+
+  renderOtherCats(data, slug);
+}
+
+function renderOtherCats(data, currentSlug) {
+  const others = data.categories.filter(c => c.slug !== currentSlug);
+  if (others.length === 0) return;
+  document.getElementById('other-cats-section').style.display = '';
+  document.getElementById('other-list').innerHTML = others.map(c =>
+    `<li><a href="archive.html?category=${c.slug}">${c.label}<span class="count">${c.items.length}</span></a></li>`
+  ).join('');
+}
+
+load();
+</script>
+</body>
+</html>

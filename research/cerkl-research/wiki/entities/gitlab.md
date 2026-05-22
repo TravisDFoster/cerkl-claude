@@ -24,6 +24,7 @@ Ragan's read: credit for directness vs typical euphemism, but the memo's audienc
 ## Appearances in Sources
 
 - [[ragan-week-in-comms-linkedin-gm-gitlab-2026-05-15]] — Case 3 in the three-case triangulation
+- [[layoff-memo-subgenre-2026-05-21]] — high-transparency template (the praised model with the audience-mismatch caveat); voluntary-separation-deadline anchor
 - Primary memo: [GitLab Act 2 — Staples blog](https://about.gitlab.com/blog/gitlab-act-2/)
 - Coverage: [The Register — "GitLab promises a different kind of layoff"](https://www.theregister.com/devops/2026/05/12/gitlab-promises-a-different-kind-of-layoff-as-biz-pivots-toward-ai/) · [Byteiota — Agentic Era or AI Washing?](https://byteiota.com/gitlab-layoffs-2026-agentic-era-or-ai-washing/)
 
@@ -34,6 +35,8 @@ Ragan's read: credit for directness vs typical euphemism, but the memo's audienc
 - [[ai-washing]] — case study for disclaimer-AI-washing
 - [[ai-rollout-comms]] — middle-of-chain case study
 - [[ragan-communications]] — publisher of the diagnosis
+- [[ai-restructure-memo-subgenre]] — high-transparency template anchor
+- [[voluntary-first-default]] — voluntary-separation case
 
 ## Open Questions
 

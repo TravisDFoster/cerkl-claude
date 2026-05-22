@@ -24,6 +24,8 @@ The 10pp open-rate gap between the two reflects methodology variance (Outlook-on
 
 **Citation discipline caveat:** all 2026 benchmark data is single-vendor ([[politemail]], [[contactmonkey]], [[workshop]], Staffbase). No third-party independent benchmark exists yet. When citing in blog writing, name the vendor and methodology. Per the *Blog Post Research Mode* rule, competitor-sourced stats (ContactMonkey, PoliteMail) are excluded from external publication.
 
+**The tactical layer is hardening alongside the benchmark layer.** [[ragan-newsletter-pressure-test-2026-05-18]] ([[sean-devlin]]) introduces [[newsletter-format-audit]] — four diagnostic questions for newsletter design, anchored on named practitioner cases at [[yale]] ([[niamh-emerson]] — slot-based "same thing every week" structure) and [[roku]] ([[katie-satterlee]] — audience-aware variants with regional subject lines). The four questions trade ambiguous "is the newsletter good?" judgment for falsifiable measurable surfaces — and Q4 in particular (*designing around assumptions vs. actual employee behavior?*) is unanswerable for Outlook/Gmail/PDF stacks without a per-section measurement surface. Devlin is on a multi-week throughline (Korbyt overload 2026-05-14, Week in Comms 2026-05-15, this 2026-05-18) editorially anchoring *format and delivery matter more than content* as the 2026 IC narrative. The throughline aligns with [[delivery-as-comms-strategy]] at the topic level.
+
 **The structural absence of a [[cross-channel-benchmark]] is the most important fact about IC measurement as of 2026.** Single-channel vendors structurally cannot publish one (no Teams/Slack/intranet/SMS data). A cross-channel benchmark would change the unit of measurement from "per-channel open rate" to "audience-level reach and engagement across the channels the employee actually uses" — the asymmetric content position for a delivery + measurement layer with HRIS sync.
 
 ## Key Entities
@@ -31,7 +33,10 @@ The 10pp open-rate gap between the two reflects methodology variance (Outlook-on
 - [[contactmonkey]] — vendor publishing the most-cited annual benchmark report (76% open / 9% click in 2026)
 - [[politemail]] — competing vendor publishing the parallel 2026 benchmark via Ragan co-branding (66% open / 7% click)
 - [[ragan-communications]] — distribution partner for the PoliteMail benchmark
+- [[sean-devlin]] — Ragan contributor authoring the 2026 format-and-delivery throughline
 - [[workshop]] — vendor surfacing practitioner-effectiveness data for the channel
+- [[yale]] / [[niamh-emerson]] — newsletter slot-structure practitioner case (*YourYale*)
+- [[roku]] / [[katie-satterlee]] — newsletter audience-aware-variants practitioner case
 
 ## Key Concepts
 
@@ -40,10 +45,14 @@ The 10pp open-rate gap between the two reflects methodology variance (Outlook-on
 - [[cross-channel-benchmark]] — defensible content slot the single-channel vendors cannot fill
 - [[interactive-email-features]] — in-email widgets driving engagement data
 - [[evergreen-content-strategy]] — counterpart to email-as-time-sensitive in 2026 channel split
+- [[newsletter-format-audit]] — tactical practitioner-side diagnostic (Devlin/Ragan; Yale + Roku case studies)
+- [[delivery-as-comms-strategy]] — topic page citing newsletter format as one of four evidence streams
 
 ## Practitioner Voices
 
-_(none yet)_
+- [[niamh-emerson]] (Yale, *YourYale* editor) — slot-based newsletter structure; *"it works because it is the same thing every week"*
+- [[katie-satterlee]] (Roku, internal & editorial comms specialist) — audience-aware newsletter variants (regional subject lines, tonal/grammar variants)
+- [[sean-devlin]] ([[ragan-communications]]) — editorial throughline on format and delivery
 
 ## Sources Read
 
@@ -52,6 +61,7 @@ _(none yet)_
 | [[ragan-email-benchmarks-report-2026-05-12]] | 2026-05-12 | PoliteMail/Ragan 2026 paired anchor (66/7); reveals the Ragan-as-distribution / PoliteMail-as-author pattern; surfaces [[open-rate-inflation]] as cross-cutting methodology critique |
 | [[contactmonkey-internal-email-benchmark-2026]] | 2026-05-08 | ContactMonkey 2026 paired anchor (76/9); org-size and industry splits; interactive-feature performance |
 | [[six-internal-comms-trends-2026]] | 2026-04-14 | 81% rate email their most effective channel (vs events 35%, intranet 31%) |
+| [[ragan-newsletter-pressure-test-2026-05-18]] | 2026-05-18 | Tactical [[newsletter-format-audit]] — 4 diagnostic questions; Yale slot structure + Roku audience-aware variants |
 
 ## Open Questions
 

@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR Reporter — Using AI for internal communications? Know the risks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f5f5fa;
+    --panel: #ffffff;
+    --panel-soft: #f5f5fa;
+    --ink: #18181d;
+    --muted: #373740;
+    --line: #d5d5db;
+    --accent: #3547c4;
+    --accent-soft: #f0f2fc;
+    --good: #1a9979;
+    --good-bg: #e8fffa;
+    --good-border: #aaf7e6;
+    --warn: #80550f;
+    --warn-bg: #fff9f2;
+    --warn-border: #ffeccd;
+    --bad: #b00045;
+    --bad-bg: #fcf0f0;
+    --bad-border: #fbc2c4;
+    --info: #3547c4;
+    --info-bg: #f0f2fc;
+    --info-border: #ccd5f7;
+    --quote: #802ee6;
+    --code-bg: #ebebf0;
+    --shadow: 0 1px 0 rgba(24,24,29,0.04), 0 4px 16px rgba(24,24,29,0.06);
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 18px;
+    letter-spacing: -0.0025em;
+    -webkit-font-smoothing: antialiased;
+  }
+  section p, .tldr { max-width: 70ch; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  header.hero {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .breadcrumb {
+    font-size: 13px; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
+  }
+  h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.005em; font-weight: 700; }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    font-size: 14px; color: var(--muted); margin-bottom: 18px;
+  }
+  .meta-row b { color: var(--ink); font-weight: 600; }
+  .verdict {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 4px 12px; border-radius: 999px;
+    font-weight: 600; font-size: 13px;
+    border: 1px solid;
+    background: var(--warn-bg); color: var(--warn); border-color: var(--warn-border);
+  }
+  .verdict.good { background: var(--good-bg); color: var(--good); border-color: var(--good-border); }
+  .verdict.bad { background: var(--bad-bg); color: var(--bad); border-color: var(--bad-border); }
+  .verdict::before { content: "●"; font-size: 10px; }
+  .tldr {
+    font-size: 18px; line-height: 1.55; color: var(--ink);
+    border-left: 3px solid var(--accent); padding-left: 16px;
+    margin: 0;
+  }
+
+  section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 22px; margin: 0 0 14px; letter-spacing: -0.0025em; font-weight: 600;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2 .num {
+    font-size: 12px; color: var(--muted); font-weight: 600;
+    background: var(--code-bg); padding: 2px 8px; border-radius: 6px;
+  }
+  h3 { font-size: 18px; margin: 18px 0 8px; letter-spacing: -0.0025em; font-weight: 600; }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--info-border); }
+  a:hover { border-bottom-color: var(--accent); }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+  li { margin-bottom: 6px; }
+
+  .cols-2 {
+    display: grid; gap: 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 720px) { .cols-2 { grid-template-columns: 1fr; } }
+
+  .callout {
+    border-radius: 10px; padding: 14px 16px;
+    border: 1px solid;
+    margin: 12px 0;
+  }
+  .callout.try {
+    background: var(--accent-soft); border-color: var(--info-border); color: var(--accent);
+  }
+  .callout.warn {
+    background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn);
+  }
+  .callout.info {
+    background: var(--info-bg); border-color: var(--info-border); color: var(--info);
+  }
+  .callout p { max-width: none; }
+  .callout a { color: inherit; border-bottom-color: currentColor; opacity: 0.85; }
+  .callout a:hover { opacity: 1; }
+  .callout-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.9;
+    margin-bottom: 4px;
+  }
+
+  code, pre { font-family: var(--mono); }
+  .code-row {
+    display: flex; align-items: stretch; gap: 0;
+    background: var(--code-bg); border: 1px solid var(--line);
+    border-radius: 8px; overflow: hidden;
+    margin: 10px 0;
+  }
+  .code-row code {
+    flex: 1; padding: 10px 14px; font-family: var(--mono);
+    font-size: 13.5px; line-height: 1.5; white-space: pre-wrap;
+    color: var(--ink); background: transparent;
+  }
+  .copy-btn {
+    border: none; background: var(--accent); color: #ffffff;
+    padding: 0 16px; font-size: 12px; font-weight: 600;
+    cursor: pointer; letter-spacing: 0.04em;
+    font-family: inherit;
+  }
+  .copy-btn:hover { background: #4c60d9; }
+  .copy-btn.copied { background: var(--good); }
+  p code, li code, td code { font-family: var(--mono); font-size: 0.9em;
+    background: var(--code-bg); padding: 1px 6px; border-radius: 4px; }
+
+  .personas { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .persona {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; background: var(--panel-soft);
+  }
+  .persona h4 { margin: 0 0 6px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .persona p { margin: 0; font-size: 14px; }
+
+  .stack-cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 8px; }
+  .stack-card {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stack-card h4 { margin: 0 0 6px; font-size: 14px; color: var(--accent); font-weight: 600; }
+  .stack-card p { margin: 0; font-size: 14px; }
+
+  table.cmp {
+    width: 100%; border-collapse: collapse; margin-top: 10px;
+    font-size: 14px;
+  }
+  table.cmp th, table.cmp td {
+    text-align: left; padding: 10px 12px; vertical-align: top;
+    border-bottom: 1px solid var(--line);
+  }
+  table.cmp th {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); font-weight: 600; background: var(--panel-soft);
+  }
+  table.cmp tr:last-child td { border-bottom: none; }
+  table.cmp tr:hover td { background: var(--panel-soft); }
+  table.cmp .alt-name { font-weight: 600; }
+  .axis-note {
+    background: var(--info-bg); border-left: 3px solid var(--info);
+    padding: 10px 14px; border-radius: 0 8px 8px 0;
+    font-size: 14px; margin-top: 12px;
+  }
+
+  .quotes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 12px; }
+  .quote {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; position: relative;
+    border-left: 3px solid var(--quote);
+  }
+  .quote .q-mark { position: absolute; top: 4px; right: 12px; font-size: 28px; color: var(--quote); opacity: 0.35; line-height: 1; }
+  .quote p { margin: 0 0 8px; font-style: italic; font-size: 14px; line-height: 1.55; max-width: none; }
+  .quote .who { font-size: 12px; color: var(--muted); }
+  .quote.skeptic { border-left-color: var(--warn); }
+  .quote.skeptic .q-mark { color: var(--warn); }
+
+  .stats { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-bottom: 14px; }
+  .stat {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .stat .num { font-size: 22px; font-weight: 700; color: var(--accent); letter-spacing: -0.005em; }
+  .stat .lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+
+  .reco {
+    background: var(--panel);
+    border: 1px solid var(--warn-border);
+    border-left: 3px solid var(--warn);
+    border-radius: 14px; padding: 22px 26px;
+  }
+  .reco h2 { margin-top: 0; }
+  .reco-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 12px; }
+  .reco-cell {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .reco-cell h4 { margin: 0 0 6px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .reco-cell p { margin: 0; font-size: 14px; }
+
+  details.q {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 0; margin-bottom: 8px; overflow: hidden;
+  }
+  details.q summary {
+    padding: 12px 16px; cursor: pointer; font-weight: 500; font-size: 14px;
+    list-style: none; position: relative;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::before {
+    content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    font-size: 18px; color: var(--accent); transition: transform 0.15s;
+  }
+  details.q[open] summary::before { content: "−"; }
+  details.q .q-body { padding: 0 16px 14px; font-size: 14px; color: var(--muted); }
+  details.q .q-body p { font-size: 14px; }
+
+  footer {
+    text-align: center; font-size: 12px; color: var(--muted);
+    margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line);
+  }
+
+  @media print {
+    body { background: #ffffff; color: #18181d; -webkit-font-smoothing: auto; }
+    .wrap { padding: 0; max-width: none; }
+    section, header.hero, .reco { box-shadow: none; border: 1px solid #d5d5db; page-break-inside: avoid; }
+    .copy-btn, .code-row .copy-btn { display: none; }
+    a { color: #18181d; }
+    details.q { page-break-inside: avoid; }
+    details.q[open] summary::before, details.q summary::before { display: none; }
+    details.q .q-body { padding: 0 16px 14px; }
+    details.q[open] .q-body { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="breadcrumb">ic-trends · Publication Deep Dive</div>
+    <h1>HR Reporter: &ldquo;Using AI for internal communications? Know the risks&rdquo;</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 2026-05-18</span>
+      <span><b>Category:</b> Publication — practitioner-sentiment piece</span>
+      <span><b>Source published:</b> 2025-12-08</span>
+      <span class="verdict">Worth profiling — Maybe</span>
+    </div>
+    <p class="tldr">
+      A December 2025 Canadian HR Reporter article by Sarah Dobson lays out an academic, research-backed
+      case that AI in internal communications damages <b>trust, authenticity, and perceived sincerity</b> —
+      and that IC pros should &ldquo;co-pilot&rdquo; AI rather than let it draft relational messages. Pair this
+      with Simpplr's 2026 State of IC findings — <b>52% of IC pros use AI weekly, but 29% are anxious about job
+      security and &gt;33% say AI is the reason their org plans to reduce headcount</b> — and the picture is
+      consistent: <b>practitioners are AI-anxious, not AI-eager</b>. That's a counterpositioning opening for
+      Cerkl against a competitor set (Staffbase, Firstup, Workshop, Simpplr, Poppulo) uniformly leading with
+      AI maximalism.
+    </p>
+
+    <div class="callout try">
+      <div class="callout-label">First action — draft an AI-skeptic positioning pillar for Foundations</div>
+      <p style="margin:0;">
+        A 1-page internal doc: headline (&ldquo;Free forever. No AI tax. No headcount pitch.&rdquo;),
+        3 proof points, 5 competitor contrasts, 3 quotable stats. Sense-check with one AE and one Foundations
+        user. Time-box 5 working days to draft + 5 to socialize. Decision by 2026-06-08.
+      </p>
+      <div class="code-row">
+        <code id="positioning-line">We don't sell you an AI strategy. We make sure your message gets read by the right person — AI or no AI.</code>
+        <button class="copy-btn" data-copy="positioning-line" type="button">Copy</button>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="num">01</span>What it is &amp; what it claims</h2>
+    <div class="cols-2">
+      <div>
+        <h3>The article</h3>
+        <p>
+          A <b>December 8, 2025</b> Canadian HR Reporter piece by staff writer <b>Sarah Dobson</b>,
+          anchored on two academic studies. Light on vendor names, heavy on research citations. Reads as
+          a sober counter-narrative to the AI-maximalist marketing dominating IC trade press through
+          Q1–Q2 2026.
+        </p>
+        <ul>
+          <li>Article: <a href="https://www.hrreporter.com/focus-areas/automation-ai/using-ai-for-internal-communications-know-the-risks/393831">hrreporter.com</a></li>
+          <li>Sarah Dobson page: <a href="https://www.hrreporter.com/authors/sarah-dobson">hrreporter.com/authors/sarah-dobson</a></li>
+          <li>Companion data — Simpplr 2026 State of IC: <a href="https://www.simpplr.com/blog/state-of-internal-communications-2026/">simpplr.com</a></li>
+          <li>Simpplr press release: <a href="https://www.simpplr.com/newsroom/press-releases/2026-state-of-internal-communications-report/">simpplr.com/newsroom</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>The thesis</h3>
+        <p>
+          AI-assisted internal comms <b>erodes trust and authenticity</b>, especially in <em>relational</em>
+          messages — recognition, congratulations, motivation, performance reviews, crisis comms. The fix
+          is &ldquo;co-piloting&rdquo;: humans draft, AI polishes. Not &ldquo;single-prompt-to-campaign&rdquo;
+          agentic delivery.
+        </p>
+        <p style="font-size:13.5px; color:var(--muted); margin-top:8px;">
+          Two studies cited: Cardon &amp; Coman (IJBC 2025, n=1,100 working professionals) on AI-assisted
+          workplace writing; Linjuan Rita Men et al. (Public Relations Review, n=20 senior comms pros) on
+          AI in IC.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:22px;">Risks the article enumerates</h3>
+    <ul>
+      <li><b>Trust erosion</b> — recipients perceive AI-written messages as less authentic when AI assistance is high.</li>
+      <li><b>Authenticity loss</b> — &ldquo;lack of human experience and human touch in the communication.&rdquo;</li>
+      <li><b>Reputational harm to the sender</b> — using AI may damage supervisor credibility and perceived caring.</li>
+      <li><b>Skill atrophy</b> — over-reliance on AI tools without the expected time savings.</li>
+      <li><b>Wrong tool for high-stakes scenarios</b> — performance reviews and crisis comms specifically called out.</li>
+      <li><b>Sincerity decline for relational content</b> — congratulations, motivation, recognition all degraded by visible AI use.</li>
+    </ul>
+
+    <h3>Quotes worth pulling</h3>
+    <div class="quotes">
+      <div class="quote">
+        <span class="q-mark">&ldquo;</span>
+        <p>&ldquo;If my manager has to use AI to write a message like this, why are they my manager at all?&rdquo;</p>
+        <div class="who">— Surfaced in the HR Reporter article as a recipient-sentiment example · the killer line for any Cerkl positioning doc on this theme</div>
+      </div>
+      <div class="quote">
+        <span class="q-mark">&ldquo;</span>
+        <p>&ldquo;Begin with your brain and draft with your brain first.&rdquo;</p>
+        <div class="who">— Anthony Coman, Instructional Assoc. Prof. &amp; Writing Coordinator, UF Warrington College of Business · co-author of the Cardon &amp; Coman 2025 study</div>
+      </div>
+      <div class="quote">
+        <span class="q-mark">&ldquo;</span>
+        <p>&ldquo;Co-piloting is the best approach. Enhance the efficiency and efficacy of the work, but always have a human in the center.&rdquo;</p>
+        <div class="who">— Linjuan Rita Men, Professor of Public Relations, University of Florida</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>The companion data — Simpplr 2026 State of IC</h2>
+    <p>
+      The parent brief flagged a <b>52% weekly AI usage</b> stat. That stat is <em>not</em> in the HR Reporter
+      article — it's from Simpplr's 2026 State of Internal Communications Report (independent survey of
+      <b>448 IC pros</b> in North America, 85% U.S. / 15% Canada, all at orgs with 500+ employees, fielded
+      December 2025 — same month the HR Reporter piece published). The two are complementary, not the same
+      source.
+    </p>
+    <div class="stats">
+      <div class="stat"><div class="num">52%</div><div class="lbl">IC pros use AI weekly</div></div>
+      <div class="stat"><div class="num">53%</div><div class="lbl">significant efficiency gain</div></div>
+      <div class="stat"><div class="num">29%</div><div class="lbl">job-security anxiety</div></div>
+      <div class="stat"><div class="num">&gt;33%</div><div class="lbl">org reducing headcount due to AI</div></div>
+      <div class="stat"><div class="num">448</div><div class="lbl">IC pros surveyed</div></div>
+      <div class="stat"><div class="num">Dec 2025</div><div class="lbl">field date</div></div>
+    </div>
+    <div class="axis-note">
+      <b>Decision-relevant axis: practitioner sentiment.</b> HR Reporter + Simpplr tell the same story from
+      two ends — pros use AI, pros are afraid of AI, pros want a framing that preserves their seat at the
+      table.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>Who it's for</h2>
+    <div class="personas">
+      <div class="persona">
+        <h4>Primary — AI-anxious practitioner</h4>
+        <p>Uses AI weekly, sees the efficiency, but hears layoff rumors and watches their org redefine &ldquo;lean comms team.&rdquo; Reads this for vocabulary to push back on AI maximalism internally.</p>
+      </div>
+      <div class="persona">
+        <h4>Secondary — skeptical IC director</h4>
+        <p>Has a board/CHRO asking why headcount can't shrink given AI tools. Needs research-backed talking points to defend the team's relational/strategic value.</p>
+      </div>
+      <div class="persona">
+        <h4>Tertiary — governance-conscious enterprise IC</h4>
+        <p>At a regulated org. Looking for academic citations to anchor an internal AI policy document.</p>
+      </div>
+      <div class="persona">
+        <h4>Strong fit when</h4>
+        <p>Reader's KPI mix includes employee trust, sentiment, leadership credibility — not just message throughput.</p>
+      </div>
+      <div class="persona">
+        <h4>Weak fit when</h4>
+        <p>Reader is a marketer-adjacent IC who measures success in send volume or campaign velocity. They'll dismiss this as concern-trolling.</p>
+      </div>
+      <div class="persona">
+        <h4>Audience caveat</h4>
+        <p>HR Reporter skews HR/L&amp;D, not pure IC. Treat as practitioner-sentiment evidence, not analyst-grade market data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>How it slots into Cerkl's positioning</h2>
+    <p>Four findings, ordered by leverage.</p>
+
+    <h3>1. Buyers are AI-anxious, not AI-eager. That's the opening.</h3>
+    <p>
+      Every major Cerkl competitor leads with AI maximalism in their 2026 narrative.
+    </p>
+    <div class="stack-cards">
+      <div class="stack-card"><h4>Staffbase</h4><p>&ldquo;AI quality layer,&rdquo; Navigator (permission-aware AI search), AI-Native EXP positioning.</p></div>
+      <div class="stack-card"><h4>Firstup</h4><p>Five-pillar agentic AI suite (Search, Content Creator, Insights, Actions, Audience Builder), March 2026.</p></div>
+      <div class="stack-card"><h4>Workshop</h4><p>Cici agentic AI — &ldquo;builds complete internal comms from a single prompt,&rdquo; Feb 2026.</p></div>
+      <div class="stack-card"><h4>Simpplr</h4><p>Comms AI (Feb 2026) — and ironically the source of the data showing pros are anxious about exactly what they're selling.</p></div>
+      <div class="stack-card"><h4>Poppulo</h4><p>Create / Target / Analyze Agents + Designer editor.</p></div>
+      <div class="stack-card"><h4>LumApps</h4><p>Repositioned 2026-05-13 as &ldquo;The leading AI Employee Hub&rdquo; — homepage H1 swap.</p></div>
+    </div>
+    <p style="margin-top:14px;">
+      The HR Reporter article + Simpplr's own data say the buyer's gut response to all of that is
+      <b>anxiety, not excitement</b>. When &gt;33% of IC pros work at orgs planning to reduce headcount
+      because of AI, every AI-maximalist pitch lands as a survival threat — <em>to the person in the
+      meeting</em>. That's a counterpositioning lane no one else is in.
+    </p>
+
+    <div class="callout info">
+      <div class="callout-label">Proposed Cerkl frame</div>
+      <p style="margin:0;">
+        &ldquo;We don't sell you an AI strategy. We make sure your message gets read by the right
+        person — AI or no AI.&rdquo;
+      </p>
+      <p style="margin:8px 0 0;">
+        Sharper, for sales enablement: &ldquo;Foundations is free, forever, with zero AI tax. Your job
+        is to be the human in the loop. Ours is to deliver what you write to the people who need it.&rdquo;
+      </p>
+    </div>
+
+    <h3>2. Foundations free-forever is the strongest pricing manifestation of this stance.</h3>
+    <p>
+      Every competitor named above bundles AI features behind a paid tier — Workshop's $3k/yr floor,
+      Staffbase's ~$30k floor, Firstup custom-quote, Simpplr custom-quote, Poppulo enterprise quote.
+      When the buyer's anxiety is &ldquo;AI is the reason my headcount is at risk,&rdquo; a free tier
+      that doesn't push AI at all reads as <b>the lowest-risk product on the market</b>.
+    </p>
+    <div class="callout try">
+      <div class="callout-label">Foundations marketing line to test</div>
+      <p style="margin:0;">&ldquo;Free forever. No AI tax. No headcount pitch. Just delivery that works.&rdquo;</p>
+    </div>
+    <p>
+      Not an &ldquo;anti-AI&rdquo; pitch — Omni AI exists and ships AI Newsletters / News Digests. It's
+      a <b>segmentation pitch</b>: Foundations buyers get a tool that doesn't presume AI is the answer;
+      Omni AI buyers get AI surfaces when they actually want them.
+    </p>
+
+    <h3>3. Omni AI needs a different narrative frame in light of this signal.</h3>
+    <p>
+      If buyers are reading &ldquo;AI for relational messages destroys trust&rdquo; in HR Reporter,
+      Cerkl's Omni AI marketing should preemptively answer: <b>Cerkl's AI is for the boring stuff —
+      digest assembly, summarization, segmentation — not for writing the CEO's heartfelt all-hands
+      message.</b> That's the &ldquo;co-piloting&rdquo; framing the article validates. It's also the
+      framing that avoids the Workshop Cici / Staffbase Navigator / Simpplr Comms AI escalation trap,
+      where every quarter someone ships a more aggressive agentic feature and everyone else has to
+      match.
+    </p>
+    <div class="callout info">
+      <div class="callout-label">Suggested Omni AI narrative line</div>
+      <p style="margin:0;">
+        &ldquo;AI for the parts of internal comms that benefit from it. Human for the parts that don't.
+        We don't draft your manager-to-employee message. We make sure the message you wrote gets read.&rdquo;
+      </p>
+    </div>
+
+    <h3>4. Cleanest competitor contrasts to refresh</h3>
+    <table class="cmp">
+      <thead>
+        <tr><th>Competitor</th><th>Their 2026 AI narrative</th><th>Cerkl counter-frame (HR Reporter / Simpplr anchored)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="alt-name">Workshop (Cici)</td>
+          <td>&ldquo;Builds complete internal comms from a single prompt.&rdquo;</td>
+          <td>&ldquo;A single prompt that writes your team's voice for them. Your audience can tell. Cerkl ships your voice, not a model's.&rdquo;</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Staffbase (AI Quality Layer + Navigator)</td>
+          <td>&ldquo;AI-Native EXP,&rdquo; governance-as-table-stakes.</td>
+          <td>&ldquo;Their pitch is governance for AI you didn't ask for. Ours is delivery for the comms you already write.&rdquo;</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Simpplr (Comms AI)</td>
+          <td>AI workspace for IC orchestration.</td>
+          <td>&ldquo;Their own 2026 data: 29% of IC pros are anxious about their jobs. Simpplr's answer is more AI. Ours is more delivery.&rdquo;</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Firstup (5-pillar agentic suite)</td>
+          <td>Content Creator, Insights, Actions agents.</td>
+          <td>&ldquo;Agentic content creation is the job IC pros are anxious about losing. We do the part of the job AI can't replace — getting the right message to the right person.&rdquo;</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Workvivo (Seer)</td>
+          <td>People-intelligence / sentiment listening.</td>
+          <td>&ldquo;Listening is a separate job. We make sure your response to what you hear actually reaches the right employees.&rdquo; <em>(Already established 2026-05-15.)</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span>Comparison to alternatives — other voices making the same case</h2>
+    <table class="cmp">
+      <thead>
+        <tr><th>Alternative source</th><th>How they make the same case</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="alt-name">ContactMonkey blog — &ldquo;AI and the Future of Communication&rdquo;</td>
+          <td>Vendor-published but explicit: <em>&ldquo;AI does not replace headcount but changes the ratio of what existing headcount can produce.&rdquo;</em> Strong augment-not-replace framing. Useful as a quote-pull <em>because</em> it's a competitor making the case. <a href="https://www.contactmonkey.com/blog/ai-and-the-future-of-communication-whats-actually-changing-and-what-isnt">link</a></td>
+        </tr>
+        <tr>
+          <td class="alt-name">Ragan EC&amp;CC 2026 keynote takeaways</td>
+          <td><em>&ldquo;AI will never sit across from a nervous executive and tell them what they need to hear before an all-hands. It won't build trust with a skeptical workforce — that's still the communicator.&rdquo;</em> Trade-press version of the HR Reporter thesis.</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Cardon &amp; Coman 2025 study</td>
+          <td>Academic primary source. n=1,100 — best statistical anchor for &ldquo;AI assistance reduces perceived sincerity in workplace writing.&rdquo; Cite directly, not via HR Reporter.</td>
+        </tr>
+        <tr>
+          <td class="alt-name">Simpplr 2026 State of IC</td>
+          <td>Statistical anchor for AI anxiety: 52% / 29% / &gt;33% headcount reduction. Cite directly — press release is public.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="axis-note">
+      <b>Decision-relevant axis: source independence.</b> ContactMonkey is a competitor making the same
+      argument; Ragan is trade press; Cardon &amp; Coman is academic; Simpplr is a maximalist vendor
+      publishing their own contradicting data. Each is useful for a different audience.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span>Gotchas</h2>
+    <div class="callout warn">
+      <div class="callout-label">The 52% stat is not in the HR Reporter article</div>
+      <p style="margin:0;">It's from Simpplr, fielded the same month the article published. The parent brief conflated the two; they're complementary signals from different sources, not the same source.</p>
+    </div>
+    <div class="callout warn">
+      <div class="callout-label">HR Reporter audience skew</div>
+      <p style="margin:0;">Canadian HR Reporter is HR-led, not pure IC. The piece carries less weight with a Senior Director of IC at a Fortune 500 than it would for a People Ops / HR generalist. Cite alongside Simpplr for IC-specific audiences.</p>
+    </div>
+    <div class="callout warn">
+      <div class="callout-label">Academic citations are paywalled</div>
+      <p style="margin:0;">Both Cardon &amp; Coman (IJBC 2025) and Men et al. (Public Relations Review) sit behind academic paywalls. Cerkl marketing can cite abstracts and HR Reporter's summary; long-form Cerkular content would need a one-off academic-access pull.</p>
+    </div>
+    <div class="callout warn">
+      <div class="callout-label">&ldquo;Co-piloting&rdquo; is already loaded vocabulary</div>
+      <p style="margin:0;">Microsoft owns &ldquo;Copilot&rdquo; as a product name. Use &ldquo;human-in-the-loop&rdquo; or &ldquo;human-centered AI&rdquo; in Cerkl copy to avoid trademark adjacency and signal independence from the Microsoft framing.</p>
+    </div>
+    <div class="callout info">
+      <div class="callout-label">Simpplr is both source and target</div>
+      <p style="margin:0;">Simpplr is the source of the anxiety data <em>and</em> a maximalist AI vendor. Cerkl can quote Simpplr's own data back at Simpplr's own marketing — but do so once, sharply, not as a sustained campaign (looks petty over time).</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span>Community signal</h2>
+    <p>
+      No direct LinkedIn / Ragan reactions to the specific HR Reporter article surfaced as of 2026-05-18.
+      The piece is 5+ months old; it didn't viralize but it's been quietly cited in HR-policy contexts.
+      Adjacent practitioner signal is strong.
+    </p>
+    <div class="quotes">
+      <div class="quote">
+        <span class="q-mark">&ldquo;</span>
+        <p>&ldquo;Everyone's worried AI will replace communicators.&rdquo;</p>
+        <div class="who">— Leah Dergachev, <a href="https://www.linkedin.com/posts/leahdergachev_everyones-worried-ai-will-replace-communicators-activity-7367197242400673793-jrLC">LinkedIn</a> · representative of multiple posts in the genre over the last 90 days</div>
+      </div>
+      <div class="quote">
+        <span class="q-mark">&ldquo;</span>
+        <p>&ldquo;AI does not replace headcount but changes the ratio of what existing headcount can produce. A one-person IC team with strong AI workflows can produce what previously required two or three — but only if the workflows are intentional.&rdquo;</p>
+        <div class="who">— ContactMonkey blog, &ldquo;AI and the Future of Communication&rdquo; (2026) · competitor endorsement of the same thesis · <a href="https://www.contactmonkey.com/blog/ai-and-the-future-of-communication-whats-actually-changing-and-what-isnt">link</a></div>
+      </div>
+      <div class="quote skeptic">
+        <span class="q-mark">&ldquo;</span>
+        <p>&ldquo;Cici comes preloaded with Workshop's playbooks, templates, benchmarks, tone rules, and years of practical guidance from thousands of internal communicators.&rdquo;</p>
+        <div class="who">— Workshop Cici launch (2026-02-19) · counterweight: vendor narrative running in the opposite direction · <a href="https://useworkshop.com/press/workshop-launches-cici-an-agentic-ai-assistant-built-for-modern-internal-communications/">press</a></div>
+      </div>
+      <div class="quote skeptic">
+        <span class="q-mark">&ldquo;</span>
+        <p>&ldquo;What stands out is not just how often AI is used, but how it's being used — helping them move faster on repetitive work so they can spend more time on clarity, tone and strategy.&rdquo;</p>
+        <div class="who">— Sparrow Connected blog (&ldquo;Will AI replace internal comms pros? The answer is no&rdquo;) · the optimistic-vendor framing the HR Reporter piece pushes against</div>
+      </div>
+    </div>
+    <p style="margin-top:14px; font-size:13.5px; color:var(--muted);">
+      <b>Trade-press balance:</b> practitioners worried, vendors aggressive. The Cardon &amp; Coman study
+      is becoming the academic anchor for the &ldquo;AI hurts authenticity&rdquo; argument — worth
+      tracking citation velocity through Q3 2026.
+    </p>
+  </section>
+
+  <section class="reco">
+    <h2><span class="num">08</span>Recommendation</h2>
+    <p style="font-size:16px;">
+      <b>Action: Worth profiling</b> — and worth a specific positioning move within 30 days. This is not a
+      competitor; it's a <em>frame</em>. The frame is &ldquo;AI-anxious buyer.&rdquo; Cerkl is the only major
+      IC vendor not actively triggering that anxiety with top-of-funnel marketing — but it's not yet
+      <em>deliberately</em> leaning into the contrast either. Missed counterpositioning opportunity.
+    </p>
+    <div class="reco-grid">
+      <div class="reco-cell">
+        <h4>First thing to do</h4>
+        <p>Draft an AI-skeptic positioning pillar for Foundations marketing. 1-page internal doc with headline line, 3 proof points, 5 competitor contrasts, 3 quotable stats. Sense-check with one AE + one Foundations user.</p>
+      </div>
+      <div class="reco-cell">
+        <h4>Time-box</h4>
+        <p>5 working days to draft. 5 to socialize with sales. Decision by <b>2026-06-08</b> on whether to ship as a Cerkular post, a Foundations marketing page, sales-enablement-only, or sit pending more signal.</p>
+      </div>
+      <div class="reco-cell">
+        <h4>What would change my mind</h4>
+        <p>Simpplr publishes a &ldquo;we hear you&rdquo; follow-up (closes the lane); a major vendor announces &ldquo;AI-free tier&rdquo; pricing (Cerkl needs to ship faster); 29% / &gt;33% stats get revised (anxiety thesis weakens); Cerkl sales data shows buyers want <em>more</em> AI (kill it).</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span>Open questions</h2>
+
+    <details class="q">
+      <summary>Canadian regulatory subtext — Bill C-27 / AIDA?</summary>
+      <div class="q-body">
+        <p>Canadian HR Reporter pieces often soft-foreshadow CHRO talking points for AIDA (AI and Data Act) compliance. Worth a follow-up read with a regulatory lens — if so, this is the leading edge of how Canadian IC buyers will frame AI procurement questions in 2026–2027.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Does the AI-anxiety profile map to Cerkl's actual customer base?</summary>
+      <div class="q-body">
+        <p>Likely yes (mid-market IC teams of 2–5 people facing AI-driven productivity expectations) but not confirmed. A 5-customer interview pass would validate the segment exists in Cerkl's pipeline, not just in macro data.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Should the Foundations website carry an explicit &ldquo;no AI tax&rdquo; line?</summary>
+      <div class="q-body">
+        <p>Strong on positioning. Risk: locks Foundations into &ldquo;anti-AI&rdquo; framing that may hurt SMB buyers who <em>do</em> want light AI features. Worth a 30-min product + marketing conversation before any commitment.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Where does ContactMonkey fit in this frame?</summary>
+      <div class="q-body">
+        <p>Their CoAuthor / ConfidenceCheck blog (&ldquo;AI does not replace headcount&rdquo;) is the most explicit vendor-side endorsement of this thesis. They're a Foundations-tier competitor making the exact case Cerkl should be making. Co-narrative opportunity, or need to differentiate against them more aggressively on the same frame? Jeff Cates' new positioning (&ldquo;execution problem, not communication problem&rdquo;) is consistent with this lane.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Academic library access?</summary>
+      <div class="q-body">
+        <p>Does Travis have a library pull option (UF, OSU, other) for the Cardon &amp; Coman full text? Would meaningfully strengthen any long-form content built on this frame.</p>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span>Cross-reference to <code>shared/competitors.md</code></h2>
+    <p>This deep-dive doesn't add a competitor row — it adds a <b>counterpositioning frame</b> that affects the preamble and most existing rows. Suggested additions:</p>
+    <ol>
+      <li><b>New section after &ldquo;How Broadcast Differentiates&rdquo;:</b> <em>&ldquo;The AI-anxious buyer&rdquo;</em> — Per Simpplr 2026 (n=448), 52% weekly use, 29% anxious, &gt;33% reducing headcount. HR Reporter (2025-12-08) makes the same case academically. Cerkl is the only major IC vendor not actively triggering this anxiety. Counterposition Foundations as the no-AI-tax option; counterposition Omni AI as &ldquo;AI for the parts that benefit, human for the parts that don't.&rdquo;</li>
+      <li><b>vs. Workshop:</b> Add counter-line — &ldquo;Workshop's Cici leads with 'complete comms from a single prompt' — the exact AI-as-replacement framing the HR Reporter / Simpplr data identifies as the source of anxiety. Cerkl's Foundations counter: free + delivery-focused + human-in-the-loop by design.&rdquo;</li>
+      <li><b>vs. Simpplr:</b> Add irony-quote line — &ldquo;Simpplr ships Comms AI; Simpplr also publishes the data showing 29% of IC pros are anxious about exactly this. Cerkl can quote their own report back at them — once, sharply.&rdquo;</li>
+      <li><b>vs. Staffbase:</b> Soften — Staffbase's AI Quality Layer is genuinely about <em>governance</em>, not displacement, and is the closest competitor narrative to &ldquo;we hear the anxiety.&rdquo; Less leverage here than against Workshop / Simpplr / Firstup.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Generated 2026-05-18 · Source markdown: <a href="hr-reporter-ai-risks-ic-2026-05-18.md">hr-reporter-ai-risks-ic-2026-05-18.md</a>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.copy);
+      if (!target) return;
+      navigator.clipboard.writeText(target.textContent.trim()).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1500);
+      });
+    });
+  });
+</script>
+</body>
+</html>

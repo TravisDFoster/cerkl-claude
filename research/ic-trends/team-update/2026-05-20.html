@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing Team — 7-Day Rollup — 2026-05-20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f5f5fa;
+    --panel: #ffffff;
+    --panel-soft: #f5f5fa;
+    --ink: #18181d;
+    --muted: #373740;
+    --line: #d5d5db;
+    --accent: #3547c4;
+    --accent-soft: #f0f2fc;
+    --good: #1a9979;
+    --good-bg: #e8fffa;
+    --good-border: #aaf7e6;
+    --warn: #80550f;
+    --warn-bg: #fff9f2;
+    --warn-border: #ffeccd;
+    --bad: #b00045;
+    --bad-bg: #fcf0f0;
+    --bad-border: #fbc2c4;
+    --info: #3547c4;
+    --info-bg: #f0f2fc;
+    --info-border: #ccd5f7;
+    --quote: #802ee6;
+    --code-bg: #ebebf0;
+    --shadow: 0 1px 0 rgba(24,24,29,0.04), 0 4px 16px rgba(24,24,29,0.06);
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+    --cat-competitor:  #3547c4;
+    --cat-competitor-bg:  #f0f2fc;
+    --cat-competitor-border: #ccd5f7;
+    --cat-publication: #1a9979;
+    --cat-publication-bg: #e8fffa;
+    --cat-publication-border: #aaf7e6;
+    --cat-analyst:     #802ee6;
+    --cat-analyst-bg:  #f7f2ff;
+    --cat-analyst-border: #d5b2ff;
+    --cat-community:   #80550f;
+    --cat-community-bg: #fff9f2;
+    --cat-community-border: #ffeccd;
+    --cat-policy:      #b00045;
+    --cat-policy-bg:   #fcf0f0;
+    --cat-policy-border: #fbc2c4;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Work Sans", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 18px;
+    letter-spacing: -0.0025em;
+    -webkit-font-smoothing: antialiased;
+  }
+  section p, .tldr { max-width: 70ch; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  header.hero {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .breadcrumb {
+    font-size: 13px; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
+  }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.005em; font-weight: 700; }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    font-size: 14px; color: var(--muted); margin-bottom: 18px;
+  }
+  .meta-row b { color: var(--ink); font-weight: 600; }
+  .tldr {
+    font-size: 18px; line-height: 1.6; color: var(--ink);
+    border-left: 3px solid var(--accent); padding-left: 16px;
+    margin: 0;
+  }
+  .tldr strong { font-weight: 600; }
+  .tldr em { font-style: italic; }
+  .hero-sub {
+    font-size: 13px; color: var(--muted); margin-top: 18px; padding-top: 16px;
+    border-top: 1px solid var(--line); line-height: 1.6;
+  }
+  .hero-sub strong { color: var(--ink); font-weight: 600; }
+  .hero-sub ul { margin: 6px 0 0; padding-left: 20px; }
+  .hero-sub li { margin: 2px 0; }
+
+  section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 22px; margin: 0 0 16px; letter-spacing: -0.0025em; font-weight: 600;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2 .num {
+    font-size: 12px; color: var(--muted); font-weight: 600;
+    background: var(--code-bg); padding: 2px 8px; border-radius: 6px;
+  }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--info-border); }
+  a:hover { border-bottom-color: var(--accent); }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+
+  /* Action items — numbered top-item cards adapted for rollup */
+  .top-items { display: grid; gap: 14px; }
+  .top-item {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+    display: grid; grid-template-columns: auto 1fr; gap: 14px;
+    align-items: start;
+  }
+  .item-num {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--code-bg); color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: -0.005em;
+  }
+  .item-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin-bottom: 8px; }
+  .item-head h3 { margin: 0; font-size: 18px; line-height: 1.3; flex: 1; min-width: 200px; font-weight: 600; letter-spacing: -0.0025em; }
+  .item-body p { margin: 0 0 10px; font-size: 15px; line-height: 1.55; }
+  .item-body p:last-child { margin-bottom: 0; }
+  .field-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+    margin-right: 6px;
+  }
+  .why-callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 14.5px;
+  }
+  .why-callout .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    display: block; margin-bottom: 4px;
+  }
+  .action-callout {
+    background: var(--good-bg);
+    border-left: 3px solid var(--good);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin: 10px 0 0;
+    font-size: 14.5px;
+  }
+  .action-callout .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--good);
+    display: block; margin-bottom: 4px;
+  }
+  .action-meta {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    margin-top: 8px; font-size: 13px;
+  }
+  .action-meta .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 999px; padding: 3px 10px;
+    font-size: 12px; color: var(--ink);
+  }
+  .action-meta .chip b { font-weight: 600; color: var(--muted); margin-right: 4px; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Calendar / watchlist */
+  .watch-group { margin-top: 18px; }
+  .watch-group:first-of-type { margin-top: 6px; }
+  .watch-group h3 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); font-weight: 600;
+    margin: 0 0 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .cal-list { display: grid; gap: 10px; }
+  .cal-row {
+    display: grid; grid-template-columns: 110px 1fr; gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--line);
+    font-size: 14px;
+  }
+  .cal-row:last-child { border-bottom: none; }
+  .cal-date {
+    font-weight: 600; color: var(--accent); font-size: 13px;
+    letter-spacing: -0.005em;
+  }
+  .cal-date.ongoing { color: var(--warn); }
+  .cal-body .cal-title { font-weight: 600; color: var(--ink); }
+  .cal-body .cal-note { color: var(--muted); font-size: 13px; display: block; margin-top: 2px; }
+
+  /* Data hygiene rows */
+  .hygiene-list { display: grid; gap: 10px; }
+  .hygiene-row {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-left: 3px solid var(--warn);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14.5px;
+  }
+  .hygiene-row .h-target {
+    font-weight: 600; color: var(--ink); font-family: var(--mono);
+    font-size: 13.5px;
+  }
+  .hygiene-row .h-fix { display: block; margin-top: 4px; color: var(--ink); }
+
+  /* Notes — collapsibles */
+  details.q {
+    background: var(--panel-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 0; margin-bottom: 8px; overflow: hidden;
+  }
+  details.q summary {
+    padding: 12px 16px; cursor: pointer; font-weight: 500; font-size: 14px;
+    list-style: none; position: relative;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::before {
+    content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    font-size: 18px; color: var(--accent);
+  }
+  details.q[open] summary::before { content: "−"; }
+  details.q .q-body { padding: 0 16px 14px; font-size: 14px; color: var(--muted); }
+  details.q .q-body p { max-width: none; }
+
+  /* Code */
+  code, pre { font-family: var(--mono); }
+  p code, li code, span code, .field-label + code {
+    font-family: var(--mono); font-size: 0.9em;
+    background: var(--code-bg); padding: 1px 6px; border-radius: 4px;
+  }
+  .hero-sub code, .item-body code { font-family: var(--mono); font-size: 0.88em; background: var(--code-bg); padding: 1px 6px; border-radius: 4px; }
+
+  /* Footer */
+  footer {
+    text-align: center; font-size: 12px; color: var(--muted);
+    margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line);
+  }
+
+  @page {
+    size: letter;
+    margin: 0.55in 0.5in 0.6in 0.5in;
+  }
+
+  @media print {
+    html, body {
+      background: #ffffff !important;
+      color: #18181d !important;
+      -webkit-font-smoothing: auto;
+      font-size: 11pt;
+    }
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    .wrap { padding: 0; max-width: none; }
+
+    /* keep brand-blue link color; drop the underline border for cleaner print */
+    a { color: var(--accent); border-bottom: none; }
+
+    /* lighten panels; let sections flow across pages */
+    section, header.hero {
+      box-shadow: none !important;
+      border: 1px solid #d5d5db;
+      border-radius: 8pt;
+      padding: 14pt 16pt;
+      margin-bottom: 10pt;
+    }
+    section { page-break-inside: auto; break-inside: auto; }
+    header.hero { page-break-inside: avoid; break-inside: avoid; padding: 16pt 18pt; }
+
+    /* keep heading + first item together */
+    h1, h2, h3 { page-break-after: avoid; break-after: avoid; }
+    h2 { margin-top: 0; }
+
+    /* atomic units — never split mid-card */
+    .top-item,
+    .cal-row,
+    .hygiene-row,
+    details.q {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* tighten action-item internals for letter */
+    .top-item { padding: 11pt 13pt; }
+    .why-callout, .action-callout { padding: 7pt 11pt; margin: 7pt 0; }
+    .action-callout { margin-bottom: 0; }
+
+    /* expand ALL <details> in print (open or closed) and hide the +/- marker */
+    details.q > summary { list-style: none; padding: 10pt 14pt 4pt; cursor: default; }
+    details.q > summary::before,
+    details.q > summary::after { display: none !important; }
+    details.q[open] summary::before { display: none !important; }
+    details.q .q-body { display: block !important; padding: 0 14pt 10pt; }
+
+    /* prose width caps come off in print */
+    section p, .tldr { max-width: none; }
+
+    /* print-tuned type scale */
+    h1 { font-size: 22pt; line-height: 1.2; }
+    h2 { font-size: 13.5pt; }
+    h3 { font-size: 11.5pt; }
+    .breadcrumb { font-size: 8pt; margin-bottom: 6pt; }
+    .meta-row { font-size: 9pt; margin-bottom: 12pt; }
+    .tldr { font-size: 10.5pt; line-height: 1.5; }
+    .hero-sub { font-size: 8.5pt; margin-top: 12pt; padding-top: 10pt; }
+    .hero-sub ul { margin-top: 4pt; }
+    .item-num { width: 26pt; height: 26pt; font-size: 11pt; border-radius: 6pt; }
+    .item-head h3 { font-size: 11.5pt; }
+    .item-body p, .why-callout, .action-callout { font-size: 10pt; line-height: 1.45; }
+    .field-label { font-size: 7.5pt; }
+    .why-callout .label, .action-callout .label { font-size: 7.5pt; margin-bottom: 3pt; }
+    .action-meta { margin-top: 6pt; gap: 8pt; }
+    .action-meta .chip { font-size: 8pt; padding: 2pt 8pt; }
+    .action-meta .chip b { font-size: 7pt; }
+    .cal-row { font-size: 9.5pt; padding: 6pt 0; grid-template-columns: 75pt 1fr; gap: 10pt; }
+    .cal-date { font-size: 9pt; }
+    .cal-body .cal-note { font-size: 8.5pt; }
+    .watch-group h3 { font-size: 8.5pt; margin-bottom: 6pt; padding-bottom: 4pt; }
+    .hygiene-row { font-size: 9.5pt; padding: 8pt 12pt; }
+    .hygiene-row .h-target { font-size: 9pt; }
+    details.q summary { font-size: 9.5pt; font-weight: 600; }
+    details.q .q-body { font-size: 9pt; line-height: 1.5; }
+
+    footer {
+      margin-top: 14pt;
+      padding-top: 8pt;
+      font-size: 8pt;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .top-item { grid-template-columns: 1fr; }
+    .item-num { width: 28px; height: 28px; font-size: 13px; }
+    .cal-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="breadcrumb">ic-trends · Marketing Team Rollup</div>
+    <h1>Marketing Team — 7-Day Rollup</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 2026-05-20</span>
+      <span><b>Action items:</b> 7</span>
+      <span><b>Calendar watch:</b> 6</span>
+    </div>
+    <p class="tldr">
+      <strong>"Execution problem" is now a two-vendor frame, and Gallup just handed every IC team in the buying market the stat they'll quote in 2026 budget reviews.</strong>
+      Eight days after Jeff Cates (ContactMonkey) used the phrase <em>"execution problem,"</em> Workvivo's Justin Black launched <strong>Seer</strong> with the near-identical <em>"the industry doesn't have a listening problem, it has an execution problem."</em> Two vendors converging on the same language inside two weeks is positioning, not coincidence. Meanwhile <strong>Gallup</strong> confirmed global engagement at a 5-year low (20%) with manager collapse as the cause — the analyst data behind every "we need a real IC platform" conversation for the next six months.
+      <strong>Two things to do this week:</strong> (1) claim "execution" as Cerkl's frame in homepage/hero/POV copy before it ossifies around competitors who <em>can't actually deliver it</em>; (2) bake the Gallup stat into Cerkular, sales talk tracks, and the next webinar funnel.
+    </p>
+    <div class="hero-sub">
+      <strong>Underlying research this rollup draws from:</strong>
+      <ul>
+        <li>Daily recaps: <a href="../daily/2026-05-12.md"><code>daily/2026-05-12.md</code></a> &rarr; <a href="../daily/2026-05-20.md"><code>daily/2026-05-20.md</code></a></li>
+        <li>Competitor marketing weekly: <a href="../../competitor-marketing/weekly/2026-W21.md"><code>competitor-marketing/weekly/2026-W21.md</code></a></li>
+        <li>Rolling 7-day index: <a href="../rolling-7day.md"><code>ic-trends/rolling-7day.md</code></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="num">ACTIONS</span>Action items (ranked)</h2>
+    <div class="top-items">
+
+      <article class="top-item">
+        <div class="item-num">1</div>
+        <div>
+          <div class="item-head">
+            <h3>Claim the "execution layer" frame in copy before it commoditizes</h3>
+            <span class="cat-badge cat-competitor" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--cat-competitor-border);background:var(--cat-competitor-bg);color:var(--cat-competitor);">Positioning</span>
+          </div>
+          <div class="item-body">
+            <p><span class="field-label">What it is</span>Cates (ContactMonkey, 2026-05-13) and Black (Workvivo Seer launch, this week) converged on near-identical <em>"execution problem"</em> language inside eight days. Workvivo's Seer LP is live and being promoted via webinar today. Last week's rollup flagged the first instance; this week confirms it's a category frame, not a one-off quote. (<a href="../../competitor-marketing/weekly/2026-W21.md">W21 &sect;Headline</a>, <a href="https://www.workvivo.com/newsroom/workvivo-launches-seer/">Workvivo newsroom</a>, <a href="https://www.contactmonkey.com/news/jeff-cates-as-ceo">Cates news</a>)</p>
+            <div class="why-callout">
+              <span class="label">Why it matters for Cerkl</span>
+              Cerkl's product story (delivery + measurement layer across the channels you already have) <strong>is</strong> the execution layer &mdash; closer to true than either vendor's claim (Workvivo = single-feed; ContactMonkey = Outlook-bound). The frame is up for grabs for ~30&ndash;60 days before it ossifies.
+            </div>
+            <div class="action-callout">
+              <span class="label">Action</span>
+              A/B-test hero copy on a <em>"the execution layer for internal comms"</em> frame. Pair with a Travis-bylined Cerkular POV &mdash; <em>"Why most IC teams have an execution problem, not a content problem"</em> &mdash; same template as Cates' news post, but with Cerkl's measurement angle as the punchline.
+              <div class="action-meta">
+                <span class="chip"><b>Owner</b>Travis (POV) + Tracy (homepage A/B)</span>
+                <span class="chip"><b>Time-box</b>7 days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">2</div>
+        <div>
+          <div class="item-head">
+            <h3>Bake the Gallup engagement stat into the marketing toolkit</h3>
+            <span class="cat-badge cat-analyst" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--cat-analyst-border);background:var(--cat-analyst-bg);color:var(--cat-analyst);">Analyst stat</span>
+          </div>
+          <div class="item-body">
+            <p><span class="field-label">What it is</span>Gallup published 2026-04-29 &mdash; global employee engagement at a 5-year low (20%); manager engagement collapse is the driver. (<a href="../daily/2026-05-20.md">daily/2026-05-20 &sect;1</a>, <a href="https://www.gallup.com/workplace/708071/global-employee-engagement-continues-decline.aspx">Gallup</a>)</p>
+            <div class="why-callout">
+              <span class="label">Why it matters for Cerkl</span>
+              This is the single most cite-able analyst stat IC teams will walk into 2026 budget reviews with. Cerkl's manager-cascade + cross-channel measurement story directly answers <em>"why does the cascade keep failing"</em> &mdash; the stat turns "we need better IC" from soft to budgeted.
+            </div>
+            <div class="action-callout">
+              <span class="label">Action</span>
+              Add the Gallup stat (with citation) to: (a) the next Cerkular issue, (b) homepage social-proof rail or above-the-fold, (c) sales discovery talk-track, (d) one webinar promo.
+              <div class="action-meta">
+                <span class="chip"><b>Owner</b>Marketing</span>
+                <span class="chip"><b>Time-box</b>This week</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">3</div>
+        <div>
+          <div class="item-head">
+            <h3>Ship Cerkl's "type-a-prompt &rarr; designed email" demo before Workshop's launch cycle peaks</h3>
+            <span class="cat-badge cat-competitor" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--cat-competitor-border);background:var(--cat-competitor-bg);color:var(--cat-competitor);">Competitor</span>
+          </div>
+          <div class="item-body">
+            <p><span class="field-label">What it is</span>Workshop launched Agentic AI 2026-05-12 with a tight live-demo format &mdash; <em>"type 'open enrollment reminder' &rarr; fully designed email in seconds."</em> PR cycle confirms positioning shift: Workshop is no longer "modern internal email," it's agentic. (<a href="../../competitor-marketing/weekly/2026-W21.md">W21 &sect;Top 5 #2</a>, <a href="https://www.prnewswire.com/news-releases/workshop-launches-agentic-ai-that-builds-complete-internal-comms-from-a-single-prompt-302769308.html">PR</a>)</p>
+            <div class="why-callout">
+              <span class="label">Why it matters for Cerkl</span>
+              Workshop is Cerkl's most direct Foundations-tier head-to-head. The demo format converts demo-intent fast and the asset (a 60-second screen-record) is cheap. Cerkl's existing AI subject-line generator + drag-and-drop can recreate the demo today.
+            </div>
+            <div class="action-callout">
+              <span class="label">Action</span>
+              Record a 60-second <em>"type a prompt &rarr; see a blast"</em> demo. Drop it on (a) Foundations onboarding LP, (b) homepage hero, (c) versus-Workshop page when it ships.
+              <div class="action-meta">
+                <span class="chip"><b>Owner</b>Tracy + design</span>
+                <span class="chip"><b>Time-box</b>14 days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">4</div>
+        <div>
+          <div class="item-head">
+            <h3>The conquest-listicle lane just got hotter &mdash; accelerate the Switch-from queue</h3>
+            <span class="cat-badge cat-competitor" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--cat-competitor-border);background:var(--cat-competitor-bg);color:var(--cat-competitor);">SEO / Conquest</span>
+          </div>
+          <div class="item-body">
+            <p><span class="field-label">What it is</span>ContactMonkey published two "Best [Competitor] Alternatives" posts 2026-05-15 (Workshop + PoliteMail) &mdash; first conquest content under Cates. Staffbase has 4 conquest pages live; LumApps has 2. The format is now a category staple. (<a href="../../competitor-marketing/weekly/2026-W21.md">W21 &sect;Top 5 #5</a>)</p>
+            <div class="why-callout">
+              <span class="label">Why it matters for Cerkl</span>
+              Last week's rollup raised this; this week's data confirms competitors are executing, and the window narrows every week. <strong>0/10 vendors offer a free-forever tier</strong> &mdash; Foundations is the wedge none of them can match in a conquest fight.
+            </div>
+            <div class="action-callout">
+              <span class="label">Action</span>
+              Move "Switch from Workshop" + "Switch from AxiosHQ" + "Best Workshop Alternatives 2026" out of <a href="../../../marketing/content-plan/inputs.md"><code>marketing/content-plan/inputs.md</code></a> and into the SEO brief queue at Monday reconcile. Foundations-free as the unmatchable #1 entry.
+              <div class="action-meta">
+                <span class="chip"><b>Owner</b>Travis (Monday triage) &rarr; SEO brief production</span>
+                <span class="chip"><b>Time-box</b>Brief in queue by 2026-05-25</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">5</div>
+        <div>
+          <div class="item-head">
+            <h3>Pair Gallup + HBR into a Cerkular post on the "human-voice gap"</h3>
+            <span class="cat-badge cat-publication" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--cat-publication-border);background:var(--cat-publication-bg);color:var(--cat-publication);">Content</span>
+          </div>
+          <div class="item-body">
+            <p><span class="field-label">What it is</span>Gallup's manager-engagement collapse data + HBR's 2026-05-05 piece (<em>"Employees are relying on AI for personal support &mdash; and that's risky"</em>) are two halves of the same story: managers disengaged, employees outsourcing reflection to chatbots. (<a href="../daily/2026-05-20.md">daily/2026-05-20 &sect;1+&sect;2</a>, <a href="https://hbr.org/2026/05/employees-are-relying-on-ai-for-personal-support-thats-risky">HBR</a>)</p>
+            <div class="why-callout">
+              <span class="label">Why it matters for Cerkl</span>
+              IC's 2026 mandate is being reframed around human connection, not more content. Cerkl's pitch (right message, right person, right channel, right time) is the operational answer to "rebuild human voice at scale." Cerkular has been quiet on the human-AI tension theme.
+            </div>
+            <div class="action-callout">
+              <span class="label">Action</span>
+              One Cerkular post &mdash; <em>"The human-voice gap: why engagement is dropping while your employees are talking to ChatGPT."</em> Tie to Cerkl's manager-cascade + cross-channel reach.
+              <div class="action-meta">
+                <span class="chip"><b>Owner</b>Cerkular / Travis</span>
+                <span class="chip"><b>Time-box</b>14 days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">6</div>
+        <div>
+          <div class="item-head">
+            <h3>Versus-Firstup refresh is now time-sensitive (Firstup AI elevated to top nav)</h3>
+            <span class="cat-badge cat-competitor" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--cat-competitor-border);background:var(--cat-competitor-bg);color:var(--cat-competitor);">Competitor</span>
+          </div>
+          <div class="item-body">
+            <p><span class="field-label">What it is</span>Firstup moved <strong>"Firstup AI"</strong> to the first position in its top navigation (was "Platform"). Combined with the March 2026 five-pillar agentic suite + new CEO/CRO/CMO/EMEA-MD lineup, Firstup is doubling down on AI-as-product, not AI-as-feature. (<a href="../../competitor-marketing/weekly/2026-W21.md">W21 &sect;Top 5 #3</a>)</p>
+            <div class="why-callout">
+              <span class="label">Why it matters for Cerkl</span>
+              <code>cerkl.com/broadcast/versus/firstup</code> was already on last week's refresh queue. This week's nav-level change escalates urgency &mdash; buyers comparing the two will hit a stale page within days, not weeks.
+            </div>
+            <div class="action-callout">
+              <span class="label">Action</span>
+              Refresh the page with the agentic-pillars reframe: <em>"Personalization at the employee level vs. agentic HR-action automation &mdash; different jobs."</em> The drafted reframe already lives in <a href="../../../shared/competitors.md"><code>shared/competitors.md &sect;Firstup</code></a>.
+              <div class="action-meta">
+                <span class="chip"><b>Owner</b>Marketing / website</span>
+                <span class="chip"><b>Time-box</b>21 days; ship before end of June</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="top-item">
+        <div class="item-num">7</div>
+        <div>
+          <div class="item-head">
+            <h3>Poppulo's category broadening = an opening for Cerkl to plant the IC flag</h3>
+            <span class="cat-badge cat-competitor" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--cat-competitor-border);background:var(--cat-competitor-bg);color:var(--cat-competitor);">Positioning</span>
+          </div>
+          <div class="item-body">
+            <p><span class="field-label">What it is</span>Poppulo's homepage category claim shifted from <em>"AI-powered multichannel communications"</em> to <strong>"Enterprise Customer and Employee Experiences"</strong> &mdash; deliberately broadening away from a comms-specific frame. (<a href="../../competitor-marketing/weekly/2026-W21.md">W21 &sect;Top 5 #4</a>)</p>
+            <div class="why-callout">
+              <span class="label">Why it matters for Cerkl</span>
+              When competitors broaden, they dilute their IC story. Cerkl can claim the IC lane more cleanly: <em>"We don't pitch as an intranet, an EX suite, or a CX platform. We're the internal-comms platform."</em> Counter-positioning writes itself.
+            </div>
+            <div class="action-callout">
+              <span class="label">Action</span>
+              Add a <em>"Built for internal comms &mdash; not bolted on"</em> callout to the homepage + one mid-funnel page (e.g., <code>/broadcast/foundations</code>). Worth a paragraph in <a href="../../../marketing/marketing-strategy/diagnosis-and-guiding-policy.md"><code>diagnosis-and-guiding-policy.md</code></a> on the next strategy review.
+              <div class="action-meta">
+                <span class="chip"><b>Owner</b>Travis (strategy doc) + Tracy (page copy)</span>
+                <span class="chip"><b>Time-box</b>30 days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">WATCH</span>Calendar / watchlist</h2>
+    <p style="font-size:14.5px;color:var(--muted);margin-top:-6px;">Events, launches, and competitor moves landing in the next 7&ndash;14 days.</p>
+
+    <div class="watch-group">
+      <h3>Dated events</h3>
+      <div class="cal-list">
+        <div class="cal-row">
+          <span class="cal-date">2026-05-20</span>
+          <div class="cal-body">
+            <span class="cal-title">Workvivo <strong>Seer</strong> launch webinar</span>
+            <span class="cal-note">Today. <a href="https://www.workvivo.com/seer/">workvivo.com/seer</a> &mdash; Watch ad/email follow-up cadence; expect Seer LP refinement post-event.</span>
+          </div>
+        </div>
+        <div class="cal-row">
+          <span class="cal-date">2026-05-21</span>
+          <div class="cal-body">
+            <span class="cal-title">Workvivo NYC event</span>
+            <span class="cal-note">Watch attendee list and exec presence for partnership signal.</span>
+          </div>
+        </div>
+        <div class="cal-row">
+          <span class="cal-date">2026-05-27</span>
+          <div class="cal-body">
+            <span class="cal-title">Poppulo webinar</span>
+            <span class="cal-note"><a href="https://www.poppulo.com/">poppulo.com</a> &mdash; First webinar under the broadened category claim; watch how Poppulo frames itself live.</span>
+          </div>
+        </div>
+        <div class="cal-row">
+          <span class="cal-date">2026-06-24</span>
+          <div class="cal-body">
+            <span class="cal-title">Workvivo <em>"Future of AI in IC"</em> event</span>
+            <span class="cal-note">Announced this week. Watch for Seer-extension product news.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="watch-group">
+      <h3>Ongoing watches</h3>
+      <div class="cal-list">
+        <div class="cal-row">
+          <span class="cal-date ongoing">Ongoing</span>
+          <div class="cal-body">
+            <span class="cal-title">ContactMonkey <em>"Free trial"</em> page removal</span>
+            <span class="cal-note">Has held <strong>9 days</strong>. Watch for restoration or further pricing-page change.</span>
+          </div>
+        </div>
+        <div class="cal-row">
+          <span class="cal-date ongoing">Ongoing</span>
+          <div class="cal-body">
+            <span class="cal-title">Workshop blog/pricing pages still 403</span>
+            <span class="cal-note">3rd straight week of fetch failure. Manual capture if a key positioning moment lands.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">HYGIENE</span>Data hygiene</h2>
+    <p style="font-size:14.5px;color:var(--muted);margin-top:-6px;">Items needing cleanup before next sales/marketing reuse.</p>
+    <div class="hygiene-list">
+      <div class="hygiene-row">
+        <span class="h-target"><a href="../../../shared/competitors.md">shared/competitors.md</a> &mdash; Workshop row</span>
+        <span class="h-fix">Currently references <em>"Journeys automation Oct 2025, Cici agentic AI Q1 2026"</em>; Workshop just shipped Agentic AI 2026-05-12. Add a 2026-05-12 update line citing the <a href="https://www.prnewswire.com/news-releases/workshop-launches-agentic-ai-that-builds-complete-internal-comms-from-a-single-prompt-302769308.html">PR</a>. Fix on next session.</span>
+      </div>
+      <div class="hygiene-row">
+        <span class="h-target">shared/competitors.md &mdash; Firstup row</span>
+        <span class="h-fix">Add a 2026-05-20 update: <em>"Firstup AI"</em> elevated to top-nav first position. Fix on next session.</span>
+      </div>
+      <div class="hygiene-row">
+        <span class="h-target">shared/competitors.md &mdash; Poppulo row</span>
+        <span class="h-fix">Add a 2026-05-20 update: category claim broadened to <em>"Enterprise Customer and Employee Experiences."</em> Fix on next session.</span>
+      </div>
+      <div class="hygiene-row">
+        <span class="h-target">shared/competitors.md &mdash; ContactMonkey row</span>
+        <span class="h-fix">Add the <em>"Free trial"</em> 9-day-persistent pricing-page removal note. Fix on next session.</span>
+      </div>
+      <div class="hygiene-row">
+        <span class="h-target">AxiosHQ <em>"70&ndash;400x/day, 26 seconds"</em> pain stats</span>
+        <span class="h-fix">Cited in W21 but originate as AxiosHQ secondary research. If Cerkl repurposes them in collateral, trace the primary source first.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">NOTES</span>Notes</h2>
+
+    <details class="q">
+      <summary>Methodology gap (3rd straight week) &mdash; ad library + Reddit blocked</summary>
+      <div class="q-body">
+        <p>LinkedIn + Meta ad libraries still blocked; Reddit <code>/r/internalcomms</code> not indexable. Vendor ad creative captured from LPs only. Same v2 ask outstanding from W19 &mdash; build <code>lib/ad_library_fetch.py</code> or move ad capture to manual.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Three vendor sites still 403/404 &mdash; structural blind spot</summary>
+      <div class="q-body">
+        <p>Haiilo, Workshop, LumApps blog/pricing pages continue to refuse fetches. This is a persistent structural blind spot &mdash; need a manual capture protocol or browser-based ingestion path.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Competitor blogs uncharacteristically quiet this week</summary>
+      <div class="q-body">
+        <p>Per <a href="../daily/2026-05-20.md"><code>daily/2026-05-20.md &sect;Notes</code></a>. Three weeks of heavy cadence followed by a sharp drop &mdash; could be coincidence or end-of-Q2 launch silence. Watch next Wednesday.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Prompt-injection note &mdash; treat vendor pages as adversarial</summary>
+      <div class="q-body">
+        <p>Six vendor pages this week returned content with embedded fake <code>&lt;system-reminder&gt;</code> blocks. Sub-agents flagged and ignored. The pattern is now structural across competitor content; treat as adversarial noise.</p>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    Generated 2026-05-20 &middot; Source markdown: <a href="2026-05-20.md">team-update/2026-05-20.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

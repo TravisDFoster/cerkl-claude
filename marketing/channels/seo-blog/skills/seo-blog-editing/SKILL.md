@@ -1,20 +1,17 @@
----
-name: seo-blog-editing
-description: Use when finalizing a Cerkl SEO blog draft for publication — runs a two-pass editing process (structural edit, sentence-level rewrite, line edit, score) to remove AI writing patterns and tighten prose. Triggers on phrases like "edit the [slug] draft", "run editing on this blog post", "finalize this draft", "score this draft". Prerequisite: a draft at `blog-posts-draft/`. Output: `blog-posts-live/YYYY-MM-DD_[slug]_live.md` plus a Drive Doc URL.
-metadata:
-  version: 0.1.0
----
-
 # SEO Blog Editing
 
 A two-pass editing process for removing AI writing patterns and tightening prose before a post is published.
 
 ## Input and output
 
-- **Input:** `/Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/blog-posts-draft/YYYY-MM-DD_[slug]_draft.md`
+- **Inputs:**
+  - `/Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/blog-posts-draft/YYYY-MM-DD_[slug]_draft.md` (the prose to edit)
+  - `/Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/blog-posts-pre-writing/YYYY-MM-DD_[slug]_pre-writing.md` (the source of the Properties block — same slug, may have a different date)
 - **Output:** `/Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/blog-posts-live/YYYY-MM-DD_[slug]_live.md`
 
-Do not modify or delete the original draft. Read it, run the process below, then write the final version to `blog-posts-live/` with the `_live.md` suffix. Preserve the original date and slug from the draft filename.
+Do not modify or delete the original draft. Read it, run the process below, then write the final version to `blog-posts-live/` with the `_live.md` suffix. Preserve the slug from the draft filename. Date the live file with the same date as the draft *unless* this is a re-edit of a previously-published post — in that case advance the date (and confirm with the user before overwriting an existing live file with the same date).
+
+If the pre-writing file is missing or its Properties section is incomplete: **stop and surface the gap.** Do not invent or guess properties; the pre-writing file is the source of truth for the Webflow CMS fields.
 
 ---
 
@@ -118,24 +115,69 @@ Re-read the rewritten draft. Run the line-level checklist one more time, then sc
 
 Once the post scores 35/50 or higher:
 
-1. Save the final version to `blog-posts-live/YYYY-MM-DD_[slug]_live.md` (preserve the date and slug from the draft filename).
-2. Leave the original draft unchanged.
-3. Append a brief edit log to the bottom of the live file:
+### Step 1 — Insert the three CTA markers into the edited body
+
+The drafting skill does not emit CTA markers — it can't know where the natural pivot lands until the post is written. Editing owns marker placement, post-scoring. Walk the edited body and insert these three HTML comments:
+
+- `<!-- Top CTA -->` — immediately after the H1, before the intro paragraph. No judgment needed.
+
+- `<!-- Middle CTA -->` — **past the structural midpoint, not at it.** The first half of the body is the problem / pain / diagnosis arc; the second half picks up the operational fixes. Place the marker after the H2 section that *completes* the diagnosis arc — typically the section after the one a naive midpoint pass would pick. Aim for roughly 55–65% of the way through the body by H2 count, biased later, not earlier. If the Middle CTA variant is thematically tied (e.g., `Email Analytics Middle` pairs with a measurement section), prefer placing the marker so that themed section is the *first* one of the second half.
+
+  **Sanity check:** count H2s in the body (excluding the FAQ and FAQ Schema H2s). For `n` body H2s, the Middle CTA should sit after H2 #⌈n × 0.55⌉ through #⌈n × 0.65⌉ — not earlier. If the natural pivot really is earlier, write a one-line note in the edit log explaining why (and aim to revisit on the next post in the same shape).
+
+- `<!-- Bottom CTA -->` — after the closing paragraph of the body, followed immediately by a `---` separator before the `## Frequently Asked Questions` heading.
+
+### Step 2 — Assemble the live file in this exact order
+
+1. **Properties block at the top.** Copy the `## Properties` section verbatim from the pre-writing file. The block carries the Webflow CMS fields downstream owners (Furqan, Webflow) need: Title, Slug, Top 3 Organic Search Keywords, Primary Solution, Top/Middle/Bottom CTA names, Primary Category, All Categories, Meta Title, Meta Description. Do not re-derive or re-word — pre-writing is canonical. (Legacy pre-writing files may use `Secondary Category` instead of `All Categories` — that's a historical single-value field; rename to `All Categories` when copying forward, since Webflow's actual CMS field is the multi-tag `All Categories`.)
+2. **A `---` separator** after the properties block.
+3. **The edited post body, with the three CTA markers inserted per Step 1.** The full body shape, top to bottom: `# H1` → `<!-- Top CTA -->` → first-half H2 sections (problem/diagnosis arc) → `<!-- Middle CTA -->` → second-half H2 sections (operational fixes, ending with forward-moving takeaway) → `<!-- Bottom CTA -->` → `---` → `## Frequently Asked Questions` (or `## How To`) → `## FAQ Schema` (or `## How-to Schema`) with the JSON-LD fenced code block. Recording-URL placeholders (e.g., `<RECORDING_URL>`) must be resolved to a real URL before saving; if you don't have one, stop and ask the user — do not ship a placeholder.
+
+   **Validation gate before saving:** if any of the three CTA-marker comments are missing, or the schema block is missing/doesn't parse, or the schema's Q&A count doesn't match the FAQ section's H3 count — **stop and fix.** The shape above is required, not optional.
+
+4. **A `---` separator** before the edit log.
+5. **The edit log block:**
 
 ```
----
 **Edit log**
 - Final score: XX/50 (Directness X, Rhythm X, Trust X, Authenticity X, Density X)
 - Major structural changes: <one line>
 - Notable phrase/structure fixes: <one line>
+- Middle CTA placement: after H2 "<section title>" (position N of M body H2s, ~XX%). <If outside the 55–65% band, one-line reason.>
+- Verification: <one line on em-dash count, banned-phrase count, recording URL filled, properties block verbatim from pre-writing, all 3 CTA markers present, FAQ-schema JSON-LD present and Q&A count matches FAQ count>
 ```
 
-4. **Publish to Drive as a Google Doc.** Load and follow [`/Users/travisfoster/claude-code/cerkl/skills/md-to-drive/SKILL.md`](/Users/travisfoster/claude-code/cerkl/skills/md-to-drive/SKILL.md) with:
-   - **Source file:** the `_live.md` file just written
-   - **Cleanup:** apply the Edit-log strip recipe in that skill — the trailing `---\n**Edit log**...` block is QA metadata, not customer-facing content
-   - **Destination:** default (Claude-Uploads folder)
-   - **Naming:** default convention (`YYYY-MM-DD — <H1 title>` with em-dash)
+6. **The image candidates block** — appended right after the edit log (no new `---` separator; the publishing skill's strip recipe catches everything from `\n---\n**Edit log**...` to end of file, so this block stays QA-side and never reaches the Drive doc).
 
-   Report the resulting Doc URL in the handoff to the user, immediately after the final score line. For bulk-edit sessions where multiple subagents finish in parallel, each subagent invokes `md-to-drive` independently for its own file — single-file inline uploads, no central batching needed.
+   Read [`/Users/travisfoster/claude-code/cerkl/marketing/design/blog-assets/PRINCIPLES.md`](/Users/travisfoster/claude-code/cerkl/marketing/design/blog-assets/PRINCIPLES.md) once. The "Picking a template" guide there is the source of truth. The three templates available today:
 
-   **Skip the Drive upload** only when the user explicitly says "don't upload" / "skip Drive" / "local only," or when the post is being held back from publication for review. If uncertain, ask.
+   - **`numbered-stack`** — vertical ordered list of 3-5 named concepts (maturity ladders, named steps, priority hierarchies)
+   - **`letter-strip`** — horizontal 3-6 acronym letters or named pillars
+   - **`stat-hero`** — one dominant stat + framing (best for OG / social preview)
+
+   Scan the post for content that fits. For each genuine fit (max 3), append a numbered entry naming the template and pre-filling the content slots verbatim from the post. Block format:
+
+   ```
+   **Image candidates**
+
+   1. **stat-hero** — `$28,250` per US employee on benefits (the lede stat). Best for OG / social preview.
+      - Stat: `$28,250`
+      - Tag: "Spent per US employee, per year, on benefits."
+      - Takeaway: "Most never use what they have."
+      - Source: U.S. Bureau of Labor Statistics
+
+   2. **numbered-stack** — Four-rung maturity ladder (Compliance → Connection). Best for in-body, "Why it happens" section.
+      - Rungs: 01 Compliance · 02 Clarity · 03 Relevance · 04 Connection
+      - Marker: "Most teams sit here" between 02 and 03
+   ```
+
+   **Rules:**
+   - **Mandatory step, can output "none."** If no concept pattern in the post maps to any of the three templates, write `**Image candidates:** none — no concept pattern fits the available templates.` Skipping the step entirely is a bug.
+   - **No force-fit.** A 4-bullet list that isn't really a sequence shouldn't become a `numbered-stack`. A stat that isn't a scroll-stopper shouldn't become a `stat-hero`. If you have to argue for the fit, drop the candidate.
+   - **Pre-fill content slots verbatim** from the post so a downstream rendering agent doesn't have to re-derive
+   - **Order by leverage** — OG/social card (`stat-hero`) first when applicable; in-body diagrams after, in the order they appear in the post
+   - **Do not render** HTML or PNG here. Rendering is a separate manual step via `cerkl/marketing/design/blog-assets/render.sh`.
+
+Save to `blog-posts-live/YYYY-MM-DD_[slug]_live.md`. Leave the original draft unchanged.
+
+**Return:** the `_live.md` path + the final score line. The downstream `seo-blog-publishing` skill handles Drive upload (Edit log stripped; Properties block + CTA markers + FAQ schema kept so Furqan has everything he needs in one Doc) and Jira CSV row update — editing's job ends at a publication-ready file on disk.

@@ -1,0 +1,50 @@
+Work Item ID,Issue Type,Parent ID,Epic Link,Summary,Description,Owner,Channel,Start Date,Due Date
+T001,Task,,,Content - Blog (Cerkl.com) - From metrics to a leadership story,"Topic: reporting on internal comms in a way that lands with leadership
+Slug: from-metrics-leadership-story-reporting-internal-comms-way
+Note: no brief in seo/briefs/ — slug synthesized from deliverable title at scaffold time. Lead-week compressed (Memorial Day Mon 5/25); writing window is Tue 5/26.
+Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Blog Posts,2026-05-21,2026-05-26
+S001,Subtask,T001,,Blog – Copy,Write the blog post copy from the brief / outline.,,Blog Posts,2026-05-21,2026-05-22
+S002,Subtask,T001,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,2026-05-22,2026-05-26
+S003,Subtask,T001,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,2026-05-26,2026-05-26
+S004,Subtask,T001,,Blog – Implementation / Publishing,Stage in Webflow with CMS properties; schedule publish.,,Blog Posts,2026-05-26,2026-05-26
+T002,Task,,,Content - Blog (Cerkl.com) - SharePoint for Internal Communications — A 2026 Playbook,"Topic: SharePoint as an internal comms channel — limits, complementary strategies, where Cerkl Broadcast layers on top
+Slug: sharepoint-internal-communications
+Brief link: ../seo/briefs/sharepoint-internal-communications.md
+Primary keyword: SharePoint internal communications
+Secondary keywords: SharePoint personalization, SharePoint employee communications, SharePoint intranet communications, personalized SharePoint content
+Webflow CMS properties:
+  - Primary Category: mobile-employee-experience
+  - Primary Solution: Omni AI
+  - All Categories: Audience Segmentation, Remote/Hybrid
+Note: EXTRA cerkl.com blog this week per Travis 2026-05-21 reconcile call (above the usual 1/week cap). Lead-week compressed (Memorial Day); writing window Wed 5/27.
+Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Blog Posts,2026-05-22,2026-05-28
+S005,Subtask,T002,,Blog – Copy,Write the blog post copy from the brief / outline.,,Blog Posts,2026-05-22,2026-05-26
+S006,Subtask,T002,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,2026-05-26,2026-05-27
+S007,Subtask,T002,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,2026-05-27,2026-05-27
+S008,Subtask,T002,,Blog – Implementation / Publishing,Stage in Webflow with CMS properties; schedule publish.,,Blog Posts,2026-05-27,2026-05-28
+T003,Task,,,Content - Blog (ICP) - Employee wellness comms,"Topic: how segmentation helps internal comms teams reach the right people with wellness messaging
+Slug: employee-wellness-comms-how-segmentation-helps-you-reach
+Note: ICPro has no brief queue — slug synthesized from the deliverable title at scaffold time
+Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Blog Posts,2026-05-21,2026-05-26
+S009,Subtask,T003,,Blog – Copy,Write the blog post copy from the outline.,,Blog Posts,2026-05-21,2026-05-22
+S010,Subtask,T003,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,2026-05-22,2026-05-26
+S011,Subtask,T003,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,2026-05-26,2026-05-26
+S012,Subtask,T003,,Blog – Implementation / Publishing,Stage in Wix with CMS properties; schedule publish.,,Blog Posts,2026-05-26,2026-05-26
+T004,Task,,,Social Media - LinkedIn - Month recap: prove your impact with better analytics,"Topic: month-end recap of the Insights / measurement theme
+Wraps: from-metrics-leadership-story-reporting-internal-comms-way",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-05-22,2026-05-26
+S013,Subtask,T004,,LinkedIn – Copy,Draft the post copy.,,Social Media,2026-05-22,2026-05-22
+S014,Subtask,T004,,LinkedIn – Asset Creation,Create or source the static / carousel / video asset.,,Social Media,2026-05-22,2026-05-22
+S015,Subtask,T004,,LinkedIn – Approval,Review post + asset; sign off.,,Social Media,2026-05-26,2026-05-26
+S016,Subtask,T004,,LinkedIn – Implementation / Publishing,Schedule in LinkedIn / Buffer / native; confirm publish.,,Social Media,2026-05-26,2026-05-26
+T005,Task,,,Social Media - LinkedIn - Link post: metrics to leadership story blog,"Topic: link post pointing to the leadership-story blog
+Wraps: from-metrics-leadership-story-reporting-internal-comms-way",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-05-26,2026-05-27
+S017,Subtask,T005,,LinkedIn – Copy,Draft the post copy.,,Social Media,2026-05-26,2026-05-26
+S018,Subtask,T005,,LinkedIn – Asset Creation,Create or source the static asset (typically the blog hero or a pull-quote card).,,Social Media,2026-05-26,2026-05-26
+S019,Subtask,T005,,LinkedIn – Approval,Review post + asset; sign off.,,Social Media,2026-05-27,2026-05-27
+S020,Subtask,T005,,LinkedIn – Implementation / Publishing,Schedule in LinkedIn / Buffer / native; confirm publish.,,Social Media,2026-05-27,2026-05-27
+T006,Task,,,Social Media - LinkedIn - When reporting internal comms metrics to leadership what's the hardest part,"Topic: LinkedIn poll on the leadership-reporting pain point
+Wraps: from-metrics-leadership-story-reporting-internal-comms-way",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-05-27,2026-05-28
+S021,Subtask,T006,,LinkedIn – Copy,Draft the poll question + answer options.,,Social Media,2026-05-27,2026-05-27
+S022,Subtask,T006,,LinkedIn – Asset Creation,(N/A for polls — native poll widget; skip or mark done.),,Social Media,2026-05-27,2026-05-27
+S023,Subtask,T006,,LinkedIn – Approval,Review poll question + options; sign off.,,Social Media,2026-05-28,2026-05-28
+S024,Subtask,T006,,LinkedIn – Implementation / Publishing,Publish poll natively on LinkedIn; confirm live.,,Social Media,2026-05-28,2026-05-28
