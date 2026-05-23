@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-05-22",
-  "total_html": 47,
+  "total_html": 48,
   "total_blog_posts": 11,
   "total_md_candidates": 17,
   "pinned": [
@@ -18,8 +18,7 @@
       "content": {
         "section": "Top of Mind",
         "items": [
-          { "title": "SEM Landing Page Rebuild", "summary": "Launch Wed 2026-05-20 at 2:30 SEM Sync w/ Joey. Sequence: Mon Steps 4–5, Tue Step 6 + PostHog config, Wed launch." },
-          { "title": "Meta Ads Channel Launch", "summary": "Promoted to top priority (Travis call 2026-05-18). Phase 2 active: audience / targeting strategy first, then ads." },
+          { "title": "Meta Ads Channel Launch", "summary": "Phase 2 advances to build & launch test 1. Hard-blocked on Foundations sign-up event firing into Meta Pixel + Conversions API." },
           { "title": "SEO Strategy & Plan", "summary": "Phase 1 complete (skills inventory landed 5/15). Phase 2 #1 starts: content planning process with explicit SEO linkage." },
           { "title": "The Cerkular", "summary": "HubSpot → Broadcast API integration is the gate to launch. Resolve Jira FUTURE-232 first." },
           { "title": "Ad Conversion Tracking", "summary": "Now passive: diagnose+fix landed 5/15, waiting on a real event to fire in Google Ads. Demoted from active focus to monitor." },
@@ -105,10 +104,11 @@
       "kind": "html",
       "home_recent": 2,
       "cadence": "adhoc",
-      "last_run": "2026-05-19",
+      "last_run": "2026-05-22",
       "stale": false,
       "new_run_prompt": "Build a new one-pager. I'll provide the topic/source when you ask.\n\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/design/one-pagers/one-pager-process.md",
       "items": [
+        { "title": "Allcore MSP Premeeting", "date": "2026-05-22", "url": "/cerkl/marketing/design/one-pagers/pdfs/allcore-msp-premeeting-2026-05-22.html", "is_md": false },
         { "title": "Matt Frost Recap", "date": "2026-05-19", "url": "/cerkl/marketing/design/one-pagers/pdfs/matt-frost-recap-2026-05-19.html", "is_md": false },
         { "title": "Foundations Post Webinar", "date": "2026-05-15", "url": "/cerkl/marketing/design/one-pagers/pdfs/foundations-post-webinar-2026-05-15.html", "is_md": false }
       ]
@@ -317,9 +317,9 @@
   ],
   "recent": [
     { "title": "Daily Recap — 2026-05-22", "date": "2026-05-22", "url": "/cerkl/research/ic-trends/daily/2026-05-22.html", "cat_label": "IC Trends — Daily", "cat_slug": "ic-trends-daily", "is_md": false },
+    { "title": "Allcore MSP Premeeting", "date": "2026-05-22", "url": "/cerkl/marketing/design/one-pagers/pdfs/allcore-msp-premeeting-2026-05-22.html", "cat_label": "Marketing — One-Pagers", "cat_slug": "marketing-design-one-pagers", "is_md": false },
     { "title": "Daily Recap — 2026-05-21", "date": "2026-05-21", "url": "/cerkl/research/ic-trends/daily/2026-05-21.html", "cat_label": "IC Trends — Daily", "cat_slug": "ic-trends-daily", "is_md": false },
     { "title": "Growth Project Tracker", "date": "2026-05-21", "url": "/cerkl/personal-assistant/growth-project-tracker.html", "cat_label": "Personal Assistant", "cat_slug": "personal-assistant", "is_md": false },
-    { "title": "Layoff Memo Subgenre", "date": "2026-05-21", "url": "/cerkl/research/ic-trends/deepdives/layoff-memo-subgenre-2026-05-21.html", "cat_label": "IC Trends — Deep Dives", "cat_slug": "ic-trends-deepdives", "is_md": false },
-    { "title": "McKinsey — Rewired 2", "date": "2026-05-21", "url": "/cerkl/research/ic-trends/deepdives/mckinsey-rewired-2-2026-05-21.html", "cat_label": "IC Trends — Deep Dives", "cat_slug": "ic-trends-deepdives", "is_md": false }
+    { "title": "Layoff Memo Subgenre", "date": "2026-05-21", "url": "/cerkl/research/ic-trends/deepdives/layoff-memo-subgenre-2026-05-21.html", "cat_label": "IC Trends — Deep Dives", "cat_slug": "ic-trends-deepdives", "is_md": false }
   ]
 }

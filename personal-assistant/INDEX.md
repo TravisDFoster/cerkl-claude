@@ -39,6 +39,7 @@
 | [YouTube](projects/youtube.md) | Decide with TK — post product videos (Foundations, Audience Manager) to Cerkl YouTube? | Low | — | Pending | Travis / TK |
 | [IC Trends Knowledge Base](projects/ic-trends-knowledge-base.md) | Decide scope option (topics-only / full wiki / full + outputs) before any restructure | Low | — | n/a | Travis |
 | [ICP Blog May Rewrites](projects/icp-blog-may-rewrites.md) | Decide: publish 3 Drive Docs to internalcommspro.com (Wix) or close as workspace-only | Low | — | Yes | Travis |
+| [PA System Refresh](projects/pa-system-refresh.md) | Exploration — design notes captured; revisit when ready to prototype handoff-driven tracking on 1–2 pilot channels | Low | — | n/a | Travis |
 | [Furqan — Backlinks Onboarding](projects/furqan-projects.md) | 30-min sync to walk through `marketing/seo/backlinks/`, confirm monthly cadence (~25 prospects), decide on Ahrefs/Moz access | Med | — | Yes | Travis / Furqan |
 | [Downloadable Asset Emails](projects/downloadable-asset-emails.md) | Inventory downloadable-asset follow-up sequences and swap CTAs from book-a-meeting → Foundations | Med | 2026-05-29 | Yes | Travis |
 | [Canva-Connected Design Skills](projects/canva-design-skills.md) | Phase 1 — template discovery + connection for one-pager, blog-asset, and LinkedIn-asset skills | Med | 2026-05-29 | Yes | Travis |

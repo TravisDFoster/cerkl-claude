@@ -2,7 +2,7 @@
 name: seo-blog-pre-writing
 description: Use when preparing a Cerkl SEO blog post for drafting. Reads the upstream SEO brief from `seo/briefs/<slug>.md`, carries its schema decisions (pillar, solution, keywords, internal links) into a Webflow-ready pre-writing file, and adds the per-post decisions the brief doesn't cover (Top/Middle/Bottom CTA variants, meta description, full H1/H2/H3 outline). Triggers on phrases like "pre-writing for [topic]", "set up the blog brief for [post]", "outline this blog post". Output: `blog-posts-pre-writing/YYYY-MM-DD_[slug]_pre-writing.md`.
 metadata:
-  version: 0.2.0
+  version: 0.3.0
 ---
 
 # SEO Blog Pre-Writing
@@ -45,6 +45,8 @@ After creating the file, flip the brief's `status:` to `in-progress`.
 | Pre-flight checks (cannibalization, refresh-vs-new) | "Pre-flight checks" section |
 
 If any of these are blank or contradictory in the brief, **stop and flag back to SEO** — don't fill them in here.
+
+**Output shape:** render Group A as a `## Properties` block at the top of the pre-writing file. Include every field above — hub link, sibling URLs (with planned H2/H3 placement noted), why-now, and pre-flight checks all carry forward into the file so drafting and editing can see them. Recent pre-writing outputs have dropped these; don't.
 
 ### Group B — Decided in pre-writing
 
@@ -114,6 +116,25 @@ Webflow's `Primary Category` (= pillar) is set by the brief. Pick the matching l
 | `mobile-employee-experience` | Frontline and Mobile Workforce |
 
 **All Categories** (the multi-tag field) comes from the brief's `all_categories:` list. Use it to tag cross-cutting themes like *AI in IC*, *Audience Segmentation*, *Healthcare*, *Remote/Hybrid*. There is no "Secondary Category" anymore — Webflow uses multi-tag.
+
+---
+
+## Optional research lookup
+
+If the brief's frontmatter has `needs_research: true`, read the IC research wiki before writing the outline. Otherwise skip this section.
+
+**Read directly — no sub-agent dispatch:**
+1. [`/Users/travisfoster/claude-code/cerkl/research/cerkl-research/wiki/index.md`](/Users/travisfoster/claude-code/cerkl/research/cerkl-research/wiki/index.md) — find topic / concept / entity pages relevant to the brief's primary keyword and angle.
+2. The 3–8 pages identified above (across `wiki/topics/`, `wiki/concepts/`, `wiki/entities/`).
+3. Source pages in `wiki/sources/` linked from those pages when their stats or claims would strengthen the outline.
+
+**How to use it:**
+- Pull stats, frameworks, and named practitioners into the outline as concrete anchors — the brief gives the angle; the wiki gives the proof points.
+- Cite `[[source-slug]]` references inline in the pre-writing outline so drafting can resolve them to URLs.
+- **Apply Blog Post Research Mode** ([cerkl-research/CLAUDE.md:136-149](/Users/travisfoster/claude-code/cerkl/research/cerkl-research/CLAUDE.md)): exclude competitor-sourced stats and citations. The competitor list is in that file; competitors can be discussed as subject matter, just not cited as evidence.
+- At the end of the outline, list `**Competitor sources excluded:** [names]` so Travis sees what was held back.
+
+If the wiki has nothing relevant for this brief, note that in the pre-writing file and proceed with the brief alone — don't fabricate citations.
 
 ---
 
