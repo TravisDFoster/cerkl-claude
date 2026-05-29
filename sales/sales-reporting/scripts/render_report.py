@@ -18,6 +18,7 @@ Normally invoked in-process by pull_pipeline.py after it writes the JSON.
 import html
 import json
 import os
+import re
 import sys
 
 SALES_REPORTING = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,8 +45,13 @@ def plural(n, word):
 
 
 def extract_style(reference_path=REFERENCE):
-    """Return the verbatim <style>…</style> block from the locked reference."""
+    """Return the verbatim <style>…</style> block from the locked reference.
+
+    Strip HTML comments first — the reference's header comment mentions the literal
+    string "<style>", which would otherwise match before the real tag.
+    """
     txt = open(reference_path, encoding="utf-8").read()
+    txt = re.sub(r"<!--.*?-->", "", txt, flags=re.DOTALL)
     i = txt.index("<style>")
     j = txt.index("</style>") + len("</style>")
     return txt[i:j]
@@ -234,10 +240,83 @@ def section_open(o):
     )
 
 
+def section_activity(a):
+    if not a:
+        return ""
+    types = [("calls", "Calls"), ("meetings", "Meetings"), ("notes", "Notes"), ("tasks", "Tasks")]
+    head = "".join(f'<th class="num">{lbl}</th>' for _, lbl in types)
+    rows = "".join(
+        f'<tr><td class="owner">{esc(name)}</td>'
+        + "".join(f'<td class="num">{d[t]}</td>' for t, _ in types)
+        + "</tr>"
+        for name, d in a["by_owner"].items()
+    )
+    tot = a["totals"]
+    foot = "".join(f'<td class="num">{tot[t]}</td>' for t, _ in types)
+    lead = f'{sum(tot.values())} logged'
+    return (
+        f'<section><h2><span class="num">04</span>Activity (logged)<span class="lead">{lead}</span></h2>'
+        f'<table class="data"><thead><tr><th>Owner</th>{head}</tr></thead>'
+        f'<tbody>{rows}</tbody>'
+        f'<tfoot><tr><td>Team</td>{foot}</tr></tfoot></table>'
+        '<p class="note-italic">Emails excluded — pending HubSpot scope grant. Calls reflect logged call engagements only.</p>'
+        '</section>'
+    )
+
+
+def _gap_rows(rows):
+    out = []
+    for r in rows:
+        cap = r.get("mapped_gap", "")
+        if cap.lower().startswith("novel:"):
+            cap = cap.split(":", 1)[1].strip() + " (new)"
+        src = esc(r.get("source", ""))
+        if r.get("competitor"):
+            src += " — vs " + esc(r["competitor"])
+        out.append(
+            f'<tr><td>{esc(cap)}</td><td>{src}</td>'
+            f'<td class="owner">{esc(r.get("owner", ""))}</td>'
+            f'<td>{esc(r.get("quote", ""))}</td></tr>'
+        )
+    return "".join(out)
+
+
+def section_feature(s, feature_requests):
+    rollup = s.get("feature_gaps_rollup") or {"by_option": {}, "deal_count": 0}
+    reqs = feature_requests or []
+    if not reqs and not rollup["by_option"]:
+        return ""
+    product = [r for r in reqs if r.get("already_ships") is not True]
+    positioning = [r for r in reqs if r.get("already_ships") is True]
+
+    def gap_table(rows):
+        return ('<table class="data"><thead><tr><th>Capability</th><th>Source</th>'
+                '<th>Owner</th><th>Signal</th></tr></thead>'
+                f'<tbody>{_gap_rows(rows)}</tbody></table>')
+
+    prod = ('<h3>Product gaps — roadmap signal</h3>' + gap_table(product)) if product else \
+           '<h3>Product gaps — roadmap signal</h3><p class="note-italic">No new product gaps surfaced in notes this period.</p>'
+    pos = ('<h3>Positioning gaps — Cerkl ships it (enablement)</h3>' + gap_table(positioning)) if positioning else ""
+    roll = ""
+    if rollup["by_option"]:
+        rr = "".join(f'<tr><td>{esc(k)}</td><td class="num">{v}</td></tr>' for k, v in rollup["by_option"].items())
+        roll = (f'<h3>Flagged in HubSpot — structured <code>feature_gaps</code> ({rollup["deal_count"]} AE deals)</h3>'
+                '<table class="data"><thead><tr><th>Feature gap</th><th class="num">Deals</th></tr></thead>'
+                f'<tbody>{rr}</tbody></table>')
+
+    lead = f'{len(product)} product · {len(positioning)} positioning · {rollup["deal_count"]} flagged'
+    return (
+        f'<section><h2><span class="num">05</span>Feature gaps &amp; requests<span class="lead">{lead}</span></h2>'
+        f'{prod}{pos}{roll}'
+        '<p class="note-italic">From AE notes (classified) + the structured feature_gaps property. '
+        'Note signal is sparse — best read over a multi-week window.</p></section>'
+    )
+
+
 def section_foundations(f):
     n = f["new_in_period"]
     if n == 0:
-        return ('<section><h2><span class="num">04</span>Foundations funnel — new in period'
+        return ('<section><h2><span class="num">06</span>Foundations funnel — new in period'
                 '<span class="lead">Count-only · No activity</span></h2>'
                 '<div class="empty-card"><div class="e-num">0</div>'
                 '<div class="e-body"><span class="e-status">No activity</span>'
@@ -248,7 +327,7 @@ def section_foundations(f):
     )
     lead = f'Count-only · {n} new free-funnel {plural(n, "deal")}'
     return (
-        f'<section><h2><span class="num">04</span>Foundations funnel — new in period<span class="lead">{lead}</span></h2>'
+        f'<section><h2><span class="num">06</span>Foundations funnel — new in period<span class="lead">{lead}</span></h2>'
         '<table class="data"><thead><tr><th>Stage</th><th class="num">New deals</th></tr></thead>'
         f'<tbody>{rows}</tbody></table></section>'
     )
@@ -264,13 +343,14 @@ def footer(s):
     )
 
 
-def render_html(s, style_block=None):
+def render_html(s, style_block=None, feature_requests=None):
     if style_block is None:
         style_block = extract_style()
     title = esc("Sales Pipeline Report — " + s["period_label"])
     body = "\n".join([
         hero(s), section_new(s["new_deals"]), section_closed(s["closed_won"], s["closed_lost"]),
-        section_open(s["open_snapshot"]), section_foundations(s["foundations"]), footer(s),
+        section_open(s["open_snapshot"]), section_activity(s.get("activity")),
+        section_feature(s, feature_requests), section_foundations(s["foundations"]), footer(s),
     ])
     return (
         '<!doctype html>\n<html lang="en">\n<head>\n'
@@ -284,10 +364,15 @@ def render_html(s, style_block=None):
 
 
 def render_to_file(summary):
+    # Merge the classifier output (feature requests) if it has been produced for this label.
+    fr_path = os.path.join(SALES_REPORTING, "tmp", f'feature-requests-{summary["label"]}.json')
+    feature_requests = None
+    if os.path.exists(fr_path):
+        feature_requests = json.load(open(fr_path, encoding="utf-8")).get("feature_requests")
     out = os.path.join(SALES_REPORTING, "reports", f'{summary["label"]}.html')
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as fh:
-        fh.write(render_html(summary))
+        fh.write(render_html(summary, feature_requests=feature_requests))
     return out
 
 

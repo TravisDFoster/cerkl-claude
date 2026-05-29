@@ -18,6 +18,18 @@ Cerkl's marketing goal is **Foundations subscriber growth**. The HubSpot databas
 - `reports/` — audit reports and snapshots
 - `data/audit-logs/` — CSV exports from past operations
 
+## Read vs. write operations
+
+The skills below are **write/hygiene** ops — they mutate the CRM, so they carry safety rails: planning phase, confirm counts, CSV audit trail, abort thresholds (see Rules).
+
+**Read-only reporting/extraction is different** and skips that ceremony — nothing is destructive. Example: [`sales/sales-reporting/`](../sales/sales-reporting/) pulls deals for the weekly report. Conventions for read jobs:
+- Aggregate in the script → compact JSON; keep raw deal payloads out of Claude's context.
+- Classify deal state via calculated booleans (`hs_is_closed`, `hs_is_closed_won`), not hardcoded stage IDs.
+- Fetch pipeline/stage metadata at runtime to map IDs → labels; don't hardcode.
+- `uv run` + `requests` (per Setup); export the token with `set -a` before running (plain `source` doesn't reach the child process).
+
+Reusable read primitives (e.g. a pipeline-snapshot puller) can graduate into read-skills here once a second consumer needs them — don't extract early.
+
 ## Skills
 
 hubspot-audit, hubspot-implementation-plan, audit-marketing-emails, draft-marketing-email, delete-no-email-contacts, suppress-hard-bounced, suppress-ghost-contacts, suppress-global-unsubscribes, review-bounced-contacts, merge-duplicate-companies, enrich-company-name, enrich-industry, backfill-geo-data, standardize-geo-values, fix-lifecycle-stages, assign-unowned-contacts, reassign-deactivated-owners, create-icp-tiers, build-lead-scoring, build-smart-lists, create-segment-lists, bounce-monitoring-workflow, engagement-suppression-workflow, lifecycle-progression-workflow, new-contact-hygiene-workflow, cleanup-properties, cleanup-lists, cleanup-workflows, cleanup-forms, cleanup-dashboards, cleanup-deals, cleanup-lead-owners, weekly-cleanup-routine, quarterly-database-cleanup

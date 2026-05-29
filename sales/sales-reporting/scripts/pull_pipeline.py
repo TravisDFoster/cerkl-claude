@@ -104,6 +104,14 @@ def resolve_period(args):
     return start.isoformat(), end.isoformat(), label, period_label, num_weeks
 
 
+def fetch_feature_gap_labels(tok):
+    """value -> label map for the feature_gaps checkbox options (the gap taxonomy)."""
+    r = requests.get(f"{BASE}/crm/v3/properties/deals/feature_gaps",
+                     headers={"Authorization": f"Bearer {tok}"}, timeout=30)
+    r.raise_for_status()
+    return {o["value"]: o["label"] for o in r.json().get("options", [])}
+
+
 def fetch_stage_meta(tok):
     """Map stage_id -> {label, order, pipeline, is_closed, is_holding} for target pipelines.
 
@@ -134,9 +142,10 @@ def fetch_stage_meta(tok):
     return meta
 
 
-def search(tok, filters, properties):
-    """Run a deals search, following pagination. Returns list of result dicts."""
+def search(tok, filters, properties, obj="deals"):
+    """Run a CRM-object search, following pagination. Returns list of result dicts."""
     headers = {"Authorization": f"Bearer {tok}", "Content-Type": "application/json"}
+    url = f"{BASE}/crm/v3/objects/{obj}/search"
     out, after = [], None
     while True:
         body = {
@@ -146,7 +155,7 @@ def search(tok, filters, properties):
         }
         if after:
             body["after"] = after
-        r = requests.post(SEARCH_URL, headers=headers, json=body, timeout=30)
+        r = requests.post(url, headers=headers, json=body, timeout=30)
         r.raise_for_status()
         data = r.json()
         out.extend(data.get("results", []))
@@ -231,6 +240,46 @@ def main():
         {"propertyName": "createdate", "operator": "GTE", "value": str(start_ms)},
         {"propertyName": "createdate", "operator": "LTE", "value": str(end_ms)},
     ], base_props)
+
+    # 5) Activity engagements in period (owner-filtered) — counted per rep.
+    #    Emails are skipped: the token lacks the email-read scope (see process Future work).
+    #    Calls typically read 0 (AEs don't log call engagements).
+    ACTIVITY_TYPES = ["calls", "meetings", "notes", "tasks"]
+    activity_by_owner = {name: {t: 0 for t in ACTIVITY_TYPES} for name in OWNERS.values()}
+    for t in ACTIVITY_TYPES:
+        for d in search(tok, [
+            {"propertyName": "hubspot_owner_id", "operator": "IN", "values": OWNER_IDS},
+            {"propertyName": "hs_timestamp", "operator": "GTE", "value": str(start_ms)},
+            {"propertyName": "hs_timestamp", "operator": "LTE", "value": str(end_ms)},
+        ], ["hubspot_owner_id"], obj=t):
+            nm = OWNERS.get(d["properties"].get("hubspot_owner_id"))
+            if nm:
+                activity_by_owner[nm][t] += 1
+    activity = {
+        "by_owner": activity_by_owner,
+        "totals": {t: sum(activity_by_owner[n][t] for n in OWNERS.values()) for t in ACTIVITY_TYPES},
+        "emails": None,  # scope-blocked; see Future work
+    }
+
+    # 6) Structured feature_gaps roll-up across AE deals (current state; complements the
+    #    notes-extracted requests). The property is sparsely set, so this is partial signal.
+    fg_labels = fetch_feature_gap_labels(tok)
+    fg_deals = search(tok, [
+        {"propertyName": "pipeline", "operator": "IN", "values": DOLLAR_PIPELINE_IDS},
+        {"propertyName": "hubspot_owner_id", "operator": "IN", "values": OWNER_IDS},
+        {"propertyName": "feature_gaps", "operator": "HAS_PROPERTY"},
+    ], ["feature_gaps"])
+    fg_counts = {}
+    for d in fg_deals:
+        for v in (d["properties"].get("feature_gaps") or "").split(";"):
+            v = v.strip()
+            if v and v.lower() not in ("none", "other"):
+                gap_label = fg_labels.get(v, v)
+                fg_counts[gap_label] = fg_counts.get(gap_label, 0) + 1
+    feature_gaps_rollup = {
+        "deal_count": len(fg_deals),
+        "by_option": dict(sorted(fg_counts.items(), key=lambda kv: kv[1], reverse=True)),
+    }
 
     # --- Aggregate ---------------------------------------------------------
     def agg_new():
@@ -328,6 +377,8 @@ def main():
         "closed_won": agg_closed(won),
         "closed_lost": agg_closed(lost, with_reason=True),
         "open_snapshot": agg_open(),
+        "activity": activity,
+        "feature_gaps_rollup": feature_gaps_rollup,
         "foundations": agg_foundations(),
     }
 

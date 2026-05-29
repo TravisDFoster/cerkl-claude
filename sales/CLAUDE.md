@@ -58,9 +58,11 @@ sales/
 └── sales-reporting/          ← weekly sales report (single process; routes from here, no child CLAUDE.md)
     ├── weekly-sales-report-process.md       ← orchestrator
     ├── reference-weekly-sales-report.html   ← LOCKED light-theme look; render_report.py reads its CSS verbatim
-    ├── scripts/pull_pipeline.py             ← HubSpot pull + Python aggregation → JSON
-    ├── scripts/render_report.py             ← deterministic JSON → dashboard HTML (no LLM)
-    ├── tmp/                                  ← pipeline-<label>.json data records
+    ├── feature-extraction-rubric.md         ← brief for the notes→feature-requests classifier (the one inference step)
+    ├── scripts/pull_pipeline.py             ← HubSpot pull (pipeline + activity + feature_gaps roll-up) → JSON
+    ├── scripts/pull_notes.py                ← notes + associations + feature_gaps → notes JSON (classifier input)
+    ├── scripts/render_report.py             ← deterministic JSON → dashboard HTML (merges classifier output)
+    ├── tmp/                                  ← pipeline / notes / feature-requests <label>.json (gitignored)
     └── reports/                             ← <label>.html deliverables
 ```
 
