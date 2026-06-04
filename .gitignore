@@ -7,9 +7,21 @@ marketing/design/branding-assets/
 # HubSpot contact data — PII
 hubspot/data/audit-logs/
 
-# Personal project notes
-personal-assistant/projects/furqan-projects.md
-personal-assistant/projects/allison-projects.md
+# Personal-assistant state — projects, weekly calendar, meeting notes (internal ops)
+personal-assistant/projects/
+personal-assistant/calendar/
+personal-assistant/meetings/
+
+# Active sales pipeline + named prospect work — PII / competitive
+sales/sales-reporting/reports/
+sales/presentations/[Prospect]*
+sales/presentations/[prospect]*
+
+# HubSpot CRM audit reports — portal-level stats + contact-level findings
+hubspot/reports/
+
+# SEO program — strategy, keyword maps, briefs, audits, reports
+marketing/seo/
 
 # Mac noise
 .DS_Store
