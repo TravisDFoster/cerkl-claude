@@ -17,56 +17,14 @@ You are a senior B2B SaaS sales strategist helping Travis Foster build sales pro
 
 | Task | Go to |
 |---|---|
-| Cold email, LinkedIn sequences, outbound copy | `outbound/` |
-| Call prep, qualification, discovery frameworks | `discovery/` |
-| Objection responses, handling playbook | `objection-handling/` |
-| Battle cards, talk tracks, one-pagers, competitive | `enablement/` |
-| Review an email draft for voice/tone and factual accuracy | `email-editor/` |
+| Cold email, LinkedIn sequences, outbound copy | [cold-email skill](../marketing/skills/cold-email/SKILL.md) (vendored — see below) |
+| Battle cards, talk tracks, one-pagers, competitive enablement | [sales-enablement skill](../marketing/skills/sales-enablement/SKILL.md) (vendored — see below) |
+| Review an email draft for voice/tone and factual accuracy | [`email-editor/email-review-process.md`](email-editor/email-review-process.md) |
 | Pressure Prospecting — signal taxonomy, bucket model, account handoff to AEs | `pressure-prospecting/` |
 | Competitor Dissatisfaction Mining — mine reviews/forums for dissatisfied competitor users; enriched list to AEs | `competitor-dissatisfaction/` |
 | Weekly sales report — HubSpot pipeline metrics for the sales cadence (Josh/Marc/Tarek) | [`sales-reporting/weekly-sales-report-process.md`](sales-reporting/weekly-sales-report-process.md) |
 | **Build / restyle a sales presentation** (PPTX, prospect-styled or Cerkl-styled) | [`presentations/`](presentations/CLAUDE.md) |
 | **Reverse-engineer a prospect's brand** (colors / fonts / logo — for any prospect-styled collateral) | [`prospect-brand-process.md`](prospect-brand-process.md) |
-
-## File Structure
-
-```
-sales/
-├── CLAUDE.md
-├── CONTEXT.md
-├── REFERENCES.md
-├── outbound/
-│   ├── CLAUDE.md          ← SDR/outbound copywriter identity; cold email, LinkedIn sequences
-│   ├── CONTEXT.md
-│   └── sequences/         ← individual sequence files go here
-├── discovery/
-│   ├── CLAUDE.md          ← AE identity; call prep, qualification frameworks
-│   └── CONTEXT.md
-├── objection-handling/
-│   ├── CLAUDE.md
-│   └── objections.md      ← living playbook of common objections + responses
-├── enablement/
-│   ├── CLAUDE.md          ← sales enablement identity; battle cards, talk tracks, one-pagers
-│   └── competitive/       ← competitor-specific battle cards go here
-├── email-editor/
-│   └── email-review-process.md  ← voice/tone + fact-check process for reviewing emails
-├── pressure-prospecting/
-│   ├── CLAUDE.md                ← scope, phase status, decisions, open calls
-│   └── methodology.md           ← signal taxonomy, bucket model, emotional reads, handoff schema
-├── competitor-dissatisfaction/
-│   ├── CLAUDE.md                                 ← router + decisions
-│   ├── methodology.md                            ← source surfaces, signal taxonomy, filter, schema, buckets, handoff
-│   └── competitor-dissatisfaction-mining-process.md  ← orchestrator
-└── sales-reporting/          ← weekly sales report (single process; routes from here, no child CLAUDE.md)
-    ├── weekly-sales-report-process.md       ← orchestrator
-    ├── reference-weekly-sales-report.html   ← LOCKED light-theme look; render_report.py reads its CSS verbatim
-    ├── feature-extraction-rubric.md         ← brief for the notes→feature-requests classifier (the one inference step)
-    ├── scripts/pull_pipeline.py             ← HubSpot pull (pipeline + activity + feature_gaps roll-up) → JSON
-    ├── scripts/pull_notes.py                ← notes + associations + feature_gaps → notes JSON (classifier input)
-    ├── scripts/render_report.py             ← deterministic JSON → dashboard HTML (merges classifier output)
-    ├── tmp/                                  ← pipeline / notes / feature-requests <label>.json (gitignored)
-    └── reports/                             ← <label>.html deliverables
-```
 
 ## Vendored skills (referenced from sales)
 

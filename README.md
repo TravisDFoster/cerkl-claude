@@ -14,8 +14,11 @@ Internal ops repository for Travis Foster, Head of Marketing & Growth Operations
 | [`strategy/`](strategy/) | Growth diagnosis, guiding policy, 12-month roadmap, 90-day sprint, resources |
 | [`marketing/`](marketing/) | Demand gen, content channels (webinar, LinkedIn, YouTube, newsletter, PR), website, design, marketing strategy |
 | [`sales/`](sales/) | Outbound sequences, discovery, objection handling, sales enablement, email review |
-| [`hubspot/`](hubspot/) | CRM ops — 31 reusable skills + Python scripts for cleanup, enrichment, segments, workflows |
-| [`personal-assistant/`](personal-assistant/) | Travis's projects, meeting notes, calendar, running task list |
+| [`hubspot/`](hubspot/) | CRM ops — reusable skills + Python scripts for cleanup, enrichment, segments, workflows |
+| [`personal-assistant/`](personal-assistant/) | Travis's projects, meeting notes, calendar, live task ledger |
+| [`research/`](research/) | IC trends horizon-scan, competitor marketing digests, durable knowledge wiki |
+| [`mission-control/`](mission-control/) | Local browser dashboard: index + launcher for all reports |
+| [`content-dashboard/`](content-dashboard/) | Local browser view of the content pipeline |
 
 ---
 
@@ -40,4 +43,4 @@ API credentials are loaded from `.env` at the repo root. Scripts in any subdirec
 - [`shared/icp.md`](shared/icp.md) — Ideal customer profile
 - [`marketing/marketing-strategy/diagnosis-and-guiding-policy.md`](marketing/marketing-strategy/diagnosis-and-guiding-policy.md) — Strategic diagnosis
 - [`hubspot/CONTEXT.md`](hubspot/CONTEXT.md) — HubSpot portal state and history
-- [`personal-assistant/running-task-list.md`](personal-assistant/running-task-list.md) — Active task list
+- [`personal-assistant/INDEX.md`](personal-assistant/INDEX.md) — Live ledger of next steps

@@ -17,6 +17,8 @@ For IC strategy: the decline rebuts the comfortable narrative that engagement pr
 
 **2026 update — engagement-under-change is now contested.** [[qualtrics-change-engagement-2026-05-21]] claims employees experiencing more change are *more* engaged (n=33,831, [[goldilocks-zone-of-change]] framing). The dominant counter-frame is [[change-fatigue]] — Gallagher's State of the Sector 2026 ranks fatigue as the #2 IC barrier, [[perceptyx]]'s 20M-response data names leadership credibility (not change exposure) as the engagement driver, [[prosci]]'s [[change-saturation]] model says the relationship inverts above a threshold. The likely synthesis: Qualtrics' effect holds for *investment-coded* change with steady [[listening-cadence]] (87/44 engagement gap), inverts above saturation. **[[abhijit-bhaduri]]** layers in a methodological warning: constrained labor mobility in 2025–2026 may make engagement scores misleading.
 
+**June 2026 — the AI-rollout cut.** [[gallup-engagement-strategies-2026]] frames engagement around three 2026 strategies (clarity / connection / development) and inserts a new IC-relevant data point in the AI-rollout space: **managers actively supporting AI use → employees 2.1x more likely to use AI weekly+** ([[manager-as-ai-champion]]). Restates the long-running Gallup finding that **managers account for 70% of the variance in team-engagement** as the underlying justification. The article is the cleanest published bridge between engagement-strategy framing and the AI-rollout-comms chain — useful for both blog citation and the route-around-vs-enable positioning conversation.
+
 ## Key Entities
 
 - [[gallup]] — primary-research source; Q12 framework owner
@@ -37,6 +39,7 @@ For IC strategy: the decline rebuts the comfortable narrative that engagement pr
 - [[change-saturation]] — Prosci's threshold model
 - [[span-of-control]] — Gallup-anchored; weekly meaningful feedback triples engagement regardless of span
 - [[manager-burnout-structural-thesis]] — manager bandwidth is upstream of any engagement-program effectiveness
+- [[manager-as-ai-champion]] — the AI-adoption sub-case where the cascade still works (Gallup 2.1x)
 
 ## Practitioner Voices
 
@@ -50,6 +53,7 @@ For IC strategy: the decline rebuts the comfortable narrative that engagement pr
 | [[state-of-the-global-workplace-2026]] | 2026-04 | 2025 global engagement at 20%, declining for second year; 13pp remote-vs-frontline gap |
 | [[qualtrics-change-engagement-2026-05-21]] | 2026-05-21 | n=33,831 finding that more change = more engaged; conditional on type + cadence; counter-research from Gallup / Gallagher / Perceptyx / Prosci |
 | [[gallup-span-of-control-2026]] | 2026-01-14 | Span time series + manager-talent + weekly-feedback moderators; 3x engagement multiplier on weekly meaningful feedback |
+| [[gallup-engagement-strategies-2026]] | 2026-05 | Three 2026 strategies (clarity / connection / development); 2.1x manager-AI-support stat; 26% with-a-clear-AI-plan; restates manager-70%-variance and 23/18/51 business-impact triple |
 
 ## Open Questions
 

@@ -8,18 +8,18 @@ Updated on every ingest. Format: `- [[slug]] — one-line description`.
 ## Topics
 _Broad IC subject hubs. Pages get created the first time a source touches them._
 
-- [[ai-in-internal-comms]] — How AI is reshaping IC; rollout-side ([[enablement-illusion]], [[shadow-ai-comms-problem]]), response-side ([[people-amplification]]), listening-side ([[deep-listening]]); now Tensions: [[ai-anxious-buyer]] vs AI-transformative thesis
+- [[ai-in-internal-comms]] — How AI is reshaping IC; rollout-side ([[enablement-illusion]], [[shadow-ai-comms-problem]]), response-side ([[people-amplification]]), listening-side ([[deep-listening]]), adoption-mechanism ([[manager-as-ai-champion]]); Tensions: [[ai-anxious-buyer]] vs AI-transformative thesis
 - [[change-management-communications]] — IC sub-discipline; 2026 AI-restructure memo cycle; [[layoff-comms-choreography]] as binding constraint; [[oracle]] as high-scale anchor case; [[analyst-trio-comms-as-ai-gate]] names change-comms as the AI ROI gate
 - [[culture-and-belonging]] — Inclusion, identity, meaning at work; daily loneliness/stress/sadness data
 - [[delivery-as-comms-strategy]] — Unifying 2026 thesis: how a message lands *is* the comms strategy. Four evidence streams: newsletter audits, layoff choreography, AI-anxious-buyer, CIO/CHRO co-buyer change-comms
-- [[employee-engagement]] — Psychological investment in work; declining globally to 20% per Gallup 2025
+- [[employee-engagement]] — Psychological investment in work; declining globally to 20% per Gallup 2025; 2026 strategy frame = clarity/connection/development
 - [[employee-experience]] — Full lived experience of work; wellbeing-engagement divergence; [[deep-listening]] reshaping the EX measurement layer
 - [[frontline-communications]] — Reaching deskless / non-remote-capable workers; 13pp engagement gap; now a named Forrester evaluation criterion
 - [[ic-measurement-and-roi]] — Quantifying IC impact; primary / analyst / practitioner-survey / academic / vendor benchmark tiers; [[cross-channel-benchmark]] vacuum; analyst-trio names change-comms as new measurement lane
 - [[internal-email]] — IC's most-effective channel (81%); paired 2026 vendor anchors — PoliteMail 66/7 + ContactMonkey 76/9 — both [[open-rate-inflation]]-caveated; [[newsletter-format-audit]] is the 2026 tactical layer
 - [[intranet-and-digital-workplace]] — Platform layer of IC/EX; Forrester Wave 2026; hardest channel (29%)
 - [[leadership-communications]] — Executive comms; AI-augmentation requires taste preservation; manager-AI risk on relational content; named-sender failure during change moments
-- [[manager-cascade]] — Routing comms through line managers; 56% priority / 4% effective gap; 2026 thesis = cascade is structurally broken (Karian + Gallup + Gartner); vendor split [[route-around-vs-enable]]
+- [[manager-cascade]] — Routing comms through line managers; 56% priority / 4% effective gap; 2026 thesis = cascade is structurally broken (Karian + Gallup + Gartner); vendor split [[route-around-vs-enable]]; AI-rollout sub-case [[manager-as-ai-champion]] still works (Gallup 2.1x)
 - [[trust-and-credibility]] — Whether employees *believe* IC; 2026 cluster — Edelman (institutional trust high), Karian (comms trust low), Gartner (info-integrity = #1 enterprise risk); the home of the [[measurers-vs-builders]] rebuttal
 
 ---
@@ -141,6 +141,7 @@ _Frameworks, theories, terms._
 - [[internal-email-benchmarks]] — Aggregate IC-email performance metrics; paired 2026 vendor anchors (PoliteMail/Ragan + ContactMonkey); methodology-caveated
 - [[layoff-comms-choreography]] — Four-axis framework (tone / channel / timing / stakeholder-ack); the message *is* the choreography; 2026 reference set now includes Oracle / Cisco / Microsoft / Meta
 - [[listening-cadence]] — Qualtrics-named moderator of change-engagement; 87/44 engagement gap
+- [[manager-as-ai-champion]] — Gallup-coined (2026-05): managers actively supporting AI use → employees 2.1x more likely to use AI weekly+; the cascade-works-here exception inside [[manager-burnout-structural-thesis]]
 - [[manager-burnout-structural-thesis]] — Karian-coined; middle management as structurally impossible (5 root causes); IKB + Gallup + Gartner corroboration
 - [[measurers-vs-builders]] — Cloudflare/Prince's framing that AI makes "measurers" obsolete; the 2026 attack on IC measurement Cerkl must rebut
 - [[n-2-n-3-leader-development]] — McKinsey *Rewired 2.0* Lever #1; the two-and-three-levels-below-CEO development imperative
@@ -190,3 +191,4 @@ _One summary page per ingested source._
 - [[edelman-trust-barometer-2026]] — Ragan / Sean Devlin pickup of Edelman (2026-02-12); employers most-trusted (78%), CEO 75/44 credibility gap, insularity; anchors [[trust-brokering]]
 - [[why-employees-right-not-to-trust-ic]] — Ghassan Karian / isitworking Substack (2026-05-26); IKB-data-backed; coins [[ic-credibility-deficit]] + [[context-delivery]]
 - [[ragan-toughest-internal-critics-2026-05-29]] — Ragan / Sean Devlin (2026-05-29); ECCC 2026 critics-as-comms-resource (PARTIAL — paywalled)
+- [[gallup-engagement-strategies-2026]] — Gallup (~2026-05, companion to *State of the Global Workplace*); coins [[manager-as-ai-champion]] (2.1x manager-AI-support → weekly+ usage); 26% with-a-clear-AI-plan; restates manager-70%-variance + 23/18/51 business-impact triple

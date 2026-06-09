@@ -29,6 +29,8 @@ The 2026 manager-cascade picture has three load-bearing facts and one organizing
 
 **What still needs to be proven.** Whether the "both sides" claim is product-real or rhetorical (does Cerkl have a manager-context-pre-brief feature?). Whether the 56/4 gap holds up under primary-source methodology check (Workshop is a vendor source). Whether the [[span-of-control]] +50% headline survives scrutiny ([[gallup-span-of-control-2026]] flags an internal inconsistency).
 
+**June 2026 update — one specific cascade DOES work.** [[gallup-engagement-strategies-2026]] adds Gallup's 2.1x finding: employees whose managers actively support AI use are 2.1x more likely to use AI weekly+. This is the first quantitative IC-side evidence that the manager-cascade remains the operative lever for the AI-rollout use case specifically, even where [[manager-burnout-structural-thesis]] holds. Concept page at [[manager-as-ai-champion]]. The finding pulls evidence onto the *enable* side of [[route-around-vs-enable]] **only** for AI-rollout content (general IC delivery still subject to the structural-broken argument); reconciliation: the AI-modeling behavior is lighter-weight than the 15-minute cascade conversation Karian's argument is about — exhausted managers can still model a tool, even when they can't carry a cascade. This sharpens (rather than dissolves) the "both sides" Cerkl positioning: route around for general delivery, enable manager modeling for AI rollout, same measurement on both paths.
+
 ## Key Entities
 
 - [[workshop]] — vendor publisher of the headline 56/4 cascade-gap data
@@ -48,6 +50,7 @@ The 2026 manager-cascade picture has three load-bearing facts and one organizing
 - [[context-delivery]] — Karian's earlier prescription; pairs with cascade-bandwidth as a precondition
 - [[enablement-illusion]] — Gartner's warning; tool adoption ≠ cascade improvement
 - [[execution-gap]] — Justin Black's frame; cascade failure when managers can't act on listening data
+- [[manager-as-ai-champion]] — Gallup-anchored 2.1x finding; the lighter-weight cascade-works-here exception inside the broader cascade-is-broken thesis
 
 ## Practitioner Voices
 
@@ -63,6 +66,7 @@ The 2026 manager-cascade picture has three load-bearing facts and one organizing
 | [[gallup-span-of-control-2026]] | 2026-01-14 | Span time series + manager-talent + weekly-feedback moderators; the 3x feedback multiplier is the IC-side lever |
 | [[gartner-managers-working-harder-2026-04-29]] | 2026-04-29 | 47% / 66% / ~25% time-allocation stats; PARTIAL (WebFetch 403) |
 | [[karian-middle-manager-burnout-2026-06-04]] | 2026-06-04 | The structural-thesis frame; 5 root causes; IKB 2023→2025 WLB divergence |
+| [[gallup-engagement-strategies-2026]] | 2026-05 | 2.1x AI-champion finding — the cascade-works-here exception ([[manager-as-ai-champion]]); 26% with-a-clear-AI-plan as the rollout-comms gap |
 
 ## Open Questions
 

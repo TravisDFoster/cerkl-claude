@@ -296,4 +296,13 @@ What this means for the build-process skill going forward:
 2. **Run the same path-check across the whole workspace at first session** of any new build — not just the route. Broken paths breed silently when files are moved.
 3. **When the principle changes** (like child-replaces-parent did 2026-05-07), the change is non-local. Schedule an audit pass as soon as the principle lands, not "as a follow-up." Drift compounds.
 
+### 2026-06-09 — Full-system review (drift audit)
+
+A top-down review of the workspace against PRINCIPLES.md found the rot concentrated entirely in the *declarative* layer — routing tables, file-structure trees, README — while the executor layer (processes, skills, PA state) held up well.
+
+- **Routing rows and tree entries were scaffolded for folders that were never built.** `sales/CLAUDE.md` routed to `outbound/`, `discovery/`, `objection-handling/`, `enablement/` — none existed on disk, yet its tree described their contents in detail. A cold agent would have confidently navigated to four phantom folders. **Rule:** never add a routing row or tree entry for a folder that doesn't exist yet. Add the row when the folder ships. (The 2026-05-07 checklist tested `Context to load:` paths but not routing-table targets — same failure class, different field.)
+- **Hand-maintained file trees are duplicated state, and duplicated state drifts.** `strategy/CLAUDE.md`'s tree was a pre-reorg fossil (showed `organic-content/`, the phantom sales subfolders). **Fix: deletion over policing** — trees removed from the rotten routers; PRINCIPLES.md #3 amended to make trees optional, shallow, and annotation-only. No lint process was added — reducing what *can* drift beats building machinery to police drift.
+- **Tombstones and placeholders linger.** `strategy/company-info.md` was a "this file has moved" stub; `strategy/REFERENCES.md` was unfilled boilerplate; `strategy/monthly-plans/` and `marketing/channels/youtube/` were empty dirs. All deleted. **Rule:** when a file moves, delete the original — the git history is the tombstone.
+- **Root comment vs. root behavior:** root tree claimed "shared/ ← load before any task" while root's `Context to load:` lists only `broadcast.md`. Comment fixed to match reality. Note: `hubspot/` relies on inheriting root's loads and assumes icp + broadcast — flagged, deliberately not touched (needs its own session).
+
 

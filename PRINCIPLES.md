@@ -22,7 +22,9 @@ The standard layers, in order:
 
 ## 3. CLAUDE.md is a router, not a content doc
 
-If a `CLAUDE.md` is more than a screen, it's leaking. Identity, paths, table, structure, three rules. Detail goes in `CONTEXT.md`, strategy docs, or skill files.
+If a `CLAUDE.md` is more than a screen, it's leaking. Identity, paths, table, three rules. Detail goes in `CONTEXT.md`, strategy docs, or skill files.
+
+**File-structure trees are optional — and the first thing to drift.** The routing table is the map; `ls` is the ground truth. Only keep a tree where it adds annotation the table can't carry, keep it shallow, and never list a folder or file that doesn't exist yet. A map that lies is worse than no map. (Discovered 2026-06-09: `sales/CLAUDE.md` routed to four folders that were never built; `strategy/CLAUDE.md`'s tree predated the workspace reorg.)
 
 ## 4. Context loading: load only what every task in this scope needs
 

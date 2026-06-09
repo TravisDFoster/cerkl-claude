@@ -6,6 +6,27 @@
 
 ---
 
+## 2026-06-09
+
+1. **Simpplr: "Why internal communications is becoming the critical function in your AI rollout"** — Competitor — https://www.simpplr.com/blog/internal-communications-ai-adoption/
+2. **Gallup: 3 Employee Engagement Strategies 2026 — managers actively supporting AI use = 2.1x weekly+ usage** — Analyst — https://www.gallup.com/workplace/703361/employee-engagement-strategies-2026.aspx
+3. **Strictly Internal: IC hiring rebounds to 55 roles + JDs demand "strategic consultants" (73% want / 18% do)** — Community — https://strictlyinternal.com/p/55-ic-jobs-business-literacy-signals
+4. **Staffbase: "AI intranet features" refreshed 2026-06-09 — governance-first frame is now a 4-vendor cliché** — Competitor — https://staffbase.com/blog/ai-intranet-features
+5. **McKinsey HR Monitor 2026 — experience hinges on fairness/transparency/workload, not new programs (50%+ get feedback annually or never)** — Analyst — https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/hr-monitor
+6. **Workvivo: "Building an Employee Listening Culture" guide — Listening Gap thesis post-Seer** — Competitor — https://www.workvivo.com/blog/new-guide-building-an-employee-listening-culture/
+7. **isitworking (Karian): "Half of your workforce still doesn't trust leadership" — trust as an IC-owned measurement problem** — Community — https://isitworking.substack.com/p/why-half-of-your-workforce-still
+
+## 2026-06-05
+
+1. **Gartner Australia: 17% AI Champions vs. 56% Resisters — confidence, not training, drives adoption** — Analyst — https://www.gartner.com/en/newsroom/press-releases/2026-06-02-gartner-hr-survey-finds-ai-is-boosting-productivity-but-widening-workforce-divisions-in-australia
+2. **Gallagher 2026 "Readiness Gap": 61% of IC teams have no structure for change comms; 87% cite manager capability as the risk** — Publication — https://blog.haiilo.com/blog/gallagher-employee-comms-2026/
+3. **Staffbase: "Narrative Leadership is the human antidote to the 2026 visibility gap"** — Competitor — https://staffbase.com/blog/narrative-leadership-2026-visibility-gap
+4. **Ragan Week in Comms: Wix attributes cuts to AI, Teradata withholds raises citing AI, '60 Minutes' lead explains Pelley firing** — Publication — https://www.ragan.com/the-week-in-comms-cbs-meta-teradata/
+5. **Strictly Internal: IC hiring drops to 37 roles (down from 49–61 in May); change/transformation comms dominates listings** — Community — https://www.strictlyinternal.com/
+6. **Ragan: "Don't let AI take away your sparkle" — writer-as-differentiator POV** — Publication — https://www.ragan.com/ragan-writing-cert-course-may2026-ai/
+7. **Staffbase APAC original research push (ASX 100 benchmark + "Australian leaders risking digital success by slighting culture")** — Competitor — https://staffbase.com/blog/asx-performance-benchmark-australian-organisations
+8. **Embedded competitor signal: Staffbase customer videos surface On Air (audio podcast) + Navigator (AI search) in production use** — Competitor — https://www.youtube.com/watch?v=jJqVNuBhhjo
+
 ## 2026-06-04
 
 1. **LumApps triple-tap: Cargill frontline case study + Beekeeper ecosystem POV + 52-integration Marketplace** — Competitor — https://www.lumapps.com/insights/blog/cargill
@@ -59,25 +80,3 @@
 5. **Ragan: your toughest internal critics might be your most valuable comms resources** — Publication — https://www.ragan.com/ragan-eccc-2026-employee-critic-advocate/
 6. **Gartner: CFOs risk falling behind without a scalable AI strategy** — Analyst — https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-says-cfos-risk-falling-behind-without-a-scalable-ai-strategy
 7. **2026 RTO tracker: 54% of Fortune 100 employees now on 5-day mandates** — Policy — https://daysattheoffice.com/tools/rto-tracker/
-
-## 2026-05-28
-
-1. **Nvidia's Jensen Huang calls AI a "lazy" excuse for layoffs** — Community — https://www.fastcompany.com/91548397/nvidia-ceo-jensen-huang-calls-ai-a-lazy-excuse-for-layoffs
-2. **Intuit's AI say/do gap: CEO denies AI link, internal memo says otherwise** — Community — https://www.cnbc.com/2026/05/20/intuit-ceo-says-companys-17percent-workforce-cut-had-nothing-to-do-with-ai.html
-3. **Gartner: half of enterprises without a "people-centric AI strategy" will lose top AI talent by 2027** — Analyst — https://www.gartner.com/en/newsroom/press-releases/2026-05-13-gartner-predicts-by-2027-50-percent-of-enterprises-without-a-people-centric-ai-strategy-will-lose-their-top-ai-talent
-4. **Simpplr: "Why manager enablement is key to successful AI initiatives"** — Competitor — https://www.simpplr.com/blog/manager-enablement-ai-initiatives/
-5. **Gartner: 47% of managers say they're working harder than a year ago** — Analyst — https://www.gartner.com/en/newsroom/press-releases/2026-04-29-gartner-hr-survey-finds-47-percent-of-managers-say-they-are-working-harder-than-1-year-ago
-6. **Ragan: a framework for helping managers run the perfect 15-minute meeting** — Publication — https://www.ragan.com/manager-comms-meeting-framework-update/
-7. **HBR: why you shouldn't treat AI agents like employees** — Analyst — https://hbr.org/2026/05/research-why-you-shouldnt-treat-ai-agents-like-employees
-8. **Ragan: the employee-comms work behind Western Digital's split from SanDisk** — Publication — https://www.ragan.com/employee-comms-western-digital-sandisk-split/
-
-## 2026-05-27
-
-1. **Poppulo acquires Sociabble — adds advocacy, frontline mobile, and rewards to its EX platform** — Competitor — https://www.poppulo.com/employee-experience-platform/blog/poppulo-acquires-sociabble
-2. **Bridgepoint closes $650M majority investment in LumApps** — Competitor — https://www.lumapps.com/insights/news/lumapps-and-bridgepoint-announce-official-closing-bridgepoints-investment-next-0
-3. **Gartner Predicts 2026: 75% of employees will use chatbots over intranets/newsletters/managers by 2028** — Analyst — https://www.ragan.com/ai-hr-comms-gartner-2026/
-4. **HBR: Managers Are Struggling to Keep Up with the AI Productivity Boom** — Analyst — https://hbr.org/2026/05/managers-are-struggling-to-keep-up-with-the-ai-productivity-boom
-5. **SHRM: Leadership development is misaligned with the future of work** — Analyst — https://www.shrm.org/topics-tools/news/leadership-development-is-misaligned-with-future-of-work
-6. **Meta all-hands leak: Zuckerberg "studying you to figure out how to make this all more effective"** — Community — https://247wallst.com/investing/2026/05/23/were-studying-you-to-figure-out-how-to-make-this-all-more-effective-zuckerbergs-leaked-comment-sparks-job-loss-fears/
-7. **JPMorgan disables comments on internal RTO post after employee pushback** — Community — https://www.entrepreneur.com/business-news/jpmorgans-return-to-office-mandate-spurs-internal-pushback/485483
-8. **WPP four-day RTO petition nears 10,000 signatures; CEO calls dissent unrepresentative** — Community — https://www.cityam.com/petition-against-wpp-four-day-office-policy-nears-10000-signatures/

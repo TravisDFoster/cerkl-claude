@@ -36,6 +36,8 @@ The third story (May 2026 addition, the practitioner-sentiment frame — see [[a
 
 The third story's practical consequence: **practitioners are AI-anxious, not AI-eager**, and AI maximalism reads as a survival threat to the person in the meeting. That's a procurement frame, not just sentiment. The buyer's gut response to platform-as-agentic-suite pitches (Workshop Cici, Staffbase AI quality layer, Simpplr Comms AI, Firstup five-pillar agentic suite, Poppulo Create/Target/Analyze Agents) is now anxiety, not excitement. Counter-positioning opportunity captured at [[ai-anxious-buyer]].
 
+**June 2026 addition — the adoption-mechanism finding.** [[gallup-engagement-strategies-2026]] introduces the first quantitative IC-side data point on what actually moves AI adoption: employees whose managers actively support AI use are **2.1x more likely to use AI a few times a week or more**. Same source pins the rollout-comms gap empirically — only **26% of employees** say their organization has communicated a clear plan for integrating AI, which is the IC-side measurement of Gartner's qualitatively-framed [[enablement-illusion]] / [[shadow-ai-comms-problem]] chain. Concept page at [[manager-as-ai-champion]] captures the mechanism. The finding has two cross-cuts: (a) it pulls evidence onto the *enable* side of [[route-around-vs-enable]] for the AI-rollout use case specifically (without overturning the broader cascade-is-broken finding) and (b) it reframes the lever from platform-AI features to manager-modeling visibility — putting Cerkl's read-attribution surface closer to the adoption-mechanism story than any vendor platform-AI suite.
+
 The AI-feature categories that [[forrester]] explicitly evaluates remain the 2026 buyer checklist for intranet platforms:
 
 - AI-enabled search
@@ -87,6 +89,7 @@ The AI-feature categories that [[forrester]] explicitly evaluates remain the 202
 - [[70-30-tech-talent-flip]] — McKinsey workforce-redesign operational rule
 - [[human-agentic-collaboration]] — *Rewired 2.0* Lever #4; most comms-adjacent
 - [[n-2-n-3-leader-development]] — *Rewired 2.0* Lever #1
+- [[manager-as-ai-champion]] — Gallup-anchored 2.1x mechanism; pulls evidence onto enable side of [[route-around-vs-enable]] for AI rollout
 
 ## Practitioner Voices
 
@@ -111,6 +114,7 @@ The AI-feature categories that [[forrester]] explicitly evaluates remain the 202
 | [[mckinsey-agentic-ai-workforce-redesign-2026-05-18]] | 2026-04-06 | [[agents-as-coworkers]] workforce-design frame; CIO/CHRO co-buyer; change-comms named as AI ROI gate |
 | [[mckinsey-rewired-2-2026-05-21]] | 2026-05-04 | *Rewired 2.0* + talent-transformation thesis; 4 levers (N-2/N-3 + 70-30 flips + workplace + human-agentic); Lever #4 "emotional work" quote; hypocrisy critique |
 | [[ragan-gartner-2026-comms-predictions-2025-10-09]] | 2025-10-09 | Whittle/Gartner change-leadership three-step framework for AI-rollout comms; analyst-tier prescriptive pair to Poitevin/Gartner's diagnostic frames |
+| [[gallup-engagement-strategies-2026]] | 2026-05 | 2.1x manager-AI-support → weekly+ usage; 26% with clear AI plan; first IC-side quantitative pin on [[manager-as-ai-champion]] mechanism |
 
 ## Open Questions
 

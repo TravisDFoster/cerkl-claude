@@ -10,7 +10,7 @@
 
 The core email creation and delivery experience in Broadcast, built specifically for internal communicators — not adapted from external marketing tools. A "Blast" is a single email message created in the Blast editor and sent to a targeted set of subscribers pulled from live HRIS/IdP data.
 
-Sending speed: 25,000 emails per minute, no recipient limits. Layouts pretested on 60+ email clients — no broken rendering in Outlook or Gmail. After **Send Now**, Broadcast takes up to 5 minutes to start, sends at 25,000/min, and moves the Blast to Sent within ~10 minutes total.
+Sending speed: 25,000 emails per minute, no recipient limits. Layouts pretested across major clients (Outlook, Gmail) — no broken rendering. After **Send Now**, Broadcast takes up to 5 minutes to start, sends at 25,000/min, and moves the Blast to Sent within ~10 minutes total.
 
 ---
 

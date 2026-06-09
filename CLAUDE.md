@@ -31,7 +31,7 @@ Don't forget. Work is supposed to be fun! We take the task at hand seriously, bu
 cerkl/
 ├── CLAUDE.md                    ← you are here (router)
 ├── PRINCIPLES.md                ← workspace-wide principles for routing/skills/processes
-├── shared/                      ← company-wide context; load before any task except plan
+├── shared/                      ← company-wide context; each router declares which of these it loads
 │   ├── company-info.md
 │   ├── icp.md
 │   ├── broadcast.md

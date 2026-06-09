@@ -34,7 +34,7 @@ Drag-and-drop email builder, Audience Manager, email analytics, pulse surveys, e
 | Calendar invites | Not included |
 | API access | Not included |
 
-Foundations accounts have access to Blasts, Audience Manager, and Insights. Blasts can be built with drag-and-drop elements, pre-made templates, or HTML uploads. Sending speed: 25,000 emails/minute. Pretested on 60+ email clients — no broken layouts in Outlook or Gmail.
+Foundations accounts have access to Blasts, Audience Manager, and Insights. Blasts can be built with drag-and-drop elements, pre-made templates, or HTML uploads. Sending speed: 25,000 emails/minute. Layouts pretested across major clients (Outlook, Gmail) — no broken rendering.
 
 Account note: subscription auto-renews monthly even at $0. Turning off auto-renew eventually freezes the account after a grace period — this is an account mechanic, not a trial expiration.
 

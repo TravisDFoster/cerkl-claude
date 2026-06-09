@@ -148,6 +148,59 @@ def fetch_stage_meta(tok):
     return meta
 
 
+def fetch_portal_id(tok):
+    """Account portal id — used to build HubSpot CRM deep links."""
+    r = requests.get(f"{BASE}/account-info/v3/details",
+                     headers={"Authorization": f"Bearer {tok}"}, timeout=30)
+    r.raise_for_status()
+    return r.json().get("portalId")
+
+
+def fetch_all_owners(tok):
+    """All HubSpot owners (id -> display name). Contact owners can be anyone on the
+    team, not just the 3 AEs — so we resolve names from the full owners list."""
+    headers = {"Authorization": f"Bearer {tok}"}
+    out, after = {}, None
+    while True:
+        params = {"limit": 100}
+        if after:
+            params["after"] = after
+        r = requests.get(f"{BASE}/crm/v3/owners", headers=headers, params=params, timeout=30)
+        r.raise_for_status()
+        d = r.json()
+        for o in d.get("results", []):
+            name = " ".join(n for n in [o.get("firstName"), o.get("lastName")] if n).strip() or o.get("email", "")
+            out[str(o["id"])] = name
+        after = d.get("paging", {}).get("next", {}).get("after")
+        if not after:
+            break
+    return out
+
+
+def lookup_contacts_by_email(tok, emails):
+    """email (lowercased) -> {contact_id, owner_id}. Batches in groups of 100."""
+    headers = {"Authorization": f"Bearer {tok}", "Content-Type": "application/json"}
+    url = f"{BASE}/crm/v3/objects/contacts/search"
+    out, emails = {}, [e for e in emails if e]
+    for i in range(0, len(emails), 100):
+        chunk = emails[i:i + 100]
+        body = {
+            "filterGroups": [{"filters": [
+                {"propertyName": "email", "operator": "IN", "values": chunk}
+            ]}],
+            "properties": ["email", "hubspot_owner_id"],
+            "limit": 100,
+        }
+        r = requests.post(url, headers=headers, json=body, timeout=30)
+        r.raise_for_status()
+        for c in r.json().get("results", []):
+            em = (c["properties"].get("email") or "").lower()
+            if em:
+                out[em] = {"contact_id": c["id"], "owner_id": c["properties"].get("hubspot_owner_id")}
+        time.sleep(0.2)
+    return out
+
+
 def fetch_form_submissions(tok, form_guid, start_ms, end_ms):
     """Pull submissions for one form within the window. Newest-first; stop paging
     once the page's oldest entry is older than the window start."""
@@ -176,10 +229,12 @@ def fetch_form_submissions(tok, form_guid, start_ms, end_ms):
     return out
 
 
-def fetch_demos(tok, start_ms, end_ms):
+def fetch_demos(tok, start_ms, end_ms, portal_id, owner_map):
     """Aggregate demo-request form submissions across DEMO_FORMS in the window.
 
-    No owner filter — these are top-of-funnel demand signal."""
+    No owner filter — these are top-of-funnel demand signal. Enriches each submission
+    with a HubSpot contact_url (clickable name) and owner display name (any owner,
+    not just the AE trio) by batch-resolving emails against the contacts API."""
     submissions, by_form = [], {}
     for guid, name in DEMO_FORMS.items():
         rows = fetch_form_submissions(tok, guid, start_ms, end_ms)
@@ -197,6 +252,18 @@ def fetch_demos(tok, start_ms, end_ms):
                 "page_url": s.get("pageUrl", ""),
                 "message": vals.get("message", ""),
             })
+    emails = list({(s.get("email") or "").lower() for s in submissions if s.get("email")})
+    contact_map = lookup_contacts_by_email(tok, emails)
+    for s in submissions:
+        info = contact_map.get((s.get("email") or "").lower())
+        if info:
+            s["contact_id"] = info["contact_id"]
+            s["contact_url"] = f"https://app.hubspot.com/contacts/{portal_id}/contact/{info['contact_id']}"
+            s["owner"] = owner_map.get(str(info["owner_id"]), "Unassigned") if info.get("owner_id") else "Unassigned"
+        else:
+            s["contact_id"] = None
+            s["contact_url"] = None
+            s["owner"] = "Unassigned"
     submissions.sort(key=lambda r: r["submitted_at"], reverse=True)
     return {"total": len(submissions), "by_form": by_form, "submissions": submissions}
 
@@ -293,7 +360,9 @@ def main():
     ], base_props)
 
     # 4a) Demo-request form submissions in period — NO owner filter (top-of-funnel demand).
-    demos = fetch_demos(tok, start_ms, end_ms)
+    portal_id = fetch_portal_id(tok)
+    owner_map = fetch_all_owners(tok)
+    demos = fetch_demos(tok, start_ms, end_ms, portal_id, owner_map)
 
     # 4) New Foundations deals in period — NO owner filter (the PLG funnel is mostly
     #    unowned, so owner-filtering would undercount it). Count-only, reported separately.

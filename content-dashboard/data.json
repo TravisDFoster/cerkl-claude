@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-02",
-  "last_reconciled": "2026-06-01",
-  "current_csv_file": "2026-W24.csv",
+  "generated_at": "2026-06-09",
+  "last_reconciled": "2026-06-09",
+  "current_csv_file": "2026-W25.csv",
   "stats": {
-    "briefs_total": 16,
+    "briefs_total": 13,
     "briefs_queued": 5,
     "briefs_scheduled": 7,
-    "briefs_in_progress": 4,
+    "briefs_in_progress": 1,
     "briefs_shipped": 0,
     "seo_blog_in_flight": 21,
     "seo_blog_live_count": 12,
@@ -17,11 +17,11 @@
     "linkedin_shipped": 0,
     "linkedin_blocked": 0,
     "weeks_planned": 4,
-    "csvs_in_prep": 0,
-    "csvs_ready": 1,
-    "csvs_imported": 3,
-    "current_csv_drive_fill": "3/3",
-    "current_csv_copy_fill": "3/3"
+    "csvs_in_prep": 1,
+    "csvs_ready": 0,
+    "csvs_imported": 4,
+    "current_csv_drive_fill": "0/3",
+    "current_csv_copy_fill": "0/3"
   },
   "csvs": [
     {
@@ -108,7 +108,7 @@
       "week_iso": "2026-W24",
       "week_monday": "2026-06-08",
       "week_range": "2026-06-08 → 2026-06-12",
-      "status": "ready-to-import",
+      "status": "imported",
       "counts": {
         "tasks_total": 7,
         "cerkl_blog_tasks": 2,
@@ -127,6 +127,32 @@
         }
       },
       "import_ready": true
+    },
+    {
+      "file": "2026-W25.csv",
+      "path": "/cerkl/marketing/content-plan/jira/imports/2026-W25.csv",
+      "week_iso": "2026-W25",
+      "week_monday": "2026-06-15",
+      "week_range": "2026-06-15 → 2026-06-19",
+      "status": "in-prep",
+      "counts": {
+        "tasks_total": 8,
+        "cerkl_blog_tasks": 2,
+        "icpro_blog_tasks": 1,
+        "linkedin_tasks": 4,
+        "subtasks_total": 28
+      },
+      "readiness": {
+        "drive_urls": {
+          "filled": 0,
+          "total": 3
+        },
+        "linkedin_copy": {
+          "filled": 0,
+          "total": 3
+        }
+      },
+      "import_ready": false
     }
   ],
   "actions": [
@@ -134,22 +160,43 @@
       "id": "reconcile",
       "label": "Run Monday reconcile",
       "ready": true,
-      "reason": "Last reconciled 2026-06-01; next publish week to lock is 2026-W25 (2026-06-15 → 2026-06-19)",
-      "prompt": "Run the Monday reconcile for the upcoming publish week (2026-W25, 2026-06-15 → 2026-06-19).\n\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/plan-reconcile-process.md"
+      "reason": "Last reconciled 2026-06-09; next publish week to lock is 2026-W26 (2026-06-22 → 2026-06-26)",
+      "prompt": "Run the Monday reconcile for the upcoming publish week (2026-W26, 2026-06-22 → 2026-06-26).\n\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/plan-reconcile-process.md"
     },
     {
       "id": "generate-csv-scaffold",
-      "label": "Generate Jira CSV scaffold for 2026-W25",
+      "label": "Generate Jira CSV scaffold for 2026-W26",
       "ready": true,
-      "reason": "No CSV exists yet for 2026-W25",
-      "prompt": "Generate the Jira CSV scaffold for the next publish week (2026-W25).\n\nOutput: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/jira-scaffold-process.md"
+      "reason": "No CSV exists yet for 2026-W26",
+      "prompt": "Generate the Jira CSV scaffold for the next publish week (2026-W26).\n\nOutput: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W26.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/jira-scaffold-process.md"
+    },
+    {
+      "id": "bulk-write-cerkl-blog",
+      "label": "Bulk-write cerkl.com blog drafts for 2026-W25",
+      "ready": true,
+      "reason": "2 cerkl.com blog Task(s) in 2026-W25.csv still have [DRIVE_URL_PLACEHOLDER]",
+      "prompt": "Bulk-write all cerkl.com blog drafts for rows with [DRIVE_URL_PLACEHOLDER] in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md\n\nFor each cerkl.com blog Task in the CSV with [DRIVE_URL_PLACEHOLDER], run the writing+publishing pipeline and replace the placeholder with the resulting Google Drive URL."
+    },
+    {
+      "id": "bulk-write-icpro-blog",
+      "label": "Bulk-write Internal Comms Pro blog drafts for 2026-W25",
+      "ready": true,
+      "reason": "1 ICPro blog Task(s) in 2026-W25.csv still have [DRIVE_URL_PLACEHOLDER]",
+      "prompt": "Bulk-write all Internal Comms Pro blog drafts for rows with [DRIVE_URL_PLACEHOLDER] in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/icpro-blog-process.md\n\nFor each ICPro blog Task in the CSV with [DRIVE_URL_PLACEHOLDER], run the writing+publishing pipeline and replace the placeholder with the resulting Google Drive URL."
+    },
+    {
+      "id": "bulk-write-linkedin",
+      "label": "Bulk-write LinkedIn copy for 2026-W25",
+      "ready": true,
+      "reason": "3 LinkedIn Task(s) in 2026-W25.csv still have [COPY_PLACEHOLDER]",
+      "prompt": "Bulk-write LinkedIn copy in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/linkedin/linkedin-process.md\n\nFor each LinkedIn Task whose Description still contains [COPY_PLACEHOLDER], draft the post and replace the placeholder with [CAPTION] / [POLL], [ASSET SPEC], and [HASHTAGS] in the Task Description."
     },
     {
       "id": "fill-brief-gaps",
       "label": "Fill SEO brief gaps in rolling-4week",
       "ready": true,
-      "reason": "1 row(s) in rolling-4week annotated `needs brief from SEO`; earliest deadline 2026-06-07; queued brief(s) may fit: multilingual-internal-communications-strategy",
-      "prompt": "Write SEO briefs for the rolling-4week rows annotated `needs brief from SEO`.\n\nGaps right now (per /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md):\n- Week 2: TBD — Multilingual internal communications: reaching every employee in the language they prefer (Blog — cerkl.com, publish 2026-06-17, **needs brief from SEO by 2026-06-07**); queued brief `multilingual-internal-communications-strategy.md` may fit\n\nIf a queued brief is flagged as a fit, confirm it covers the row's angle and (at next reconcile) move it to `status: scheduled` with the row's publish date. Otherwise write a new brief in /Users/travisfoster/claude-code/cerkl/marketing/seo/briefs/ following _template.md."
+      "reason": "1 row(s) in rolling-4week annotated `needs brief from SEO`; earliest deadline 2026-06-28",
+      "prompt": "Write SEO briefs for the rolling-4week rows annotated `needs brief from SEO`.\n\nGaps right now (per /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md):\n- Week 4: TBD — AI in Microsoft Teams: where native ends and purpose-built IC begins (Blog — cerkl.com, publish 2026-07-08, **needs brief from SEO by 2026-06-28**)\n\nIf a queued brief is flagged as a fit, confirm it covers the row's angle and (at next reconcile) move it to `status: scheduled` with the row's publish date. Otherwise write a new brief in /Users/travisfoster/claude-code/cerkl/marketing/seo/briefs/ following _template.md."
     },
     {
       "id": "refresh-dashboard",
@@ -157,161 +204,140 @@
       "ready": true,
       "reason": "Always available",
       "prompt": "Refresh my content dashboard.\n\nProcess: /Users/travisfoster/claude-code/cerkl/content-dashboard/content-dashboard-process.md"
-    },
-    {
-      "id": "bulk-write-cerkl-blog",
-      "label": "Bulk-write cerkl.com blog drafts for 2026-W24",
-      "ready": false,
-      "reason": "All 2 cerkl.com blog Task(s) in 2026-W24.csv have Drive URLs filled",
-      "prompt": "Bulk-write all cerkl.com blog drafts for rows with [DRIVE_URL_PLACEHOLDER] in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W24.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md\n\nFor each cerkl.com blog Task in the CSV with [DRIVE_URL_PLACEHOLDER], run the writing+publishing pipeline and replace the placeholder with the resulting Google Drive URL."
-    },
-    {
-      "id": "bulk-write-icpro-blog",
-      "label": "Bulk-write Internal Comms Pro blog drafts for 2026-W24",
-      "ready": false,
-      "reason": "All 1 ICPro blog Task(s) in 2026-W24.csv have Drive URLs filled",
-      "prompt": "Bulk-write all Internal Comms Pro blog drafts for rows with [DRIVE_URL_PLACEHOLDER] in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W24.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/icpro-blog-process.md\n\nFor each ICPro blog Task in the CSV with [DRIVE_URL_PLACEHOLDER], run the writing+publishing pipeline and replace the placeholder with the resulting Google Drive URL."
-    },
-    {
-      "id": "bulk-write-linkedin",
-      "label": "Bulk-write LinkedIn copy for 2026-W24",
-      "ready": false,
-      "reason": "All 4 LinkedIn Task(s) in 2026-W24.csv have drafted copy",
-      "prompt": "Bulk-write LinkedIn copy in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W24.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/linkedin/linkedin-process.md\n\nFor each LinkedIn Task whose Description still contains [COPY_PLACEHOLDER], draft the post and replace the placeholder with [CAPTION] / [POLL], [ASSET SPEC], and [HASHTAGS] in the Task Description."
     }
   ],
   "carryover": [
     {
-      "deliverable": "Internal Communications in Manufacturing — A 2026 Frontline Playbook",
+      "deliverable": "Internal Communications in Financial Services — A 2026 Compliance + Engagement Playbook",
       "channel": "Blog — cerkl.com",
-      "publish": "2026-06-01",
+      "publish": "2026-06-10",
       "owner": "Furqan",
       "status": "in-progress",
-      "source_brief": "internal-communications-in-manufacturing",
-      "source_brief_url": "/cerkl/marketing/seo/briefs/internal-communications-in-manufacturing.md"
+      "source_brief": "internal-communications-in-financial-services",
+      "source_brief_url": "/cerkl/marketing/seo/briefs/internal-communications-in-financial-services.md"
     },
     {
-      "deliverable": "The Cross-Channel Read Gap — What Cerkl Data Reveals About Real Employee Reach",
-      "channel": "Blog — cerkl.com",
-      "publish": "2026-06-03",
-      "owner": "Furqan",
-      "status": "in-progress",
-      "source_brief": "cross-channel-read-gap",
-      "source_brief_url": "/cerkl/marketing/seo/briefs/cross-channel-read-gap.md"
-    },
-    {
-      "deliverable": "Pride Month internal comms: communicating inclusion all year, not just June",
+      "deliverable": "What inclusive internal comms actually looks like (beyond box-checking)",
       "channel": "Blog — internalcommspro.com",
-      "publish": "2026-06-02",
+      "publish": "2026-06-09",
       "owner": "Furqan",
-      "status": "planned",
+      "status": "in-progress",
       "source_brief": "—",
       "source_brief_url": null
     },
     {
-      "deliverable": "The frontline reach problem most internal comms teams haven't solved yet",
+      "deliverable": "Why Microsoft Teams alone isn't an internal comms strategy",
       "channel": "LinkedIn static/theme",
-      "publish": "2026-06-02",
+      "publish": "2026-06-09",
       "owner": "Furqan",
-      "status": "planned",
-      "source_brief": "wraps manufacturing blog",
+      "status": "in-progress",
+      "source_brief": "wraps microsoft-teams blog",
       "source_brief_url": null
     },
     {
-      "deliverable": "Link post: Internal Communications in Manufacturing",
+      "deliverable": "Link post: Microsoft Teams for Internal Communications",
       "channel": "LinkedIn static/blog",
-      "publish": "2026-06-03",
+      "publish": "2026-06-10",
       "owner": "Furqan",
       "status": "planned",
-      "source_brief": "wraps manufacturing blog",
+      "source_brief": "wraps microsoft-teams blog",
       "source_brief_url": null
     },
     {
       "deliverable": "— (planned out-of-band)",
       "channel": "LinkedIn short video",
-      "publish": "2026-06-04",
+      "publish": "2026-06-11",
       "owner": "Furqan",
       "status": "planned",
       "source_brief": "— (out-of-band, barebones Jira row)",
       "source_brief_url": null
     },
     {
-      "deliverable": "What percentage of your workforce reads every important company update?",
+      "deliverable": "Financial services IC teams: which mandate eats most of your week — compliance, segmentation, or speed?",
       "channel": "LinkedIn poll",
-      "publish": "2026-06-05",
+      "publish": "2026-06-12",
       "owner": "Furqan",
       "status": "planned",
-      "source_brief": "wraps cross-channel-read-gap blog",
+      "source_brief": "wraps financial-services blog",
       "source_brief_url": null
     }
   ],
   "this_week": {
-    "label": "Week 1 — June 8–12: Show the Solution (locked, in Jira)",
-    "range": "2026-06-08 → 2026-06-12",
+    "label": "Week 1 — June 15–19: Claim the Strategic Seat + Webinar Promo (locked, in Jira)",
+    "range": "2026-06-15 → 2026-06-19",
     "locked": true,
     "in_jira": true,
     "rows": [
       {
-        "deliverable": "Microsoft Teams for Internal Communications — A 2026 Playbook",
+        "deliverable": "How to Claim Your Strategic Seat in Internal Communications (Before Someone Else Does)",
         "channel": "Blog — cerkl.com",
-        "publish": "2026-06-08",
+        "publish": "2026-06-15",
         "owner": "Furqan",
         "status": "planned",
-        "source_brief": "microsoft-teams-internal-communications",
-        "source_brief_url": "/cerkl/marketing/seo/briefs/microsoft-teams-internal-communications.md"
+        "source_brief": "claim-strategic-seat-internal-communications",
+        "source_brief_url": "/cerkl/marketing/seo/briefs/claim-strategic-seat-internal-communications.md"
       },
       {
-        "deliverable": "Internal Communications in Financial Services — A 2026 Compliance + Engagement Playbook",
-        "channel": "Blog — cerkl.com",
-        "publish": "2026-06-10",
-        "owner": "Furqan",
+        "deliverable": "Webinar Promo Email #1: Rachel Folz Insights / Measurement (June 25)",
+        "channel": "Marketing Email",
+        "publish": "2026-06-15",
+        "owner": "Travis",
         "status": "planned",
-        "source_brief": "internal-communications-in-financial-services",
-        "source_brief_url": "/cerkl/marketing/seo/briefs/internal-communications-in-financial-services.md"
+        "source_brief": "rachel-folz-project-plan",
+        "source_brief_url": "/cerkl/marketing/seo/briefs/rachel-folz-project-plan.md"
       },
       {
-        "deliverable": "What inclusive internal comms actually looks like (beyond box-checking)",
+        "deliverable": "Beyond Pride Month: building inclusive comms structures that last",
         "channel": "Blog — internalcommspro.com",
-        "publish": "2026-06-09",
+        "publish": "2026-06-16",
         "owner": "Furqan",
         "status": "planned",
         "source_brief": "—",
         "source_brief_url": null
       },
       {
-        "deliverable": "Why Microsoft Teams alone isn't an internal comms strategy",
-        "channel": "LinkedIn static/theme",
-        "publish": "2026-06-09",
+        "deliverable": "Webinar diagnostic poll: which measurement gap eats most of your week?",
+        "channel": "LinkedIn poll",
+        "publish": "2026-06-16",
         "owner": "Furqan",
         "status": "planned",
-        "source_brief": "wraps microsoft-teams blog",
+        "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)",
         "source_brief_url": null
       },
       {
-        "deliverable": "Link post: Microsoft Teams for Internal Communications",
-        "channel": "LinkedIn static/blog",
-        "publish": "2026-06-10",
+        "deliverable": "Shadow AI Is a Content Problem (Not a Governance Problem) — Travis-bylined POV",
+        "channel": "Blog — cerkl.com",
+        "publish": "2026-06-17",
         "owner": "Furqan",
         "status": "planned",
-        "source_brief": "wraps microsoft-teams blog",
+        "source_brief": "inputs.md §2026-06-03 Shadow-AI POV",
+        "source_brief_url": "/cerkl/marketing/seo/briefs/inputs.md §2026-06-03 Shadow-AI POV.md"
+      },
+      {
+        "deliverable": "Webinar promo theme: Insights / Measurement with Rachel Folz (June 25) — registration push",
+        "channel": "LinkedIn static/theme",
+        "publish": "2026-06-17",
+        "owner": "Furqan",
+        "status": "planned",
+        "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)",
+        "source_brief_url": null
+      },
+      {
+        "deliverable": "Link post: How to Claim Your Strategic Seat in Internal Communications",
+        "channel": "LinkedIn static/blog",
+        "publish": "2026-06-18",
+        "owner": "Furqan",
+        "status": "planned",
+        "source_brief": "wraps claim-strategic-seat blog",
         "source_brief_url": null
       },
       {
         "deliverable": "— (planned out-of-band)",
         "channel": "LinkedIn short video",
-        "publish": "2026-06-11",
+        "publish": "2026-06-18",
         "owner": "Furqan",
         "status": "planned",
         "source_brief": "— (out-of-band, barebones Jira row)",
-        "source_brief_url": null
-      },
-      {
-        "deliverable": "Financial services IC teams: which mandate eats most of your week — compliance, segmentation, or speed?",
-        "channel": "LinkedIn poll",
-        "publish": "2026-06-12",
-        "owner": "Furqan",
-        "status": "planned",
-        "source_brief": "wraps financial-services blog",
         "source_brief_url": null
       }
     ]
@@ -319,82 +345,10 @@
   "weeks": [
     {
       "n": 1,
-      "label": "Week 1 — June 8–12: Show the Solution (locked, in Jira)",
-      "range": "2026-06-08 → 2026-06-12",
+      "label": "Week 1 — June 15–19: Claim the Strategic Seat + Webinar Promo (locked, in Jira)",
+      "range": "2026-06-15 → 2026-06-19",
       "locked": true,
       "in_jira": true,
-      "rows": [
-        {
-          "deliverable": "Microsoft Teams for Internal Communications — A 2026 Playbook",
-          "channel": "Blog — cerkl.com",
-          "publish": "2026-06-08",
-          "owner": "Furqan",
-          "status": "planned",
-          "source_brief": "microsoft-teams-internal-communications",
-          "source_brief_url": "/cerkl/marketing/seo/briefs/microsoft-teams-internal-communications.md"
-        },
-        {
-          "deliverable": "Internal Communications in Financial Services — A 2026 Compliance + Engagement Playbook",
-          "channel": "Blog — cerkl.com",
-          "publish": "2026-06-10",
-          "owner": "Furqan",
-          "status": "planned",
-          "source_brief": "internal-communications-in-financial-services",
-          "source_brief_url": "/cerkl/marketing/seo/briefs/internal-communications-in-financial-services.md"
-        },
-        {
-          "deliverable": "What inclusive internal comms actually looks like (beyond box-checking)",
-          "channel": "Blog — internalcommspro.com",
-          "publish": "2026-06-09",
-          "owner": "Furqan",
-          "status": "planned",
-          "source_brief": "—",
-          "source_brief_url": null
-        },
-        {
-          "deliverable": "Why Microsoft Teams alone isn't an internal comms strategy",
-          "channel": "LinkedIn static/theme",
-          "publish": "2026-06-09",
-          "owner": "Furqan",
-          "status": "planned",
-          "source_brief": "wraps microsoft-teams blog",
-          "source_brief_url": null
-        },
-        {
-          "deliverable": "Link post: Microsoft Teams for Internal Communications",
-          "channel": "LinkedIn static/blog",
-          "publish": "2026-06-10",
-          "owner": "Furqan",
-          "status": "planned",
-          "source_brief": "wraps microsoft-teams blog",
-          "source_brief_url": null
-        },
-        {
-          "deliverable": "— (planned out-of-band)",
-          "channel": "LinkedIn short video",
-          "publish": "2026-06-11",
-          "owner": "Furqan",
-          "status": "planned",
-          "source_brief": "— (out-of-band, barebones Jira row)",
-          "source_brief_url": null
-        },
-        {
-          "deliverable": "Financial services IC teams: which mandate eats most of your week — compliance, segmentation, or speed?",
-          "channel": "LinkedIn poll",
-          "publish": "2026-06-12",
-          "owner": "Furqan",
-          "status": "planned",
-          "source_brief": "wraps financial-services blog",
-          "source_brief_url": null
-        }
-      ]
-    },
-    {
-      "n": 2,
-      "label": "Week 2 — June 15–19: Claim the Strategic Seat (planned)",
-      "range": "2026-06-15 → 2026-06-19",
-      "locked": false,
-      "in_jira": false,
       "rows": [
         {
           "deliverable": "How to Claim Your Strategic Seat in Internal Communications (Before Someone Else Does)",
@@ -406,13 +360,13 @@
           "source_brief_url": "/cerkl/marketing/seo/briefs/claim-strategic-seat-internal-communications.md"
         },
         {
-          "deliverable": "TBD — Multilingual internal communications: reaching every employee in the language they prefer",
-          "channel": "Blog — cerkl.com",
-          "publish": "2026-06-17",
-          "owner": "Furqan",
-          "status": "blocked",
-          "source_brief": "**needs brief from SEO by 2026-06-07**",
-          "source_brief_url": null
+          "deliverable": "Webinar Promo Email #1: Rachel Folz Insights / Measurement (June 25)",
+          "channel": "Marketing Email",
+          "publish": "2026-06-15",
+          "owner": "Travis",
+          "status": "planned",
+          "source_brief": "rachel-folz-project-plan",
+          "source_brief_url": "/cerkl/marketing/seo/briefs/rachel-folz-project-plan.md"
         },
         {
           "deliverable": "Beyond Pride Month: building inclusive comms structures that last",
@@ -424,12 +378,30 @@
           "source_brief_url": null
         },
         {
-          "deliverable": "The 4 conversations that earn IC a seat at the strategy table",
+          "deliverable": "Webinar diagnostic poll: which measurement gap eats most of your week?",
+          "channel": "LinkedIn poll",
+          "publish": "2026-06-16",
+          "owner": "Furqan",
+          "status": "planned",
+          "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)",
+          "source_brief_url": null
+        },
+        {
+          "deliverable": "Shadow AI Is a Content Problem (Not a Governance Problem) — Travis-bylined POV",
+          "channel": "Blog — cerkl.com",
+          "publish": "2026-06-17",
+          "owner": "Furqan",
+          "status": "planned",
+          "source_brief": "inputs.md §2026-06-03 Shadow-AI POV",
+          "source_brief_url": "/cerkl/marketing/seo/briefs/inputs.md §2026-06-03 Shadow-AI POV.md"
+        },
+        {
+          "deliverable": "Webinar promo theme: Insights / Measurement with Rachel Folz (June 25) — registration push",
           "channel": "LinkedIn static/theme",
           "publish": "2026-06-17",
           "owner": "Furqan",
           "status": "planned",
-          "source_brief": "wraps claim-strategic-seat blog",
+          "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)",
           "source_brief_url": null
         },
         {
@@ -449,21 +421,12 @@
           "status": "planned",
           "source_brief": "— (out-of-band, barebones Jira row)",
           "source_brief_url": null
-        },
-        {
-          "deliverable": "Which strategic conversation is hardest for IC to get a seat in?",
-          "channel": "LinkedIn poll",
-          "publish": "2026-06-16",
-          "owner": "Furqan",
-          "status": "planned",
-          "source_brief": "wraps claim-strategic-seat blog",
-          "source_brief_url": null
         }
       ]
     },
     {
-      "n": 3,
-      "label": "Week 3 — June 22–26: Reinforce and Foundations Free Push (planned)",
+      "n": 2,
+      "label": "Week 2 — June 22–26: Insights Launch + Webinar Event (planned — restructure pending)",
       "range": "2026-06-22 → 2026-06-26",
       "locked": false,
       "in_jira": false,
@@ -534,8 +497,8 @@
       ]
     },
     {
-      "n": 4,
-      "label": "Week 4 — June 29–July 3: Set the Stage for AI (planned)",
+      "n": 3,
+      "label": "Week 3 — June 29–July 3: Set the Stage for AI (planned)",
       "range": "2026-06-29 → 2026-07-03",
       "locked": false,
       "in_jira": false,
@@ -604,6 +567,78 @@
           "source_brief_url": null
         }
       ]
+    },
+    {
+      "n": 4,
+      "label": "Week 4 — July 6–10: Measure What Lands (planned)",
+      "range": "2026-07-06 → 2026-07-10",
+      "locked": false,
+      "in_jira": false,
+      "rows": [
+        {
+          "deliverable": "The 2026 Internal Communications Measurement Framework (For Teams That Need to Defend Their Numbers)",
+          "channel": "Blog — cerkl.com",
+          "publish": "2026-07-06",
+          "owner": "Furqan",
+          "status": "planned",
+          "source_brief": "internal-communications-measurement-framework",
+          "source_brief_url": "/cerkl/marketing/seo/briefs/internal-communications-measurement-framework.md"
+        },
+        {
+          "deliverable": "TBD — AI in Microsoft Teams: where native ends and purpose-built IC begins",
+          "channel": "Blog — cerkl.com",
+          "publish": "2026-07-08",
+          "owner": "Furqan",
+          "status": "blocked",
+          "source_brief": "**needs brief from SEO by 2026-06-28**",
+          "source_brief_url": null
+        },
+        {
+          "deliverable": "What \"AI-first\" actually changes for the IC role",
+          "channel": "Blog — internalcommspro.com",
+          "publish": "2026-07-07",
+          "owner": "Furqan",
+          "status": "planned",
+          "source_brief": "—",
+          "source_brief_url": null
+        },
+        {
+          "deliverable": "AI without measurement is just faster guessing.",
+          "channel": "LinkedIn static/theme",
+          "publish": "2026-07-07",
+          "owner": "Furqan",
+          "status": "planned",
+          "source_brief": "wraps measurement-framework blog",
+          "source_brief_url": null
+        },
+        {
+          "deliverable": "Link post: The 2026 Internal Communications Measurement Framework",
+          "channel": "LinkedIn static/blog",
+          "publish": "2026-07-08",
+          "owner": "Furqan",
+          "status": "planned",
+          "source_brief": "wraps measurement-framework blog",
+          "source_brief_url": null
+        },
+        {
+          "deliverable": "— (planned out-of-band)",
+          "channel": "LinkedIn short video",
+          "publish": "2026-07-09",
+          "owner": "Furqan",
+          "status": "planned",
+          "source_brief": "— (out-of-band, barebones Jira row)",
+          "source_brief_url": null
+        },
+        {
+          "deliverable": "What stage is your IC measurement at — reactive, channel-siloed, cross-channel, or predictive?",
+          "channel": "LinkedIn poll",
+          "publish": "2026-07-10",
+          "owner": "Furqan",
+          "status": "planned",
+          "source_brief": "wraps measurement-framework blog",
+          "source_brief_url": null
+        }
+      ]
     }
   ],
   "briefs": {
@@ -631,8 +666,7 @@
         "title": "The Multilingual Internal Communications Strategy — A 2026 Framework",
         "slug": "multilingual-internal-communications-strategy",
         "url": "/cerkl/marketing/seo/briefs/multilingual-internal-communications-strategy.md",
-        "target_channel": "seo-blog",
-        "scheduled_for": "2026-06-17"
+        "target_channel": "seo-blog"
       },
       {
         "title": "SharePoint for Internal Communications — A 2026 Personalization Playbook",
@@ -693,27 +727,6 @@
       }
     ],
     "in_progress": [
-      {
-        "title": "Internal Communications in Manufacturing — A 2026 Frontline Playbook",
-        "slug": "internal-communications-in-manufacturing",
-        "url": "/cerkl/marketing/seo/briefs/internal-communications-in-manufacturing.md",
-        "target_channel": "seo-blog",
-        "scheduled_for": "2026-06-01"
-      },
-      {
-        "title": "The Cross-Channel Read Gap — What Cerkl Data Reveals About Real Employee Reach",
-        "slug": "cross-channel-read-gap",
-        "url": "/cerkl/marketing/seo/briefs/cross-channel-read-gap.md",
-        "target_channel": "seo-blog",
-        "scheduled_for": "2026-06-03"
-      },
-      {
-        "title": "AI in Microsoft Teams for Internal Communications — Where Native Falls Short",
-        "slug": "microsoft-teams-internal-communications",
-        "url": "/cerkl/marketing/seo/briefs/microsoft-teams-internal-communications.md",
-        "target_channel": "seo-blog",
-        "scheduled_for": "2026-06-08"
-      },
       {
         "title": "Internal Communications in Financial Services — A 2026 Compliance + Engagement Playbook",
         "slug": "internal-communications-in-financial-services",
@@ -1062,46 +1075,18 @@
   "linkedin": {
     "planned": [
       {
-        "deliverable": "Why Microsoft Teams alone isn't an internal comms strategy",
-        "channel": "LinkedIn static/theme",
-        "publish": "2026-06-09",
-        "owner": "Furqan",
-        "source_brief": "wraps microsoft-teams blog"
-      },
-      {
-        "deliverable": "Link post: Microsoft Teams for Internal Communications",
-        "channel": "LinkedIn static/blog",
-        "publish": "2026-06-10",
-        "owner": "Furqan",
-        "source_brief": "wraps microsoft-teams blog"
-      },
-      {
-        "deliverable": "— (planned out-of-band)",
-        "channel": "LinkedIn short video",
-        "publish": "2026-06-11",
-        "owner": "Furqan",
-        "source_brief": "— (out-of-band, barebones Jira row)"
-      },
-      {
-        "deliverable": "Financial services IC teams: which mandate eats most of your week — compliance, segmentation, or speed?",
-        "channel": "LinkedIn poll",
-        "publish": "2026-06-12",
-        "owner": "Furqan",
-        "source_brief": "wraps financial-services blog"
-      },
-      {
-        "deliverable": "Which strategic conversation is hardest for IC to get a seat in?",
+        "deliverable": "Webinar diagnostic poll: which measurement gap eats most of your week?",
         "channel": "LinkedIn poll",
         "publish": "2026-06-16",
         "owner": "Furqan",
-        "source_brief": "wraps claim-strategic-seat blog"
+        "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)"
       },
       {
-        "deliverable": "The 4 conversations that earn IC a seat at the strategy table",
+        "deliverable": "Webinar promo theme: Insights / Measurement with Rachel Folz (June 25) — registration push",
         "channel": "LinkedIn static/theme",
         "publish": "2026-06-17",
         "owner": "Furqan",
-        "source_brief": "wraps claim-strategic-seat blog"
+        "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)"
       },
       {
         "deliverable": "Link post: How to Claim Your Strategic Seat in Internal Communications",
@@ -1172,36 +1157,64 @@
         "publish": "2026-07-02",
         "owner": "Furqan",
         "source_brief": "wraps ai-execution blog"
-      }
-    ],
-    "in_progress": [
-      {
-        "deliverable": "The frontline reach problem most internal comms teams haven't solved yet",
-        "channel": "LinkedIn static/theme",
-        "publish": "2026-06-02",
-        "owner": "Furqan",
-        "source_brief": "wraps manufacturing blog"
       },
       {
-        "deliverable": "Link post: Internal Communications in Manufacturing",
-        "channel": "LinkedIn static/blog",
-        "publish": "2026-06-03",
+        "deliverable": "AI without measurement is just faster guessing.",
+        "channel": "LinkedIn static/theme",
+        "publish": "2026-07-07",
         "owner": "Furqan",
-        "source_brief": "wraps manufacturing blog"
+        "source_brief": "wraps measurement-framework blog"
+      },
+      {
+        "deliverable": "Link post: The 2026 Internal Communications Measurement Framework",
+        "channel": "LinkedIn static/blog",
+        "publish": "2026-07-08",
+        "owner": "Furqan",
+        "source_brief": "wraps measurement-framework blog"
       },
       {
         "deliverable": "— (planned out-of-band)",
         "channel": "LinkedIn short video",
-        "publish": "2026-06-04",
+        "publish": "2026-07-09",
         "owner": "Furqan",
         "source_brief": "— (out-of-band, barebones Jira row)"
       },
       {
-        "deliverable": "What percentage of your workforce reads every important company update?",
+        "deliverable": "What stage is your IC measurement at — reactive, channel-siloed, cross-channel, or predictive?",
         "channel": "LinkedIn poll",
-        "publish": "2026-06-05",
+        "publish": "2026-07-10",
         "owner": "Furqan",
-        "source_brief": "wraps cross-channel-read-gap blog"
+        "source_brief": "wraps measurement-framework blog"
+      }
+    ],
+    "in_progress": [
+      {
+        "deliverable": "Why Microsoft Teams alone isn't an internal comms strategy",
+        "channel": "LinkedIn static/theme",
+        "publish": "2026-06-09",
+        "owner": "Furqan",
+        "source_brief": "wraps microsoft-teams blog"
+      },
+      {
+        "deliverable": "Link post: Microsoft Teams for Internal Communications",
+        "channel": "LinkedIn static/blog",
+        "publish": "2026-06-10",
+        "owner": "Furqan",
+        "source_brief": "wraps microsoft-teams blog"
+      },
+      {
+        "deliverable": "— (planned out-of-band)",
+        "channel": "LinkedIn short video",
+        "publish": "2026-06-11",
+        "owner": "Furqan",
+        "source_brief": "— (out-of-band, barebones Jira row)"
+      },
+      {
+        "deliverable": "Financial services IC teams: which mandate eats most of your week — compliance, segmentation, or speed?",
+        "channel": "LinkedIn poll",
+        "publish": "2026-06-12",
+        "owner": "Furqan",
+        "source_brief": "wraps financial-services blog"
       }
     ],
     "shipped": []

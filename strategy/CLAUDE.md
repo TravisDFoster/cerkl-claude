@@ -12,67 +12,17 @@ You are a highly strategic senior marketing director for a B2B SaaS company call
 
 (Per [PRINCIPLES.md #4](../PRINCIPLES.md), this list is authoritative for `strategy/`.)
 
-## File Structure
+## Routing Table
 
-```
-cerkl/
-├── shared/                        ← company-wide context, loaded by all agents
-│   ├── company-info.md
-│   ├── icp.md
-│   └── competitors.md
-├── strategy/
-│   ├── CLAUDE.md
-│   ├── CONTEXT.md
-│   ├── REFERENCES.md
-│   ├── company-info.md
-│   └── resources/
-│       ├── strategy-principles.md
-│       └── LSE-Professor-Richard-Rumelt.md
-├── marketing/
-│   ├── CLAUDE.md
-│   ├── CONTEXT.md
-│   ├── REFERENCES.md
-│   ├── marketing-strategy/
-│   │   ├── CLAUDE.md
-│   │   ├── CONTEXT.md
-│   │   ├── REFERENCES.md
-│   │   ├── diagnosis-and-guiding-policy.md
-│   │   ├── roadmap-12-month.md
-│   │   ├── sprint-90-day.md
-│   │   └── strategy-discovery.md
-│   ├── organic-content/
-│   │   ├── CLAUDE.md
-│   │   ├── CONTEXT.md
-│   │   ├── REFERENCES.md
-│   │   └── Blog Posts/
-│   │       └── blog-writing-style.md
-│   └── channels/
-│       ├── case-studies/
-│       ├── comparison-seo/
-│       ├── linkedin/
-│       ├── newsletter/
-│       ├── newsroom-pr/
-│       ├── paid-reddit/
-│       ├── paid-youtube/
-│       ├── partnerships/
-│       ├── seo-blog/
-│       ├── webinar/
-│       └── youtube/
-└── sales/
-    ├── CLAUDE.md
-    ├── CONTEXT.md
-    ├── REFERENCES.md
-    ├── outbound/
-    ├── discovery/
-    ├── objection-handling/
-    └── enablement/
-```
+| Task | Go to |
+|---|---|
+| Strategy kernel source material (Rumelt lecture transcript) | [`resources/LSE-Professor-Richard-Rumelt.md`](resources/LSE-Professor-Richard-Rumelt.md) |
+| Marketing diagnosis, guiding policy, roadmap, 90-day sprint | [`../marketing/marketing-strategy/`](../marketing/marketing-strategy/) |
 
 ## Rules
-- Write in plain, clear language
 - Apply the strategy kernel: diagnosis → guiding policy → coherent actions
-- Ask clarifying questions before making assumptions
-- When you are unsure, say so
+- Write in plain, clear language
+- Ask clarifying questions before assuming; when unsure, say so
 
 ## Personal Assistant — Push-Update Protocol
 

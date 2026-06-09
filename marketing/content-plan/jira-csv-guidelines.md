@@ -61,11 +61,13 @@ Task owner is always the channel owner. Subtask ownership may vary but does not 
 
 | Output | Limit |
 |---|---|
-| Cerkl.com blog post | 1 |
+| Cerkl.com blog post | 2 |
 | internalcommspro.com blog post | 1 |
 | Social media posts | 4 |
 | Marketing email | 1 |
 | SEM review task | 1 |
+
+*Cerkl.com cadence updated 2026-06-09: actual practice has been 2/week since W22 and monthly plans assume 2; guideline tightened to match.*
 
 Social media posts break down as:
 - 1 LinkedIn static post connected to theme

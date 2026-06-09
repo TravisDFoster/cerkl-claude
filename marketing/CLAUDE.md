@@ -31,7 +31,6 @@ You are a senior B2B SaaS marketing strategist helping Travis Foster, Head of Ma
 | Crescenzo, Paycor, co-marketing | `channels/partnerships/` |
 | Meta (Facebook + Instagram) paid ads — audience strategy, creative, performance | [`channels/paid-meta/`](channels/paid-meta/CLAUDE.md) |
 | Reddit paid ads | `channels/paid-reddit/` |
-| YouTube organic video | `channels/youtube/` |
 | YouTube paid ads — hook generation, storyboards, Flow prompts | [`channels/paid-youtube/`](channels/paid-youtube/CLAUDE.md) |
 | Brand assets, logos, colors, design | `design/` |
 | One-pagers (print-format letter PDF — render-verify-remediate loop) | [`design/one-pagers/one-pager-process.md`](design/one-pagers/one-pager-process.md) |
@@ -67,7 +66,6 @@ marketing/
 │   ├── newsletter/
 │   ├── partnerships/
 │   ├── paid-reddit/
-│   ├── youtube/                     ← CONTEXT + dated video idea files
 │   └── paid-youtube/
 ├── design/                          ← CLAUDE.md with its own routing table
 │   ├── CONTEXT.md                   ← brand rules & full color system

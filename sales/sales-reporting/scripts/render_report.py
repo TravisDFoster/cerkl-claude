@@ -352,17 +352,22 @@ def section_demos(d):
                 '<p class="note-italic">No demo-request form submissions in this period.</p></div></div></section>')
     rows = []
     for s in d["submissions"]:
-        name = (s.get("first_name", "") + " " + s.get("last_name", "")).strip() or "&mdash;"
+        name = (s.get("first_name", "") + " " + s.get("last_name", "")).strip() or "—"
+        if s.get("contact_url") and name != "—":
+            name_cell = (f'<a href="{esc(s["contact_url"])}" target="_blank" '
+                         f'rel="noopener noreferrer">{esc(name)}</a>')
+        else:
+            name_cell = esc(name)
         rows.append(
             f'<tr><td>{esc(s["submitted_at"][:10])}</td>'
-            f'<td>{name if name == "&mdash;" else esc(name)}</td>'
+            f'<td>{name_cell}</td>'
             f'<td>{esc(s.get("company", "") or "—")}</td>'
             f'<td>{esc(s.get("company_size", "") or "—")}</td>'
-            f'<td>{esc(s.get("email", ""))}</td></tr>'
+            f'<td class="owner">{esc(s.get("owner", "Unassigned"))}</td></tr>'
         )
     table = (
         '<table class="data"><thead><tr><th>Date</th><th>Name</th>'
-        '<th>Company</th><th>Company size</th><th>Email</th></tr></thead>'
+        '<th>Company</th><th>Company size</th><th>Owner</th></tr></thead>'
         f'<tbody>{"".join(rows)}</tbody></table>'
     )
     lead = f'{n} {plural(n, "request")}'
