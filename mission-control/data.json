@@ -248,8 +248,8 @@
       "items": [
         { "title": "Weeks 21–24", "date": "2026-06-08", "url": "/cerkl/sales/sales-reporting/reports/2026-W21-W24.html", "is_md": false },
         { "title": "Week 23", "date": "2026-06-01", "url": "/cerkl/sales/sales-reporting/reports/2026-W23.html", "is_md": false },
-        { "title": "Week 22", "date": "2026-05-25", "url": "/cerkl/sales/sales-reporting/reports/2026-W22.html", "is_md": false },
         { "title": "Weeks 19–22", "date": "2026-05-25", "url": "/cerkl/sales/sales-reporting/reports/2026-W19-W22.html", "is_md": false },
+        { "title": "Week 22", "date": "2026-05-25", "url": "/cerkl/sales/sales-reporting/reports/2026-W22.html", "is_md": false },
         { "title": "Week 21", "date": "2026-05-18", "url": "/cerkl/sales/sales-reporting/reports/2026-W21.html", "is_md": false }
       ]
     },

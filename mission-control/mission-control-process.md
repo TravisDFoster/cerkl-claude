@@ -66,6 +66,7 @@ find /Users/travisfoster/claude-code/cerkl/research/ic-trends/daily/ -maxdepth 1
   - **is_md**: ext is `.md`
 
 ### Step 4 — Sort each category newest-first
+On a date tie within `sales-reporting`, a multi-week roll-up (range label like "Weeks 19–22") sorts **above** the single-week report that shares its ending week — the roll-up wins the tie.
 
 ### Step 5 — Compute last-run + staleness per category
 For each category with a `cadence` field:
