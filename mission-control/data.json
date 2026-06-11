@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10",
+  "generated_at": "2026-06-11",
   "total_html": 75,
   "total_blog_posts": 0,
   "total_md_candidates": 4,
@@ -11,14 +11,14 @@
       "label": "Growth Project Tracker",
       "subtitle": "PA — used in Thursday leadership meeting",
       "url": "/cerkl/personal-assistant/growth-project-tracker.html",
-      "last_updated": "2026-06-04",
+      "last_updated": "2026-06-11",
       "cadence": "weekly",
       "stale": false,
       "refresh_prompt": "Regenerate the Growth Project Tracker (leadership review).\n\nProcess: /Users/travisfoster/claude-code/cerkl/personal-assistant/skills/growth-project-tracker.md",
       "content": {
         "section": "Top of Mind",
         "items": [
-          { "title": "Webinar — Rachel Folz (June 2026)", "summary": "Dominant active thread for the next 16 days; live 2026-06-25." },
+          { "title": "Webinar — Rachel Folz + Maddy Rieman (July 2026)", "summary": "Rescoped 2026-06-10: now two internal presenters (Maddy added) and live date moved to 2026-07-09 (+14 days)." },
           { "title": "Downloadable Asset Emails", "summary": "Swap follow-up CTAs from book-a-meeting → Foundations." },
           { "title": "Press Release — Insights 3.0", "summary": "Final approval due 2026-06-13; publish 2026-06-20." },
           { "title": "Meta Ads Channel Launch", "summary": "Audiences built; blocked on Allison's creative (Pains video + 10 image-ad concepts)." },
@@ -66,10 +66,10 @@
       "kind": "html",
       "home_recent": 2,
       "cadence": "weekly",
-      "last_run": "2026-06-04",
+      "last_run": "2026-06-11",
       "stale": false,
       "items": [
-        { "title": "Growth Project Tracker", "date": "2026-06-04", "url": "/cerkl/personal-assistant/growth-project-tracker.html", "is_md": false }
+        { "title": "Growth Project Tracker", "date": "2026-06-11", "url": "/cerkl/personal-assistant/growth-project-tracker.html", "is_md": false }
       ]
     },
     {
@@ -281,10 +281,10 @@
     }
   ],
   "recent": [
+    { "title": "Growth Project Tracker", "date": "2026-06-11", "url": "/cerkl/personal-assistant/growth-project-tracker.html", "cat_label": "Personal Assistant", "cat_slug": "personal-assistant", "is_md": false },
     { "title": "Daily Recap — 2026-06-10", "date": "2026-06-10", "url": "/cerkl/research/ic-trends/daily/2026-06-10.html", "cat_label": "IC Trends — Daily", "cat_slug": "ic-trends-daily", "is_md": false },
     { "title": "Daily Recap — 2026-06-09", "date": "2026-06-09", "url": "/cerkl/research/ic-trends/daily/2026-06-09.html", "cat_label": "IC Trends — Daily", "cat_slug": "ic-trends-daily", "is_md": false },
     { "title": "Week 24", "date": "2026-06-08", "url": "/cerkl/research/competitor-marketing/weekly/2026-W24.html", "cat_label": "Competitor Marketing — Weekly", "cat_slug": "competitor-marketing-weekly", "is_md": false },
-    { "title": "Daily Recap — 2026-06-05", "date": "2026-06-05", "url": "/cerkl/research/ic-trends/daily/2026-06-05.html", "cat_label": "IC Trends — Daily", "cat_slug": "ic-trends-daily", "is_md": false },
-    { "title": "Growth Project Tracker", "date": "2026-06-04", "url": "/cerkl/personal-assistant/growth-project-tracker.html", "cat_label": "Personal Assistant", "cat_slug": "personal-assistant", "is_md": false }
+    { "title": "Daily Recap — 2026-06-05", "date": "2026-06-05", "url": "/cerkl/research/ic-trends/daily/2026-06-05.html", "cat_label": "IC Trends — Daily", "cat_slug": "ic-trends-daily", "is_md": false }
   ]
 }
