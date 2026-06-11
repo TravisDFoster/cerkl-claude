@@ -73,7 +73,7 @@ If a CSV or a row is missing, **report the gap and ask Travis**: patch the CSV n
 - **Inputs:** brief path from Step 1
 - **Produces:** `blog-posts-pre-writing/YYYY-MM-DD_[slug]_pre-writing.md`
 
-**Batch size rule:** for `n ≤ 2` posts (typical weekly batch), run inline in the orchestrator — sub-agent dispatch overhead exceeds the per-post cost. For `n ≥ 3` (multi-week or catch-up runs), dispatch one sub-agent per post.
+**Batch size rule (standalone runs only):** for `n ≤ 2` posts, run inline — sub-agent dispatch overhead exceeds the per-post cost. For `n ≥ 3`, dispatch one sub-agent per post. **When invoked by the weekly session, this rule does not apply** — the session dispatches one subagent per post and that subagent runs this chain inline (it cannot spawn).
 
 **Sub-agent brief (or inline run) must:**
 - Take the full path to the SEO brief as input

@@ -76,7 +76,7 @@ Run [`jira/jira-scaffold-process.md`](jira/jira-scaffold-process.md) with the sl
 ## Phase 3 — Produce (subagent waves; orchestrator fills all CSV tokens)
 
 **Wave 1 — blogs (parallel, one subagent per post):**
-- Each cerkl.com subagent: **write the brief if missing** (per [`../seo/seo-brief-production-process.md`](../seo/seo-brief-production-process.md) — cannibalization check against `inventory/derived/keyword-url-map.md`, pillar assignment, ≥2 sibling URLs, CMS properties; topic/angle/keyword come from Phase 1) → pre-write → draft → edit → Drive upload. Returns: slug · brief path · Drive URL · score · CMS props · flags.
+- Each cerkl.com subagent: **write the brief if missing** (per [`../seo/seo-brief-production-process.md`](../seo/seo-brief-production-process.md) — cannibalization check against `inventory/derived/keyword-url-map.md`, pillar assignment, ≥2 sibling URLs, CMS properties; topic/angle/keyword come from Phase 1). **The dispatch brief states the slug verbatim** — it must equal the CSV `Slug:` line; the subagent never derives its own (slug drift breaks the CSV match and the LinkedIn `Wraps:` lookup). Then pre-write → draft → edit → Drive upload. Returns: slug · brief path · Drive URL · score · CMS props · flags.
 - The ICPro subagent: pre-write → draft → edit → Drive upload (slug from the CSV). Returns the same shape, minus brief.
 - *Alongside, optional:* a brief-writing subagent for **next week's** approved-but-unwritten topics, if Travis queued any in Phase 1.
 
@@ -123,4 +123,11 @@ Pause anywhere; remaining `[…_PLACEHOLDER]` tokens in the CSV are the resume l
 - **Session-created blogs (launch announcements, bylines) mint their own slug** — no brief to thread from at scaffold time. Fix landed in v2: slug decided in the conversation, `[BRIEF_PENDING]` backfilled after Wave 1.
 - **Epic key had to be guessed.** Pre-fill needs the live Epic key recorded, not just the naming format — now in `jira-csv-guidelines.md` §Epics.
 - What worked: writes held at the pause point; capacity saturation correctly *derived* from Upcoming sketches + ceilings (no capacity ledger needed); the `cerkl-vs-firstup` stray date caught independently by the session and the Upcoming note.
+### 2026-06-10 — Dry run #2 (Travis test, post-v2)
+
+- **Slug drift on brief-less posts was the one real launch bug.** Scaffold pins the slug in the CSV, but `seo-brief-production` Step 5 still told the subagent to derive its own from the URL path — divergence breaks the publishing match AND the LinkedIn `Wraps:` lookup (one root cause, two blast radii). Fixed: slug pinned verbatim in the dispatch brief, per-post mode never re-derives (same guard ICPro already had).
+- **Two retrofit seams:** channel "n≤2 inline" batch rules contradicted the session's one-subagent-per-post dispatch (fixed: rule scoped to standalone runs); brief-production Step 5 wrote `status: queued` while the per-post preamble said `scheduled` (fixed: status by mode — a paused session now still sees the brief).
+- **Rejected as a non-issue:** "ask-Travis steps can't run inside waves" — dispatched subagents return gaps as flags and the orchestrator asks at the checkpoint; that's the architecture, not a hole.
+- **Confirmed safe:** single-writer invariant held; parallel blog subagents write slug-distinct files; fan-out sound. Pattern across both tests: cracks live where new docs meet old text — re-read the invoked file after retrofitting the invoker.
+
 - **Topic proposals weren't SEO-informed** — the test proposed a brief with no keyword ideas. Root cause: `keyword-strategy.md` wasn't in the session's `Context to load`; the keyword work was deferred to the Wave 1 brief subagent, which is after the topic decision. Fix: keyword-strategy loaded into the conversation; Phase 0 gained the "SEO gap read" (Tier 🔴 / coverage gaps / refresh candidates / unacted Insights, stance-filtered, + pillar balance); every cerkl.com slate item now names its primary keyword + pillar or is tagged "editorial — no SEO target." **Rule:** if a decision is supposed to be informed by a file, that file must be loaded at the decision, not downstream.

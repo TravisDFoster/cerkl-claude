@@ -65,7 +65,7 @@ Cerkl.com posts are out of scope — they have their own production path under [
 - **Inputs:** deliverable title + publish date + slug from Step 1
 - **Produces:** `blog-posts-pre-writing/YYYY-MM-DD_[slug]_pre-writing.md`
 
-**Batch size rule:** for `n ≤ 2` posts (typical weekly batch — usually exactly 1 ICPro post per week), run inline in the orchestrator. For `n ≥ 3` (multi-week or catch-up), dispatch one sub-agent per post.
+**Batch size rule (standalone runs only):** for `n ≤ 2` posts (usually exactly 1 ICPro post per week), run inline. For `n ≥ 3`, dispatch one sub-agent per post. **When invoked by the weekly session, this rule does not apply** — the session dispatches one subagent per post and that subagent runs this chain inline (it cannot spawn).
 
 **Sub-agent brief (or inline run) must:**
 - Take deliverable title, publish date, channel (icpro-blog), and pre-computed slug as inputs
