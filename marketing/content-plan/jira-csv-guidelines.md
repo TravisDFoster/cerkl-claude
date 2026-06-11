@@ -83,9 +83,9 @@ As of 2026-06-01, LinkedIn short videos are planned and produced outside the con
 - **Description:** one line — `Short video — topic, wrap, and copy planned outside the content-plan system. This row exists for Jira capacity tracking only. Furqan fills topic + asset at publish time.`
 - **Subtasks:** none. The Task is the unit of work.
 - **No** `Slug:`, `Wraps:`, `Copy:`, or `Post type:` lines — these belong to the wrap pattern, and the short video no longer wraps a planned blog by default.
-- Start/Due dates still come from the rolling-4week row.
+- Start/Due dates still come from the slate row.
 
-Monthly plans and `rolling-4week.md` should mark the short-video row as `— (planned out-of-band)` in the Deliverable column and `— (out-of-band, barebones Jira row)` in the Source brief column.
+The weekly slate marks the short-video row as `— (planned out-of-band)`.
 
 
 ## Date Rules
@@ -162,7 +162,7 @@ Work Item ID, Issue Type, Parent ID, Epic Link, Summary, Description, Owner, Cha
 | Work Item ID | `T001`, `T002`, … |
 | Issue Type | Task |
 | Parent ID | (blank) |
-| Epic Link | Blank at scaffold time; filled at import (Epic key for the month's campaign) |
+| Epic Link | Pre-filled at scaffold time with the current campaign Epic key (override at import if it varies) |
 | Summary | `Lever - Channel - Deliverable Name` |
 | Description | Generated block including `Slug: <slug>`, `Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]`, and any brief/keyword/CMS metadata |
 | Owner | Channel owner Jira ID (see Ownership table) |
@@ -180,7 +180,7 @@ Work Item ID, Issue Type, Parent ID, Epic Link, Summary, Description, Owner, Cha
 | Epic Link | (blank — inherited from parent at import) |
 | Summary | `Channel - Step` |
 | Description | Generated description based on theme and task topic |
-| Owner | Blank at scaffold time; filled at import (subtask owner Jira ID) |
+| Owner | Pre-filled at scaffold time with the channel owner's Jira ID (override at import when a subtask owner varies) |
 | Channel | Same as parent's Channel |
 | Start Date | When this subtask begins (typically before the parent Task's Due Date) |
 | Due Date | When this subtask completes (≤ parent Task Due Date) |
@@ -191,9 +191,7 @@ Work Item ID, Issue Type, Parent ID, Epic Link, Summary, Description, Owner, Cha
 - `Work Item ID` and `Parent ID` placeholders link rows; Jira resolves them at import
 - Dates in Jira-compatible format (YYYY-MM-DD)
 - Multi-line `Description` fields use standard CSV quoting (double-quoted, embedded newlines preserved)
-- Importable without manual cleanup, except for:
-  - Filling each Task's `Epic Link` with the campaign's Jira Epic key
-  - Filling each Subtask's `Owner` with the appropriate Jira ID (see Ownership table)
+- Importable without manual cleanup — `Epic Link` and subtask `Owner` are pre-filled at scaffold time; override at import only when something varies
 
 ## Reusability
 

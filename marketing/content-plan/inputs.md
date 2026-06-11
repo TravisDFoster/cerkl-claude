@@ -1,18 +1,36 @@
-# Content Plan — Inputs Mailbox
+# Content Plan — Inputs
 
-> **Dump ideas here from anywhere.** A thought from your phone, a competitor LP that caught your eye, a Slack message worth keeping, a customer-call insight, a channel owner's draft idea, the Wednesday team-update — all land here. No format gate, no permission rule. If an idea is in your head, it should be one append away.
+> The planning surface for the [weekly content session](weekly-content-process.md). Three sections:
 >
-> **What happens to ideas:** on Monday, Travis reads this and triages — promote into [`rolling-4week.md`](rolling-4week.md), park, or **prune** (delete entries that expired, were superseded, or no longer fit). Stale items don't survive forever; the mailbox stays alive by getting culled.
+> - **Upcoming** — approved, dated commitments and future-week sketches. The weekly session sweeps this for what's due and promotes items into the week's CSV. Sketches are mutable intent, not contracts.
+> - **Ideas** — the mailbox. Dump anything from anywhere: a thought from your phone, a competitor LP, a customer-call insight, a team-update signal. No format gate. The weekly session triages: promote to Upcoming (approve + date), pull straight into the slate, park, or prune. Stale items don't survive forever.
+> - **Theme & stance** — standing editorial direction. Rare; changes only when Travis says so.
 >
-> **Two sections as a soft convention** (not enforced — if unsure, drop into Topic candidates and we'll sort on read):
-> - **Topic candidates** → most things go here. Specific deliverable ideas, campaign hooks, page concepts.
-> - **Theme/goal shifts** → bigger positioning/strategy moves. Rare; surfaces for strategy review.
+> **The blog schedule is NOT here.** `../seo/briefs/` frontmatter (`status` + `scheduled_for`) is canonical for what publishes when on cerkl.com. Upcoming carries everything briefs can't: ICPro topics, LinkedIn wraps, emails, launches, brief-needed deadlines.
 >
-> **Suggested entry shape** (also a convention, not a contract): dated heading, short description, source link if one exists, one-line implication. Add at the **top** of the section so newest surfaces first.
+> Entry shape (convention, not contract): dated heading or bullet, short description, source link, one-line implication. Newest at the top of each section.
 
 ---
 
-## Topic candidates
+## Upcoming
+
+- **W25 (Jun 15–19)** — locked & in Jira. Juneteenth Fri 6/19, no Friday sends. Shadow-AI POV (Travis-bylined, no brief) publishes Wed 6/17 as wedge-sprint W1. Webinar rows in this week are on hold (see next).
+- **Webinar — Rachel Folz: DELAYED (2026-06-10), new date TBD.** On hold until the date lands: Promo Email #1 (was 6/15), Email #2 + LinkedIn countdown + Email #3, live event (was 6/25). Rework at the first session after the new date is announced.
+- **2026-06-20 — Insights Update launch (confirmed, per Tarek).** At the 2026-06-15 session, structure W26 as launch-coverage week: launch announcement blog + LinkedIn wraps + Email Blast. Source drafts: [Inner Cerkl News Google Doc](https://docs.google.com/document/d/1bCBRhRr_i8muLylzVsP12_884SHnW1pRAsjpOBloHro/edit?usp=sharing). The Foundations Free rows sketched for W26 (below) compress or push to early July — Travis decides at the session.
+- **2026-06-23 — watch the AxiosHQ Smart Brevity Open House** (open community event format). Decide at the W26 session whether a Cerkl "Read-rate clinic" pilots in Q3.
+- **W26 sketch (Jun 22–26) — Foundations Free push, pre-launch-restructure:** blogs per briefs (newsletter-software refresh 6/22, free-newsletter-tools 6/24); ICPro "Reaching every employee: a practical channel mix" 6/23; LinkedIn wraps around free-tools blog (theme 6/23, link 6/24, poll 6/26).
+- **2026-06-28 — SEO brief needed: "AI in Microsoft Teams: where native ends"** (mobile-EX pillar) for the 7/8 slot. If it slips, swap in a queued AI/measurement brief and reslot Teams for late July.
+- **W27 sketch (Jun 29–Jul 3) — "Set the Stage: Claim the Execution Gap"** (July arc W1): blogs per briefs (ai-execution 6/29, metrics-to-leadership-story 7/1); ICPro "AI in internal comms: hype vs. what's working" 6/30; wraps around ai-execution (theme 6/30, link 7/1, poll 7/2). Fri 7/3 soft no-send (July 4 weekend).
+- **W28 sketch (Jul 6–10) — "Measure What Lands"** (July arc W2): measurement-framework blog 7/6; AI-in-Teams blog 7/8 (pending the 6/28 brief); ICPro "What 'AI-first' actually changes for the IC role" 7/7; wraps around measurement-framework (theme 7/7, link 7/8, poll 7/10).
+- **Wedge sprint W2 + W3 (window through 2026-07-08):** W2 — stat-led customer micro-case (1 logo, 1 number, 1 chart: read-rate before/after an AI-generated send); W3 — Foundations onboarding-flow video demonstrating "AI writes; Cerkl delivers and proves" live. Slot at the W26/W27 sessions.
+- **July arc — "Work Smarter with AI"**: Claim → Measure → Educate → Operationalize → Trust. Later-week sketches, re-decided at each session:
+  - *W29 (Jul 13–17) Educate:* corporate-comms-tools buyer's guide 7/13 (brief scheduled); AI-prompting how-to 7/15 (**needs brief by 2026-07-05**); ICPro prompts guide 7/14; wraps + "spot the AI email" poll 7/17. ⚠️ `cerkl-vs-firstup.md` carries `scheduled_for: 2026-07-15` while `status: queued` and the stance below bans versus posts — resolve (clear the date or rescind) at a session.
+  - *W30 (Jul 20–24) Operationalize:* AI-for-SharePoint 7/20 (**needs brief by 2026-07-10**); IC team's AI usage policy 7/22 (**needs brief by 2026-07-12**); ICPro AI-policy post 7/21; wraps + policy poll 7/24.
+  - *W31 (Jul 27–31) Trust:* AI-measurement playbook 7/27 (**needs brief by 2026-07-17**); AI-hallucinations risk post 7/29 (**needs brief by 2026-07-19**); ICPro AI-quality-gap post 7/28; wraps + hallucination poll 7/31. Foundations push lives in CTA blocks — no dedicated listicle.
+  - July pillar pressure: AI-in-IC and mobile-employee-experience each get 2+ posts this month.
+- **2026-07-27 — revisit the editorial stance** (no versus/listicles) at the end-of-July session, or sooner on business signal.
+
+## Ideas
 
 ### 2026-06-09 (from [research/ic-trends/daily/2026-06-09.md](../../research/ic-trends/daily/2026-06-09.md))
 
@@ -21,12 +39,9 @@
 
 ### 2026-06-03 (from [team-update/2026-06-03.md](../../research/ic-trends/team-update/2026-06-03.md))
 
-- ~~**Travis-bylined Cerkular POV: "Why shadow AI is a content problem, not a governance problem."**~~ **PROMOTED 2026-06-09** to W25 (publish 2026-06-17, cerkl.com blog — Travis-bylined POV, no SEO brief). Operates as W1 of the 3-week wedge sprint below.
-- **Stat-led Foundations LP hero variant from Cerkl's read-rate data.** *"4 in 5 employee emails go unread. Cerkl knows because we measure every one."* + 30-second "what 'read' actually means" tooltip. W23 ad-format pattern is converging on number-led creative (Staffbase 79%/94%/20-30%, AxiosHQ 92%/90%/82%, Firstup 75%) — Cerkl owns first-party read-rate data no competitor has. Ship 2026-06-24; pull defensible anonymized aggregate stat from platform data first. ([team-update §3](../../research/ic-trends/team-update/2026-06-03.md))
-- **3-week wedge sprint: "AI writes; Cerkl delivers and proves."** Simpplr's playbook — AI Control Center (5/22) → Manager Enablement (5/28) → Stop Shadow AI (6/3) — is how a wedge stops reading as a launch and starts reading as a category position. Three Cerkl assets, 3 weeks: W1 exec POV (shadow-AI piece above counts), W2 stat-led customer micro-case (1 logo, 1 number, 1 chart — read-rate before/after AI-generated send), W3 Foundations onboarding flow video demonstrating the claim live. Sprint window 2026-06-17 → 2026-07-08. ([team-update §4](../../research/ic-trends/team-update/2026-06-03.md))
-- **"Fragmentation" Foundations+ LP hero variant.** Four vendors are now wording the pain as *fragmentation* (Simpplr *"Fragmented Knowledge Systems"*, LumApps *"fragmented processes"*, Firstup *"teams scattered"*, Poppulo *"right info to right people"*) — Cerkl LPs lead with *segmentation* (what we sell), not *fragmentation* (what they're solving for). Variant: *"Stop your IC fragmenting across 6 channels. One platform routes the right message to the right person — on the channel they actually read."* Ship 2026-06-24 parallel to stat-led variant. ([team-update §5](../../research/ic-trends/team-update/2026-06-03.md))
-- **Defensive "Cerkl vs. the alternatives — when to pick what" page (queue-only, do not publish).** Sociabble (Poppulo-owned) published *"10 Best ContactMonkey Alternatives 2026"* this week — tit-for-tat after ContactMonkey's W22 Poppulo attack. ContactMonkey now publishing conquest listicles monthly. Eventually somebody hits Cerkl. Editorial stance prohibits offensive listicles but defensive positioning content is in-scope — draft an honest "if you want X, pick Y" page, hold for publish-on-trigger. Set up weekly SERP probe for `"Cerkl alternatives 2026"` to detect the trigger. Draft by 2026-07-01. ([team-update §6](../../research/ic-trends/team-update/2026-06-03.md))
-- **Watch the AxiosHQ June 23 Smart Brevity Open House format.** Open community event anchored on training methodology, not features. Cerkl equivalent fits the educational stance: a recurring *"Read-rate clinic"* — practitioners bring a worst-performing email, Cerkl + guest IC lead diagnose live. Don't act yet — watch the AxiosHQ event 2026-06-23, decide W26 whether to pilot in Q3. ([team-update §7](../../research/ic-trends/team-update/2026-06-03.md))
+- **Stat-led Foundations LP hero variant from Cerkl's read-rate data.** *"4 in 5 employee emails go unread. Cerkl knows because we measure every one."* + 30-second "what 'read' actually means" tooltip. W23 ad-format pattern is converging on number-led creative (Staffbase 79%/94%/20-30%, AxiosHQ 92%/90%/82%, Firstup 75%) — Cerkl owns first-party read-rate data no competitor has. Proposed ship 2026-06-24; pull defensible anonymized aggregate stat from platform data first. ([team-update §3](../../research/ic-trends/team-update/2026-06-03.md))
+- **"Fragmentation" Foundations+ LP hero variant.** Four vendors are now wording the pain as *fragmentation* (Simpplr *"Fragmented Knowledge Systems"*, LumApps *"fragmented processes"*, Firstup *"teams scattered"*, Poppulo *"right info to right people"*) — Cerkl LPs lead with *segmentation* (what we sell), not *fragmentation* (what they're solving for). Variant: *"Stop your IC fragmenting across 6 channels. One platform routes the right message to the right person — on the channel they actually read."* Proposed ship 2026-06-24 parallel to stat-led variant. ([team-update §5](../../research/ic-trends/team-update/2026-06-03.md))
+- **Defensive "Cerkl vs. the alternatives — when to pick what" page (queue-only, do not publish).** Sociabble (Poppulo-owned) published *"10 Best ContactMonkey Alternatives 2026"* this week — tit-for-tat after ContactMonkey's W22 Poppulo attack. ContactMonkey now publishing conquest listicles monthly. Eventually somebody hits Cerkl. Editorial stance prohibits offensive listicles but defensive positioning content is in-scope — draft an honest "if you want X, pick Y" page, hold for publish-on-trigger. Set up weekly SERP probe for `"Cerkl alternatives 2026"` to detect the trigger. Proposed draft by 2026-07-01. ([team-update §6](../../research/ic-trends/team-update/2026-06-03.md))
 
 ### 2026-05-27 (from [competitor-marketing/weekly/2026-W22.md](../../research/competitor-marketing/weekly/2026-W22.md))
 
@@ -42,10 +57,6 @@
 - **Versus-Firstup refresh (now time-sensitive).** Firstup elevated "Firstup AI" to top nav this week; existing page stale within days. Use the agentic-pillars reframe from [shared/competitors.md](../../shared/competitors.md). ([team-update §6](../../research/ic-trends/team-update/2026-05-20.md)) — **RESCINDED 2026-06-01** (editorial stance: no competitor/versus posts; SEO brief request from 2026-06-01 is canceled — do not produce).
 - **"Built for internal comms — not bolted on" callout on homepage + `/broadcast/foundations`.** Poppulo broadened to "Enterprise Customer and Employee Experiences" — Cerkl can plant the IC flag more cleanly. ([team-update §7](../../research/ic-trends/team-update/2026-05-20.md))
 
-### 2026-05-18 (from Tarek — Inner Cerkl News drafts for Insights launch)
-
-- **Insights Update launch — confirmed 2026-06-20 (per Travis 2026-06-09 reconcile).** Inner Cerkl News article drafts available as source for launch blogs: [Google Doc](https://docs.google.com/document/d/1bCBRhRr_i8muLylzVsP12_884SHnW1pRAsjpOBloHro/edit?usp=sharing). **Action for next reconcile (2026-06-15):** restructure W26 (June 22–26) to slot in launch announcement blog + LinkedIn wraps + Email Blast. Compresses or pushes the Foundations Free newsletter listicle to early July. Keep entry until W26 lock to avoid losing the launch context.
-
 ### 2026-05-13 (from [team-update/2026-05-13.md](../../research/ic-trends/team-update/2026-05-13.md))
 
 - **"Switch from AxiosHQ" page with Foundations free on-ramp.** No competitor offers a free tier — cleanest unopposed conquest lane. (Workshop + ContactMonkey already in [`../seo/briefs/`](../seo/briefs/) queue as `cerkl-vs-workshop`, `cerkl-vs-contactmonkey`; AxiosHQ remains.) ([team-update §2](../../research/ic-trends/team-update/2026-05-13.md))
@@ -53,7 +64,7 @@
 
 ---
 
-## Theme/goal shifts
+## Theme & stance
 
 ### 2026-06-03 (from [team-update/2026-06-03.md](../../research/ic-trends/team-update/2026-06-03.md))
 
@@ -61,7 +72,7 @@
 
 ### 2026-06-01 (editorial stance — directed by Travis during July plan rethink)
 
-- **No competitor/versus posts and no listicles through July 2026** (and until rescinded). Editorial focus is educational/practitioner/framework content. Reason: AI-assistant launch delayed to November leaves July without a product anchor — month gets reanchored on AI thought-leadership (execution-gap claim) + Foundations-free push via AI literacy, not via competitor takedowns or alternatives roundups. **Impact:** `cerkl-vs-workshop` and `cerkl-vs-contactmonkey` reverted from scheduled → queued; `Versus-Firstup` brief request rescinded; `Best Poppulo Alternatives` parked; future monthly plans should not slot competitor or listicle content until Travis flags the stance lifted. Revisit at end of July reconcile (2026-07-27) or sooner if business signal changes.
+- **No competitor/versus posts and no listicles through July 2026** (and until rescinded). Editorial focus is educational/practitioner/framework content. Reason: AI-assistant launch delayed to November leaves July without a product anchor — month gets reanchored on AI thought-leadership (execution-gap claim) + Foundations-free push via AI literacy, not via competitor takedowns or alternatives roundups. **Impact:** `cerkl-vs-workshop` and `cerkl-vs-contactmonkey` reverted from scheduled → queued; `Versus-Firstup` brief request rescinded; `Best Poppulo Alternatives` parked; weekly sessions should not slot competitor or listicle content until Travis flags the stance lifted. Revisit at the end-of-July session (2026-07-27) or sooner if business signal changes.
 
 ### 2026-05-20 (from [team-update/2026-05-20.md](../../research/ic-trends/team-update/2026-05-20.md))
 

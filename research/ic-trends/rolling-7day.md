@@ -6,6 +6,18 @@
 
 ---
 
+## 2026-06-10
+
+1. **Forrester launches the EX Index (Total Experience Score) — EX is now graded like CX (37% of 150 US brands score negative)** — Analyst — https://www.forrester.com/blogs/forresters-ex-index-completes-the-total-experience-picture/
+2. **Gartner: "Uniform AI agent governance will lead to enterprise AI agent failure" — direct pushback on the Staffbase/Simpplr/LumApps governance frame** — Analyst — https://www.gartner.com/en/newsroom/press-releases/2026-05-26-gartner-says-applying-uniform-governance-across-ai-agents-will-lead-to-enterprise-ai-agent-failure
+3. **Gartner 2026 Communications Budget Benchmarks — 35% raising comms-tech spend, 69% flag employee AI anxiety as 2-yr risk** — Analyst — https://quantum.dk/2026-trends-in-communications-budgets-by-gartner/
+4. **Microsoft "First Fridays" — AI for Communicators: Signal to Strategy — Copilot enters the IC-AI conversation** — Competitor — https://www.youtube.com/watch?v=whKHDLkohg8
+5. **Staffbase DEX Live "Staffbase + Microsoft 365 in use" — explicit M365 co-existence pitch (layer-on-top, not replacement)** — Competitor — https://www.youtube.com/watch?v=Lf7GgiZ9fHs
+6. **Poppulo CEO Jo Coxhill: "If productivity is the goal, start with EX" — anti-"AI = more output" POV** — Competitor — https://www.poppulo.com/employee-experience-platform/blog/productivity-starts-with-ex
+7. **PR Daily: 7 tactics to increase read time on internal emails — read-through as the live IC metric** — Publication — https://www.prdaily.com/7-tips-to-increase-read-time-for-internal-emails/
+8. **Gartner: "By 2027, 50% of enterprises without a people-centric AI strategy will lose their top AI talent" — positive-outlook employees 3.4x more productive** — Analyst — https://www.gartner.com/en/newsroom/press-releases/2026-05-13-gartner-predicts-by-2027-50-percent-of-enterprises-without-a-people-centric-ai-strategy-will-lose-their-top-ai-talent
+9. **Ragan Consulting (Abilene & IKEA): co-creation, not announcement, is IC's role in change** — Community — https://raganconsulting.com/abilene-and-ikea-and-boston-consulting-book-on-corporate-change/
+
 ## 2026-06-09
 
 1. **Simpplr: "Why internal communications is becoming the critical function in your AI rollout"** — Competitor — https://www.simpplr.com/blog/internal-communications-ai-adoption/
@@ -70,13 +82,3 @@
 6. **IC Index 2026 (Ipsos Karian / IoIC): UK "excellent" comms rating drops 9 points YoY** — Community — https://isitworking.substack.com/p/latest-ic-research-is-a-reality-check
 7. **PR Daily: 5 ways the Clinton Foundation is reclaiming trust in an age of attack** — Publication — https://www.prdaily.com/5-ways-the-clinton-foundation-is-reclaiming-trust-in-an-age-of-attack/
 8. **Staffbase × Haver & Boecker: 5-year frontline app case study** — Competitor — https://www.youtube.com/watch?v=hXC3TmehE0Y
-
-## 2026-05-29
-
-1. **Ragan Week in Comms: Cloudflare CEO says he "doesn't need measurers"; Wix ties cuts to AI** — Publication — https://www.ragan.com/the-week-in-comms-cloudflare-wix-clickup/
-2. **Gartner: information-integrity risk is now the #1 concern among risk leaders** — Analyst — https://www.gartner.com/en/newsroom/press-releases/2026-05-13-gartner-survey-finds-information-integrity-risk-now-the-top-concern-among-risk-leaders
-3. **Edelman Trust Barometer 2026: employers remain the most-trusted institution, but "insularity" is rising** — Publication — https://www.ragan.com/by-the-numbers-edelman-trust-barometer-2026/
-4. **"Why employees are right not to trust Internal Communication" (isitworking Substack)** — Community — https://isitworking.substack.com/p/why-employees-are-right-not-to-trust
-5. **Ragan: your toughest internal critics might be your most valuable comms resources** — Publication — https://www.ragan.com/ragan-eccc-2026-employee-critic-advocate/
-6. **Gartner: CFOs risk falling behind without a scalable AI strategy** — Analyst — https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-says-cfos-risk-falling-behind-without-a-scalable-ai-strategy
-7. **2026 RTO tracker: 54% of Fortune 100 employees now on 5-day mandates** — Policy — https://daysattheoffice.com/tools/rto-tracker/

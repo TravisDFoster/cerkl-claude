@@ -8,12 +8,11 @@
 
 | Day | What happens to the CSV |
 |---|---|
-| **Mon** | Travis runs the [plan reconcile](../plan-reconcile-process.md) (per [`../content-lifecycle-process.md`](../content-lifecycle-process.md#weekly-cadence)) and generates the scaffold at `imports/YYYY-Www.csv`. Every row is filled in EXCEPT each blog Task's Description has a `[DRIVE_URL_PLACEHOLDER]` token. |
-| **Mon–Tue** | Writing pipeline runs (pre-write → draft → edit). |
-| **Tue** | Publishing skill runs per post (one per scheduled blog) — uploads `_live.md` to Drive, then finds the matching row in `imports/YYYY-Www.csv` by `Slug: <slug>` and replaces `[DRIVE_URL_PLACEHOLDER]` with the actual Drive URL. |
-| **Tue** | All placeholders replaced; CSV is complete. Travis imports it to Jira (manual fills at import: Epic ID + subtask owner IDs). |
+| **Mon** | The [weekly content session](../weekly-content-process.md) decides the slate and generates the scaffold at `imports/YYYY-Www.csv` — every row present, blog Task Descriptions carrying `[DRIVE_URL_PLACEHOLDER]`, LinkedIn carrying `[COPY_PLACEHOLDER]`. Epic Link + subtask owners pre-filled. |
+| **Mon–Tue** | Production runs (blogs pre-write → draft → edit → publish; LinkedIn copy + assets). Each step replaces its tokens. |
+| **Tue** | Travis imports the CSV to Jira — in whatever state it's in. Unfilled tokens are fine; the team fills gaps in Jira. |
 | **Wed** | Furqan reviews drafts in Drive (linked from each Jira task). |
-| **Thu–Fri** | Furqan does publishing prep in Webflow/Wix. |
+| **Thu–Fri** | Furqan does publishing prep in Webflow/Wix + Canva finishing. |
 | **Mon–Fri (week N)** | Content publishes on its scheduled dates. |
 
 ---
@@ -38,7 +37,7 @@ Each blog Task row has:
 - **Work Item ID:** `T001`, `T002`, … (CSV-local placeholder Jira uses to stitch subtasks to parents at import)
 - **Issue Type:** `Task`
 - **Parent ID:** blank (Tasks have no parent)
-- **Epic Link:** blank — filled at import time
+- **Epic Link:** pre-filled with the current campaign Epic key
 - **Summary:** `Lever - Channel - Deliverable Name` (e.g., `Content - Blog (Cerkl.com) - Internal Communications in Manufacturing`)
 - **Description:** structured block containing:
   - `Slug: <slug>` — the canonical match key for publishing. For SEO-blog rows this equals the brief slug + Webflow URL slug. For ICPro rows it's synthesized from the deliverable title at scaffold time (see [slug threading](#slug-threading-the-canonical-identity) below).
@@ -48,9 +47,9 @@ Each blog Task row has:
   - `Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]` — replaced by the publishing skill
 - **Owner:** channel owner Jira ID (from ownership table in `../jira-csv-guidelines.md`)
 - **Channel:** custom Channel field value (e.g., `Blog Posts`)
-- **Start Date / Due Date:** from rolling-4week row
+- **Start Date / Due Date:** from the slate row
 
-Subtask rows reference their parent Task via `Parent ID = T###`. Subtask names follow the channel templates in `../jira-csv-guidelines.md`. Subtask owner IDs are blank at scaffold time — filled at import.
+Subtask rows reference their parent Task via `Parent ID = T###`. Subtask names follow the channel templates in `../jira-csv-guidelines.md`. Subtask owner IDs are pre-filled from the ownership table — overridden at import only when they vary.
 
 **LinkedIn short video — barebones rows (as of 2026-06-01):** the weekly short-video Task is a single row with a generic Summary (`Social Media - LinkedIn - Short Video (out-of-band)`), a one-line Description, and **no subtasks**. Videos are planned and produced outside the content-plan system; the Task exists for capacity tracking only. See [`../jira-csv-guidelines.md` §Short video — out-of-band](../jira-csv-guidelines.md#short-video--out-of-band).
 
@@ -68,13 +67,13 @@ The slug is the same string everywhere it appears. That's the key to making this
 |---|---|
 | Brief filename | `../seo/briefs/<slug>.md` |
 | Brief frontmatter | `slug: <slug>` |
-| Rolling-4week row | `Source brief` column linking the brief file |
+| Weekly slate row | `Source brief` pointer linking the brief file |
 | Jira CSV scaffold | `Slug: <slug>` line in the Task Description |
 | Publishing skill | matches CSV row by this exact string |
 | Webflow CMS | URL slug = same string |
 | File names through the writing pipeline | `_pre-writing.md`, `_draft.md`, `_live.md` all carry `<slug>` |
 
-**ICPro (internalcommspro.com):** no brief queue — slug is synthesized from the deliverable title at scaffold time using a deterministic rule (below). Both the scaffold creator (Monday reconcile) and the ICPro orchestrator apply the same rule so they land on the same slug independently.
+**ICPro (internalcommspro.com):** no brief queue — slug is synthesized from the deliverable title **once, at scaffold time**, using the deterministic rule below, and written into the Task's `Slug:` line. Downstream (the ICPro orchestrator and its publishing skill) reads the slug from the CSV rather than re-deriving it — one computation, one truth.
 
 **Slug synthesis rule** (used by ICPro at scaffold time and any other channel without an upstream brief):
 1. Lowercase the deliverable title

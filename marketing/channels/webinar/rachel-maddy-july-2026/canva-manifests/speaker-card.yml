@@ -1,0 +1,34 @@
+template_id: EAGqLMN8_Po
+page_index: 1
+design_title: rachel-maddy-speaker-card-2026-07-09
+aspect_ratio: 1:1 1080x1080
+
+# 2-speaker render: fill BOTH speaker slots. Page 1 is the 2-up layout.
+# (Previous solo render deleted speaker 2 via delete_slots — no longer applicable.)
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "|   Mar 6, 2025 1:00 pm est": "|   Jul 9, 2026 12:00 PM EDT"
+  "Name": ["Rachel Folz", "Maddy Rieman"]
+  "Title": ["Head of Product, Cerkl", "Head of Customer Success, Cerkl"]
+
+image_assets:
+  headshot: ["MAFZdaEt2Wc", "MAFZdS-3JCo"]   # [speaker 1 = Rachel, speaker 2 = Maddy]
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10, 2-speaker) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMM5ntBls"
+  edit_url: "https://www.canva.com/design/DAHMM5ntBls/edit"
+  view_url: "https://www.canva.com/d/9p0Q_N37hWZoym9"
+  speakers: 2
+  warnings: []
+  manual_drag_required:
+    - {occurrence: 1, subject: "Rachel Folz", asset_id: "MAFZdaEt2Wc", instruction: "Drag into left (speaker 1) frame ~top 669 left 74"}
+    - {occurrence: 2, subject: "Maddy Rieman", asset_id: "MAFZdS-3JCo", instruction: "Drag into right (speaker 2) frame ~top 669 left 362"}
+
+# Note: this template has layered placeholder frames.
+# template-fill will return manual_drag_required[] for BOTH headshots —
+# drag each inserted image into its speaker placeholder frame in Canva's UI.

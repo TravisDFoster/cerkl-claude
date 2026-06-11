@@ -1,24 +1,26 @@
 # Webinar Brief
 
-**Title:** Insights / Measurements [working title — refine before content dev]
-**Date:** 2026-06-25
+**Title:** Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer
+**Date:** 2026-07-09
 **Time:** 12:00 PM EDT
-**Featuring:** Rachel Folz, Head of Product, Cerkl
+**Featuring:** Rachel Folz, Head of Product, Cerkl & Maddy Rieman, Head of Customer Success, Cerkl
 **Giveaway:** [What one attendee will receive — optional for an internal webinar]
 **Slidedeck:** [Link once created]
 **Mutual Action Plan:** [Cerkl Webinar Internal MAP — Rachel Folz, June 2026](https://docs.google.com/spreadsheets/d/12-d4oC27mMfr384G01u8PVn8b3n3Fo7Kj2B18aZIDJ0/edit)
 **Google Doc Brief:** [Cerkl Webinar Brief — Rachel Folz, June 2026](https://docs.google.com/document/d/1oav1DePRF4jaffRvCB9t8lCRHrc5Y5fAJ4hD5lo_U08/edit)
 **Generic (untracked) Registration Link:** [Zoom registration URL — base, no source tag]
 
-> **Format:** Solo / internal webinar — Rachel Folz (Cerkl) presenting alone. There is **no external partner**, so partner-specific sections below (Partner's Perspective, partner-led giveaway, partner amplification) are **N/A** unless a co-presenter is added. The `webinar-brief` skill should populate the remaining placeholders as a single-presenter Cerkl event.
+> **Format:** Two-presenter **internal** webinar — Rachel Folz (Head of Product) and Maddy Rieman (Head of Customer Success), both Cerkl. There is **no external partner**, so partner-specific sections below (Partner's Perspective, partner-led giveaway, partner amplification) remain **N/A**. Rachel leads the product/measurement POV; Maddy brings the customer-success lens on what teams actually struggle to answer. Populate remaining placeholders as a two-presenter Cerkl event.
+>
+> **Updated 2026-06-10:** retitled, date moved 2026-06-25 → **2026-07-09**, co-presenter Maddy Rieman added. All offset-derived dates in the project plan shifted +14 days.
 
 ---
 
-## What we need from you, Rachel — for the June 25 launch
+## What we need from you, Rachel & Maddy — for the July 9 launch
 
-This brief drives the registration page, promo emails, outline, and on-stage flow. Most of it depends on **your POV**. Please respond to the prompts below — either typing answers directly under each item, or free-writing your take on the blocks and I'll structure it into the brief sections below.
+This brief drives the registration page, promo emails, outline, and on-stage flow. Most of it depends on **your POV**. Please respond to the prompts below — either typing answers directly under each item, or free-writing your take on the blocks and I'll structure it into the brief sections below. Rachel owns the product/measurement answers; Maddy, add the CS-side view wherever it sharpens the point.
 
-**Working deadline: this week.** Content-dev locks **2026-06-04** (registration page, Canva assets, blog post), so the earlier the better.
+**Working deadline: by 2026-06-18.** Content-dev locks **2026-06-18** (registration page, Canva assets, blog post), so the earlier the better.
 
 ### Quick orientation (so the asks land right)
 
@@ -47,7 +49,7 @@ This brief drives the registration page, promo emails, outline, and on-stage flo
 
 9. **Your preferred webinar title.** The current "Insights / Measurements" is a working placeholder — replace it with what *you'd* call this talk.
 10. **3–5 paragraphs of synopsis in your voice** — what you'd actually say if someone asked "what's this webinar about?" Don't sanitize; we want the version that sounds like you, not the marketing version.
-11. **Updated bio + headshot** (current photo is fine if recent).
+11. **Updated bios + headshots** — one short bio each for Rachel and Maddy. (Headshots are already on file in Canva and wired into the promo assets; send new photos only if you'd prefer different ones.)
 
 ### E. Anything else
 
@@ -159,7 +161,7 @@ Led by Rachel Folz.
 - Giveaway: [Brief description, if used]
 
 ### Promotion Timeline
-*Generated from the project plan — see `rachel-folz-project-plan.md`.*
+*Generated from the project plan — see `rachel-maddy-project-plan.md`.*
 
 ### Promotion Messaging Angle Examples
 
@@ -201,9 +203,12 @@ Through live polls and discussion, attendees will assess:
 
 ---
 
-## Partner's Perspective
+## Co-Presenter Perspective (Maddy Rieman, Customer Success)
 
-*N/A — internal solo webinar. Remove this section unless a co-presenter is added.*
+*Two-presenter internal webinar — no external partner, so traditional "Partner's Perspective" amplification is still N/A. Use this section for Maddy's CS-side angle:*
+- What questions do customers most often *fail* to answer when CS asks how they measure comms?
+- Where does the gap between "we send a lot" and "we can prove impact" show up in real accounts?
+- One concrete before/after from a customer who tightened their measurement.
 
 ---
 

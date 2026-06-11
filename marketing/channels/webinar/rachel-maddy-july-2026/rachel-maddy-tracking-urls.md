@@ -1,6 +1,6 @@
-# Tracking URLs — Insights / Measurements (Rachel Folz)
+# Tracking URLs — Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer (Rachel Folz & Maddy Rieman)
 
-**Webinar Date:** 2026-06-25
+**Webinar Date:** 2026-07-09
 **Generic (untracked) Registration URL:** [paste base Zoom URL here]
 
 > Create one tracking registration URL per slug below in the Zoom portal, then paste the URL into the matching row. See `../tracking-urls-convention.md` for the naming rules.

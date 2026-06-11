@@ -1,0 +1,31 @@
+template_id: EAGqLHFNucs
+page_index: 1                            # page 1 = 2-speaker layout
+design_title: rachel-maddy-share-1200x628-2026-07-09
+aspect_ratio: 1.91:1
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "Name": ["Rachel Folz", "Maddy Rieman"]
+  "Title": ["Head of Product, Cerkl", "Head of Customer Success, Cerkl"]
+  "|   Mar 6, 2025 1:00 pm est": "|   Jul 9, 2026 12:00 PM EDT"
+
+image_assets:
+  # Headshots render through SHAPE placeholders here (not editable image fills).
+  # Render sub-agent uses smart insert_fill at each speaker thumb position; manual drag-into-frame follows.
+  headshot: ["MAFZdaEt2Wc", "MAFZdS-3JCo"]   # [speaker 1 = Rachel, speaker 2 = Maddy]
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10, 2-speaker) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMM4PZnp8"
+  edit_url: "https://www.canva.com/design/DAHMM4PZnp8/edit"
+  view_url: "https://www.canva.com/d/ehEU5J3npR3abEs"
+  speakers: 2
+  warnings:
+    - "headshots not exposed as image fills; inserted as page-level RECTs at estimated thumb coords — both need drag-into-frame"
+    - "long 78-char headline expanded vertically and slightly overlaps the 'Register now' pill — resolve in UI"
+  manual_drag_required:
+    - {subject: "Rachel Folz", asset_id: "MAFZdaEt2Wc", instruction: "Drag into speaker-1 frame ~top 246 left 800"}
+    - {subject: "Maddy Rieman", asset_id: "MAFZdS-3JCo", instruction: "Drag into speaker-2 frame ~top 406 left 800"}

@@ -2,7 +2,7 @@
 
 You are a senior B2B SaaS social strategist helping Travis Foster draft LinkedIn posts for Cerkl Broadcast.
 
-> **Upstream input:** This channel starts from a row in [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md). The row's `Source brief` column points back to the asset the post wraps (a blog, press release, webinar, etc.). There is no separate LinkedIn brief — the content-plan row + the source asset are the brief.
+> **Upstream input:** This channel starts from a LinkedIn Task row in the week's Jira CSV ([`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/)), created by the [weekly content session](../../content-plan/weekly-content-process.md). The row's `Wraps:` line points back to the asset the post wraps (a blog, press release, webinar, etc.). There is no separate LinkedIn brief — the CSV row + the source asset are the brief.
 
 ## Context to load
 - /Users/travisfoster/claude-code/cerkl/shared/company-info.md
@@ -18,7 +18,7 @@ You are a senior B2B SaaS social strategist helping Travis Foster draft LinkedIn
 
 - **Drafts:** `drafts/YYYY-MM-DD_[type]_[slug].md`
 - **Archive:** `archive/YYYY-MM-DD_[type]_[slug].md` (drafts move here after the Jira CSV subtask is filled)
-- **Type slugs:** `carousel`, `static-theme`, `static-blog`, `poll`, `short-video` — mirror the `Channel` strings in `rolling-4week.md`
+- **Type slugs:** `carousel`, `static-theme`, `static-blog`, `poll`, `short-video` — mirror the `Post type:` lines in the weekly CSV
 - **Slug:** kebab-case, ≤60 chars — usually a shortened form of the wrapped source's slug
 - **Dates:** `YYYY-MM-DD` per the universal convention in `cerkl/CLAUDE.md`
 

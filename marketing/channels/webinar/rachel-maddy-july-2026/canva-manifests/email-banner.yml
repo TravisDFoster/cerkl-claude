@@ -1,0 +1,27 @@
+template_id: EAGqLERK1oE
+page_index: 1                            # page 1 = 2-speaker layout (page 2 = 3, page 3 = 4)
+design_title: rachel-maddy-email-banner-2026-07-09
+aspect_ratio: 3:1
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "Name": ["Rachel Folz", "Maddy Rieman"]
+  "Title": ["Head of Product, Cerkl", "Head of Customer Success, Cerkl"]
+  "|   Mar 6, 2025 1:00 pm est": "|   Jul 9, 2026 12:00 PM EDT"
+
+image_assets:
+  headshot: ["MAFZdaEt2Wc", "MAFZdS-3JCo"]   # editable image fills on this template, 2 slots
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10, 2-speaker) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMM1XUg8I"
+  edit_url: "https://www.canva.com/design/DAHMM1XUg8I/edit"
+  view_url: "https://www.canva.com/d/fqNRQdpw7pv4vqn"
+  speakers: 2
+  warnings: []
+  manual_drag_required:
+    - {occurrence: 1, subject: "Rachel Folz", asset_id: "MAFZdaEt2Wc", instruction: "Verify seated in speaker-1 70x70 frame; nudge if needed"}
+    - {occurrence: 2, subject: "Maddy Rieman", asset_id: "MAFZdS-3JCo", instruction: "Verify seated in speaker-2 70x70 frame; nudge if needed"}

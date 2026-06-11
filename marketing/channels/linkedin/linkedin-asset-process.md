@@ -22,7 +22,7 @@ Runs **after** [`linkedin-process.md`](linkedin-process.md) (which produces the 
 
 | Input | Required | Default | Description |
 |---|---|---|---|
-| `target_window` | optional | Week 1 (locked) of `rolling-4week.md` | Which week to render |
+| `target_window` | optional | the week of the most recent Jira CSV in `../../content-plan/jira/imports/` | Which week to render |
 | `subset` | optional | All eligible drafts | List of draft slugs to render |
 | `commit_mode` | optional | `auto` for batch (≥2 drafts), `checkpoint` for single-post | Sub-agent commit behavior |
 
@@ -56,10 +56,10 @@ Stop and surface an error if any fail:
 ### Step 1 — Resolve eligible drafts for the target window
 
 - **Owner:** Claude
-- **Inputs:** `target_window`, `subset`, [`rolling-4week.md`](../../content-plan/rolling-4week.md), `drafts/` folder
+- **Inputs:** `target_window`, `subset`, the week's CSV at [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/), `drafts/` folder
 - **Produces:** in-memory list `[{slug, type, publish_date, draft_path, wraps_source, route}]`
 
-For each LinkedIn row in the target window:
+For each LinkedIn Task in the week's CSV (parse `Post type:` + `Wraps:` from the Description; skip barebones short-video rows):
 
 1. Locate the matching draft file at `drafts/YYYY-MM-DD_<type>_<slug>.md`. If missing, surface `draft_missing` and skip.
 2. Classify by `route`:
@@ -193,7 +193,7 @@ For `webinar-lookup` drafts (Step 2a), the URL came from the webinar's manifest 
 
 For each draft with a resolved `edit_url` (whether from Step 5 render or Step 2a lookup):
 
-1. Find the Task row in `../../content-plan/jira/imports/YYYY-Www.csv` whose Summary matches the LinkedIn deliverable.
+1. Find the Task row in `../../content-plan/jira/imports/YYYY-Www.csv` matched by `Post type:` + `Wraps:` in the Description (same key as Step 1; not free-text Summary).
 2. Add an `Asset:` line **at the end of the Description**, after the hashtags block (separated by a blank line). Format:
 
 ```

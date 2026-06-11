@@ -179,7 +179,7 @@ URLs mirrored into:
 - **Upload the headshot to Canva.** v1 takes the asset ID as input. Caller resolves it manually (drag-and-drop in Canva UI, or `mcp__claude_ai_Canva__upload-asset-from-url` if the headshot has a public URL).
 - **Clean up bad manifests.** If a manifest has substring-fallback risk (e.g. `"Title"` against a template that doesn't have it), this skill renders it as-is and surfaces warnings. Manifest cleanup is upstream.
 - **Update markdown project-plan rows.** Considered for v2 — the project-plan markdown already has an Asset role column, so appending URLs there is a natural mirror, but v1 keeps the loop small: manifests (canonical) + Drive MAP (bonus). Downstream skills should read from manifests directly.
-- **Push LinkedIn posts to content-plan.** Separate concern — when the LinkedIn posts are drafted (by `webinar-linkedin-posts`) and the asset URLs are available, a follow-up skill needs to register them into `content-plan/rolling-4week.md` for slot reservation. Out of scope for this render skill.
+- **Push LinkedIn posts to content-plan.** Separate concern — when the LinkedIn posts are drafted (by `webinar-linkedin-posts`) and the asset URLs are available, a follow-up skill needs to surface them at the weekly content session for slot reservation. Out of scope for this render skill.
 - **Verify renders visually.** Per-op success ≠ correct render. Travis (or Furqan) opens each URL to confirm before publishing.
 
 ---

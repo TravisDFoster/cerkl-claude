@@ -2,35 +2,26 @@
 
 ## What this folder is
 
-This folder contains the full system for planning, structuring, and operationalizing Cerkl's organic content. The output is a Jira-importable CSV that creates Tasks and subtasks under existing campaign Epics for a given month.
+The orchestration layer for Cerkl's organic content. One ritual — the [weekly content session](weekly-content-process.md) — turns the annual plan, the brief queue, and the inputs mailbox into a Jira-importable CSV plus the drafts, Drive docs, and Canva assets behind it.
 
-Jira is the operational record of what shipped and when. The content plan is the source of truth for what gets built and why.
+Jira is the operational record of what shipped and when. This folder holds the planning state and the process.
 
 ---
 
 ## How the system works
 
-There are three layers:
+Three pieces of state, each with one owner:
 
-### 1. Annual content plan (`2026-content-plan.md`)
+1. **`../seo/briefs/` frontmatter** (`status` + `scheduled_for`) — the canonical cerkl.com blog schedule. "What's coming up" is computed live by grepping frontmatter, never written down a second time.
+2. **[`inputs.md`](inputs.md)** — Upcoming (dated commitments + future-week sketches), Ideas (the mailbox), Theme & stance (standing editorial direction).
+3. **`jira/imports/YYYY-Www.csv`** — the locked week. The session creates rows; channel processes fill their placeholder tokens (Drive URLs, copy, asset links). The CSV goes to Jira in whatever state it's in; the team fills gaps there.
 
-Defines the full-year campaign arc — monthly themes, campaign Epics, ICP pain points, key topics, and important dates. This is the strategic input. It does not change month to month.
+The **annual plan** (`2026-content-plan.md`) is the strategic input — monthly themes, campaign Epics, ICP pain points, blackout dates. The weekly session consults it for theme alignment; there are no monthly plan files. (Monthly plans and `rolling-4week.md` were retired 2026-06-10 — git history has them.)
 
-### 2. Monthly content plan (`monthly-content-plans/[month-year].md`)
-
-A week-by-week breakdown of every deliverable for a given month. Each row includes: deliverable name, channel, publish date, and owner. This is generated from the annual plan and any month-specific context (product launches, events, calendar constraints).
-
-Monthly plans follow these rules:
-- Weekly capacity limits apply (see `jira-csv-guidelines.md`)
+Standing rules:
+- Weekly capacity limits are ceilings, not quotas (see `jira-csv-guidelines.md`)
 - Social posts publish Tuesday–Friday by default
 - No sends on federal holidays or blackout dates noted in the annual plan
-- Each week has a narrative arc (e.g., Build the Problem → Launch → Deepen → Reinforce)
-
-### 3. Jira CSV
-
-Generated from the monthly plan using the rules in `jira-csv-guidelines.md`. One row per Task and subtask. Importable without manual cleanup except for:
-- Adding the Epic ID
-- Adding subtask owner IDs (see ownership table in guidelines)
 
 ---
 
@@ -52,18 +43,13 @@ Generated from the monthly plan using the rules in `jira-csv-guidelines.md`. One
 ## Resources
 
 Processes (executors):
-- [content-lifecycle-process.md](content-lifecycle-process.md) — End-to-end narrative spine (brief queue → schedule → write → Jira → publish); read first to see how the layers connect
-- [plan-reconcile-process.md](plan-reconcile-process.md) — Weekly Monday reconcile: triage briefs, process inputs, lock next week, generate Jira scaffold
-- [monthly-plan-generation-process.md](monthly-plan-generation-process.md) — Generate a month's week-by-week plan from the annual plan
-- [jira/jira-scaffold-process.md](jira/jira-scaffold-process.md) — Generate the weekly Jira CSV scaffold (invoked by plan reconcile)
+- [weekly-content-process.md](weekly-content-process.md) — THE weekly ritual: review → decide → scaffold → produce → import
+- [jira/jira-scaffold-process.md](jira/jira-scaffold-process.md) — Generate the weekly Jira CSV from the session's slate (invoked by the session; runnable standalone)
+- [content-lifecycle-process.md](content-lifecycle-process.md) — End-to-end narrative (brief → publish); orientation read
 
 Knowledge and inputs:
-- [2026-content-plan.md](2026-content-plan.md) — Annual themes, Epics, ICP context, and important dates by month
-- [jira-csv-guidelines.md](jira-csv-guidelines.md) — Field mappings, subtask templates, ownership, capacity limits, CSV output rules
+- [2026-content-plan.md](2026-content-plan.md) — Annual themes, Epics, ICP context, important dates by month
+- [jira-csv-guidelines.md](jira-csv-guidelines.md) — Field mappings, subtask templates, ownership, capacity ceilings, CSV output rules
 - [jira/CONTEXT.md](jira/CONTEXT.md) — Weekly Jira import context: cadence, naming, scaffold contents, slug threading, lifecycle
 - [jira/_template.csv](jira/_template.csv) — Canonical CSV template with placeholder Work Item IDs (T###/S###)
-
-Operational ledgers:
-- [rolling-4week.md](rolling-4week.md) — Source of truth for what gets made and when; Travis writes here at Monday reconcile
-- [inputs.md](inputs.md) — Mailbox for raw ideas; triaged into the plan each Monday
-- [monthly-content-plans/](monthly-content-plans/) — Generated monthly plans, one file per month
+- [inputs.md](inputs.md) — Upcoming / Ideas / Theme & stance

@@ -66,7 +66,7 @@ Report back to the orchestrator:
 
 - Flip brief `status:` — stays `in-progress` from editing through Webflow publish. The brief flips to `shipped` only when Furqan reports the post live in Webflow.
 - Create the Jira CSV — that's done at Monday reconcile per [`../../../../content-plan/content-lifecycle-process.md`](/Users/travisfoster/claude-code/cerkl/marketing/content-plan/content-lifecycle-process.md). If the scaffold doesn't exist, fail with a clear error.
-- Modify rolling-4week.md — content-plan owns that file; publishing is downstream.
+- Create or restructure CSV rows — the weekly session owns those; publishing only fills its token.
 - Import to Jira — Travis runs the manual import after all rows in the week's CSV have their URLs filled in.
 
 ## Error modes
@@ -75,6 +75,6 @@ Report back to the orchestrator:
 |---|---|---|
 | `live file not found` | Editing didn't run or wrote to wrong path | Confirm editing produced `_live.md` at the expected path |
 | `CSV scaffold not found` | Monday reconcile didn't create `jira/imports/YYYY-Www.csv` | Travis creates the scaffold; re-run |
-| `no CSV row for slug` | Brief was scheduled in rolling-4week but scaffold-generation missed it | Travis adds the row to the CSV; re-run |
+| `no CSV row for slug` | Brief was in the slate but scaffold-generation missed it | Patch the row via the weekly session; re-run |
 | `placeholder already replaced` | This brief was already published — possible re-publish | Confirm with user before overwriting |
 | `Drive upload failed` | md-to-drive skill error | Surface md-to-drive's error; do not touch CSV |

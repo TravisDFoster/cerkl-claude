@@ -33,7 +33,7 @@ You are a senior internal-communications practitioner and content strategist hel
 | Editing a single ICPro draft to live (two-pass + score + brand-mention check) | [`skills/icpro-blog-editing/`](skills/icpro-blog-editing/SKILL.md) |
 | Publishing a single ICPro live file (Drive upload with `ICP` naming + Jira CSV row update) | [`skills/icpro-blog-publishing/`](skills/icpro-blog-publishing/SKILL.md) |
 | Look up banned phrases / structures / before-after examples | [`skills/icpro-blog-editing/references/`](skills/icpro-blog-editing/references/) |
-| Find what to write for a given week | `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md` |
+| Find what to write for a given week | the week's Jira CSV (`content-plan/jira/imports/YYYY-Www.csv`) — `(ICP)` rows |
 
 ## Skills (channel-local — ICPro-specific)
 

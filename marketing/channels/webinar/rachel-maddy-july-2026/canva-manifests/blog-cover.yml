@@ -1,0 +1,28 @@
+template_id: EAGqLL_MWfw
+page_index: 1                            # page 1 = 2-speaker layout
+design_title: rachel-maddy-blog-cover-2026-07-09
+aspect_ratio: 3:2
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "Name": ["Rachel Folz", "Maddy Rieman"]
+  "Title": ["Head of Product, Cerkl", "Head of Customer Success, Cerkl"]
+  "|   Mar 6, 2025 1:00 pm est": "|   Jul 9, 2026 12:00 PM EDT"
+
+image_assets:
+  headshot: ["MAFZdaEt2Wc", "MAFZdS-3JCo"]   # 2 editable headshot fills overlay the SHAPE card
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10, 2-speaker) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMMyPukKw"
+  edit_url: "https://www.canva.com/design/DAHMMyPukKw/edit"
+  view_url: "https://www.canva.com/d/4PtEx9loHbB7n9b"
+  speakers: 2
+  warnings:
+    - "headline_wraps_3_lines: 78-char title wraps to 3 lines and slightly overlaps top of presenter card — nudge title box or card in UI"
+  manual_drag_required:
+    - {occurrence: 1, subject: "Rachel Folz", asset_id: "MAFZdaEt2Wc", instruction: "Drag into speaker-1 frame ~top 274 left 236"}
+    - {occurrence: 2, subject: "Maddy Rieman", asset_id: "MAFZdS-3JCo", instruction: "Drag into speaker-2 frame ~top 274 left 320"}

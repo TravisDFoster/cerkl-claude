@@ -1,0 +1,30 @@
+template_id: EAGqLLgAXU0
+page_index: 1                            # page 1 = 2-speaker layout
+design_title: rachel-maddy-share-16x9-2026-07-09
+aspect_ratio: 16:9
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "Name": ["Rachel Folz", "Maddy Rieman"]
+  "Title": ["Head of Product, Cerkl", "Head of Customer Success, Cerkl"]
+  "|   Mar 6, 2025 1:00 pm est": "|   Jul 9, 2026 12:00 PM EDT"
+
+image_assets:
+  # Speaker thumbs render via SHAPE+TEXT (not editable image fills).
+  # Render sub-agent smart-inserts a fill at each speaker thumb position; manual drag-into-frame follows.
+  headshot: ["MAFZdaEt2Wc", "MAFZdS-3JCo"]   # [speaker 1 = Rachel, speaker 2 = Maddy]
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10, 2-speaker) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMM44wZI8"
+  edit_url: "https://www.canva.com/design/DAHMM44wZI8/edit"
+  view_url: "https://www.canva.com/d/oqJ8AvQQ8lZUVPy"
+  speakers: 2
+  warnings:
+    - "speaker thumbs render via SHAPE+TEXT (no image fills); headshots inserted as page-level RECTs ~80x80 at left 840 (top 272/444) — drag into frame; nudge if alignment off"
+  manual_drag_required:
+    - {occurrence: 1, subject: "Rachel Folz", asset_id: "MAFZdaEt2Wc", instruction: "Drag into speaker-1 frame ~840,272"}
+    - {occurrence: 2, subject: "Maddy Rieman", asset_id: "MAFZdS-3JCo", instruction: "Drag into speaker-2 frame ~840,444"}

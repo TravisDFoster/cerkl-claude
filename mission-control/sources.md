@@ -32,16 +32,16 @@ Layout: the first pinned item (`growth-project-tracker`) renders **wide** and sp
 - **cadence**: weekly
 - **notes**: Evergreen — one file (`growth-project-tracker.{md,html}`) updated in place each week. The doc's content carries the date in its meta header; the filename never changes.
 
-### content-reconcile
+### weekly-content-session
 - **kind**: action
-- **label**: Content Reconcile
-- **plan_url**: `/cerkl/marketing/content-plan/rolling-4week.md`
-- **subtitle**: Sync rolling 4-week plan
+- **label**: Weekly Content Session
+- **plan_url**: `/cerkl/marketing/content-plan/weekly-content-process.md`
+- **subtitle**: Review → decide → scaffold → produce → import
 - **run_prompt**:
   ```
-  Run the weekly content plan reconcile — sync the rolling 4-week plan with brief queue, channel posts, and Jira.
+  Run the weekly content session.
 
-  Process: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/plan-reconcile-process.md
+  Process: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/weekly-content-process.md
   ```
 - **cadence**: weekly
 
@@ -61,13 +61,13 @@ Layout: the first pinned item (`growth-project-tracker`) renders **wide** and sp
 ### blog-writing
 - **kind**: action
 - **label**: This Week's Blog Posts
-- **plan_url**: `/cerkl/marketing/content-plan/rolling-4week.md`
+- **plan_url**: `/cerkl/marketing/content-plan/weekly-content-process.md`
 - **subtitle**: Draft scheduled posts (cerkl.com + ICPro)
 - **run_prompt**:
   ```
   Start this week's blog post writing.
 
-  Check the rolling 4-week plan to identify scheduled posts: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md
+  Scheduled briefs are canonical (grep scheduled_for /Users/travisfoster/claude-code/cerkl/marketing/seo/briefs/*.md); the week's Jira CSV in content-plan/jira/imports/ holds the ICPro row.
 
   Process — cerkl.com (Webflow): /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md
   Process — internalcommspro.com (Wix): /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/icpro-blog-process.md

@@ -12,9 +12,8 @@
 
 ## Inputs
 
-I'll ask before scaffolding:
-
-1. **Target week** — defaults to Week 1 (locked) of [`../rolling-4week.md`](../rolling-4week.md). Can be overridden by ISO week (`2026-W22`) or by the Monday date of the publish week (`2026-05-25`).
+1. **Target week** — ISO week (`2026-W26`) or the Monday date of the publish week.
+2. **The slate** — the list of deliverables for the week: `{deliverable, channel, publish_date, owner, source_brief}` per row. Normally this comes straight from Phase 1 of the [weekly content session](../weekly-content-process.md); when run standalone, ask for it (or reconstruct from scheduled briefs + `../inputs.md` Upcoming and confirm).
 
 ## Context to load
 
@@ -22,7 +21,6 @@ I'll ask before scaffolding:
 - /Users/travisfoster/claude-code/cerkl/marketing/content-plan/CONTEXT.md
 - /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/CONTEXT.md
 - /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira-csv-guidelines.md
-- /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md
 
 (Per [PRINCIPLES.md #4](/Users/travisfoster/claude-code/cerkl/PRINCIPLES.md), this list is authoritative for this scope — parent loads do not apply unless re-listed here.)
 
@@ -39,14 +37,14 @@ I'll ask before scaffolding:
 - **Produces:** `{iso_week, monday_date, sunday_date, csv_path}`
 - **What to do:** From the target week argument, compute the Monday and Sunday dates of the ISO week. The CSV path is `imports/YYYY-Www.csv`. If the file already exists, ask the user whether to overwrite (re-run) or stop (avoid clobbering a partially populated CSV from the publishing skill).
 
-### Step 2 — Pull rows from rolling-4week
+### Step 2 — Confirm the slate
 
 - **Owner:** Claude
 - **Parallelizable with:** —
 - **Needs:** —
-- **Inputs:** [`../rolling-4week.md`](../rolling-4week.md), the target week's date range from Step 1
-- **Produces:** an in-memory list of rolling-4week rows whose `Publish` date falls within the target week
-- **What to do:** Read rolling-4week.md. Find the week section whose date range contains the target dates. Pull every row from that section, capturing `{deliverable, channel, publish_date, owner, status, source_brief}`. If the target week isn't in rolling-4week (e.g., user asked for a week ≥5 ahead), surface the gap.
+- **Inputs:** the slate from input #2, the target week's date range from Step 1
+- **Produces:** an in-memory list of slate rows `{deliverable, channel, publish_date, owner, source_brief}`
+- **What to do:** Verify every row's `publish_date` falls inside the target week and every blog row's `source_brief` resolves (for cerkl.com rows). Echo the slate back as a table for a final eyeball before generating.
 
 ### Step 3 — Derive slugs and brief metadata
 
@@ -58,7 +56,7 @@ I'll ask before scaffolding:
 - **What to do:** For each row:
   - If the `Source brief` column links to `../../seo/briefs/<slug>.md`: read the brief, extract `slug`, primary keyword, secondary keywords, target_pillar, primary_solution, all_categories. `slug = brief.slug`.
   - If the row is `Blog — internalcommspro.com` (no brief): synthesize the slug from the deliverable title using the rule in [`CONTEXT.md`](CONTEXT.md#slug-threading-the-canonical-identity). No brief metadata.
-  - If the row is a LinkedIn post: no slug needed in the Description — instead, derive the `Post type` slug from the rolling-4week `Channel` string using the mapping below, and capture the wrapped blog as `Wraps: <blog-slug>`. The LinkedIn drafting process at [`../../channels/linkedin/linkedin-process.md`](../../channels/linkedin/linkedin-process.md) uses the same mapping to load the right template.
+  - If the row is a LinkedIn post: no slug needed in the Description — instead, derive the `Post type` slug from the slate row's `Channel` string using the mapping below, and capture the wrapped blog as `Wraps: <blog-slug>`. The LinkedIn drafting process at [`../../channels/linkedin/linkedin-process.md`](../../channels/linkedin/linkedin-process.md) uses the same mapping to load the right template.
 
     | `Channel` string | Type slug |
     |---|---|
@@ -92,10 +90,10 @@ I'll ask before scaffolding:
 - **What to do:** Write the CSV per the canonical column order in `../jira-csv-guidelines.md`. For each Task, render the Description block per channel:
   - **SEO blog (cerkl.com):** `Topic`, `Slug`, `Brief link`, `Primary keyword`, `Secondary keywords`, `Webflow CMS properties` (Primary Category, Primary Solution, All Categories), `Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]`
   - **ICPro blog (internalcommspro.com):** `Topic`, `Slug`, `Note: ICPro has no brief queue — slug synthesized at scaffold time`, `Draft (Google Doc): [DRIVE_URL_PLACEHOLDER]`
-  - **LinkedIn:** `Topic`, `Post type: <type-slug>` (`carousel`, `static-theme`, `static-blog`, `poll`, or `short-video` — derived from the rolling-4week `Channel` string per Step 3), `Wraps: <blog-slug>` (the blog brief this LinkedIn post pairs with), then a final `Copy:` line with a `[COPY_PLACEHOLDER]` token on the next line. The LinkedIn drafting process replaces that token **in the Task Description** with the drafted caption + asset spec + hashtags — the copy lives on the parent Task card, not in a subtask. Every LinkedIn Task still gets the standard 4 social-media subtasks per [`../jira-csv-guidelines.md`](../jira-csv-guidelines.md): `LinkedIn – Copy`, `LinkedIn – Asset Creation`, `LinkedIn – Approval`, `LinkedIn – Implementation / Publishing`. The `LinkedIn – Copy` subtask keeps its plain action description (`Draft the post copy.`) — it is the production step, not the storage location for copy. For `poll` rows, the `LinkedIn – Asset Creation` subtask Description uses the explicit skip note from `../jira-csv-guidelines.md` (native poll widget — no asset needed).
+  - **LinkedIn:** `Topic`, `Post type: <type-slug>` (`carousel`, `static-theme`, `static-blog`, `poll`, or `short-video` — derived from the slate row's `Channel` string per Step 3), `Wraps: <blog-slug>` (the blog brief this LinkedIn post pairs with), then a final `Copy:` line with a `[COPY_PLACEHOLDER]` token on the next line. The LinkedIn drafting process replaces that token **in the Task Description** with the drafted caption + asset spec + hashtags — the copy lives on the parent Task card, not in a subtask. Every LinkedIn Task still gets the standard 4 social-media subtasks per [`../jira-csv-guidelines.md`](../jira-csv-guidelines.md): `LinkedIn – Copy`, `LinkedIn – Asset Creation`, `LinkedIn – Approval`, `LinkedIn – Implementation / Publishing`. The `LinkedIn – Copy` subtask keeps its plain action description (`Draft the post copy.`) — it is the production step, not the storage location for copy. For `poll` rows, the `LinkedIn – Asset Creation` subtask Description uses the explicit skip note from `../jira-csv-guidelines.md` (native poll widget — no asset needed).
   - **Other non-blog channels:** minimal block with `Topic` and any channel-specific notes
 
-  Use standard CSV quoting for multi-line Description cells (double-quote the field, embed newlines literally). Leave `Epic Link` blank for every Task. Leave `Owner` blank for every Subtask.
+  Use standard CSV quoting for multi-line Description cells (double-quote the field, embed newlines literally). **Pre-fill `Epic Link`** on every Task with the current campaign Epic key (ask Travis once if unknown; it's long-lived). **Pre-fill subtask `Owner`** with the channel owner's Jira ID from the ownership table — Travis overrides at import only when a subtask owner varies.
 
 ### Step 6 — Verify and report
 

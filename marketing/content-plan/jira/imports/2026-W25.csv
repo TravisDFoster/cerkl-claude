@@ -1,5 +1,5 @@
 Work Item ID,Issue Type,Parent ID,Epic Link,Summary,Description,Owner,Channel,Start Date,Due Date
-T001,Task,,,Content - Blog (Cerkl.com) - How to Claim Your Strategic Seat in Internal Communications (Before Someone Else Does),"Topic: Practitioner-facing thought-leadership for IC managers/directors feeling squeezed between AI-displaces-tactical-work and not-yet-at-the-leadership-table. Empowering, not preachy. Lead post of a 3-post Cerkular sequence.
+T001,Task,,MCM-992,Content - Blog (Cerkl.com) - How to Claim Your Strategic Seat in Internal Communications (Before Someone Else Does),"Topic: Practitioner-facing thought-leadership for IC managers/directors feeling squeezed between AI-displaces-tactical-work and not-yet-at-the-leadership-table. Empowering, not preachy. Lead post of a 3-post Cerkular sequence.
 Slug: claim-strategic-seat-internal-communications
 Brief link: ../seo/briefs/claim-strategic-seat-internal-communications.md
 Primary keyword: strategic role of internal communications
@@ -13,7 +13,7 @@ S001,Subtask,T001,,Blog – Copy,Write the blog post copy from the brief / outli
 S002,Subtask,T001,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,2026-06-10,2026-06-11
 S003,Subtask,T001,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,2026-06-11,2026-06-12
 S004,Subtask,T001,,Blog – Implementation / Publishing,Stage in Webflow with CMS properties; schedule publish.,,Blog Posts,2026-06-12,2026-06-15
-T002,Task,,,Email Marketing - Email - Webinar Promo #1: Rachel Folz Insights/Measurement (6/25),"Topic: Promote Rachel Folz Insights / Measurement webinar (Cerkl-internal, 2026-06-25, 12:00 PM EDT) to the Cerkular subscriber list as Email Blast #1 of a 3-email sequence (Blast #2 lands Mon 6/22; final reminder Wed 6/24).
+T002,Task,,MCM-992,Email Marketing - Email - Webinar Promo #1: Rachel Folz Insights/Measurement (6/25),"Topic: Promote Rachel Folz Insights / Measurement webinar (Cerkl-internal, 2026-06-25, 12:00 PM EDT) to the Cerkular subscriber list as Email Blast #1 of a 3-email sequence (Blast #2 lands Mon 6/22; final reminder Wed 6/24).
 Audience: Cerkular subscribers + Foundations ICP (HR generalists / ops leads at 50–500 person companies). Filter out current Foundations+ / Omni AI customers (they get a separate path).
 CTA: Free webinar registration (no card, no trial).
 Theme context: Webinar anchors on the May 2026 Insights Update redesign — frame for ICs who currently send blind out of Outlook/Gmail and want a measurement layer they can defend.
@@ -24,7 +24,7 @@ S005,Subtask,T002,,Email – Copy,Draft the promo email copy from the webinar br
 S006,Subtask,T002,,Email – Audience Segmentation,Build the recipient list in HubSpot; filter out current paid customers.,,Marketing Emails,2026-06-11,2026-06-12
 S007,Subtask,T002,,Email – Review,Review copy + segment; sign off for send.,,Marketing Emails,2026-06-12,2026-06-12
 S008,Subtask,T002,,Email – Schedule Send,Schedule the send in HubSpot; confirm delivery.,,Marketing Emails,2026-06-15,2026-06-15
-T003,Task,,,Content - Blog (ICP) - Beyond Pride Month: building inclusive comms structures that last,"Topic: Inclusion comms as a year-round IC discipline beyond Pride Month — practical framework for building inclusive comms structures that last past visibility moments.
+T003,Task,,MCM-992,Content - Blog (ICP) - Beyond Pride Month: building inclusive comms structures that last,"Topic: Inclusion comms as a year-round IC discipline beyond Pride Month — practical framework for building inclusive comms structures that last past visibility moments.
 Slug: beyond-pride-month-building-inclusive-comms-structures-that
 Note: ICPro has no brief queue — slug synthesized from the deliverable title at scaffold time
 Draft (Google Doc): https://docs.google.com/document/d/1ZeflgcqJDUtoUUh4vGOchJvA8NZNZKj9uBREnxpQtAM/edit",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Blog Posts,2026-06-09,2026-06-16
@@ -32,38 +32,40 @@ S009,Subtask,T003,,Blog – Copy,Write the blog post copy from the outline.,,Blo
 S010,Subtask,T003,,Blog – Image Creation,Create or source images per the post outline.,,Blog Posts,2026-06-10,2026-06-11
 S011,Subtask,T003,,Blog – Approval,Review draft + edit pass; sign off for publishing.,,Blog Posts,2026-06-12,2026-06-15
 S012,Subtask,T003,,Blog – Implementation / Publishing,Stage in Wix with CMS properties; schedule publish.,,Blog Posts,2026-06-15,2026-06-16
-T004,Task,,,Social Media - LinkedIn - Webinar diagnostic poll: which measurement gap eats most of your week?,"Topic: Diagnostic poll on which measurement gap eats most of the IC team's week — preview for the Rachel Folz webinar on Insights / Measurement (2026-06-25)
-Post type: poll
-Wraps: rachel-folz-june-2026
+T004,Task,,MCM-992,Social Media - LinkedIn - Theme post: Shadow AI Is a Content Problem (Not a Governance Problem) — pre-tease for 6/17 blog,"Topic: Pre-tease (T-1) for Travis-bylined Shadow AI POV publishing 2026-06-17 on cerkl.com. Counter-frame to Staffbase + LumApps + Simpplr ad creative (all framing shadow AI as a governance problem). Cerkl's wedge: it is a content problem. W1 of the 3-week wedge sprint (2026-06-17 → 2026-07-08). Replaces the previously planned webinar diagnostic poll (Rachel Folz webinar delayed).
+Post type: static-theme
+Wraps: shadow-ai-content-problem (source signal: ../content-plan/inputs.md §2026-06-03 and ../../research/ic-trends/team-update/2026-06-03.md §1)
 Copy:
 [CAPTION]
 
-The Insights / Measurement webinar on June 25 opens with a diagnostic. Before Rachel walks through the May 2026 Insights redesign, attendees self-sort by where their measurement work is breaking down.
+Three IC platforms have moved shadow AI from blog content to ad headlines this month. The stat being cited: 79% of organizations suspect employees are misusing AI tools they did not approve.
 
-Most IC teams have one of four gaps eating the week. Open rate as the only number leadership sees, so it gets treated as the proof point even when it isn't one. Reports that lump every employee together, so the team can't say what landed with the frontline vs the corporate office. Channel-by-channel dashboards that don't talk to each other, so a Teams post and an email blast each take credit for the same employee. Or no through-line from a send to a behavior, so when a CHRO asks ""did the policy update land,"" the honest answer is ""we sent it.""
+The pitch underneath those headlines, from every one of them, is governance. A control center. An approval workflow. A way to police what employees type into the tools IT did not pick.
 
-All four are real problems. Most weeks one of them is the one slowing the team down.
+The IC buyer does not sit in that conversation. IT does. CISO does. Legal does. The Director of Internal Communications is on a different call, trying to figure out why the new benefits policy did not land with the frontline.
 
-Which gap is yours this quarter? Webinar registration in the first comment.
+Shadow AI is a real signal. The framing misreads what it is signalling.
 
-[POLL]
+Employees who reach for an unsanctioned AI to draft a customer email, a Slack post, a policy explainer have escaped a content gap. The sanctioned channel did not have the tool they needed, did not have the speed they needed, or did not trust them with either. Governance was downstream of that gap.
 
-Question: Which measurement gap eats most of your IC week?
-Options:
-1. Open rate (the vanity number)
-2. No audience segmentation in reports
-3. No cross-channel attribution
-4. No through-line from send to behavior
-Duration: 1 week
+A better default fixes the gap. The AI-assisted send IC owns. Proof it landed. A read-rate the team can defend. Shadow AI loses its escape route the moment the sanctioned channel is the faster one.
+
+Full POV tomorrow on the Cerkl blog.
+
+[ASSET SPEC]
+
+Visual concept: Counter-frame card. Left side, smaller and grayed: competitor framing as a pull-quote of the verbatim Staffbase / Simpplr / LumApps line (""Your employees are already using AI tools you haven't approved"" or ""Stop shadow AI without killing productivity""). Right side, larger and on-brand. The Cerkl reframe: ""Shadow AI is a content problem dressed as a governance one.""
+Asset role: counter-frame card. Origination needed; no existing manifest. Pull rendered URL during asset-process step.
+Brand direction: Cerkl brand colors per design CONTEXT. Logo lockup bottom-right. No headshot. Legible at LinkedIn mobile feed size.
 
 [HASHTAGS]
 
-#InternalCommunications #EmployeeEngagement #Measurement",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-06-12,2026-06-16
-S013,Subtask,T004,,LinkedIn – Copy,Draft the poll question + answer options.,,Social Media,2026-06-12,2026-06-12
-S014,Subtask,T004,,LinkedIn – Asset Creation,(N/A for polls — native poll widget; skip or mark done.),,Social Media,2026-06-12,2026-06-12
-S015,Subtask,T004,,LinkedIn – Approval,Review poll question + options; sign off.,,Social Media,2026-06-15,2026-06-15
-S016,Subtask,T004,,LinkedIn – Implementation / Publishing,Publish poll natively on LinkedIn; confirm live.,,Social Media,2026-06-16,2026-06-16
-T005,Task,,,Content - Blog (Cerkl.com) - Shadow AI Is a Content Problem (Not a Governance Problem),"Topic: Travis-bylined editorial POV reframing shadow AI as a content problem, not a governance problem. Counter-frame to Staffbase + LumApps + Simpplr ad creative (which all pitch governance as the answer). Cerkl's wedge: the sanctioned channel is the fix, not a control panel. Tie to Foundations-free as live-in-an-afternoon proof. W1 of the 3-week wedge sprint (sprint window 2026-06-17 → 2026-07-08).
+#InternalCommunications #EmployeeEngagement #AIinIC",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-06-12,2026-06-16
+S013,Subtask,T004,,LinkedIn – Copy,Draft the post copy.,,Social Media,2026-06-12,2026-06-12
+S014,Subtask,T004,,LinkedIn – Asset Creation,Create or source the static asset (counter-frame card; origination needed — see draft for asset spec).,,Social Media,2026-06-12,2026-06-12
+S015,Subtask,T004,,LinkedIn – Approval,Review post + asset; sign off.,,Social Media,2026-06-15,2026-06-15
+S016,Subtask,T004,,LinkedIn – Implementation / Publishing,Schedule in LinkedIn / Buffer / native; confirm publish.,,Social Media,2026-06-16,2026-06-16
+T005,Task,,MCM-992,Content - Blog (Cerkl.com) - Shadow AI Is a Content Problem (Not a Governance Problem),"Topic: Travis-bylined editorial POV reframing shadow AI as a content problem, not a governance problem. Counter-frame to Staffbase + LumApps + Simpplr ad creative (which all pitch governance as the answer). Cerkl's wedge: the sanctioned channel is the fix, not a control panel. Tie to Foundations-free as live-in-an-afternoon proof. W1 of the 3-week wedge sprint (sprint window 2026-06-17 → 2026-07-08).
 Slug: shadow-ai-content-problem
 Brief link: — (no SEO brief — Travis-bylined editorial; source signal in ../content-plan/inputs.md §2026-06-03 and ../../research/ic-trends/team-update/2026-06-03.md §1)
 Primary keyword: — (editorial POV, not SEO-driven)
@@ -77,40 +79,37 @@ S017,Subtask,T005,,Blog – Copy,Draft the Travis-bylined POV; lean on the team-
 S018,Subtask,T005,,Blog – Image Creation,Create or source hero image (a pull-quote card or a visual counter-frame on governance vs. content).,,Blog Posts,2026-06-12,2026-06-15
 S019,Subtask,T005,,Blog – Approval,Travis reviews; Furqan edits and signs off for publishing.,,Blog Posts,2026-06-15,2026-06-16
 S020,Subtask,T005,,Blog – Implementation / Publishing,Stage in Webflow with CMS properties; schedule publish.,,Blog Posts,2026-06-16,2026-06-17
-T006,Task,,,Social Media - LinkedIn - Webinar promo theme: Insights / Measurement with Rachel Folz (6/25) — registration push,"Topic: Registration push for the Rachel Folz Insights / Measurement webinar (2026-06-25, 12:00 PM EDT). Positioning the May 2026 Insights redesign as the measurement layer ICs need to defend their work to leadership.
-Post type: static-theme
-Wraps: rachel-folz-june-2026
+T006,Task,,MCM-992,Social Media - LinkedIn - Link post: How to Claim Your Strategic Seat in Internal Communications (Wed amplification),"Topic: Wed amplification link post for the Strategic Seat blog (publishes Mon 2026-06-15). Identity-crisis angle (AI eats the tactical layer; leadership has not yet pulled IC into the strategic conversation). Pairs with the Thu 2026-06-18 link post (T007) which carries the playbook angle (5 decisions + 4 conversations + executive vocabulary). Both push the same blog with different hooks. Replaces the previously planned Rachel Folz webinar registration push (webinar delayed).
+Post type: static-blog
+Wraps: claim-strategic-seat-internal-communications
 Copy:
 [CAPTION]
 
-Most IC teams can tell you the open rate. They can't tell you who acted on the message.
+The IC identity crisis of 2026: AI moved into the tactical work IC used to own (the drafting, the formatting, the segmentation). Leadership has not, yet, moved IC into the conversations where the work IC should now own gets decided.
 
-When a CHRO asks ""did the new benefits policy land with the frontline,"" the answer most teams have to give is ""we sent it, and 38% opened."" That isn't the question.
+That gap is what ""be more strategic"" points at without saying.
 
-Open rate is the easiest number to produce and the easiest to defend, so it became the default report. Useful, but not enough to hold the function's ground when the budget conversation comes around.
+The Cerkl blog from Monday names the five decisions IC managers and directors should be in the room for in 2026. The four conversations to start having now to get pulled into those rooms. And the executive vocabulary to use once you are there.
 
-The measurement layer IC teams need ties a send to a segment, a segment to an outcome, and an outcome to a number the CHRO can put in a board update. Per-audience, per-channel, per-content. With the receipts the compliance team also asks for.
+For practitioners caught between a tactical layer that is shrinking and a strategic layer that is still gatekept, the piece is a working playbook. The language. The metrics. The specific moves.
 
-The May 2026 Insights redesign in Broadcast was rebuilt around that question. Rachel Folz, our Head of Product, is walking through it on June 25 at 12 PM ET.
+Read the full breakdown:
 
-Bring the dashboard your CHRO last asked for. She'll show you how to build it.
-
-45 minutes, free, no card. Link in comments.
+https://cerkl.com/blog/claim-strategic-seat-internal-communications
 
 [ASSET SPEC]
 
-Visual concept: Speaker card. Rachel Folz headshot, name, title (Head of Product, Cerkl), webinar title (""Insights / Measurement""), and date/time block (""June 25 · 12 PM ET"").
-Asset role: speaker-card from rachel-folz-june-2026/canva-manifests/ — pull rendered URL during asset-process step.
-Brand direction: Cerkl brand colors per design CONTEXT. Logo placement per speaker-card template. Headshot at left, type block at right. Date/time legible at mobile feed size.
+Visual concept: LinkedIn link card. Auto-rendered from the blog URL.
+Brand direction: Pre-flight check before posting — confirm Webflow meta title, meta description, and OG image are live and rendering correctly in the LinkedIn preview. If the OG image is missing or off-brand, regenerate before scheduling.
 
 [HASHTAGS]
 
-#InternalCommunications #EmployeeEngagement #HRTech",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-06-12,2026-06-17
+#InternalCommunications #EmployeeEngagement #ICLeadership",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-06-12,2026-06-17
 S021,Subtask,T006,,LinkedIn – Copy,Draft the post copy.,,Social Media,2026-06-12,2026-06-15
-S022,Subtask,T006,,LinkedIn – Asset Creation,Create or source the static asset (speaker-card or webinar promo banner — see ../channels/webinar/rachel-folz-june-2026/canva-manifests/).,,Social Media,2026-06-12,2026-06-15
+S022,Subtask,T006,,LinkedIn – Asset Creation,(N/A for link posts — LinkedIn auto-renders link card from blog URL; pre-flight Webflow meta/OG before scheduling.),,Social Media,2026-06-12,2026-06-15
 S023,Subtask,T006,,LinkedIn – Approval,Review post + asset; sign off.,,Social Media,2026-06-16,2026-06-16
 S024,Subtask,T006,,LinkedIn – Implementation / Publishing,Schedule in LinkedIn / Buffer / native; confirm publish.,,Social Media,2026-06-17,2026-06-17
-T007,Task,,,Social Media - LinkedIn - Link post: How to Claim Your Strategic Seat in Internal Communications,"Topic: Link post pointing to the strategic-seat blog
+T007,Task,,MCM-992,Social Media - LinkedIn - Link post: How to Claim Your Strategic Seat in Internal Communications,"Topic: Link post pointing to the strategic-seat blog
 Post type: static-blog
 Wraps: claim-strategic-seat-internal-communications
 Copy:
@@ -140,4 +139,4 @@ S025,Subtask,T007,,LinkedIn – Copy,Draft the post copy.,,Social Media,2026-06-
 S026,Subtask,T007,,LinkedIn – Asset Creation,Create or source the static asset (typically the blog hero or a pull-quote card).,,Social Media,2026-06-15,2026-06-16
 S027,Subtask,T007,,LinkedIn – Approval,Review post + asset; sign off.,,Social Media,2026-06-17,2026-06-17
 S028,Subtask,T007,,LinkedIn – Implementation / Publishing,Schedule in LinkedIn / Buffer / native; confirm publish.,,Social Media,2026-06-18,2026-06-18
-T008,Task,,,Social Media - LinkedIn - Short Video (out-of-band),"Short video — topic, wrap, and copy planned outside the content-plan system. This row exists for Jira capacity tracking only. Furqan fills topic + asset at publish time.",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-06-15,2026-06-18
+T008,Task,,MCM-992,Social Media - LinkedIn - Short Video (out-of-band),"Short video — topic, wrap, and copy planned outside the content-plan system. This row exists for Jira capacity tracking only. Furqan fills topic + asset at publish time.",712020:77c51683-fca4-4aee-9e06-929c5b3042ea,Social Media,2026-06-15,2026-06-18

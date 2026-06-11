@@ -1,24 +1,22 @@
 # Weekly LinkedIn Production
 
-> Take every LinkedIn row scheduled for the locked week of [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md) and draft each post. Output: one `.md` per post in `drafts/`, with the copy inserted into the matching `Copy` subtask of that week's Jira CSV at [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/).
+> Take every LinkedIn Task in the target week's Jira CSV ([`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/)) and draft each post. Usually invoked by the [weekly content session](../../content-plan/weekly-content-process.md) (Phase 3). Output: one `.md` per post in `drafts/`, with the copy inserted into the matching Task's `Copy:` line in the CSV.
 
 ## Trigger
 
 **Default (weekly):**
 - "Write next week's LinkedIn posts"
 - "Run weekly LinkedIn production"
-- "Draft Week 1 LinkedIn"
+- "Draft this week's LinkedIn"
 
 **Overrides:**
 - *Single post:* `"Draft this week's carousel"`, `"Write the [topic] poll"` — operates on one row by post type or by source slug
-- *Multi-week:* `"Draft weeks 1-2 LinkedIn"` — pulls all LinkedIn rows from multiple weeks
+- *Multi-week:* `"Draft LinkedIn for the next 2 weeks"` — pulls LinkedIn Tasks from multiple weekly CSVs
 
 ## Inputs
 
-I'll ask before drafting:
-
-1. **Target window** — defaults to Week 1 (locked) of rolling-4week. Can be overridden with a single post or multiple weeks.
-2. **Subset?** — within the target window, all LinkedIn rows or a specific list.
+1. **Target week** — defaults to the next publish week (or the week the session just scaffolded).
+2. **Subset?** — within the target week, all LinkedIn Tasks or a specific list.
 
 ## Context to load
 
@@ -35,28 +33,22 @@ I'll ask before drafting:
 
 ## Steps
 
-### Step 1 — Load LinkedIn rows for the target window
+### Step 1 — Load LinkedIn Tasks from the week's CSV
 
 - **Owner:** Claude
-- **Inputs:** [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md), the resolved target window
-- **Produces:** an in-memory list of LinkedIn rows: `{post_type, working_title, publish_date, owner, source_pointer, iso_week}`
+- **Inputs:** [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/) for the target week
+- **Produces:** an in-memory list of LinkedIn posts: `{post_type, working_title, publish_date, wraps, iso_week, task_summary}`
 
-Filter rows where `Channel` contains "LinkedIn" and `Publish` falls within the target window. Map the `Channel` string to the type slug:
+Parse the CSV (real CSV library — Descriptions contain newlines). Take every Task row whose `Channel` is Social Media / Summary starts with `Social Media - LinkedIn`, excluding barebones short-video rows. From each Task Description, read `Post type:` (the type slug: `carousel`, `static-theme`, `static-blog`, `poll`) and `Wraps: <blog-slug>` (what the post wraps); the `Copy:` line should carry `[COPY_PLACEHOLDER]`.
 
-| `Channel` string | Type slug |
-|---|---|
-| LinkedIn carousel | `carousel` |
-| LinkedIn static/theme | `static-theme` |
-| LinkedIn static/blog | `static-blog` |
-| LinkedIn poll | `poll` |
-| LinkedIn short video | `short-video` |
+If a post you expected is missing from the CSV, report it and ask Travis — the [weekly session](../../content-plan/weekly-content-process.md) owns row creation and can patch it; this process doesn't create rows. Posts whose `Copy:` is already filled: skip (or confirm a re-draft).
 
-The `Source brief` column points at what the post wraps. Confirm the resolved list with the user before proceeding.
+Confirm the resolved list with the user before proceeding.
 
 ### Step 2 — Load the wrapped source
 
 - **Owner:** Claude
-- **Inputs:** Each row's `Source brief` pointer
+- **Inputs:** Each post's `Wraps:` pointer
 - **Produces:** Loaded context for the source asset
 
 Typical sources:
@@ -66,16 +58,6 @@ Typical sources:
 - **Press release:** read from `channels/newsroom-pr/`
 
 If multiple posts wrap the same source (typical for blog-wrap weeks), load it once.
-
-### Step 3 — Verify Jira CSV has LinkedIn Task rows
-
-- **Owner:** Claude
-- **Inputs:** Each post's `iso_week` and working title
-- **Produces:** Verified `{post → CSV Copy-subtask row}` mappings
-
-For each post, confirm the week's CSV at `../../content-plan/jira/imports/YYYY-Www.csv` has a Task row whose Summary matches the LinkedIn deliverable, whose Description contains a `[COPY_PLACEHOLDER]` token (on its `Copy:` line).
-
-**If any LinkedIn Task row is missing:** stop and surface the gap. This process does not create CSV rows — Monday reconcile owns that.
 
 ### Step 4 — Draft each post
 
@@ -102,7 +84,7 @@ The draft is the source of truth. It contains:
 - **Inputs:** Draft file path + target CSV path + the matching LinkedIn Task row
 - **Produces:** Updated CSV Task Description
 
-For each draft, find the Task row in the target week's CSV whose Summary matches the LinkedIn deliverable. Replace `[COPY_PLACEHOLDER]` in that **Task's** Description (on its `Copy:` line) with the draft contents (caption + asset spec + hashtags). The `LinkedIn – Copy` subtask stays as the plain production step — don't write copy into it.
+For each draft, update the Task row it was loaded from in Step 1 (matched by `Post type:` + `Wraps:` in the Description — not by free-text Summary). Replace `[COPY_PLACEHOLDER]` in that **Task's** Description (on its `Copy:` line) with the draft contents (caption + asset spec + hashtags). The `LinkedIn – Copy` subtask stays as the plain production step — don't write copy into it.
 
 Use a real CSV library (Python `csv`, or equivalent) — Description fields contain newlines.
 

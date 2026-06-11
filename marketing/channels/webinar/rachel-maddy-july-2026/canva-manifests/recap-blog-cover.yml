@@ -1,0 +1,31 @@
+template_id: EAGqLEylplk
+page_index: 1                            # page 1 = 2-speaker layout
+design_title: rachel-maddy-recap-blog-cover-2026-07-09
+aspect_ratio: 3:2
+
+# Per asset-packs.md override: no date element on page 1 (date dropped — implied by "Webinar Recap" kicker).
+# Headshots are SHAPE circles only (no editable image fills) — sub-agent insert_fill + manual drag.
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "Name": ["Rachel Folz", "Maddy Rieman"]
+  "Title": ["Head of Product, Cerkl", "Head of Customer Success, Cerkl"]
+
+image_assets:
+  headshot: ["MAFZdaEt2Wc", "MAFZdS-3JCo"]   # [speaker 1 = Rachel, speaker 2 = Maddy]
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10, 2-speaker) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMMytN3hA"
+  edit_url: "https://www.canva.com/design/DAHMMytN3hA/edit"
+  view_url: "https://www.canva.com/d/CsY1vEKTapvtZCM"
+  speakers: 2
+  warnings:
+    - "headshots are SHAPE circles (no image fills); inserted 280x280 RECTs at circle coords — drag onto each circle"
+    - "78-char title wraps to 3 lines"
+  manual_drag_required:
+    - {subject: "Rachel Folz", asset_id: "MAFZdaEt2Wc", instruction: "Drag onto LEFT circle ~top 487 left 223 (280x280)"}
+    - {subject: "Maddy Rieman", asset_id: "MAFZdS-3JCo", instruction: "Drag onto RIGHT circle ~top 487 left 439 (280x280)"}

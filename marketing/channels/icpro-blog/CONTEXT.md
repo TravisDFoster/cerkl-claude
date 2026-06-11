@@ -62,7 +62,7 @@ Peer expert, not vendor. Authoritative on IC trends and patterns. Practical, dir
 
 ## Source of truth for what to write
 
-The shared monthly content plan: `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/monthly-content-plans/[month-year].md` and `[month-year]-jira.csv`. ICPro posts are CSV rows where `Channel = Blog Posts` AND the `Summary` field begins with `Content - Blog (ICP) -`. The `(ICP)` marker is the rule that splits ICPro posts from cerkl.com posts in the shared plan.
+The weekly Jira CSV: `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/YYYY-Www.csv` (created by the weekly content session). ICPro posts are CSV rows where `Channel = Blog Posts` AND the `Summary` field begins with `Content - Blog (ICP) -`. The `(ICP)` marker is the rule that splits ICPro posts from cerkl.com posts.
 
 ## Capacity
 

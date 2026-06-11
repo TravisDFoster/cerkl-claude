@@ -12,8 +12,8 @@ Bridges the editing skill and Jira import for internalcommspro.com posts. Takes 
 ## Inputs
 
 1. **Live file:** `/Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/blog-posts-live/YYYY-MM-DD_[slug]_live.md`
-2. **Slug:** the synthesized slug for this post. ICPro has no brief queue, so the slug is derived from the deliverable title in [`../../../../content-plan/rolling-4week.md`](/Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md) using the rule in [`../../../../content-plan/jira/CONTEXT.md`](/Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/CONTEXT.md#slug-threading-the-canonical-identity). The orchestrator should compute the slug once and pass it forward; the scaffold creator uses the same rule independently.
-3. **Target CSV path:** `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/YYYY-Www.csv`. Compute the ISO week from the publish date in rolling-4week if not provided.
+2. **Slug:** the synthesized slug for this post, read from the Task row's `Slug:` line in the week's CSV (computed once at scaffold time — see [`../../../../content-plan/jira/CONTEXT.md`](/Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/CONTEXT.md#slug-threading-the-canonical-identity)). The orchestrator passes it forward; never re-derive it.
+3. **Target CSV path:** `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/YYYY-Www.csv`. Compute the ISO week from the Task's Due Date if not provided.
 
 ## Pre-flight checks
 
@@ -64,7 +64,7 @@ Report back to the orchestrator:
 
 - Create the Jira CSV — that's done at Monday reconcile per [`../../../../content-plan/content-lifecycle-process.md`](/Users/travisfoster/claude-code/cerkl/marketing/content-plan/content-lifecycle-process.md). If the scaffold doesn't exist, fail with a clear error.
 - Synthesize a slug from scratch — the slug is computed upstream (by the orchestrator at write time and the scaffold creator at Monday reconcile). Publishing only matches.
-- Modify rolling-4week.md — content-plan owns that file; publishing is downstream.
+- Create or restructure CSV rows — the weekly session owns those; publishing only fills its token.
 - Import to Jira — Travis runs the manual import after all rows in the week's CSV have their URLs filled in.
 
 ## Error modes

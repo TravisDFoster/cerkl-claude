@@ -2,11 +2,10 @@
 
 Authoritative list of what the content dashboard surfaces. The refresh process reads this file, scans/parses declared sources, and regenerates `data.json`.
 
-**Convention**: filename + folder parsing where possible. Three declared exceptions to the parse-only rule (read contents):
+**Convention**: filename + folder parsing where possible. Two declared exceptions to the parse-only rule (read contents):
 
 1. **Brief frontmatter** — read `status:` (and `title:`, `scheduled_for:`) only. No body content.
-2. **Rolling 4-week markdown tables** — parse the table rows under each `## Week N` heading.
-3. **Jira import CSVs** — parse rows to count Drive URLs filled and LinkedIn copy filled vs placeholders.
+2. **Jira import CSVs** — parse rows to count Drive URLs filled and LinkedIn copy filled vs placeholders.
 
 Everything else is filename-parsed (blog post state from folder + filename suffix).
 
@@ -16,20 +15,7 @@ Everything else is filename-parsed (blog post state from folder + filename suffi
 
 ### Source order
 
-`jira-imports` first (it's the spine and the end goal), then `rolling-4week`, briefs, blog posts, and the derived `linkedin` view.
-
-### rolling-4week
-- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md`
-- **parser**: markdown-table
-- **sections**:
-  - `## Carryover from prior week (in flight)` → `carryover[]`
-  - `## Week 1 — …` → `weeks[0]` (also surfaces as `this_week` since W1 is locked)
-  - `## Week 2 — …` → `weeks[1]`
-  - `## Week 3 — …` → `weeks[2]`
-  - `## Week 4 — …` → `weeks[3]`
-- **columns** (table header order, in this file's convention): `Deliverable | Channel | Publish | Owner | Status | Source brief`
-- **brief link**: when `Source brief` cell contains a markdown link `[slug](../seo/briefs/slug.md)`, capture the slug and rewrite the URL to `/cerkl/marketing/seo/briefs/<slug>.md`. When it contains plain text (`wraps leadership-story blog`, `—`, `**needs brief from SEO by 2026-05-22**`), keep as text.
-- **last_reconciled**: parse the line `**Last reconciled:** YYYY-MM-DD` near the top.
+`jira-imports` first (it's the spine and the end goal), then briefs, blog posts, and the derived `linkedin` view.
 
 ### briefs
 - **path**: `/Users/travisfoster/claude-code/cerkl/marketing/seo/briefs/`
@@ -52,7 +38,7 @@ Everything else is filename-parsed (blog post state from folder + filename suffi
   ```
   Draft this week's planned Cerkl blog post(s) for cerkl.com.
 
-  Check the rolling 4-week plan: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md
+  Scheduled briefs are canonical: grep scheduled_for /Users/travisfoster/claude-code/cerkl/marketing/seo/briefs/*.md
   Process: /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md
   ```
 
@@ -68,15 +54,16 @@ Everything else is filename-parsed (blog post state from folder + filename suffi
   ```
   Draft this week's planned Internal Comms Pro blog post(s) for internalcommspro.com.
 
-  Check the rolling 4-week plan: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md
+  The week's Jira CSV holds the ICPro row: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/
   Process: /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/icpro-blog-process.md
   ```
 
 ### linkedin
-- **derivation**: read-only from `rolling-4week` rows whose `Channel` cell starts with `LinkedIn` (any variant: `LinkedIn poll`, `LinkedIn static/theme`, `LinkedIn static/blog`, `LinkedIn short video`, `LinkedIn carousel`).
-- **buckets**: rows are bucketed by `Status` column → `planned` · `in-progress` · `shipped` · `pulled` · `blocked`.
-- **dashboard shows**: planned · in-progress · shipped (pulled / blocked are kept off the main view but counted in `stats`).
-- **notes**: LinkedIn has no per-post artifact on disk today, so there's nothing to filename-parse. If a `linkedin/posts-{state}/` folder convention is adopted later, add it as its own source and the dashboard will absorb it (the rolling-4week derivation can stay as the fallback / source-of-truth for scheduled rows that don't have draft files yet).
+- **path**: `/Users/travisfoster/claude-code/cerkl/marketing/channels/linkedin/drafts/`
+- **match**: `*.md`
+- **title parser**: filename pattern is `YYYY-MM-DD_type_slug.md`. Strip the leading date, capture `type` (`static-theme`, `static-blog`, `poll`, `carousel`, `short-video`), humanize the slug.
+- **buckets**: by date — `upcoming` (date ≥ today) · `published` (date < today).
+- **notes**: drafts are the on-disk artifact; copy/asset fill state lives in the week's Jira CSV (already counted by `jira-imports`).
 
 ### jira-imports
 - **path**: `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/`
@@ -113,7 +100,6 @@ Routed via `cerkl/CLAUDE.md`:
 
 ## Future work
 
-- LinkedIn `posts-{draft,live}/` state convention — would mirror the blog channels; until then we derive from rolling-4week.
 - "Wraps X blog" backlinks — if a LinkedIn row says `wraps leadership-story blog`, the dashboard could resolve that to the actual brief slug and show the LinkedIn rows clustered under their parent blog post. Useful but more parsing logic.
 - Brief tier / channel filters — the registry already declares `tier` and `target_channel` on briefs; could surface as facets in the Briefs zone.
 - Diff against previous refresh — persist `data.previous.json` to power a "what changed since last refresh" summary.

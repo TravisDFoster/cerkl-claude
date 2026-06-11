@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-06-09",
+  "generated_at": "2026-06-10",
   "last_reconciled": "2026-06-09",
   "current_csv_file": "2026-W25.csv",
   "stats": {
     "briefs_total": 13,
     "briefs_queued": 5,
-    "briefs_scheduled": 7,
-    "briefs_in_progress": 1,
+    "briefs_scheduled": 6,
+    "briefs_in_progress": 2,
     "briefs_shipped": 0,
-    "seo_blog_in_flight": 21,
-    "seo_blog_live_count": 12,
-    "icpro_blog_in_flight": 12,
-    "icpro_blog_live_count": 6,
+    "seo_blog_in_flight": 25,
+    "seo_blog_live_count": 14,
+    "icpro_blog_in_flight": 14,
+    "icpro_blog_live_count": 7,
     "linkedin_planned": 16,
     "linkedin_in_progress": 4,
     "linkedin_shipped": 0,
     "linkedin_blocked": 0,
     "weeks_planned": 4,
-    "csvs_in_prep": 1,
-    "csvs_ready": 0,
+    "csvs_in_prep": 0,
+    "csvs_ready": 1,
     "csvs_imported": 4,
-    "current_csv_drive_fill": "0/3",
-    "current_csv_copy_fill": "0/3"
+    "current_csv_drive_fill": "3/3",
+    "current_csv_copy_fill": "3/3"
   },
   "csvs": [
     {
@@ -134,7 +134,7 @@
       "week_iso": "2026-W25",
       "week_monday": "2026-06-15",
       "week_range": "2026-06-15 → 2026-06-19",
-      "status": "in-prep",
+      "status": "ready-to-import",
       "counts": {
         "tasks_total": 8,
         "cerkl_blog_tasks": 2,
@@ -144,15 +144,15 @@
       },
       "readiness": {
         "drive_urls": {
-          "filled": 0,
+          "filled": 3,
           "total": 3
         },
         "linkedin_copy": {
-          "filled": 0,
+          "filled": 3,
           "total": 3
         }
       },
-      "import_ready": false
+      "import_ready": true
     }
   ],
   "actions": [
@@ -171,27 +171,6 @@
       "prompt": "Generate the Jira CSV scaffold for the next publish week (2026-W26).\n\nOutput: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W26.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/jira-scaffold-process.md"
     },
     {
-      "id": "bulk-write-cerkl-blog",
-      "label": "Bulk-write cerkl.com blog drafts for 2026-W25",
-      "ready": true,
-      "reason": "2 cerkl.com blog Task(s) in 2026-W25.csv still have [DRIVE_URL_PLACEHOLDER]",
-      "prompt": "Bulk-write all cerkl.com blog drafts for rows with [DRIVE_URL_PLACEHOLDER] in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md\n\nFor each cerkl.com blog Task in the CSV with [DRIVE_URL_PLACEHOLDER], run the writing+publishing pipeline and replace the placeholder with the resulting Google Drive URL."
-    },
-    {
-      "id": "bulk-write-icpro-blog",
-      "label": "Bulk-write Internal Comms Pro blog drafts for 2026-W25",
-      "ready": true,
-      "reason": "1 ICPro blog Task(s) in 2026-W25.csv still have [DRIVE_URL_PLACEHOLDER]",
-      "prompt": "Bulk-write all Internal Comms Pro blog drafts for rows with [DRIVE_URL_PLACEHOLDER] in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/icpro-blog-process.md\n\nFor each ICPro blog Task in the CSV with [DRIVE_URL_PLACEHOLDER], run the writing+publishing pipeline and replace the placeholder with the resulting Google Drive URL."
-    },
-    {
-      "id": "bulk-write-linkedin",
-      "label": "Bulk-write LinkedIn copy for 2026-W25",
-      "ready": true,
-      "reason": "3 LinkedIn Task(s) in 2026-W25.csv still have [COPY_PLACEHOLDER]",
-      "prompt": "Bulk-write LinkedIn copy in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/linkedin/linkedin-process.md\n\nFor each LinkedIn Task whose Description still contains [COPY_PLACEHOLDER], draft the post and replace the placeholder with [CAPTION] / [POLL], [ASSET SPEC], and [HASHTAGS] in the Task Description."
-    },
-    {
       "id": "fill-brief-gaps",
       "label": "Fill SEO brief gaps in rolling-4week",
       "ready": true,
@@ -204,6 +183,27 @@
       "ready": true,
       "reason": "Always available",
       "prompt": "Refresh my content dashboard.\n\nProcess: /Users/travisfoster/claude-code/cerkl/content-dashboard/content-dashboard-process.md"
+    },
+    {
+      "id": "bulk-write-cerkl-blog",
+      "label": "Bulk-write cerkl.com blog drafts for 2026-W25",
+      "ready": false,
+      "reason": "All 2 cerkl.com blog Task(s) in 2026-W25.csv have Drive URLs filled",
+      "prompt": "Bulk-write all cerkl.com blog drafts for rows with [DRIVE_URL_PLACEHOLDER] in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md\n\nFor each cerkl.com blog Task in the CSV with [DRIVE_URL_PLACEHOLDER], run the writing+publishing pipeline and replace the placeholder with the resulting Google Drive URL."
+    },
+    {
+      "id": "bulk-write-icpro-blog",
+      "label": "Bulk-write Internal Comms Pro blog drafts for 2026-W25",
+      "ready": false,
+      "reason": "All 1 ICPro blog Task(s) in 2026-W25.csv have Drive URLs filled",
+      "prompt": "Bulk-write all Internal Comms Pro blog drafts for rows with [DRIVE_URL_PLACEHOLDER] in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/icpro-blog/icpro-blog-process.md\n\nFor each ICPro blog Task in the CSV with [DRIVE_URL_PLACEHOLDER], run the writing+publishing pipeline and replace the placeholder with the resulting Google Drive URL."
+    },
+    {
+      "id": "bulk-write-linkedin",
+      "label": "Bulk-write LinkedIn copy for 2026-W25",
+      "ready": false,
+      "reason": "All 4 LinkedIn Task(s) in 2026-W25.csv have drafted copy",
+      "prompt": "Bulk-write LinkedIn copy in this week's Jira CSV.\n\nJira CSV: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/jira/imports/2026-W25.csv\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/linkedin/linkedin-process.md\n\nFor each LinkedIn Task whose Description still contains [COPY_PLACEHOLDER], draft the post and replace the placeholder with [CAPTION] / [POLL], [ASSET SPEC], and [HASHTAGS] in the Task Description."
     }
   ],
   "carryover": [
@@ -263,7 +263,7 @@
     }
   ],
   "this_week": {
-    "label": "Week 1 — June 15–19: Claim the Strategic Seat + Webinar Promo (locked, in Jira)",
+    "label": "Week 1 — June 15–19: Claim the Strategic Seat + Shadow AI POV (locked, in Jira)",
     "range": "2026-06-15 → 2026-06-19",
     "locked": true,
     "in_jira": true,
@@ -296,12 +296,12 @@
         "source_brief_url": null
       },
       {
-        "deliverable": "Webinar diagnostic poll: which measurement gap eats most of your week?",
-        "channel": "LinkedIn poll",
+        "deliverable": "Theme post: Shadow AI is a content problem (not a governance one) — pre-tease for 6/17 blog",
+        "channel": "LinkedIn static/theme",
         "publish": "2026-06-16",
         "owner": "Furqan",
         "status": "planned",
-        "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)",
+        "source_brief": "wraps shadow-ai-content-problem blog (Travis-bylined POV — source signal in [team-update/2026-06-03 §1](../../research/ic-trends/team-update/2026-06-03.md))",
         "source_brief_url": null
       },
       {
@@ -314,12 +314,12 @@
         "source_brief_url": "/cerkl/marketing/seo/briefs/inputs.md §2026-06-03 Shadow-AI POV.md"
       },
       {
-        "deliverable": "Webinar promo theme: Insights / Measurement with Rachel Folz (June 25) — registration push",
-        "channel": "LinkedIn static/theme",
+        "deliverable": "Link post: How to Claim Your Strategic Seat in Internal Communications (Wed amplification)",
+        "channel": "LinkedIn static/blog",
         "publish": "2026-06-17",
         "owner": "Furqan",
         "status": "planned",
-        "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)",
+        "source_brief": "wraps claim-strategic-seat blog",
         "source_brief_url": null
       },
       {
@@ -345,7 +345,7 @@
   "weeks": [
     {
       "n": 1,
-      "label": "Week 1 — June 15–19: Claim the Strategic Seat + Webinar Promo (locked, in Jira)",
+      "label": "Week 1 — June 15–19: Claim the Strategic Seat + Shadow AI POV (locked, in Jira)",
       "range": "2026-06-15 → 2026-06-19",
       "locked": true,
       "in_jira": true,
@@ -378,12 +378,12 @@
           "source_brief_url": null
         },
         {
-          "deliverable": "Webinar diagnostic poll: which measurement gap eats most of your week?",
-          "channel": "LinkedIn poll",
+          "deliverable": "Theme post: Shadow AI is a content problem (not a governance one) — pre-tease for 6/17 blog",
+          "channel": "LinkedIn static/theme",
           "publish": "2026-06-16",
           "owner": "Furqan",
           "status": "planned",
-          "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)",
+          "source_brief": "wraps shadow-ai-content-problem blog (Travis-bylined POV — source signal in [team-update/2026-06-03 §1](../../research/ic-trends/team-update/2026-06-03.md))",
           "source_brief_url": null
         },
         {
@@ -396,12 +396,12 @@
           "source_brief_url": "/cerkl/marketing/seo/briefs/inputs.md §2026-06-03 Shadow-AI POV.md"
         },
         {
-          "deliverable": "Webinar promo theme: Insights / Measurement with Rachel Folz (June 25) — registration push",
-          "channel": "LinkedIn static/theme",
+          "deliverable": "Link post: How to Claim Your Strategic Seat in Internal Communications (Wed amplification)",
+          "channel": "LinkedIn static/blog",
           "publish": "2026-06-17",
           "owner": "Furqan",
           "status": "planned",
-          "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)",
+          "source_brief": "wraps claim-strategic-seat blog",
           "source_brief_url": null
         },
         {
@@ -677,13 +677,6 @@
     ],
     "scheduled": [
       {
-        "title": "How to Claim Your Strategic Seat in Internal Communications",
-        "slug": "claim-strategic-seat-internal-communications",
-        "url": "/cerkl/marketing/seo/briefs/claim-strategic-seat-internal-communications.md",
-        "target_channel": "seo-blog",
-        "scheduled_for": "2026-06-15"
-      },
-      {
         "title": "10 Best Internal Newsletter Software Solutions for 2026 (Refresh)",
         "slug": "internal-email-newsletter-software",
         "url": "/cerkl/marketing/seo/briefs/internal-email-newsletter-software.md",
@@ -733,6 +726,13 @@
         "url": "/cerkl/marketing/seo/briefs/internal-communications-in-financial-services.md",
         "target_channel": "seo-blog",
         "scheduled_for": "2026-06-10"
+      },
+      {
+        "title": "How to Claim Your Strategic Seat in Internal Communications",
+        "slug": "claim-strategic-seat-internal-communications",
+        "url": "/cerkl/marketing/seo/briefs/claim-strategic-seat-internal-communications.md",
+        "target_channel": "seo-blog",
+        "scheduled_for": "2026-06-15"
       }
     ]
   },
@@ -744,6 +744,18 @@
       "new_run_prompt": "Draft this week's planned Cerkl blog post(s) for cerkl.com.\n\nCheck the rolling 4-week plan: /Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md\nProcess: /Users/travisfoster/claude-code/cerkl/marketing/channels/seo-blog/seo-blog-process.md",
       "buckets": {
         "pre_writing": [
+          {
+            "title": "Shadow Ai Content Problem",
+            "date": "2026-06-17",
+            "slug": "shadow-ai-content-problem",
+            "url": "/cerkl/marketing/channels/seo-blog/blog-posts-pre-writing/2026-06-17_shadow-ai-content-problem_pre-writing.md"
+          },
+          {
+            "title": "Claim Strategic Seat Internal Communications",
+            "date": "2026-06-15",
+            "slug": "claim-strategic-seat-internal-communications",
+            "url": "/cerkl/marketing/channels/seo-blog/blog-posts-pre-writing/2026-06-15_claim-strategic-seat-internal-communications_pre-writing.md"
+          },
           {
             "title": "Internal Communications In Financial Services",
             "date": "2026-06-10",
@@ -831,6 +843,18 @@
         ],
         "draft": [
           {
+            "title": "Shadow Ai Content Problem",
+            "date": "2026-06-17",
+            "slug": "shadow-ai-content-problem",
+            "url": "/cerkl/marketing/channels/seo-blog/blog-posts-draft/2026-06-17_shadow-ai-content-problem_draft.md"
+          },
+          {
+            "title": "Claim Strategic Seat Internal Communications",
+            "date": "2026-06-15",
+            "slug": "claim-strategic-seat-internal-communications",
+            "url": "/cerkl/marketing/channels/seo-blog/blog-posts-draft/2026-06-15_claim-strategic-seat-internal-communications_draft.md"
+          },
+          {
             "title": "Internal Communications In Financial Services",
             "date": "2026-06-10",
             "slug": "internal-communications-in-financial-services",
@@ -874,6 +898,18 @@
           }
         ],
         "live": [
+          {
+            "title": "Shadow Ai Content Problem",
+            "date": "2026-06-17",
+            "slug": "shadow-ai-content-problem",
+            "url": "/cerkl/marketing/channels/seo-blog/blog-posts-live/2026-06-17_shadow-ai-content-problem_live.md"
+          },
+          {
+            "title": "Claim Strategic Seat Internal Communications",
+            "date": "2026-06-15",
+            "slug": "claim-strategic-seat-internal-communications",
+            "url": "/cerkl/marketing/channels/seo-blog/blog-posts-live/2026-06-15_claim-strategic-seat-internal-communications_live.md"
+          },
           {
             "title": "Internal Communications In Financial Services",
             "date": "2026-06-10",
@@ -957,6 +993,12 @@
       "buckets": {
         "pre_writing": [
           {
+            "title": "Beyond Pride Month Building Inclusive Comms Structures That",
+            "date": "2026-06-16",
+            "slug": "beyond-pride-month-building-inclusive-comms-structures-that",
+            "url": "/cerkl/marketing/channels/icpro-blog/blog-posts-pre-writing/2026-06-16_beyond-pride-month-building-inclusive-comms-structures-that_pre-writing.md"
+          },
+          {
             "title": "What Inclusive Internal Comms Actually Looks Like Beyond",
             "date": "2026-06-09",
             "slug": "what-inclusive-internal-comms-actually-looks-like-beyond",
@@ -995,6 +1037,12 @@
         ],
         "draft": [
           {
+            "title": "Beyond Pride Month Building Inclusive Comms Structures That",
+            "date": "2026-06-16",
+            "slug": "beyond-pride-month-building-inclusive-comms-structures-that",
+            "url": "/cerkl/marketing/channels/icpro-blog/blog-posts-draft/2026-06-16_beyond-pride-month-building-inclusive-comms-structures-that_draft.md"
+          },
+          {
             "title": "What Inclusive Internal Comms Actually Looks Like Beyond",
             "date": "2026-06-09",
             "slug": "what-inclusive-internal-comms-actually-looks-like-beyond",
@@ -1032,6 +1080,12 @@
           }
         ],
         "live": [
+          {
+            "title": "Beyond Pride Month Building Inclusive Comms Structures That",
+            "date": "2026-06-16",
+            "slug": "beyond-pride-month-building-inclusive-comms-structures-that",
+            "url": "/cerkl/marketing/channels/icpro-blog/blog-posts-live/2026-06-16_beyond-pride-month-building-inclusive-comms-structures-that_live.md"
+          },
           {
             "title": "What Inclusive Internal Comms Actually Looks Like Beyond",
             "date": "2026-06-09",
@@ -1075,18 +1129,18 @@
   "linkedin": {
     "planned": [
       {
-        "deliverable": "Webinar diagnostic poll: which measurement gap eats most of your week?",
-        "channel": "LinkedIn poll",
+        "deliverable": "Theme post: Shadow AI is a content problem (not a governance one) — pre-tease for 6/17 blog",
+        "channel": "LinkedIn static/theme",
         "publish": "2026-06-16",
         "owner": "Furqan",
-        "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)"
+        "source_brief": "wraps shadow-ai-content-problem blog (Travis-bylined POV — source signal in [team-update/2026-06-03 §1](../../research/ic-trends/team-update/2026-06-03.md))"
       },
       {
-        "deliverable": "Webinar promo theme: Insights / Measurement with Rachel Folz (June 25) — registration push",
-        "channel": "LinkedIn static/theme",
+        "deliverable": "Link post: How to Claim Your Strategic Seat in Internal Communications (Wed amplification)",
+        "channel": "LinkedIn static/blog",
         "publish": "2026-06-17",
         "owner": "Furqan",
-        "source_brief": "wraps [rachel-folz-june-2026 webinar](../channels/webinar/rachel-folz-june-2026/rachel-folz.md)"
+        "source_brief": "wraps claim-strategic-seat blog"
       },
       {
         "deliverable": "Link post: How to Claim Your Strategic Seat in Internal Communications",

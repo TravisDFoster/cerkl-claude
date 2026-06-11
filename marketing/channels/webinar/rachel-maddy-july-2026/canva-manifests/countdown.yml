@@ -1,0 +1,27 @@
+template_id: EAGqLGh6dGQ
+page_index: 1
+design_title: rachel-maddy-countdown-2026-07-09
+aspect_ratio: 1:1 1080x1080
+
+# countdown is the LinkedIn 2-days-to-go boost asset — X is always "2".
+# Per asset-packs.md override: no speaker slots, no headshot, date placeholder has no leading pipe.
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "Mar 6, 2025 1:00 pm est": "Jul 9, 2026 12:00 PM EDT"
+  "X": "2"
+
+# image_assets intentionally omitted — countdown has no headshot slot.
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMM905XTM"
+  edit_url: "https://www.canva.com/design/DAHMM905XTM/edit"
+  view_url: "https://www.canva.com/d/J-RWxJ4Ki70OGVU"
+  speakers: 0
+  warnings:
+    - "78-char title wraps to 3 lines"
+  manual_drag_required: []

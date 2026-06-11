@@ -1,0 +1,33 @@
+template_id: EAGqLKbOQ-E
+page_index: 1                            # page 1 = 2-speaker layout
+design_title: rachel-maddy-recording-thumbnail-2026-07-09
+aspect_ratio: 16:9
+
+# Per asset-packs.md override: no date element on page 1 (date dropped).
+# Title slot handled via the orchestrator's smart text-matching against live richtexts[].
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "Name": ["Rachel Folz", "Maddy Rieman"]
+  "Title": ["Head of Product, Cerkl", "Head of Customer Success, Cerkl"]
+
+image_assets:
+  headshot: ["MAFZdaEt2Wc", "MAFZdS-3JCo"]   # 2 editable headshot fills
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10, 2-speaker) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMM8rNdPg"
+  edit_url: "https://www.canva.com/design/DAHMM8rNdPg/edit"
+  view_url: "https://www.canva.com/d/R5ER3NThy72VEVp"
+  speakers: 2
+  warnings:
+    - "no_text_match 'Title' — page 1 name pills hold Firstname/Lastname only; skipped (not substring-matched)"
+    - "no date element on page 1 (expected)"
+    - "name pills are 2-line: filled 'Rachel\\nFolz' / 'Maddy\\nRieman'"
+    - "78-char headline overflows the visible frame at preview scale — may want to resize title box in UI"
+  manual_drag_required:
+    - {occurrence: 1, subject: "Rachel Folz", asset_id: "MAFZdaEt2Wc", instruction: "Drag into speaker-1 frame ~875,121"}
+    - {occurrence: 2, subject: "Maddy Rieman", asset_id: "MAFZdS-3JCo", instruction: "Drag into speaker-2 frame ~727,385"}

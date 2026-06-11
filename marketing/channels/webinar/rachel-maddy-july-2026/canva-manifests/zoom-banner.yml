@@ -1,0 +1,27 @@
+template_id: EAGqLIWzZTY
+page_index: 1                            # page 1 = 2-speaker layout
+design_title: rachel-maddy-zoom-banner-2026-07-09
+aspect_ratio: 3.2:1
+
+text_values:
+  "Webinar title": "Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer"
+  "Name": ["Rachel Folz", "Maddy Rieman"]
+  "Title": ["Head of Product, Cerkl", "Head of Customer Success, Cerkl"]
+  "|   Mar 6, 2025 1:00 pm est": "|   Jul 9, 2026 12:00 PM EDT"
+
+image_assets:
+  headshot: ["MAFZdaEt2Wc", "MAFZdS-3JCo"]   # 2 editable headshot fills
+
+commit_mode: auto
+
+# === Render result (re-render 2026-06-10, 2-speaker) ===
+result:
+  rendered_at: "2026-06-10"
+  design_id: "DAHMM36crOw"
+  edit_url: "https://www.canva.com/design/DAHMM36crOw/edit"
+  view_url: "https://www.canva.com/d/QIsG1euthDfAo5p"
+  speakers: 2
+  warnings: []
+  manual_drag_required:
+    - {occurrence: 1, subject: "Rachel Folz", asset_id: "MAFZdaEt2Wc", instruction: "Drag into left speaker frame ~left 361"}
+    - {occurrence: 2, subject: "Maddy Rieman", asset_id: "MAFZdS-3JCo", instruction: "Drag into right speaker frame ~left 485"}

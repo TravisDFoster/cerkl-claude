@@ -1,6 +1,8 @@
-# Rachel Folz — Canva Manifests (June 2026 webinar)
+# Rachel Folz + Maddy Rieman — Canva Manifests (July 2026 webinar)
 
-> 9 manifest skeletons generated at init from the **IC Thought Leadership** pack ([`../../asset-packs.md`](../../asset-packs.md)). Each is a render-ready input for [`template-fill`](/Users/travisfoster/claude-code/cerkl/marketing/design/canva-skills/template-fill/SKILL.md), with `headshot: ["TBD"]` pending Rachel's photo.
+> 9 manifests from the **IC Thought Leadership** pack ([`../../asset-packs.md`](../../asset-packs.md)), each a render-ready input for [`template-fill`](/Users/travisfoster/claude-code/cerkl/marketing/design/canva-skills/template-fill/SKILL.md).
+>
+> **Updated 2026-06-10:** event moved to **2026-07-09**, retitled, and a **second speaker (Maddy Rieman, Head of Customer Success)** added. Every page-1 template carries the 2-speaker layout, so both speakers are now filled (the prior solo render left a placeholder speaker-2 on those templates). `countdown` has no speaker slots; `recording-thumbnail` / `recap-blog-cover` have no page-1 date element.
 
 ## Manifests in this folder
 
@@ -18,11 +20,12 @@
 
 ## What's pre-filled
 
-- Webinar title: `Insights / Measurements` (working — refine after `webinar-brief`)
-- Name: `Rachel Folz`
-- Title: `Head of Product, Cerkl`
-- Date placeholder: `|   Jun 25, 2026 12:00 PM EDT` (substring match — refine per warnings)
-- Headshot: **TBD**
+- Webinar title: `Stop Guessing: 5 Questions Every Internal Communicator Should Be Able to Answer`
+- Speaker 1: `Rachel Folz` — `Head of Product, Cerkl` — headshot `MAFZdaEt2Wc`
+- Speaker 2: `Maddy Rieman` — `Head of Customer Success, Cerkl` — headshot `MAFZdS-3JCo`
+- Date placeholder: `|   Jul 9, 2026 12:00 PM EDT` (no pipe on `countdown`; dropped on `recording-thumbnail` / `recap-blog-cover`)
+
+> **Render note:** the new title is long (~78 chars). Verify it doesn't overflow on the tighter banners (`email-banner` 3:1, `zoom-banner` 3.2:1, `share-16x9`) when reviewing renders.
 
 ## To render
 
@@ -32,6 +35,6 @@ Once Rachel's headshot is uploaded to Canva and the asset ID is captured:
 2. Invoke `template-fill` per manifest (one invocation per role).
 3. Paste each returned Canva edit URL into:
    - The matching row of the Drive MAP (Phase 3 / 4 / 5 promo row)
-   - The matching row of [`../rachel-folz-project-plan.md`](../rachel-folz-project-plan.md)
+   - The matching row of [`../rachel-maddy-project-plan.md`](../rachel-maddy-project-plan.md)
 
 If `template-fill` returns warnings about unmatched placeholders (likely on the date/time field — template placeholders vary), refine that manifest's `text_values` to match the actual element-map for that template (`canva-skills/template-fill/_element-maps/<template_id>.json`) and re-invoke.

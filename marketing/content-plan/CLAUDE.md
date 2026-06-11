@@ -1,6 +1,6 @@
 # Identity
 
-You are helping Travis plan, schedule, and operationalize Cerkl's organic content — the cross-channel orchestration layer that sits between SEO briefs and channel writing pipelines. Output of this folder is a Jira-importable CSV plus the operational state (`rolling-4week.md`) that drives every channel's week.
+You are helping Travis plan, schedule, and operationalize Cerkl's organic content — the cross-channel orchestration layer that sits between SEO briefs and channel writing pipelines. Output of this folder is the weekly Jira-importable CSV plus everything produced behind it, all driven by one ritual: the weekly content session.
 
 ## Context to load
 
@@ -13,14 +13,13 @@ You are helping Travis plan, schedule, and operationalize Cerkl's organic conten
 
 | Task | Go to |
 |---|---|
+| **Run the weekly content session** (review → decide → scaffold → produce → import) | [`weekly-content-process.md`](weekly-content-process.md) |
 | Understand how the whole content system fits together (orientation) | [`content-lifecycle-process.md`](content-lifecycle-process.md) |
-| Run the Monday reconcile (triage briefs, process inputs, lock next week, generate Jira scaffold) | [`plan-reconcile-process.md`](plan-reconcile-process.md) |
-| Generate a month's week-by-week plan from the annual plan | [`monthly-plan-generation-process.md`](monthly-plan-generation-process.md) |
-| Generate the weekly Jira CSV scaffold (invoked by plan reconcile, also runnable standalone) | [`jira/jira-scaffold-process.md`](jira/jira-scaffold-process.md) |
-| Read the current state of what's being made and when | [`rolling-4week.md`](rolling-4week.md) |
-| Dump a new idea/signal for Monday triage | [`inputs.md`](inputs.md) |
+| Generate the weekly Jira CSV scaffold (invoked by the session, also runnable standalone) | [`jira/jira-scaffold-process.md`](jira/jira-scaffold-process.md) |
+| Dump a new idea/signal for session triage; check what's coming up | [`inputs.md`](inputs.md) |
+| See what's scheduled (blogs) | `grep "status:\|scheduled_for:" ../seo/briefs/*.md` — frontmatter is canonical |
 | See the annual campaign arc | [`2026-content-plan.md`](2026-content-plan.md) |
-| Look up Jira field rules, capacity limits, ownership | [`jira-csv-guidelines.md`](jira-csv-guidelines.md) |
+| Look up Jira field rules, capacity ceilings, ownership | [`jira-csv-guidelines.md`](jira-csv-guidelines.md) |
 
 ## File Structure
 
@@ -28,24 +27,21 @@ You are helping Travis plan, schedule, and operationalize Cerkl's organic conten
 content-plan/
 ├── CLAUDE.md                              ← you are here (router)
 ├── CONTEXT.md                             ← stable knowledge about the system
-├── content-lifecycle-process.md           ← narrative spine: brief → publish
-├── plan-reconcile-process.md              ← weekly Monday reconcile
-├── monthly-plan-generation-process.md     ← monthly plan from annual
+├── weekly-content-process.md              ← THE weekly ritual (review → decide → scaffold → produce → import)
+├── content-lifecycle-process.md           ← narrative spine: brief → publish (orientation)
 ├── 2026-content-plan.md                   ← annual themes + Epics + ICP context
-├── jira-csv-guidelines.md                 ← Jira field rules + capacity limits
-├── rolling-4week.md                       ← operational source of truth (Travis edits at reconcile)
-├── inputs.md                              ← raw idea mailbox
-├── monthly-content-plans/                 ← generated monthly plans, one per month
+├── jira-csv-guidelines.md                 ← Jira field rules + capacity ceilings
+├── inputs.md                              ← Upcoming (dated) · Ideas (mailbox) · Theme & stance
 └── jira/                                  ← weekly Jira CSV import context
     ├── CONTEXT.md
     ├── jira-scaffold-process.md
     ├── _template.csv
-    ├── imports/                           ← weekly CSVs awaiting / recently imported
+    ├── imports/                           ← weekly CSVs
     └── archive/                           ← CSVs older than ~3 months
 ```
 
 ## Rules
 
-- Brief lifecycle changes (queued → scheduled → in-progress → shipped) always touch the brief's frontmatter in [`../seo/briefs/`](../seo/briefs/) — the brief file is canonical; this folder's tables reference it.
-- Slug threading is the system's identity model. Slug stays exactly the same string from brief → rolling-4week → Jira CSV → publishing skill → Webflow URL. If you're tempted to "fix" a slug downstream, you're introducing drift — fix the source instead. See [`jira/CONTEXT.md`](jira/CONTEXT.md#slug-threading-the-canonical-identity).
-- Travis writes `rolling-4week.md` at Monday reconcile; channels never edit it directly. Channels state completion in chat at session end; reconcile reads git log.
+- Brief lifecycle changes (queued → scheduled → in-progress → shipped) always touch the brief's frontmatter in [`../seo/briefs/`](../seo/briefs/) — the brief file is canonical for the blog schedule; nothing re-records it.
+- Slug threading is the system's identity model. Slug stays exactly the same string from brief → Jira CSV → publishing skill → Webflow URL. If you're tempted to "fix" a slug downstream, you're introducing drift — fix the source instead. See [`jira/CONTEXT.md`](jira/CONTEXT.md#slug-threading-the-canonical-identity).
+- The weekly session creates and restructures CSV rows; channel processes only fill their placeholder tokens.

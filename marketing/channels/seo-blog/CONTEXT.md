@@ -32,4 +32,4 @@ Cerkl's blog template renders as: Top CTA → Content 1 (Rich Text) → Middle C
 
 ## Source of truth for what to write
 
-The monthly content plan: `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/monthly-content-plans/[month-year].md` and `[month-year]-jira.csv`. The "Blog Posts" channel rows in the CSV are this channel's queue for the month.
+The schedule: brief frontmatter (`status` + `scheduled_for`) in `/Users/travisfoster/claude-code/cerkl/marketing/seo/briefs/` is canonical; the weekly Jira CSV at `content-plan/jira/imports/YYYY-Www.csv` is the locked week.

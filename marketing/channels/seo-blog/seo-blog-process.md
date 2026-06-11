@@ -1,27 +1,20 @@
 # Weekly SEO Blog Production
 
-> Take every SEO brief scheduled for the locked week of [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md) and produce every cerkl.com blog post: pre-writing → draft → edit → publish. Output: one `_live.md` per post in `blog-posts-live/`, each uploaded to Drive, each Drive URL inserted into that week's Jira CSV at [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/).
+> Take every SEO brief scheduled for the target publish week and produce every cerkl.com blog post: pre-writing → draft → edit → publish. Usually invoked by the [weekly content session](../../content-plan/weekly-content-process.md) (Phase 3). Output: one `_live.md` per post in `blog-posts-live/`, each uploaded to Drive, each Drive URL inserted into that week's Jira CSV at [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/).
 
 ## Trigger
 
 **Default (weekly):**
 - "Write next week's blog posts"
 - "Run weekly blog production"
-- "Write Week 1 of rolling-4week"
 
 **Overrides:**
 - *Single post:* `"Write the [slug] blog post"`, `"Run production on the [slug] brief"` — operates on one brief by slug, regardless of which week it's in
-- *Multi-week:* `"Write weeks 1-2"`, `"Run production for weeks 1, 2, and 3"`, `"Write the next 3 weeks of blog posts"` — pulls scheduled briefs from multiple weeks of rolling-4week
-
-There is no monthly override — backfilling a whole month means specifying weeks 1–4 explicitly (which by definition spans the rolling 4 weeks).
+- *Multi-week:* `"Write the next 3 weeks of blog posts"` — pulls scheduled briefs across a wider date range
 
 ## Inputs
 
-I'll ask before scaffolding:
-
-1. **Target window** — defaults to Week 1 (locked) of [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md). Can be overridden with:
-   - A single brief slug (single-post mode)
-   - One or more rolling-4week week numbers (e.g., `weeks 1-2`, `weeks 1, 2, 3`)
+1. **Target window** — defaults to the next publish week (or the week the session just scaffolded). Can be overridden with a single brief slug or a wider date range.
 2. **Subset?** — within the target window, all scheduled briefs or a specific list of slugs.
 
 ## Context to load
@@ -46,36 +39,31 @@ I'll ask before scaffolding:
 ### Step 1 — Load scheduled briefs for the target window
 
 - **Owner:** Claude
-- **Inputs:** [`../../seo/briefs/`](../../seo/briefs/), [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md), and the resolved target window from input #1
+- **Inputs:** [`../../seo/briefs/`](../../seo/briefs/) and the resolved target window from input #1
 - **Produces:** an in-memory list of seo-blog briefs to process, each with `{brief_path, slug, scheduled_for, title, target_pillar, primary_solution, iso_week}` parsed from the brief's YAML frontmatter
 
 **What to do:**
 
-Resolve the target window into a set of publish dates:
-- **Default (Week 1):** read rolling-4week.md, take the date range of the "Week 1" section header
-- **Multi-week:** union of the date ranges of each requested Week N section
-- **Single-post (slug override):** skip the date math — load the brief directly and derive its `iso_week` from `scheduled_for`
-
-For multi-post runs, list files in `seo/briefs/` (exclude `_template.md` and `archive/`) and filter to briefs where **all** of:
+Brief frontmatter is the canonical schedule. List files in `seo/briefs/` (exclude `_template.md` and `archive/`) and filter to briefs where **all** of:
 - `target_channel: seo-blog`, **AND**
 - `status: scheduled` or `in-progress`, **AND**
 - `scheduled_for:` falls within the target window's date range
 
-Cross-check against rolling-4week.md: every brief surfaced should have a matching row whose `Source brief` column links the same brief file. Flag discrepancies (brief scheduled but not in plan, or plan row pointing at a brief whose `status` ≠ `scheduled`/`in-progress`) before proceeding.
+**Single-post (slug override):** skip the filter — load the brief directly and derive its `iso_week` from `scheduled_for`.
 
 If `Subset?` was specified, narrow the list. Confirm the list with the user before proceeding.
 
 ICPro posts are out of scope — they have their own production path under [`../icpro-blog/`](../icpro-blog/).
 
-### Step 1.5 — Verify Jira CSV scaffold exists
+### Step 1.5 — Check the Jira CSV scaffold
 
 - **Owner:** Claude
 - **Inputs:** `iso_week` for each post; [`../../content-plan/jira/imports/`](../../content-plan/jira/imports/)
-- **Produces:** a verified set of `{slug → CSV path}` mappings
+- **Produces:** a set of `{slug → CSV path}` mappings (some possibly missing)
 
-For each distinct ISO week in the batch, confirm a CSV scaffold exists at `../../content-plan/jira/imports/YYYY-Www.csv` and that it contains a row for each brief slug in the batch (look for `Slug: <slug>` in the Description column of a Task row).
+For each distinct ISO week in the batch, check that a CSV exists at `../../content-plan/jira/imports/YYYY-Www.csv` and contains a Task row for each brief slug (look for `Slug: <slug>` in the Description column).
 
-If any CSV is missing or any expected row is absent: **stop and surface the gap.** Monday reconcile is supposed to create the scaffold; this skill does not. Surface which week(s) and which slug(s) are missing so Travis can fix the scaffold before re-running.
+If a CSV or a row is missing, **report the gap and ask Travis**: patch the CSV now (add the row / run [`../../content-plan/jira/jira-scaffold-process.md`](../../content-plan/jira/jira-scaffold-process.md) for that week), or proceed without the CSV update for that post (the Drive URL then just gets pasted into Jira by hand later). Don't silently skip — but don't hard-stop the rest of the batch either.
 
 ### Step 2a — Pre-writing (per post)
 
@@ -147,7 +135,7 @@ Editing **does not** upload to Drive anymore — that moves to Step 2d.
 - Preserve all other rows and fields; CSV must still parse cleanly after the edit
 - Return: Drive Doc URL + CSV row updated confirmation + final score line (passed through from editing)
 
-Per the publishing skill: this skill does **not** flip brief `status` (stays `in-progress` until Furqan ships in Webflow) and does **not** create the CSV (Monday reconcile owns that).
+Per the publishing skill: this skill does **not** flip brief `status` (stays `in-progress` until Furqan ships in Webflow) and does **not** create the CSV (the weekly session owns that).
 
 ### Step 3 — Roll up and report
 
@@ -169,7 +157,7 @@ Print one line per post: `slug — score X/50 — <Doc URL> — CSV row updated 
 - A Drive Doc per live file (Claude-Uploads folder, `YYYY-MM-DD — <H1 title>` naming)
 - An updated Jira CSV at `../../content-plan/jira/imports/YYYY-Www.csv` — one row per post has its `[DRIVE_URL_PLACEHOLDER]` replaced with the actual URL
 - A chat-printed roll-up summary
-- Each brief's `status:` is `in-progress` after Step 2a runs. **Do not flip to `shipped` here** — that happens when the post actually goes live in Webflow, after Furqan copies the Drive Doc over. The planner archives shipped briefs on the next Monday reconcile.
+- Each brief's `status:` is `in-progress` after Step 2a runs. **Do not flip to `shipped` here** — that happens when the post actually goes live in Webflow, after Furqan copies the Drive Doc over. Shipped briefs get archived at a weekly session.
 
 ## Future work
 

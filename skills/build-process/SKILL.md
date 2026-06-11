@@ -305,4 +305,13 @@ A top-down review of the workspace against PRINCIPLES.md found the rot concentra
 - **Tombstones and placeholders linger.** `strategy/company-info.md` was a "this file has moved" stub; `strategy/REFERENCES.md` was unfilled boilerplate; `strategy/monthly-plans/` and `marketing/channels/youtube/` were empty dirs. All deleted. **Rule:** when a file moves, delete the original — the git history is the tombstone.
 - **Root comment vs. root behavior:** root tree claimed "shared/ ← load before any task" while root's `Context to load:` lists only `broadcast.md`. Comment fixed to match reality. Note: `hubspot/` relies on inheriting root's loads and assumes icp + broadcast — flagged, deliberately not touched (needs its own session).
 
+### 2026-06-10 — Content pipeline consolidation (weekly content session)
+
+Five separately-triggered processes (reconcile → scaffold → blogs → LinkedIn copy → assets) chained by hard "stop if upstream didn't run" gates felt rigid and broke when run out of order. Consolidated into one orchestrating walkthrough (`content-plan/weekly-content-process.md`); the channel processes survive as invoked legs.
+
+- **Hard gates are only needed between *separately-triggered* processes.** Inside one session, ordering can't go wrong — gates became "report + offer to patch." Keep exactly one creation rule (only the session creates CSV rows; channels fill tokens).
+- **Middle planning layers were re-recorded state.** `rolling-4week.md` and monthly plans mirrored what brief frontmatter (schedule), the weekly CSV (locked week), and the annual plan (themes) already held. Retired both; `inputs.md` gained an Upcoming section for the one thing nothing else carried (dated non-brief commitments + future-week sketches). **Rule:** before adding a planning file, name the state it holds that no existing artifact does.
+- **Placeholder tokens are progress markers, not contracts.** Unfilled tokens at import are fine (the team fills gaps in Jira), and a token scan doubles as the resume mechanism for a paused session. Don't police them.
+- **Convergent computation is drift waiting to happen.** ICPro's slug was synthesized independently by scaffold and orchestrator "using the same rule"; now computed once at scaffold, read from the CSV downstream. Same fix for LinkedIn CSV matching: key on `Post type:` + `Wraps:`, not free-text Summary.
+
 

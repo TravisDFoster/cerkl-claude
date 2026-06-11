@@ -1,24 +1,22 @@
 # Weekly ICPro Blog Production
 
-> Take every Internal Comms Pro (internalcommspro.com) blog row scheduled for the locked week of [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md) and produce every post: pre-writing → draft → edit → publish. Output: one `_live.md` per post in `blog-posts-live/`, each uploaded to Drive with `ICP` in the filename, each Drive URL inserted into that week's Jira CSV at [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/).
+> Take every Internal Comms Pro (internalcommspro.com) blog Task in the target week's Jira CSV and produce every post: pre-writing → draft → edit → publish. Usually invoked by the [weekly content session](../../content-plan/weekly-content-process.md) (Phase 3). Output: one `_live.md` per post in `blog-posts-live/`, each uploaded to Drive with `ICP` in the filename, each Drive URL inserted into that week's Jira CSV at [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/).
 
 ## Trigger
 
 **Default (weekly):**
 - "Write next week's ICPro blog posts"
 - "Run weekly ICPro production"
-- "Write Week 1 of rolling-4week for ICPro"
+- "Write this week's ICPro post"
 
 **Overrides:**
 - *Single post:* `"Write the [slug] ICPro post"`, `"Run production on the [date] ICPro row"` — operates on one row, regardless of which week
-- *Multi-week:* `"Write ICPro for weeks 1-2"`, `"Run ICPro production for weeks 1, 2, and 3"` — pulls from multiple weeks of rolling-4week
+- *Multi-week:* `"Write ICPro for the next 2 weeks"` — pulls ICPro Tasks from multiple weekly CSVs
 
 ## Inputs
 
-I'll ask before scaffolding:
-
-1. **Target window** — defaults to Week 1 (locked) of [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md). Can be overridden with a single deliverable title/slug or one or more rolling-4week week numbers.
-2. **Subset?** — within the target window, all ICPro rows or a specific list of slugs.
+1. **Target week** — defaults to the next publish week (or the week the session just scaffolded).
+2. **Subset?** — within the target week, all ICPro rows or a specific list of slugs.
 
 ## Context to load
 
@@ -41,37 +39,23 @@ I'll ask before scaffolding:
 
 ## Steps
 
-### Step 1 — Load ICPro rows from the target window
+### Step 1 — Load ICPro Tasks from the week's CSV
 
 - **Owner:** Claude
-- **Inputs:** [`../../content-plan/rolling-4week.md`](../../content-plan/rolling-4week.md) and the resolved target window from input #1
-- **Produces:** an in-memory list of ICPro posts to process, each with `{publish_date, deliverable_title, slug, iso_week}`
+- **Inputs:** [`../../content-plan/jira/imports/YYYY-Www.csv`](../../content-plan/jira/imports/) for the target week
+- **Produces:** an in-memory list of ICPro posts to process, each with `{publish_date, deliverable_title, slug, iso_week, csv_path}`
 
 **What to do:**
 
-Resolve the target window into a set of publish dates (same logic as seo-blog-process.md): default Week 1; or specific week numbers; or single-row by deliverable title.
+Parse the week's CSV (real CSV library — Descriptions contain newlines). **Row-matching rule:** `Issue Type = Task` AND `Summary` starts with `Content - Blog (ICP) -`. (The `Channel` column is `Blog Posts` for both Cerkl and ICP rows; the `(ICP)` marker in `Summary` differentiates them.)
 
-Read rolling-4week.md and filter rows where:
-- `Channel` column = `Blog — internalcommspro.com`, **AND**
-- `Publish` falls within the target window's date range
+For each matched row, read `Slug:` and the topic from the Description, and `Due Date` as the publish date. **The slug comes from the CSV** — it was synthesized once at scaffold time (see the [slug threading rule](../../content-plan/jira/CONTEXT.md#slug-threading-the-canonical-identity)); never re-derive it here.
 
-For each matched row:
-- **Derive the slug** from the deliverable title using the [slug synthesis rule](../../content-plan/jira/CONTEXT.md#slug-threading-the-canonical-identity): lowercase → strip common English articles (a, an, the, for, of, to, in, and) → replace runs of non-alphanumeric with `-` → strip leading/trailing hyphens → truncate to 60 chars (back to previous hyphen if mid-word) → suffix `-2`/`-3`/etc. on collision
-- Capture `publish_date`, `deliverable_title`, computed `slug`, and `iso_week` (from publish_date)
+ICPro has no brief queue — the Task Description is the source of truth for "what to write." If `Subset?` was specified, narrow the list. Confirm the list with the user before proceeding.
 
-ICPro has no brief queue — the deliverable title in rolling-4week is the source of truth for "what to write." If `Subset?` was specified, narrow the list. Confirm the list with the user before proceeding.
+If the week's CSV is missing or has no ICPro row you expected: report it and ask Travis — the [weekly session](../../content-plan/weekly-content-process.md) owns row creation and can patch it; this process doesn't create rows.
 
 Cerkl.com posts are out of scope — they have their own production path under [`../seo-blog/`](../seo-blog/).
-
-### Step 1.5 — Verify Jira CSV scaffold has matching rows
-
-- **Owner:** Claude
-- **Inputs:** `iso_week` and `slug` for each post; [`../../content-plan/jira/imports/`](../../content-plan/jira/imports/)
-- **Produces:** a verified set of `{slug → CSV path}` mappings
-
-For each distinct ISO week in the batch, confirm a CSV scaffold exists at `../../content-plan/jira/imports/YYYY-Www.csv` and that it contains a row for each post in the batch. **Row-matching rule:** `Issue Type = Task` AND `Summary` starts with `Content - Blog (ICP) -` AND `Description` contains `Slug: <slug>`. (The `Channel` column in these scaffolds is `Blog Posts` for both Cerkl and ICP rows; the `(ICP)` marker in `Summary` is what differentiates them — see [`channels/icpro-blog/CONTEXT.md`](CONTEXT.md#source-of-truth-for-what-to-write).)
-
-If any CSV is missing or any expected row is absent: **stop and surface the gap.** Monday reconcile creates the scaffold; this skill does not. If a row exists for the ICPro channel/week but the slug doesn't match, the scaffold creator and this orchestrator have synthesized different slugs — surface both for diagnosis.
 
 ### Step 2a — Pre-writing (per post)
 
@@ -165,7 +149,7 @@ Print one line per post: `slug — score X/50 — brand-check <pass/fixed> — <
 - An updated Jira CSV at `../../content-plan/jira/imports/YYYY-Www.csv` — one row per ICPro post has its `[DRIVE_URL_PLACEHOLDER]` replaced with the actual URL
 - A chat-printed roll-up summary
 
-ICPro has no brief queue, so there's no `status` field to flip anywhere. The Jira task itself tracks lifecycle; rolling-4week's `Status` column is the operational marker.
+ICPro has no brief queue, so there's no `status` field to flip anywhere. The Jira task itself tracks lifecycle.
 
 ## Future work
 

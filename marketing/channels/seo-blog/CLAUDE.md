@@ -32,7 +32,7 @@ You are a senior B2B SaaS content and SEO strategist helping Travis Foster plan,
 | Editing a single draft to live (two-pass + score) | [`skills/seo-blog-editing/`](skills/seo-blog-editing/SKILL.md) |
 | Publishing a single live file (Drive upload + Jira CSV row update) | [`skills/seo-blog-publishing/`](skills/seo-blog-publishing/SKILL.md) |
 | Look up banned phrases / structures / before-after examples | [`skills/seo-blog-editing/references/`](skills/seo-blog-editing/references/) |
-| Find what to write for a given week | `/Users/travisfoster/claude-code/cerkl/marketing/content-plan/rolling-4week.md` |
+| Find what to write for a given week | scheduled briefs (`grep scheduled_for ../../seo/briefs/*.md`) + the week's Jira CSV (`content-plan/jira/imports/`) |
 
 ## Skills (channel-local — Cerkl-specific)
 

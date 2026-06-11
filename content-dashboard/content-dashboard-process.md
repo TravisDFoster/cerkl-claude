@@ -36,22 +36,10 @@ The script writes `data.json` and copies the prior file to `data.previous.json` 
 ## Steps
 
 ### Step 1 — Read the registry
-Parse the `## Sources` section of `sources.md`. Six sources: `jira-imports`, `rolling-4week`, `briefs`, `seo-blog-posts`, `icpro-blog-posts`, `linkedin` (derived).
+Parse the `## Sources` section of `sources.md`. Five sources: `jira-imports`, `briefs`, `seo-blog-posts`, `icpro-blog-posts`, `linkedin`.
 
-### Step 2 — Parse rolling-4week.md
-Read [`marketing/content-plan/rolling-4week.md`](../marketing/content-plan/rolling-4week.md).
-
-- Capture `last_reconciled` from `**Last reconciled:** YYYY-MM-DD`.
-- For each H2 section that starts with `## Carryover` or `## Week N — `, parse the markdown table beneath it. Tables follow the convention: `| Deliverable | Channel | Publish | Owner | Status | Source brief |`.
-- Skip note/aside paragraphs between heading and table — start at the first `| ---` separator line.
-- For each data row:
-  - **deliverable**: column 1, trim whitespace, strip leading/trailing `*`
-  - **channel**: column 2
-  - **publish**: column 3 (`YYYY-MM-DD` or `—`)
-  - **owner**: column 4
-  - **status**: column 5 (`planned` / `in-progress` / `shipped` / `pulled` / `blocked`)
-  - **source_brief**: column 6. If contains a markdown link `[slug](path)`, extract `slug` and rewrite URL to `/cerkl/marketing/seo/briefs/<slug>.md` (path-strip the workspace prefix). Otherwise keep as raw text.
-- Stash results: `carryover[]`, `weeks[0..3]` (each with `label`, `range`, `rows[]`). The first week is also surfaced as `this_week` since the convention is "Week 1 is locked, in Jira."
+### Step 2 — This week from the newest Jira CSV
+The newest CSV in `marketing/content-plan/jira/imports/` IS the locked week (rolling-4week.md retired 2026-06-10). `this_week` = the per-row parse from Step 3 of that CSV (deliverable from Summary, dates, fill-state). `weeks[]` and `carryover[]` are no longer produced — drop the panels that rendered them on the next index.html touch (future-week intent lives in `content-plan/inputs.md` § Upcoming, linked from the header).
 
 ### Step 3 — Scan briefs and read frontmatter
 For each `*.md` in [`marketing/seo/briefs/`](../marketing/seo/briefs/) (excluding `_template.md` and global excludes):
@@ -80,13 +68,7 @@ For each file:
 Sort each bucket newest-first (TBD items go last). Compute `posts_in_flight` per channel = pre-writing + draft (live is shipped state).
 
 ### Step 5 — Derive LinkedIn view
-From `rolling-4week` parsed rows: filter where `channel` starts with `LinkedIn`. Bucket by `status`:
-- `planned`
-- `in-progress` (also include rows from `carryover[]`)
-- `shipped`
-- `blocked` and `pulled` are counted in `stats.linkedin_blocked` and `stats.linkedin_pulled` but not rendered.
-
-Within each bucket, sort by `publish` ascending.
+From `marketing/channels/linkedin/drafts/*.md` filenames (`YYYY-MM-DD_type_slug.md`): bucket by date — `upcoming` (≥ today) vs `published` (< today) — plus copy/asset fill-state per post from the week's CSV (already parsed in Step 3). Sort by date ascending.
 
 ### Step 6 — Scan Jira import CSVs
 Read every `*.csv` in [`marketing/content-plan/jira/imports/`](../marketing/content-plan/jira/imports/).
@@ -127,12 +109,12 @@ The dashboard exposes a flat list of named actions Travis can launch by copying 
 
 | id | label | ready when | prompt routes to |
 |---|---|---|---|
-| `reconcile` | Run Monday reconcile | always available; `reason` notes last reconcile date + next publish week to lock | [`plan-reconcile-process.md`](../marketing/content-plan/plan-reconcile-process.md) |
+| `weekly-session` | Run the weekly content session | always available; `reason` notes the newest CSV week + next publish week | [`weekly-content-process.md`](../marketing/content-plan/weekly-content-process.md) |
 | `generate-csv-scaffold` | Generate Jira CSV scaffold for next week | the next ISO week after the most recent locked week has no CSV in `jira/imports/` | [`jira-scaffold-process.md`](../marketing/content-plan/jira/jira-scaffold-process.md) |
 | `bulk-write-cerkl-blog` | Bulk-write cerkl.com blog drafts for the current CSV | the current CSV has ≥1 `cerkl_blog` Task with `[DRIVE_URL_PLACEHOLDER]` | [`seo-blog-process.md`](../marketing/channels/seo-blog/seo-blog-process.md) |
 | `bulk-write-icpro-blog` | Bulk-write Internal Comms Pro blog drafts for the current CSV | the current CSV has ≥1 `icpro_blog` Task with `[DRIVE_URL_PLACEHOLDER]` | [`icpro-blog-process.md`](../marketing/channels/icpro-blog/icpro-blog-process.md) |
 | `bulk-write-linkedin` | Bulk-write LinkedIn copy for the current CSV | the current CSV has ≥1 `LinkedIn – Copy` subtask with `[COPY_PLACEHOLDER]` | [`linkedin-process.md`](../marketing/channels/linkedin/linkedin-process.md) |
-| `fill-brief-gaps` | Fill SEO brief gaps in rolling-4week | any `rolling-4week` row's `source_brief` contains `needs brief from SEO` | SEO brief writing process |
+| `fill-brief-gaps` | Top up the SEO brief queue | queued-brief count < 4, or `inputs.md` § Upcoming names a `needs brief by` deadline | SEO brief writing process |
 | `refresh-dashboard` | Refresh this dashboard | always available | this process |
 
 Each action's `prompt` should be self-contained (no follow-up clarification needed). Include the relevant week / CSV / file paths inline. Examples:
@@ -157,8 +139,7 @@ Diff `data.json` against `data.previous.json` (written by the script) to identif
 - CSV state changes (placeholders filled since last refresh; new CSVs in `jira/imports/`)
 - New briefs since prior refresh; status changes
 - Blog posts that moved between states (e.g., draft → live)
-- Carryover items still in flight (haven't shipped)
-- New rolling-4week reconcile date
+- Newest CSV week vs. today (is next week scaffolded yet?)
 - The top-priority `actions[]` entry surfaced ("next thing to do")
 
 One paragraph; no file dump.
@@ -282,7 +263,6 @@ One paragraph; no file dump.
 
 - **Diff against previous refresh** — persist `data.previous.json` for a real "what's new" Step 8 summary.
 - **Brief tier / target_channel filters** — surface as facets in the Briefs Kanban.
-- **LinkedIn posts-{state} folders** — when adopted, register as own source; rolling-4week becomes fallback for scheduled rows without draft files.
 - **Wraps-blog backlinks** — resolve `wraps X blog` source-brief text in LinkedIn rows back to the parent blog's slug so LinkedIn rows can cluster under their parent blog.
 - **Schedule** — wire to `/schedule` if a daily/weekly auto-refresh stabilizes.
 
@@ -290,4 +270,5 @@ One paragraph; no file dump.
 
 - **2026-06-02 — mechanized Steps 1–9 into `refresh.py`.** Hand-refreshes were burning ~3k output tokens writing `data.json` and were error-prone on long CSV Description cells (a manual scan miscounted W24 LinkedIn copy as 0/4 filled when it was actually 3/4; the script parsed the same file correctly). Script also persists `data.previous.json` so Step 10 has a real diff to narrate.
 - **2026-06-02 — out-of-band LinkedIn rows skip copy-fill totals.** Rows with `(out-of-band)` in the Summary are placeholders for Jira capacity tracking; copy is filled at publish time outside the content-plan system. Counting them as unfilled meant CSVs could never flip to `ready-to-import`. Now `copy.total` excludes them.
-- **2026-06-02 — `fill-brief-gaps` reason notes candidate queued briefs.** When a rolling-4week row says `needs brief from SEO`, the script checks the queued-briefs bucket for slug-tokens that overlap the deliverable text (≥2 tokens of length ≥4). If a candidate is found, the action prompt tells the next agent to confirm fit + schedule rather than write a duplicate brief.
+- **2026-06-02 — `fill-brief-gaps` reason notes candidate queued briefs.** When `inputs.md` § Upcoming says `needs brief by`, the script checks the queued-briefs bucket for slug-tokens that overlap the deliverable text (≥2 tokens of length ≥4). If a candidate is found, the action prompt tells the next agent to confirm fit + schedule rather than write a duplicate brief.
+- **2026-06-10 — rolling-4week.md + monthly plans retired** (weekly content session model). `weeks[]`/`carryover[]` removed from the data model; `this_week` derives from the newest CSV; LinkedIn view derives from `drafts/` filenames. **Next refresh must update `index.html`** to drop the weeks/carryover panels and re-point the LinkedIn panel — until then the dashboard may render empty sections.
