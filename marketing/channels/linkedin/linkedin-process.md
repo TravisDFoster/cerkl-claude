@@ -88,6 +88,8 @@ For each draft, update the Task row it was loaded from in Step 1 (matched by `Po
 
 Use a real CSV library (Python `csv`, or equivalent) — Description fields contain newlines.
 
+**Invocation modes:** when this runs as a Wave subagent inside the weekly content session, do **not** edit the CSV — return the values (the orchestrator fills all tokens in one pass). Only edit the CSV directly when running standalone (single writer either way).
+
 ### Step 6 — Roll up and report
 
 - **Owner:** Claude

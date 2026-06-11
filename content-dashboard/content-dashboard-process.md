@@ -114,7 +114,7 @@ The dashboard exposes a flat list of named actions Travis can launch by copying 
 | `bulk-write-cerkl-blog` | Bulk-write cerkl.com blog drafts for the current CSV | the current CSV has ≥1 `cerkl_blog` Task with `[DRIVE_URL_PLACEHOLDER]` | [`seo-blog-process.md`](../marketing/channels/seo-blog/seo-blog-process.md) |
 | `bulk-write-icpro-blog` | Bulk-write Internal Comms Pro blog drafts for the current CSV | the current CSV has ≥1 `icpro_blog` Task with `[DRIVE_URL_PLACEHOLDER]` | [`icpro-blog-process.md`](../marketing/channels/icpro-blog/icpro-blog-process.md) |
 | `bulk-write-linkedin` | Bulk-write LinkedIn copy for the current CSV | the current CSV has ≥1 `LinkedIn – Copy` subtask with `[COPY_PLACEHOLDER]` | [`linkedin-process.md`](../marketing/channels/linkedin/linkedin-process.md) |
-| `fill-brief-gaps` | Top up the SEO brief queue | queued-brief count < 4, or `inputs.md` § Upcoming names a `needs brief by` deadline | SEO brief writing process |
+| `fill-brief-gaps` | Write a missing SEO brief | `inputs.md` § Upcoming names a `needs brief by` deadline (briefs are otherwise written just-in-time at the weekly session) | SEO brief writing process |
 | `refresh-dashboard` | Refresh this dashboard | always available | this process |
 
 Each action's `prompt` should be self-contained (no follow-up clarification needed). Include the relevant week / CSV / file paths inline. Examples:

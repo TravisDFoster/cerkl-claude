@@ -4,6 +4,8 @@
 >
 > - **Upcoming** — approved, dated commitments and future-week sketches. The weekly session sweeps this for what's due and promotes items into the week's CSV. Sketches are mutable intent, not contracts.
 > - **Ideas** — the mailbox. Dump anything from anywhere: a thought from your phone, a competitor LP, a customer-call insight, a team-update signal. No format gate. The weekly session triages: promote to Upcoming (approve + date), pull straight into the slate, park, or prune. Stale items don't survive forever.
+>
+> **Cleanup contract:** anything pulled into a week's slate is **deleted from this file** at lock — the CSV owns it from there, and git remembers. The locked week's sketch goes too. If it's still written here, it hasn't been scheduled yet.
 > - **Theme & stance** — standing editorial direction. Rare; changes only when Travis says so.
 >
 > **The blog schedule is NOT here.** `../seo/briefs/` frontmatter (`status` + `scheduled_for`) is canonical for what publishes when on cerkl.com. Upcoming carries everything briefs can't: ICPro topics, LinkedIn wraps, emails, launches, brief-needed deadlines.

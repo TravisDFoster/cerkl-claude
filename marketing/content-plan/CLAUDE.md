@@ -17,8 +17,9 @@ You are helping Travis plan, schedule, and operationalize Cerkl's organic conten
 | Understand how the whole content system fits together (orientation) | [`content-lifecycle-process.md`](content-lifecycle-process.md) |
 | Generate the weekly Jira CSV scaffold (invoked by the session, also runnable standalone) | [`jira/jira-scaffold-process.md`](jira/jira-scaffold-process.md) |
 | Dump a new idea/signal for session triage; check what's coming up | [`inputs.md`](inputs.md) |
-| See what's scheduled (blogs) | `grep "status:\|scheduled_for:" ../seo/briefs/*.md` — frontmatter is canonical |
-| See the annual campaign arc | [`2026-content-plan.md`](2026-content-plan.md) |
+| See what's scheduled (blogs) | brief frontmatter in [`../seo/briefs/`](../seo/briefs/) — canonical; the session presents it as a table |
+| Write an SEO brief (normally Wave 1 of the session; standalone batch possible) | [`../seo/seo-brief-production-process.md`](../seo/seo-brief-production-process.md) |
+| See the annual campaign arc (suggestion only — goes stale fast) | [`2026-content-plan.md`](2026-content-plan.md) |
 | Look up Jira field rules, capacity ceilings, ownership | [`jira-csv-guidelines.md`](jira-csv-guidelines.md) |
 
 ## File Structure

@@ -55,6 +55,7 @@
 - **Produces:** each row enriched with `{slug, brief_path, brief_metadata}` (the last two are blank for non-SEO rows)
 - **What to do:** For each row:
   - If the `Source brief` column links to `../../seo/briefs/<slug>.md`: read the brief, extract `slug`, primary keyword, secondary keywords, target_pillar, primary_solution, all_categories. `slug = brief.slug`.
+  - If the row is a cerkl.com blog whose brief doesn't exist yet (just-in-time — written in Wave 1 of the weekly session): the slug was decided in the session conversation (brief filename = slug). Render the Description with `Slug:`, the topic, and `[BRIEF_PENDING]` on the keyword/CMS lines — the orchestrator backfills them after Wave 1 returns.
   - If the row is `Blog — internalcommspro.com` (no brief): synthesize the slug from the deliverable title using the rule in [`CONTEXT.md`](CONTEXT.md#slug-threading-the-canonical-identity). No brief metadata.
   - If the row is a LinkedIn post: no slug needed in the Description — instead, derive the `Post type` slug from the slate row's `Channel` string using the mapping below, and capture the wrapped blog as `Wraps: <blog-slug>`. The LinkedIn drafting process at [`../../channels/linkedin/linkedin-process.md`](../../channels/linkedin/linkedin-process.md) uses the same mapping to load the right template.
 

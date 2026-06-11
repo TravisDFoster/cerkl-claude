@@ -12,11 +12,11 @@ Jira is the operational record of what shipped and when. This folder holds the p
 
 Three pieces of state, each with one owner:
 
-1. **`../seo/briefs/` frontmatter** (`status` + `scheduled_for`) — the canonical cerkl.com blog schedule. "What's coming up" is computed live by grepping frontmatter, never written down a second time.
-2. **[`inputs.md`](inputs.md)** — Upcoming (dated commitments + future-week sketches), Ideas (the mailbox), Theme & stance (standing editorial direction).
-3. **`jira/imports/YYYY-Www.csv`** — the locked week. The session creates rows; channel processes fill their placeholder tokens (Drive URLs, copy, asset links). The CSV goes to Jira in whatever state it's in; the team fills gaps there.
+1. **`../seo/briefs/`** — the canonical cerkl.com blog schedule (frontmatter) + per-post SEO contract (body). Briefs are written **just-in-time inside the weekly session** (Wave 1), from topics approved in the session conversation and grounded in the SEO research set (`../seo/keyword-strategy.md` + `../seo/inventory/` — staleness checked every Monday). "What's coming up" is computed live from frontmatter, never written down a second time.
+2. **[`inputs.md`](inputs.md)** — Upcoming (dated commitments + future-week sketches), Ideas (the mailbox), Theme & stance (standing editorial direction). Items pulled into a week's slate are deleted at lock — the CSV owns them from there.
+3. **`jira/imports/YYYY-Www.csv`** — the locked week. During the session the orchestrator is the only writer; production subagents return values and the orchestrator fills the placeholder tokens. The CSV goes to Jira in whatever state it's in; the team fills gaps there.
 
-The **annual plan** (`2026-content-plan.md`) is the strategic input — monthly themes, campaign Epics, ICP pain points, blackout dates. The weekly session consults it for theme alignment; there are no monthly plan files. (Monthly plans and `rolling-4week.md` were retired 2026-06-10 — git history has them.)
+The **annual plan** (`2026-content-plan.md`) is a suggestion, not an input — campaign Epics, ICP pain points, blackout dates. Consult on demand; it goes stale fast and never overrides inputs + SEO status + Travis's call. (Monthly plans and `rolling-4week.md` were retired 2026-06-10 — git history has them.)
 
 Standing rules:
 - Weekly capacity limits are ceilings, not quotas (see `jira-csv-guidelines.md`)

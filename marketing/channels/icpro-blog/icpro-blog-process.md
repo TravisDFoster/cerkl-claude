@@ -127,6 +127,8 @@ Editing **does not** upload to Drive anymore — that moves to Step 2d.
 
 Per the publishing skill: it does **not** synthesize the slug (the orchestrator passes it) and does **not** create the CSV (Monday reconcile owns that).
 
+**Invocation modes:** when this runs as a Wave subagent inside the weekly content session, do **not** edit the CSV — return the values (the orchestrator fills all tokens in one pass). Only edit the CSV directly when running standalone (single writer either way).
+
 ### Step 3 — Roll up and report
 
 - **Owner:** Claude

@@ -208,6 +208,8 @@ Manual finish: drag <N> image(s) into placeholder frames in Canva — <role:subj
 
 Use a real CSV library (Python `csv`) — Description fields contain newlines.
 
+**Invocation modes:** when this runs as a Wave subagent inside the weekly content session, do **not** edit the CSV — return the values (the orchestrator fills all tokens in one pass). Only edit the CSV directly when running standalone (single writer either way).
+
 **Placement note (2026-06-02):** earlier convention put `Asset:` directly below the `Copy:` label, which split the Copy block visually. Placement is now **at the bottom of the Description**, separated from hashtags by a blank line. Furqan finds it after scanning past the caption + hashtags.
 
 If a Task row is missing or has no `Copy:` line filled in, surface a `csv_row_unfilled` warning and skip — Phase A (linkedin-process.md) hasn't run for that draft.
